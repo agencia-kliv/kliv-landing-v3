@@ -1,0 +1,23 @@
+   <!-- public/sitemap.xml -->
+   <xml version="1.0" encoding="UTF-8">
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+     <url>
+       <loc>http://www.agenciakliv.com/#servicios</loc>
+     </url>
+     <url>
+       <loc>http://www.agenciakliv.com/#como-trabajamos</loc>
+     </url>
+     <url>
+       <loc>http://www.agenciakliv.com/#tarifas</loc>
+     </url>
+     <url>
+       <loc>http://www.agenciakliv.com/#nosotros</loc>
+     </url>
+     <url>
+       <loc>http://www.agenciakliv.com/#nuestros-socios</loc>
+     </url>
+     <url>
+       <loc>http://www.agenciakliv.com/#contactanos</loc>
+     </url>
+   </urlset>
+   </xml>

@@ -1,0 +1,412 @@
+{
+    "metadata":{
+        "title": "Agencia KLIV - Performance Marketing",
+        "description":
+          "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+        "openGraph": {
+          "title": "Agencia KLIV - Performance Marketing",
+          "description":
+            "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+          "type": "website",
+          "locale": "es_ES",
+          "url": "https://www.agenciakliv.com/",
+          "site_name": "Agencia KLIV"
+        }
+    },
+
+    "openGraphImage":{
+        "image_url":  "https://www.agenciakliv.com/kliv-isotipo-green.png",
+        "image_alt": "Agencia KLIV - Performance Marketing"
+    },
+
+    "header":{
+        "services": "Servicios",
+        "howWeWork": "Como trabajamos",
+        "trajectory": "Trayectoria",
+        "pricing": "Tarifas",
+        "aboutUs": "Nosotros",
+        "ourPartners": "Nuestros socios",
+        "contactUs": "Contáctanos"
+    },
+    
+    "globals":{
+        "startNow": "Comienza ahora",
+        "whatsappCTA": "¿Tienes preguntas?",
+        "ourServices": "Nuestros servicios",
+        "scheduleCall": "Agendar llamada"
+    },
+
+    "hero":{
+        "slide1": "Aumenta tus ventas con",
+        "slide2": "Maximiza tu retorno <br></br> de inversión con",
+        "title": "Aumentá las ventas de tu negocio de manera rentable",
+        "subtitle": "Ayudamos a empresas a crecer con <strong>performance marketing</strong>."
+    },
+
+    "whyUs":{
+        "title": "La razón por la que tenemos clientes felices y satisfechos",
+        "cards":{
+            "card1": {
+                "title": "Mayor retorno de inversión",
+                "content": "Maximizamos el rendimiento de tu presupuesto publicitario, ya que solo pagas por los resultados conseguidos a un costo por adquisición asignado que garantice rentabilidad."
+            },
+            "card2": {
+                "title": "Aumenta la tasa de conversión",
+                "content": "Aumentamos la eficiencia de cada fase del embudo; incrementando la proporción de objetivos cumplidos sobre usuarios alcanzados."
+            },
+            "card3": {
+                "title": "Modelo escalable",
+                "content": "Adaptamos las campañas constantemente en función de los resultados que se van obteniendo para mejorar su efectividad y bajar los costos. Optimización y mejora continua."
+            },
+            "card4": {
+                "title": "Servicio transparente",
+                "content": "Medimos el rendimiento de las campañas con indicadores concretos en tiempo real, sin métricas de vanidad ni percepciones subjetivas."
+            },
+            "card5":{
+                "title": "Versátil",
+                "content": "Modelo adaptable a cualquier tipo de negocio, tipo de embudo y diversidad de plataformas. Diseñamos un plan 100% a medida."
+            }
+        }
+    },
+
+    "services":{
+        "tag": "Servicios",
+        "title":"Performance marketing, mucho más que publicidad digital…",
+        "subtitle":"Brindamos un servicio personalizado enfocado en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
+        "perks": "Estrategia. Producción. Monitoreo. Analítica. Optimización.",
+        "moreROI": "Más ROI",
+        "moreROIText":"Maximizamos el rendimiento de tu presupuesto publicitario mediante experimentación, aprendizaje y mejora continua en función de las ventas.",
+        "moreScalability": "Más Escalable",
+        "moreScalabilityText":"Identificamos los elementos publicitarios que generan más ventas a un menor costo y aumentamos su inversión gradualmente.",
+        "moreTransparency": "Más Transparente",
+        "moreTransparencyText":"Medimos el rendimiento de las campañas con indicadores monetizables en tiempo real, sin métricas de vanidad ni percepciones subjetivas."
+    },
+    
+    "howWeWork":{
+        "title": "Un método de trabajo que nos permite obtener resultados",
+        "step4": "Informe y <br></br>propuestas",
+        "step1": "Análisis y <br></br>planificación",
+        "step2": "Puesta en <br></br>marcha",
+        "step3": "Monitoreo y <br></br> optimización",
+        "step1Content": "Partiendo de un relevamiento 360 grados a tu empresa y al mercado, diseñamos un embudo de conversión 100% a medida, ajustado a sus recursos y objetivos.",
+        "step2Content": "Damos curso a lo planificado, ensamblando todos los elementos que conforman cada campaña coordinados entre nuestro equipo interdisciplinario",
+        "step3Content": "Monitoreamos diariamente los indicadores de desempeño (KPI), haciendo ajustes en función de los resultados que se van obteniendo para mejorar la efectividad y bajar los costos.",
+        "step4Content": "Al finalizar las campañas, se presentan las métricas resultantes en paneles interactivos, permitiendo interpretarlas y detectar oportunidades de mejora para el siguiente período."
+    },
+
+    "pricing":{
+        "title": "Cotiza tu estrategia publicitaria",
+        "packages": "Paquetes",
+        "paidMedia": "Empresas",
+        "agencies": "Agencias",
+        "startNow": "Comienza ahora",
+        "quote": "Cotizar",
+        "from": "Desde",
+        "contract":"Contratar",
+        "perMonth": "Por mes",
+        "item1":"* Incluye plataformas de email marketing, reporting y concursos.",
+        "item2":"* No incluye honorarios de productoras, costos CRM y chatbot. No incluye pauta publicitaria.",
+        "item3": "* Cualquier servicio que exceda el alcance mensual del paquete se presupuesta por separado.",
+        "item4": "* Contrato mínimo de paquetes: 4 meses.",
+        "item5": "* Facturación LLC.",
+        "expand": "Ver todas las características",
+        "shrink": "Contraer",
+        
+        "packagesTab": {
+            "title":"Paquetes para empresas de todos los tamaños.",
+            "features": {
+                "socialMedia": {
+                    "description":"Estrategia de contenidos a distribuir o replicar entre redes asignadas.",
+                    "name":"📸 Social Media"
+                },
+                "paidMedia":{
+                    "description":"Campañas publicitarias orientadas a resultados, adaptadas a embudo de conversión.",
+                    "name":"📣 Paid Media"
+                },
+                "emailMarketing":{
+                    "description":"Diseño y disparos de newsletters y/o programación de automations (Carrito abandonado, bienvenida, etc.)",
+                    "name":"✉️ Email Marketing"
+                },
+                "auditAnalysisAndStrategy":{
+                    "description":"Auditoria del perfil e identidad visual, benchmarking, audiencias, keyword research, diseño embudo de conversión, etc.",
+                    "name":"Auditoría, análisis y estrategia"
+                },
+                "socialMediaMessages": {
+                    "description": "Monitoreo redes y respuesta dos veces al día de mensajes y comentarios según manual FAQs estipulado.",
+                    "name": "Atención a mensajes de RRSS"
+                },
+                "multimediaDesign": {
+                    "description": "Diseños gráficos y videos, sujeto a las necesidades de social media, paid media e email marketing.",
+                    "name": "Diseño multimedia"
+                },
+                "copyWriting": {
+                    "description": "Redacción, sujeto a las necesidades de social media, paid media e email marketing.",
+                    "name": "CopyWriting"
+                },
+                "customDashboardReport":{
+                    "description": "Acceso a panel personalizado con todas las métricas en tiempo real.",
+                    "name": "Informe con dashboard personalizado"
+                },
+                "webTagsSetup": {
+                    "description": "Setup de etiquetas de seguimiento publicitario y eventos de conversión.",
+                    "name": "Setup de etiquetas Web"
+                },
+                "catalogSetup": {
+                    "description": "Setup y mantenimiento de catálogos Gg Merchant Center, Facebook e Instagram Shops.",
+                    "name": "Configuración de catálogos"
+                },
+                "audiovisualProductionCoordination":{
+                    "description": "Coordinación con productoras audiovisuales locales que generen los contenidos requeridos. (No incluye el costo de productora)",
+                    "name": "Coordinación de prod. audiovisual"
+                },
+                "influencersManagement":{
+                    "description": "Relevamiento de perfiles, selección, intermediación y propuestas de dinámicas creativas.",
+                    "name":"Gestión de influencers"
+                },
+                "contestsManagement": {
+                    "description":"Coordinación de dinámicas creativas, e intermediación con ganadores.",
+                    "name":"Gestión de concursos"
+                },
+                "landingPageDevelopment":{
+                    "description":"Diseño estratégico de landing page para campañas. No incluye costos de hosting y dominios.",
+                    "name":"Desarrollo de Landing Page"
+                },
+                "webSupport": {
+                    "description": "Asistencia técnica para mantener la web actualizada y en correcto funcionamiento.",
+                    "name": "Soporte web"
+                },
+                "chatbotSetup": {
+                    "description":"Setup de chatbot en web y/o redes según se requiera.",
+                    "name":"Configuración de chatbot"
+                },
+                "crmSetup": {
+                    "description":"Setup CRM y vinculación con plataformas publicitarias según se requiera.",
+                    "name":"Configuración de CRM"
+                },
+                "languages":{
+                    "description":"Alcance de traducción, sujeto a audiencias objetivo.",
+                    "name":"Idiomas"
+                },
+                "meetings": {
+                    "description": "Encuentros de seguimiento, presentación de campañas, contenidos e informes.",
+                    "name": "Reuniones"
+                }
+            }
+        },
+
+        "agenciesTab": {
+            "title": "Planes para agencias que buscan tercer izar gestión de campañas.",
+            "features":{
+                "paidMedia": {
+                    "name":"📣 Paid Media"
+                },
+                "generalAdvice": {
+                    "name":"Asesoramiento general"
+                },
+                "clientContact": {
+                    "name":"Contacto con el cliente"
+                },
+                "fullRelevancy": {
+                    "name":"Relevamiento completo"
+                },
+                "customFunnel": {
+                    "name":"Diseño de embudo a medida"
+                },
+                "graphicDesign":{
+                    "name": "Diseño de piezas gráficas"	
+                },
+                "audiovisualDirection": {
+                    "name": "Dirección audiovisual"
+                },
+                "campaignConfiguration": {
+                    "name": "configuración de campañas"
+                },
+                "monitoringAndOptimization": {
+                    "name": "Monitoreo y optimización"
+                },
+                "interactiveReports": {
+                    "name": "Informes interactivos"
+                }
+            }
+        },
+
+        "paidMediaTab": {
+            "title":"Cotiza tu estrategia publicitaria",
+            "campaignByMonth": "{campaigns} Campañas por mes",
+            "notSelectedTitle": "¿No sabes cuántas campañas necesita tu empresa?",
+            "notSelectedSubtitle": "Solicita auditoria gratuita con propuesta a medida.",
+            "selectedCampaigns": "<strong>{off}% OFF</strong> ({price} USD cada campaña)."
+        },
+
+        "additionalServicesTab": {
+            "title":"Otros servicios",
+            "features": {
+                "branding": {
+                    "name":"Branding"
+                },
+                "webDevelopment":{
+                    "name":"Desarrollo Web"
+                },
+                "multimediaDesign": {
+                    "name":"Diseño Multimedia"
+                }
+            }
+        }
+    },
+
+    "faq": {
+        "title": "Preguntas frecuentes",
+        "questions": {
+            "question1": {
+                "title": "¿Qué paquetes o cuántas campañas son adecuadas para mí organización?",
+                "content": "Tenemos presente que cada organización es un mundo, con objetivos, procesos comerciales y recursos específicos, a las que les corresponde una estructura de servicios a medida. Contáctanos para recibir asesoramiento gratuito y determinar el paquete ideal para tu empresa."
+            },
+            "question2": {
+                "title": "¿Qué comprende la tarifa por campaña?",
+                "content": "Las plataformas publicitarias se dividen en 3 niveles: campaña, conjunto de anuncios y anuncios. Cada campaña se tarifa por períodos mensuales, y responde a un objetivo publicitario y fase del embudo de conversión determinada.\n\n* No incluye la inversión publicitaria; la misma corre por cuenta del cliente.\n* Si incluye diseños multimedia y panel de informes."
+            },
+            "question3": {
+                "title": "¿Qué métodos de pago aceptan y como facturan?",
+                "content": "- Transferencia bancaria en EEUU (USD)\n- Transferencia bancaria en Argentina (ARS)\n- Binance Pay (USDT)\n\nFactura Agencia Kliv LLC"
+            },
+            "question4": {
+                "title": "¿Cuándo se paga por los servicios?",
+                "content": "- Servicios mensuales: 100% anticipo para la puesta en marcha, y luego dentro de los primeros 10 días corridos de cada período mensual.\n- Servicios de única vez: 50% anticipo y 50% a contra-entrega."
+            },
+            "question5": {
+                "title": "¿Cuál es el período de los contratos?",
+                "content": "El período mínimo contractual es de 4 meses consecutivos. A partir de entonces el contrato se renueva automáticamente cada mes hasta que alguna de las partes rescinda notificando con al menos 20 días de anticipación al vencimiento del período mensual en curso."
+            },
+            "question6": {
+                "title": "¿Hay garantía de resultados?",
+                "content": "Importante destacar que las fórmulas mágicas no existen, ya que cada empresa es \"un mundo\", pero conocemos el modus operandi para encontrar el camino correcto que lleve hacia resultados tangibles y monetizables.\n\nEs un proceso de experimentación continua, con sus errores y aciertos como guía, alcanzando la rentabilidad a mediano plazo y buscando maximizarla en el tiempo.\n\nEn Kliv confiamos en nuestros procesos de trabajo con foco en los resultados, así como también en nuestro equipo multidisciplinario y años de experiencia; siempre dispuestos a nuevos desafíos."
+            },
+            "question7": {
+                "title": "¿Ofrecen descuentos para organizaciones sin fines de lucro?",
+                "content": "¡Claro! En KLIV reconocemos y valoramos la labor de las organizaciones sin fines de lucro. Contáctanos para más detalles sobre cómo podemos colaborar juntos."
+            }
+        }
+    },
+
+    "team": {
+        "title": "Experiencia y resultados <br></br>que nos avalan",
+        "subtitle": "<strong>11 años en el mercado</strong> escalando las ventas de más de <strong>80 empresas en 10 países</strong>, con nuestro equipo de <strong>10+ marketers y creativos</strong> apasionados por el performance",
+        "missionContent": "Ayudar a tu empresa a alcanzar todo el potencial de sus canales digitales, maximizando las conversiones en cada fase del embudo al menor costo posible.",
+        "vision": "VISIÓN",
+        "visionContent": "Que cualquier empresa del mundo pueda acceder ágilmente a nuestras soluciones ajustadas a sus recursos, revolucionando el marketing digital con la filosofía del performance.",
+        "values": "VALORES",
+        "valuesItems": {
+            "value1": {
+                "title": "Ambiciosos",
+                "content": "No nos conformamos con alcanzar las metas, nuestro dogma es la mejora continua."
+            },
+            "value2": {
+                "title": "Científicos",
+                "content": "Todo lo que hacemos se fundamenta con datos, analítica y experimentación."
+            },
+            "value3": {
+                "title": "Versátiles",
+                "content": "Nos adaptamos a cualquier contexto: diversidad de mercados, recursos y equipos de trabajo"
+            },
+            "value4": {
+                "title": "Pasión",
+                "content": "Nos entusiasma lo que hacemos y la forma en que lo hacemos. ,Tenemos pasión por los resultados."
+            },
+            "value5": {
+                "title": "Eficientes",
+                "content": "Conscientes de los recursos con que contamos para lograr los objetivos. Garantizar el ROI es nuestro primer mandamiento."
+            },
+            "value6": {
+                "title": "Comprometidos",
+                "content": "Las metas de nuestros clientes se vuelven nuestras metas y haremos todo para cumplirlas, respondiendo pro-activamente ante cualquier adversidad."
+            },
+            "value7": {
+                "title": "Pioneros",
+                "content": "En este rubro en constante evolución nos mantenemos siempre en la cresta de la ola, atentos a nuevas tecnologías para sumar a nuestro arsenal."
+            }
+        }
+    },
+
+    "partners": {
+        "title": "Algunos de nuestros socios"
+    },
+
+    "contactUs": {
+        "title":"Contáctanos para hacer crecer tu negocio",
+        "name":"Nombre",
+        "email":"Correo electrónico",
+        "phone": "Teléfono",
+        "company": "Empresa",
+        "content": "Consulta",
+        "submit": "Enviar mensaje",
+        "completeForm": "Por favor completa los campos obligatorios",
+        "success": "¡Gracias por contactarte con Kliv, te responderemos a la brevedad!",
+        "error": "No hemos podido enviar tu mensaje, intenta de nuevo más tarde o ponte en contacto con nosotros",
+        "nameError": "El nombre debe tener al menos 3 caracteres",
+        "emailError": "El correo electrónico debe ser válido",
+        "phoneError": "El teléfono debe tener al menos 10 caracteres",
+        "companyError": "La empresa debe tener al menos 3 caracteres",
+        "contentError": "La consulta debe tener al menos 10 caracteres"
+    },
+
+    "calendly":{
+        "title": "Agenda una videollamada",
+        "subtitle": "Elige el momento adecuado para hablar con un profesional de performance marketing."
+    },
+
+    "thankYou": {
+        "title": "¡Muchas gracias!",
+        "content": "Un asesor Kliv se comunicará contigo en un plazo de 24 horas hábiles"
+    },
+
+    "footer":{
+        "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
+        "privacyPolicy": "Política de privacidad"
+    },
+
+    "planItems": {
+        "8 publicaciones por mes": "8 publicaciones por mes",
+        "Instagram, Facebook, Whatsapp": "Instagram, Facebook, Whatsapp",
+        "14 publicaciones por mes": "14 publicaciones por mes",
+        "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn",
+        "4 campañas por mes": "4 campañas por mes",
+        "Meta Ads, Google Ads": "Meta Ads, Google Ads",
+        "10 campañas por mes": "10 campañas por mes",
+        "A partir de 10 campañas por mes": "A partir de 10 campañas por mes",
+        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (100 USD cada campaña)",
+        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (140 USD cada campaña)",
+        "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
+        "Hasta 3000 contactos": "Hasta 3.000 contactos",
+        "2 newsletters por mes": "2 newsletters por mes",
+        "Klaviyo": "Klaviyo",
+        "Hasta 10000 contactos": "Hasta 10.000 contactos",
+        "4 newsletters por mes + automations": "4 newsletters por mes + automations",
+        "1 por semestre": "1 por semestre",
+        "2 por semestre": "2 por semestre",
+        "1 por mes": "1 por mes",
+        "3 por mes": "3 por mes",
+        "1 por bimestre": "1 por bimestre",
+        "4hs por mes": "4hs por mes",
+        "12hs por mes": "12hs por mes",
+        "Quincenales": "Quincenales",
+        "Semanales": "Semanales",
+        "Personalizado": "Personalizado",
+        "Logotipo y sus variaciones": "Logotipo y sus variaciones",
+        "Brandbook": "Brandbook",
+        "1": "1",
+        "2": "2",
+        "Paleta de colores": "Paleta de colores",
+        "Tipografías": "Tipografías",
+        "Elementos gráficos": "Elementos gráficos",
+        "Elementos corporativos": "Elementos corporativos",
+        "Tarjeta de presentación, firma electrónica, fólder, banner corporativo": "Tarjeta de presentación, firma electrónica, fólder, banner corporativo",
+        "Wordpress": "Wordpress",
+        "Shopify": "Shopify",
+        "Diseños full stack": "Diseños full stack",
+        "Diseño UX-UI": "Diseño UX-UI",
+        "Diseño gráfico": "Diseño gráfico",
+        "Banners web, cartelería, brochure, catálogo, flyer, etc": "Banners web, cartelería, brochure, catálogo, flyer, etc.",
+        "Diseño audiovisual": "Diseño audiovisual",
+        "Motion graphics, edición de tomas": "Motion graphics, edición de tomas"
+    }
+}
