@@ -258,32 +258,40 @@
         "title": "Preguntas frecuentes",
         "questions": {
             "question1": {
-                "title": "¿Qué paquetes o cuántas campañas son adecuadas para mí organización?",
-                "content": "Tenemos presente que cada organización es un mundo, con objetivos, procesos comerciales y recursos específicos, a las que les corresponde una estructura de servicios a medida. Contáctanos para recibir asesoramiento gratuito y determinar el paquete ideal para tu empresa."
+                "title": "¿Qué es una campaña?",
+                "content": "Las plataformas publicitarias se dividen en 3 niveles: campaña, públicos y anuncios. Cada campaña responde a un objetivo comercial y fase del embudo de ventas, pudiendo contener varios públicos y anuncios. La estructura de campañas se conformará en base a los objetivos y recursos de tu empresa, con foco en maximizar las ventas y el retorno de inversión."
             },
             "question2": {
-                "title": "¿Qué comprende la tarifa por campaña?",
-                "content": "Las plataformas publicitarias se dividen en 3 niveles: campaña, conjunto de anuncios y anuncios. Cada campaña se tarifa por períodos mensuales, y responde a un objetivo publicitario y fase del embudo de conversión determinada.\n\n* No incluye la inversión publicitaria; la misma corre por cuenta del cliente.\n* Si incluye diseños multimedia y panel de informes."
+                "title": "¿Cuántas campañas son adecuadas para mi empresa?",
+                "content": "Tenemos presente que cada organización es un mundo, con objetivos, procesos comerciales y recursos específicos, a las que les corresponde una estructura de campañas a medida. Contactanos para recibir una auditoría gratuita y determinar el paquete ideal para tu empresa."
             },
             "question3": {
-                "title": "¿Qué métodos de pago aceptan y como facturan?",
-                "content": "- Transferencia bancaria en EEUU (USD)\n- Transferencia bancaria en Argentina (ARS)\n- Binance Pay (USDT)\n\nFactura Agencia Kliv LLC"
+                "title": "¿Qué incluye el servicio?",
+                "content": "✅ Incluye la gestión integral de las campañas publicitarias: creación de estrategia, diseño de anuncios, ejecución, monitoreo, análisis de datos, optimización y plataformas de reportes en tiempo real.\n\n❌ No incluye la inversión publicitaria, tarifas de influencers/embajadores contratados, producciones audiovisuales, diseño web, plataforma de mailing ni CRM."
             },
             "question4": {
-                "title": "¿Cuándo se paga por los servicios?",
-                "content": "- Servicios mensuales: 100% anticipo para la puesta en marcha, y luego dentro de los primeros 10 días corridos de cada período mensual.\n- Servicios de única vez: 50% anticipo y 50% a contra-entrega."
+                "title": "¿Hay garantía de resultados?",
+                "content": "No ofrecemos garantías porque los resultados no dependen solo de los anuncios, sino también de variables fuera de nuestro control dentro del ecosistema de tu marca, como los contenidos en redes, la atención al cliente, el propio producto o servicio y las reseñas de clientes pasados, entre otras. <italic>_ Si una agencia te promete resultados, desconfiá</italic>.\n\nEn Kliv somos transparentes desde el inicio: auditamos tu empresa, analizamos su potencial y proponemos un plan de campañas que maximicen tus oportunidades, pero sincerando las expectativas. Si determinamos que tu empresa no está en condiciones de generar resultados rentables con nuestros servicios, te lo diremos con total honestidad."
             },
             "question5": {
-                "title": "¿Cuál es el período de los contratos?",
-                "content": "El período mínimo contractual es de 4 meses consecutivos. A partir de entonces el contrato se renueva automáticamente cada mes hasta que alguna de las partes rescinda notificando con al menos 20 días de anticipación al vencimiento del período mensual en curso."
+                "title": "¿Ofrecen otros servicios además de publicidad?",
+                "content": "Nos especializamos exclusivamente en lo que mejor hacemos: publicidad digital bajo la filosofía del performance marketing; concentrarnos en nuestro expertise nos permite ofrecer resultados excepcionales.\n\nSi necesitas servicios como branding, desarrollo web o gestión de contenidos para redes sociales, contamos con una agencia partner de confianza a la que estaremos encantados de referirte."
             },
             "question6": {
-                "title": "¿Hay garantía de resultados?",
-                "content": "Importante destacar que las fórmulas mágicas no existen, ya que cada empresa es \"un mundo\", pero conocemos el modus operandi para encontrar el camino correcto que lleve hacia resultados tangibles y monetizables.\n\nEs un proceso de experimentación continua, con sus errores y aciertos como guía, alcanzando la rentabilidad a mediano plazo y buscando maximizarla en el tiempo.\n\nEn Kliv confiamos en nuestros procesos de trabajo con foco en los resultados, así como también en nuestro equipo multidisciplinario y años de experiencia; siempre dispuestos a nuevos desafíos."
+                "title": "¿Cómo se diferencian de otras agencias?",
+                "content": "Somos una agencia boutique, exclusiva de performance marketing. Trabajamos con un número limitado de empresas por mes para garantizar un acompañamiento cercano y de alta calidad. Nos enfocamos en escalar las ventas y maximizar el retorno de inversión publicitaria mediante estrategias personalizadas basadas en datos, descartando métricas de vanidad como likes, seguidores o tráfico. Método validado por más de 10 años de experiencia y 80 empresas."
             },
             "question7": {
-                "title": "¿Ofrecen descuentos para organizaciones sin fines de lucro?",
-                "content": "¡Claro! En KLIV reconocemos y valoramos la labor de las organizaciones sin fines de lucro. Contáctanos para más detalles sobre cómo podemos colaborar juntos."
+                "title": "¿Qué métodos de pago aceptan?",
+                "content": "Solicitamos un anticipo del 100% para iniciar el proyecto, y los pagos de los meses siguientes deberán realizarse dentro de los primeros 10 días corridos de cada mes. Aceptamos:\n\n- Transferencia bancaria dentro de Argentina (ARS, factura C).\n- Transferencia bancaria a banco en EE. UU. (USD, factura LLC).\n- Binance Pay (USDT)."
+            },
+            "question8": {
+                "title": "¿Cuál es el período de contrato?",
+                "content": "El período mínimo contractual es de 4 meses consecutivos; plazo aproximado para empezar a generar resultados lucrativos. Después de ese período, el contrato se renueva automáticamente mes a mes, hasta que cualquiera de las partes decida rescindirlo, con al menos 15 días de anticipación antes del vencimiento del período mensual en curso."
+            },
+            "question9": {
+                "title": "¿Cuándo puedo ingresar?",
+                "content": "Primero, es necesario que completes un formulario de auditoría y, si determinamos que tu negocio es compatible con nuestros servicios, te ofreceremos un presupuesto personalizado que se ajuste a tus objetivos y recursos.\n\nSin embargo, las plazas mensuales son limitadas: solo podemos aceptar 3 empresas por mes para asegurar la calidad de nuestros servicios. Si estás interesado pero no hay disponibilidad, te reservaremos un cupo para el próximo mes."
             }
         }
     },
@@ -339,21 +347,8 @@
     },
 
     "contactUs": {
-        "title":"Contáctanos para hacer crecer tu negocio",
-        "name":"Nombre",
-        "email":"Correo electrónico",
-        "phone": "Teléfono",
-        "company": "Empresa",
-        "content": "Consulta",
-        "submit": "Enviar mensaje",
-        "completeForm": "Por favor completa los campos obligatorios",
-        "success": "¡Gracias por contactarte con Kliv, te responderemos a la brevedad!",
-        "error": "No hemos podido enviar tu mensaje, intenta de nuevo más tarde o ponte en contacto con nosotros",
-        "nameError": "El nombre debe tener al menos 3 caracteres",
-        "emailError": "El correo electrónico debe ser válido",
-        "phoneError": "El teléfono debe tener al menos 10 caracteres",
-        "companyError": "La empresa debe tener al menos 3 caracteres",
-        "contentError": "La consulta debe tener al menos 10 caracteres"
+        "title":"¿Estás listo para escalar tus ventas?",
+        "subtitle":"Empecemos por una llamada de auditoría."
     },
 
     "thankYou": {
@@ -363,7 +358,8 @@
 
     "footer":{
         "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
-        "privacyPolicy": "Política de privacidad"
+        "privacyPolicy": "Política de privacidad",
+        "termsAndConditions": "Términos y condiciones"
     },
 
     "planItems": {

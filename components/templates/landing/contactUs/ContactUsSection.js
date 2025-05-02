@@ -1,26 +1,30 @@
-import HeadSection from "@/components/atoms/HeadSection";
+import AgendarLLamadaButton, {
+  AGENDAR_BUTTON_SIZES,
+} from "@/components/atoms/AgendarLLamadaButton";
+import SectionSubtitle from "@/components/atoms/SectionSubtitle";
+import SectionTitle from "@/components/atoms/SectionTitle";
 import { useTranslations } from "next-intl";
-import ContactUsForm from "./ContactUsForm";
 
 const ContactUsSection = () => {
   const t_contactUs = useTranslations("contactUs");
 
   return (
-    <section
-      className="landing-section-container"
-      id="contactanos"
-      data-section="contactanos"
-      data-aos="fade-up"
-    >
-      <section className="flex flex-col gap-[50px] m-auto  w-full">
-        <header className="flex flex-col gap-[10px] px-[10px] text-center items-center">
-          <HeadSection className="max-w-[490px]">
-            {t_contactUs("title")}
-          </HeadSection>
-        </header>
-        <ContactUsForm t={t_contactUs} />
+    <div className="bg-kliv-primary">
+      <section
+        className="landing-section-container flex flex-col items-center gap-[20px]"
+        id="contactanos"
+        data-section="contactanos"
+        data-aos="fade-up"
+      >
+        <SectionTitle className={"text-white max-w-[450px] text-center"}>
+          {t_contactUs("title")}
+        </SectionTitle>
+        <SectionSubtitle className={"text-white text-center"}>
+          {t_contactUs("subtitle")}
+        </SectionSubtitle>
+        <AgendarLLamadaButton size={AGENDAR_BUTTON_SIZES.SMALL} />
       </section>
-    </section>
+    </div>
   );
 };
 

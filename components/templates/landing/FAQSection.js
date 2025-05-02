@@ -7,10 +7,10 @@ const FAQSection = () => {
 
   return (
     <section className="landing-section-container" data-aos="fade-bottom">
-      <section className="flex flex-col gap-[50px] items-center m-auto max-w-[761px] w-full">
+      <section className="flex flex-col gap-[50px] items-center m-auto max-w-[1191px] w-full">
         <HeadSection>{t_faq("title")}</HeadSection>
-        <div className="flex flex-col gap-[0px] w-full">
-          {[...Array(7)].map((item, index) => (
+        <div className="flex flex-col gap-[10px] w-full">
+          {[...Array(9)].map((item, index) => (
             <PullDown
               key={index}
               startOpened={index === 0}

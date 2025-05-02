@@ -6,8 +6,8 @@ import Image from "next/image";
 
 const TestimonialCard = ({ logo, name, company, position, video, text }) => {
   return (
-    <div className="px-[20px] lg:px-[10px] mb-[50px] max-w-[350px] md:max-w-[400px] mx-auto">
-      <div className="aspect-[0.68] w-full p-[20px_30px] md:p-[30px] pt-[50px] md:pt-[70px] lg:pt-[60px] flex flex-col gap-[20px] bg-[url(/shapes/vertical-upside-folder-shape-primary.png)] bg-no-repeat bg-contain bg-right-top">
+    <div className="w-full flex-1 px-[10px] lg:px-[10px] mb-[50px] max-w-[450px] md:max-w-[400px] lg:max-w-[450px] mx-auto">
+      <div className="aspect-[0.68] w-full p-[20px_30px] md:p-[30px] pt-[70px] md:pt-[70px] lg:pt-[60px] flex flex-col gap-[20px] bg-[url(/shapes/vertical-upside-folder-shape-primary.png)] bg-no-repeat bg-contain bg-right-top">
         <header className="w-full flex gap-[20px] items-center [&_*]:pointer-events-none [&_*]:select-none">
           <figure className="relative w-[70px] h-[70px] md:w-[80px] md:h-[80px] rounded-full bg-white">
             <Image src={logo} alt={name} fill objectFit="contain" />
@@ -41,7 +41,7 @@ const TestimonialCard = ({ logo, name, company, position, video, text }) => {
             </video>
           )}
           {text && (
-            <p className="text-[14px] text-left md:text-[16px] font-[400] leading-[23px] md:leading-[28px] text-white pointer-events-none select-none">
+            <p className="text-[14px] sm:text-[18px] sm:leading-normal text-left md:text-[16px] 2xl:text-[22px] font-[400] leading-[23px] md:leading-[28px] 2xl:leading-normal text-white pointer-events-none select-none">
               {text}
             </p>
           )}
@@ -129,7 +129,7 @@ const TestimonialsSection = () => {
                 logo={"/logos/camelinna.png"}
                 company={"Camelinna"}
                 name={"Lourdes H."}
-                position={"CEO"}
+                // position={"CEO"}
                 video={"/testimonials/camelinna.mp4"}
               />
 
@@ -137,7 +137,7 @@ const TestimonialsSection = () => {
                 logo={"/testimonials/saniito.png"}
                 company={"Saniito"}
                 name={"Alejandro A."}
-                position={"CEO"}
+                // position={"CEO"}
                 text={t("saniito")}
               />
             </div>
@@ -146,7 +146,7 @@ const TestimonialsSection = () => {
                 logo={"/logos/memeca.png"}
                 company={"Memeca"}
                 name={"Natalia S."}
-                position={"CEO"}
+                // position={"CEO"}
                 video={"/testimonials/memeca.mp4"}
               />
               <TestimonialCard
