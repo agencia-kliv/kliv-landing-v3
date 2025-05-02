@@ -52,7 +52,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="px-[20px] sticky top-0 z-50  bg-white min-h-[70px] lg:min-h-[90px] flex w-full lg:px-[40px] shadow-header">
+      <header className="px-[20px] sticky top-0 z-50  bg-white min-h-[70px] lg:min-h-[70px] 2xl:min-h-[90px] flex w-full lg:px-[40px] shadow-header">
         <div className="max-w-[1415px] lg:px-[15px] flex justify-between grid-cols-header items-center lg:grid m-auto w-full">
           <Link href={"/"}>
             <Image

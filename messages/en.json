@@ -20,207 +20,152 @@
     },
 
     "header":{
-        "services": "Services",
-        "howWeWork": "Our work",
-        "trajectory": "Trajectory",
-        "pricing": "Rates",
-        "aboutUs": "About Us",
-        "ourPartners": "Our partners",
-        "contactUs": "Contact Us"
+        "services": "Service",
+        "trajectory": "About Us",
+        "pricing": "Pricing"
     },
     
     "globals":{
-        "startNow": "Start now",
-        "whatsappCTA": "Let's talk",
-        "ourServices": "Our Services"
+        "startNow": "Comienza ahora",
+        "whatsappCTA": "¿Tienes preguntas?",
+        "ourServices": "Nuestros servicios",
+        "scheduleCall": "Book a call"
     },
 
     "hero":{
-        "slide1": "Boost your sales with",
-        "slide2": "Maximize your return<br></br>on investment with",
-        "title": "Performance Marketing",
-        "subtitle": "Performance Marketing 100 % results-oriented strategies.."
+        "title": "Boost Your Business Sales Profitably",
+        "subtitle": "e help companies grow through <strong>performance marketing</strong>."
     },
 
-    "whyUs":{
-        "title": "Reasons why our customers feel satisfied and happy",
-        "cards":{
-            "card1": {
-                "title": "Higher return on investments",
-                "content": "We maximize the performance of your advertising budget since you only pay for the results achieved at an assigned cost per acquisition that guarantees profitability."
-            },
-            "card2": {
-                "title": "Increase conversion rate",
-                "content": "We increase the efficiency of each phase of the funnel; increasing the proportion of objectives met over users achieved."
-            },
-            "card3": {
-                "title": "Scalable model",
-                "content": "We constantly adapt campaigns based on the results obtained to improve their effectiveness and lower their costs. Optimization and continuous improvement."
-            },
-            "card4": {
-                "title": "Transparent service",
-                "content": "We measure the campaigns’ performance with concrete indicators in real-time, without “vanity metrics” or subjective perceptions."
-            },
-            "card5":{
-                "title": "Versatility",
-                "content": "Model adaptable to any type of business, type of funnel and diversity of platforms. Our personalized plans are 100 % based on our clients' needs and requirements."
-            }
-        }
-    },
-
-    "ourServices":{
-        "title":"Here you find all you need to make your business thrive",
-        "items": {
-            "viewMore": "View more",
-            "item1": {
-                "title": "Social advertising",
-                "content": "Creative strategies and different formats according to each phase of the funnel, with a design and writing that captures the attention of your target audience on the networks and induces conversion.",
-                "popup":{
-                    "text1": "Millions of small and large companies connect with people through social media ads building lasting relationships. But in a context in which advertisers are increasing and users are resisting more to advertising, to achieve profitability without a good strategy is a matter of chance.",
-                    "text2": "These years at Kliv, we have been finding the ideal formula for a variety of companies, helping them achieve their commercial objectives and guaranteeing return on investment with the philosophy of performance marketing.",
-                    "text3":"OBJECTIVES AND STRATEGY",
-                    "text4": "The basic effectiveness of any campaign lies in its components being strategically aligned towards the same North: the SMART* objective, the compass that guides the execution of the entire process and allows performance to be evaluated. We forge strategies that respond to this objective and the available resources and document all its elements in a campaign sheet available to all the teams involved to operate with consistency.",
-                    "text5": "SMART: Specific, measurable, achievable, relevant and temporal.",
-                    "text6": "ADVERTISING FORMATS",
-                    "text7": "Based on the principle that two companies are never the same, the advertising platforms were designed to adapt to a variety of objectives and strategies in each phase of the conversion funnel, with great versatility in their advertising formats. At Kliv, we identify the optimal one for each campaign.",
-                    "text8": "DRAFTING AND DESIGN",
-                    "text9":"We tell the story of your company or product in attractive and effective ways, capturing the attention of your target audience and encouraging them to take specific actions. The editorial team and graphic and audiovisual designers work shoulder to shoulder with the performance marketing team, aligned in the strategy to optimize results.",
-                    "text10":"HEARING MANAGEMENT",
-                    "text11":"The greatest potential of advertising platforms is set in their ability to segment and manage audiences. Ironically, it is usually the most underutilized tool, limiting its use to segmentation by interests that, by themselves, are not entirely accurate. At Kliv, we generate dynamic and customized audiences for each phase of the funnel, identifying behavioral patterns in real-time through the web tracking pixel and lookalike segmentations that allow us to find the people most likely to perform the desired actions.",
-                    "text12":"WEB CONVERSION TRACKING",
-                    "text13":"In addition to optimizing audience management, the “web beacon” allows you to monitor the performance of each campaign with redirection to the web. By setting up custom events and parameters, we measure all the specific actions that visiting users take, with a particular action as the conversion goal.",
-                    "text14":"FOCUS ON PROFITABILITY",
-                    "text15":"Setting advertising bids based on cost per impressions or clicks (CPM or PPC) does not guarantee profitability, since they are not metrics linked to conversions or profit margin. In contrast, the acquisition bidding (CPA) strategy regulates that the advertising cost does not exceed the amount willing to invest for each result and optimizes it over time.",
-                    "text16":"EXPERIMENTATION AND CONTINUOUS IMPROVEMENT",
-                    "text17":"The Facebook Ads experimentation tools (A/B Testing + Exclusion Testing), added to the methodologies that we implement at Kliv (Smoke Test, Fake Door, Flintstone, among others) allow us to test hypotheses or answer specific questions concerning business objectives, helping to identify opportunities for improvement and insights to optimize communication.",
-                    "text18":"MONITORING AND REPORTING",
-                    "text19":"We export the data to a tool that allows you to create interactive and customizable panels (Data Studio), making it easier to read and understand the results accurately and in real-time. Correctly interpreting the metrics is essential to know the impact of the campaigns related to the stated objectives. These metrics are monitored periodically to determine if they are on track or if any adjustments are necessary."
-                }
-            },
-            "item2": {
-                "title": "Google Advertising",
-                "content": "Ads on search engines, Google Maps, YouTube, advertising spaces on associated websites and applications, reaching your target audience at the right time.",
-                "popup":{
-                    "text1": "SEARCH NETWORK",
-                    "text2": "Sponsored results in the Google search engine just when the user shows interest in your products or services; guiding them towards the conversion at that precise moment, whether it is performing a specific action on your website, visiting your networks, making a call or heading to your premises with Google Maps.",
-                    "text3": "DISPLAY NETWORK",
-                    "text4": "Reach your target audience while they browse websites, use apps, or check their Gmail, with images or GIF banners. This is ideal for early stages of the funnel or aimed at those who have already taken action on your website.",
-                    "text5": "YOUTUBE ADS",
-                    "text6": "Video ads on the YouTube platform generate a degree of emotional involvement with the content like no other medium can. Through creative audiovisual messages that delight, connect with your audience and induce them to take a particular action, either at that moment or later.",
-                    "text7": "GOOGLE SHOPPING",
-                    "text8": "Exclusive ads for e-commerce, made up of tabs with images, prices and other information relevant to users looking for your product, with a direct link to the shopping cart on your website.",
-                    "text9": "GOOGLE MY BUSINESS",
-                    "text10": "It puts you on the map, allowing them to find you from the Google search engine or Google Maps and, with just one click, call you, visit your website or arrive at your location with GPS. Turn strangers into customers by claiming your profile and sharing photos of your products, menus, promotions, opening hours and answering queries, reviews or reservations."
-                }
-            },
-            "item3": {
-                "title": "Email Marketing",
-                "content": "Newsletters, transactional, promotional and sequential e-mails, converting contacts into clients and then into ambassadors of your brand.",
-                "popup":{
-                    "text1": "Email marketing is a communication tool that allows you to contact your target audience through their e-mail, with personalized messages throughout the conversion funnel.",
-                    "text2": "At Kliv, we use a powerful e-mail marketing software with built-in design, automation, analysis and contact segmentation tools.",
-                    "text3": "NEWSLETTERS",
-                    "text4": "Send periodically newsletters of interest to your subscribers, with relevant content in their market. It fulfils a loyalty and brand positioning function while generating traffic to the company's website.",
-                    "text5": "TRANSACTIONAL",
-                    "text6": "Automatic e-mails in response to the user's interaction with your website or application. Purchase confirmation, abandoned cart reminder, new user, password change, download of material, among others.",
-                    "text7": "PROMOTIONAL",
-                    "text8": "E-mails aimed at achieving sales through a call to action and concise offer, segmented by categorized contact lists that allow you to send personalized offers.",
-                    "text9": "SEQUENTIAL",
-                    "text10":"Automated e-mail sequences guide the user through each phase of the conversion funnel, building a personalized relationship from the moment the first contact is made. They learn more about your brand and products, make a purchases, recommend you and become a regular buyer."
-                }
-            },
-            "item4": {
-                "title": "Social media management",
-                "content": "Relevant content is adjusted to the interests and needs of your target audience, creating valuable environments that strengthen the bond with your brand.",
-                "popup":{
-                    "text1": "Strategic social media management is an essential component in all phases of the conversion funnel. It should not be applied as an isolated strategy, but rather it should be planned following the rest of the company's digital strategies.",
-                    "text2": "At Kliv, we develop quality content aligned with specific objectives, which adjust to the interests of your buyer persona and transmit the values and identity of your brand. In addition, we monitor your social media and promote a close relationship with your audience, responding to comments and answering queries.",
-                    "text3": "Benefits",
-                    "text4": "BRAND AWARENESS",
-                    "text5":"Regular presence through posts that provide value contributes to the notoriety, positive recognition and distinction of your brand. People tend to consume brands that are familiar to them.",
-                    "text6":"CREATE AMBASSADORS",
-                    "text7":"Encouraging natural interaction strengthens the audience's commitment to your brand, creating links beyond the purchase-sale relationship. Those who feel integrated, listened to and involved will be those who, out of their conviction, will share the content and recommend your brand on their networks.",
-                    "text8":"EDUCATE THE MARKET",
-                    "text9": "Instructing about the specifications of your products or services and answering your customers' frequently asked questions will make it easier for them to make the purchasing decision and their satisfaction will be greater, since they will know in detail what they purchased.",
-                    "text10": "ATTRACTION AND POSITIONING",
-                    "text11": "Relevant content generates quality traffic, reinforcing the positioning of your social media and allowing your commercial proposals to reach more potential clients.",
-                    "text12": "CREDIBILITY",
-                    "text13": "Organic communication eliminates the advertising tone by creating relationships of trust through recurring qualified content that does not simply seek to sell, but rather to provide value and generate conversation with the audience. Consumers gravitate towards brands that reflect credibility.",
-                    "text14": "LOYALTY",
-                    "text15": "It is always more profitable to sell to a current customer than to look for a new one. Relevant content helps to keep your customers engaged with your brand in the long term.",
-                    "text16": "SYNERGY WITH CAMPAIGNS",
-                    "text17": "With strategies planned accordingly, social media management deals to reduce the cost per acquisition of paid campaigns by optimizing conversions; since users tend to investigate beyond the advertisement that caught their attention before making the purchase decision.",
-                    "text18": "MONITORING AND REPORTING",
-                    "text19":"We export the data to a tool that allows you to create interactive and customizable panels (Data Studio), making it easier to read and understand the results accurately and in real-time. Correctly interpreting the metrics is essential to know the impact of the campaigns in relation to the stated objectives. They are monitored periodically to determine if they are on track or if any adjustments are necessary.",
-                    "text20": "How do we work?",
-                    "text21": "AUDIT",
-                    "text22": "Starting from a complete diagnosis of the current situation of your brand and the competition on social media, we define specific objectives and identify the target audience, the personality archetype and aesthetics according to the global communication strategy.",
-                    "text23": "PLANNING",
-                    "text24": "With the bases and the direction defined, we come up with valuable content and promotional actions that we schedule for the entire month; always involving an internal manager of your company in the process to guide us from their perspective and criteria.",
-                    "text25": "DESIGN AND EDITION",
-                    "text26": "With a content grid in hand and a lot of creativity, we design pieces that impact and write copies that persuade, appropriate to your brand's identity. Before posting, each graph, video and text is shared for validation and adjustments.",
-                    "text27": "POSTING AND MONITORING",
-                    "text28": "According to the scheduled plan, posts are programed with their respective piece and copy, monitoring their performance day by day. And beyond what is scheduled, we remain receptive to spontaneous content that adds value, especially for stories. In addition, comments and private messages are answered from 9 a. m. to 6 p. m. (GMT-3), or they are assigned to a company manager when necessary. Active listening predominates in identifying valuable insights, detecting opportunities and avoiding conflicts.",
-                    "text29": "REPORTS",
-                    "text30": "At the end of each monthly period, performance is analyzed in contrast to the objectives set, presenting a quantitative and qualitative report, along with a proposal for improvement for the following month."
-                }
-            },
-            "item5": {
-                "title": "Web design",
-                "content": "Web platforms optimized to generate conversion actions, with agile and secure navigability, excellent organic indexing in search engines and adaptability to multiple devices. See more",
-                "popup":{
-                    "text1":"At Kliv, we have a team of “full stack developers”, that is, programmers with a very complete technical profile who work in front and backend without using web design systems (such as Wix or WordPress), enabling personalized and functional developments, 100 % tailored to the requirements of your company.",
-                    "text2":"Unique and exclusive interfaces, adapted to the identity of your brand.",
-                    "text3":"Platforms optimized to generate conversion actions, without limitations in their functionalities.",
-                    "text4":"Efficient pages that adapt to all devices and browsers, updated with the latest technology, guaranteeing agile and safe navigation.",
-                    "text5":"Optimization for search engines, respecting quality standards that favor organic indexing, increasing visibility.",
-                    "text6": "Along with your site, you receive webmail boxes integrated with your company's domain.",
-                    "text7":"We take care of integrating it into Google Analytics, so you can analyze user behavior on the site, demographic information, interests, flow of visits, etc.",
-                    "text8": "WORKFLOW",
-                    "text9": "We divide the process into 2 stages. First, we design the website, and once we have your final approval, we move forward with the programming.",
-                    "text10": "HOSTING AND DOMAIN",
-                    "text11": "We take care of registering and hosting the domain (yoursite.com) as well as your website files, with monthly backups to guarantee the security of the content.",
-                    "text12": "MAINTENANCE AND UPDATES",
-                    "text13": "You have our technical support for any changes/innovations that you want to implement within the site.",
-                    "text14":"* The Domain, Hosting and Maintenance have a monthly or annual cost depending on the package you choose and the quotes at the time."
-                }
-            },
-            "item6": {
-                "title": "Graphic and audiovisual design",
-                "content": "Corporate identity manual, logos, brochures, infographics, and motion graphic animations.",
-                "popup":{
-                    "text1":"Graphic and audiovisual elements are essential in the commercial strategy to reach your audience in a dynamic and captivating way that transmits your brand’s identity.",
-                    "text2":"At Kliv, we work with audiovisual design and production teams experienced in the advertising field with a performance orientation.",
-                    "text3":"Brand book",
-                    "text4":"This includes the main graphic elements of a brand, explaining how they should be applied in each case. An essential tool that guarantees cohesion in visual communication, with homogeneity in any medium, no matter who uses it.",
-                    "text5":"From the development of the concept, naming and logo of the brand, its composition and correct and incorrect applications, defined colors, primary and complementary typography, and all applications, whether digital pieces (such as avatars for social media or e-mail signatures) or printed (business cards, letterhead, etc.)",
-                    "text6":"Before moving forward with any advertising action, we suggest developing an updated corporate identity manual as a fundamental basis for communication, which remains a tool for your brand.",
-                    "text7":"Logo",
-                    "text8":"Logo design consists of graphically representing the values, ideals and characteristics of a brand, using a symbol, image or typography that is memorable to its potential customers.",
-                    "text9":"* The identity manual includes the design or redesign of a logo for your brand, but we also work on it separately.",
-                    "text10":"Editorial",
-                    "text11":"Layout and composition of any media that combines text and images, whether presentation folders, tri-fold brochures, single-sheet brochures or infographics, among others. It is always sought to be attractive and functional for the reader, achieving perfect harmony between format and content.",
-                    "text12":"Packaging",
-                    "text13":"Product packaging is a resource that is used as a cover letter to transmit an attractive message and differentiate the product from the competition, and guarantee the protection of the product, allowing its storage and distribution. Design of boxes, bags, labels, printing on packaging and papers, among others.",
-                    "text14":"Motion Graphics Animations",
-                    "text15":"Videos are created with images, photographs, texts and icons, which are given movement through digital animation. An ideal technique to express complex ideas easily and entertainingly, capturing greater public attention and increasing message retention. It is commonly used in presentations, government propaganda, and for advertising purposes."
-                }
-            }
-        }
+    "services":{
+        "tag": "Service",
+        "title":"Performance marketing, much more than digital advertising...",
+        "subtitle":"We provide a personalized service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
+        "perks": "Strategy. Production. Monitoring. Analytics. Optimization.",
+        "moreROI": "More ROI",
+        "moreROIText":"We maximize the performance of your advertising budget through experimentation, learning, and continuous improvement focused on increasing sales.",
+        "moreScalability": "More Scalability",
+        "moreScalabilityText":"We identify the advertising elements that generate more sales at a lower cost and gradually increase their budget.",
+        "moreTransparency": "More Transparency",
+        "moreTransparencyText":"We measure campaign performance with real-time monetizable indicators — no vanity metrics or subjective perceptions."
     },
     
-    "howWeWork":{
-        "title": "A working method that allows us to obtain the expected results",
-        "step4": "Report and <br></br>proposals",
-        "step1": "Analysis and <br></br>planning",
-        "step2": "Startup",
-        "step3": "Monitoring and <br></br> optimization",
-        "step1Content": "Starting from a 360-degree survey of your company and the market, we design a 100 % custom conversion funnel, adjusted to your resources and objectives.",
-        "step2Content": "We carry out what was planned, assembling all the elements that make up each campaign coordinated between our interdisciplinary team.",
-        "step3Content": "We monitor key performance indicators (KPI) daily, making adjustments based on the results obtained to improve effectiveness and lower costs.",
-        "step4Content": "At the end of the campaigns, the resulting metrics are presented in interactive panels, allowing them to be interpreted and opportunities for improvement detected for the following period."
+    "team": {
+        "title": "Experience and results <br></br>that back us",
+        "subtitle": "<strong>11 years in the market</strong> scaling the sales of over <strong>80 companies across 10 countries</strong>, with a team of <strong>10+ passionate marketers and creatives</strong> specialized in performance marketing."
+    },
+ 
+    "partners": {
+        "title": "Algunos de nuestros socios"
     },
 
+    "testimonials": {
+        "title": "Testimonials",
+        "saniito": "For a few years now we’ve been working with Kliv and our experience has been extremely positive. They’re always willing and deeply invested in making everything run smoothly, taking a huge weight off our shoulders and allowing us to focus on other areas of the company. With Kliv, there’s no doubt we’re in very good hands.",
+        "solMillan": "Thanks to Kliv Agency for their professionalism. They supported me with dedication, creativity, and expertise in marketing campaigns for my company, and the results were extraordinary. I believe the most valuable thing is that they are committed to their work, sincere, and truly know what they’re doing. I highly recommend them.",
+        "rolicred": "The Kliv team achieved in a short time what we had been trying for years: receiving qualified inquiries at scale. Before, we were inundated with junk leads; now we close almost every opportunity and keep breaking our sales records month after month. Simply outstanding."
+    },
+
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "questions": {
+            "question1": {
+                "title": "What is a campaign?",
+                "content": "Advertising platforms are structured into three levels: campaigns, audiences, and ads. Each campaign responds to a business objective and sales funnel stage, and may include multiple audiences and ads. Your campaign structure will be tailored based on your business objectives and resources, focusing on maximizing sales and return on investment."
+            },
+            "question2": {
+                "title": " How many campaigns does my business need?",
+                "content": "We understand that every organization is unique, with specific goals, processes, and resources, requiring a customized campaign structure. Contact us to receive a free audit and determine the ideal package for your business."
+            },
+            "question3": {
+                "title": "What does the service include?",
+                "content": "✅ Full management of advertising campaigns: strategy creation, ad design, execution, monitoring, data analysis, optimization, and real-time reporting platforms.\n\n❌ It does not include: advertising investment, fees for influencers/ambassadors, audiovisual productions, website design, mailing platforms, or CRM tools."
+            },
+            "question4": {
+                "title": "Is there a results guarantee?",
+                "content": "We do not offer guarantees because results depend not only on ads but also on external factors within your brand ecosystem, such as your social media content, customer service, product/service quality, and customer reviews.\n<italic>If an agency promises you guaranteed results, be cautious.</italic>.\nAt Kliv, we are transparent from the start: we audit your company, analyze its potential, and propose a campaign plan that maximizes opportunities, setting clear expectations. If we determine that your business is not ready to achieve profitable results through our services, we will let you know with total honesty."
+            },
+            "question5": {
+                "title": "Do you offer services beyond advertising?",
+                "content": "We specialize exclusively in what we do best: digital advertising under the performance marketing philosophy.\n Focusing on our expertise allows us to deliver exceptional results.\nIf you need services such as branding, website development, or social media content management, we have a trusted partner agency we’ll be happy to refer you to."
+            },
+            "question6": {
+                "title": "How are you different from other agencies?",
+                "content": "We are a boutique agency exclusively specialized in performance marketing.\nWe work with a limited number of companies per month to guarantee close, high-quality support.\nOur focus is on scaling sales and maximizing advertising ROI with personalized, data-driven strategies — avoiding vanity metrics like likes, followers, or traffic.\nOur method is backed by over 10 years of experience and 80+ companies served."
+            },
+            "question7": {
+                "title": "What payment methods do you accept?",
+                "content": "We require 100% upfront payment to start the project.Subsequent monthly payments must be made within the first 10 calendar days of each month.\nWe accept:\n\n- Bank transfer within Argentina (ARS, invoice type C).\n- Bank transfer to a U.S. bank account (USD, LLC invoice).\n- Binance Pay (USDT)."
+            },
+            "question8": {
+                "title": "What is the contract term?",
+                "content": "The minimum contract period is 4 consecutive months — the approximate time needed to start generating profitable results.\nAfter that, the contract automatically renews month-to-month until either party decides to terminate, with at least 15 days' notice before the current billing cycle ends."
+            },
+            "question9": {
+                "title": "When can I start?",
+                "content": "First, you’ll need to complete an audit form.\nIf we determine your business is compatible with our services, we’ll offer you a customized proposal that fits your goals and resources.\n\nHowever, spots are limited:\nWe can only accept 3 companies per month to maintain the quality of our services.\nIf no spots are available, we’ll reserve your place for the following month."
+            }
+        }
+    },
+
+    "contactUs": {
+        "title":"Ready to scale your sales?",
+        "subtitle":"Let's start with an audit call."
+    },
+
+    "footer":{
+        "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
+        "privacyPolicy": "Política de privacidad",
+        "termsAndConditions": "Términos y condiciones"
+    },
+
+    "planItems": {
+        "8 publicaciones por mes": "8 publications per month",
+        "Instagram, Facebook, Whatsapp": "Instagram, Facebook, Whatsapp",
+        "14 publicaciones por mes": "14 publications per month",
+        "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn",
+        "4 campañas por mes": "4 campaigns per month",
+        "A partir de 10 campañas por mes": "Starting from 10 campaigns per month",
+        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (100 USD per campaign)",
+        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (140 USD per campaign)",
+        "Meta Ads, Google Ads": "Meta Ads, Google Ads",
+        "10 campañas por mes": "10 campaigns per month",
+        "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
+        "Hasta 3000 contactos": "Up to 3,000 contacts",
+        "2 newsletters por mes": "2 newsletters per month",
+        "Klaviyo": "Klaviyo",
+        "Hasta 10000 contactos": "Up to 10.000 contacts",
+        "4 newsletters por mes + automations": "4 newsletters per month + automations",
+        "1 por semestre": "1 per semester",
+        "2 por semestre": "2 per semester",
+        "1 por mes": "1 per month",
+        "3 por mes": "3 per month",
+        "1 por bimestre": "1 per bimester",
+        "4hs por mes": "4hs per month",
+        "12hs por mes": "12hs per month",
+        "Quincenales": "Fortnightly",
+        "Semanales": "Weekly",
+        "Personalizado": "Customized",
+        "Logotipo y sus variaciones": "Logo and its variations",
+        "Brandbook": "Brandbook",
+        "1": "1",
+        "2": "2",
+        "Paleta de colores": "Color palette",
+        "Tipografías": "Typefaces",
+        "Elementos gráficos": "Graphic elements",
+        "Elementos corporativos": "Corporate elements",
+        "Tarjeta de presentación, firma electrónica, fólder, banner corporativo": "Business card, e-signature, folder, corporate banner, etc.",
+        "Wordpress": "Wordpress",
+        "Shopify": "Shopify",
+        "Diseños full stack": "Full stack designs",
+        "Diseño UX-UI": "UX-UI Design",
+        "Diseño gráfico": "Graphic design",
+        "Banners web, cartelería, brochure, catálogo, flyer, etc": "Web banners, posters, brochures, catalogs, flyers, etc.",
+        "Diseño audiovisual": "Audiovisual design",
+        "Motion graphics, edición de tomas": "Motion graphics, shot editing"
+    },
+
+    
     "pricing":{
         "title": "A simple and scalable pricing method",
         "packages": "Packages",
@@ -381,159 +326,21 @@
         }
     },
 
-    "faq": {
-        "title": "FAQS",
-        "questions": {
-            "question1": {
-                "title": "What packages or how many campaigns are right for my organization?",
-                "content": "We know that each organization is a whole new world, with specific objectives, business processes and resources, to which a tailored service structure corresponds. Contact us to receive free advice and determine the ideal package for your company."
-            },
-            "question2": {
-                "title": "What does the campaign rate include?",
-                "content": "Advertising platforms are divided into 3 levels: campaigns, ad sets and ads. Each campaign is charged for monthly periods and responds to a specific advertising objective and phase of the conversion funnel. \n\n*Does not include advertising investment. That is the responsibility of the client. \n*Includes multimedia designs and the report panel."
-            },
-            "question3": {
-                "title": "What payment methods do you accept and how do you invoice?",
-                "content": "- Bank transfer in the US (USD)\n- Bank transfer in Argentina (ARS) \n- Binance Pay (USDT) \n\nKliv LLC Agency Invoice"
-            },
-            "question4": {
-                "title": "When are services paid?",
-                "content": "- Monthly services: 100 % advance payment for starting up, and then within the first 10 calendar days of each monthly period.\n- One-time services: 50 % advance payment and 50 % upon delivery."
-            },
-            "question5": {
-                "title": "What is the period of the contracts?",
-                "content": "The minimum contractual period is 4 consecutive months. Thereafter, the contract is automatically renewed each month until either party terminates by notifying you at least 20 days prior to the expiration of the current monthly period."
-            },
-            "question6": {
-                "title": "Is there a guarantee of results?",
-                "content": "It is important to note that magic formulas do not exist, since each company is unique, but we know the modus operandi to find the correct path that leads to tangible and monetizable results. It is a process of continuous experimentation, with its errors and successes as a guide, achieving profitability in the medium term and seeking to maximize it over time. At Kliv, we trust our work processes with a focus on results, as well as our multidisciplinary team and years of experience; always ready for new challenges."
-            },
-            "question7": {
-                "title": "Do you offer discounts for non-profit organizations?",
-                "content": "Sure! At KLIV, we recognize and value the work of non-profit organizations. Contact us for more details on how we can collaborate."
-            }
-        }
-    },
-
-    "team": {
-        "title": "We are a team of professionals passionate about performance",
-        "mission": "MISSION",
-        "missionContent": "Help your company reach the full potential of its digital channels, maximizing conversions in each phase of the funnel at the lowest possible cost.",
-        "vision": "VISION",
-        "visionContent": "That any company in the world can quickly access our solutions tailored to your resources, to revolutionize digital marketing with the philosophy of performance.",
-        "values": "VALUES",
-        "valuesItems": {
-            "value1": {
-                "title": "Ambitious",
-                "content": "We are not satisfied with achieving goals, our dogma is continuous improvement."
-            },
-            "value2": {
-                "title": "Scientists",
-                "content": "We adapt to any context: diversity of markets, resources and work teams"
-            },
-            "value3": {
-                "title": "Versatile",
-                "content": "We adapt to any context: diversity of markets, resources and work teams"
-            },
-            "value4": {
-                "title": "Passion",
-                "content": "We are excited about what we do and the way we do it. We are passionate about results."
-            },
-            "value5": {
-                "title": "Efficient",
-                "content": "Aware of the resources we have to achieve the objectives. Guaranteeing ROI is our first commandment."
-            },
-            "value6": {
-                "title": "Committed",
-                "content": "Our clients' goals become our goals and we will do everything to meet them, proactively responding to any adversity."
-            },
-            "value7": {
-                "title": "Pioneers",
-                "content": "In this constantly evolving field, we always remain on the crest of the wave, attentive to new technologies to add to our arsenal."
-            }
-        }
-    },
-
-    "partners": {
-        "title": "Some of our partners"
-    },
-
-    "contactUs": {
-        "title":"Contact us to start growing your business",
-        "name":"Name",
-        "email":"E-mail",
-        "phone": "Phone",
-        "company": "Company",
-        "content": "Consultation",
-        "submit": "Send message",
-        "completeForm": "Please complete the required fields",
-        "success": "Thank you for contacting Kliv, we will respond as soon as possible!",
-        "error": "We were unable to send your message, please try again later or contact us",
-        "nameError": "The name must be at least 3 characters",
-        "emailError": "Email must be valid",
-        "phoneError": "The phone number must be at least 10 characters",
-        "companyError": "The company must be at least 3 characters",
-        "contentError": "The query must be at least 10 characters"
-    },
-
-    "calendly":{
-        "title": "Schedule a video call",
-        "subtitle": "Choose the right time to speak with a performance marketing professional"
+    "bookACall": {
+        "text": "During this 30-minute call, we'll analyze your business’s current situation together to determine if we can help you scale your sales through performance marketing, and provide you with a tailored campaign plan.<br></br><br></br>Select the date and time that best fits your schedule and complete the form below — please answer as accurately as possible so we can prepare a customized proposal. Otherwise, your call will be canceled."
     },
 
     "thankYou": {
-        "title": "Thank You!",
-        "content": "A Kliv advisor will contact you within 24 business hours."
-    },
-
-    "footer":{
-        "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
-        "privacyPolicy": "Privacy policies"
-    },
-
-    "planItems": {
-        "8 publicaciones por mes": "8 publications per month",
-        "Instagram, Facebook, Whatsapp": "Instagram, Facebook, Whatsapp",
-        "14 publicaciones por mes": "14 publications per month",
-        "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn",
-        "4 campañas por mes": "4 campaigns per month",
-        "A partir de 10 campañas por mes": "Starting from 10 campaigns per month",
-        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (100 USD per campaign)",
-        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (140 USD per campaign)",
-        "Meta Ads, Google Ads": "Meta Ads, Google Ads",
-        "10 campañas por mes": "10 campaigns per month",
-        "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
-        "Hasta 3000 contactos": "Up to 3,000 contacts",
-        "2 newsletters por mes": "2 newsletters per month",
-        "Klaviyo": "Klaviyo",
-        "Hasta 10000 contactos": "Up to 10.000 contacts",
-        "4 newsletters por mes + automations": "4 newsletters per month + automations",
-        "1 por semestre": "1 per semester",
-        "2 por semestre": "2 per semester",
-        "1 por mes": "1 per month",
-        "3 por mes": "3 per month",
-        "1 por bimestre": "1 per bimester",
-        "4hs por mes": "4hs per month",
-        "12hs por mes": "12hs per month",
-        "Quincenales": "Fortnightly",
-        "Semanales": "Weekly",
-        "Personalizado": "Customized",
-        "Logotipo y sus variaciones": "Logo and its variations",
-        "Brandbook": "Brandbook",
-        "1": "1",
-        "2": "2",
-        "Paleta de colores": "Color palette",
-        "Tipografías": "Typefaces",
-        "Elementos gráficos": "Graphic elements",
-        "Elementos corporativos": "Corporate elements",
-        "Tarjeta de presentación, firma electrónica, fólder, banner corporativo": "Business card, e-signature, folder, corporate banner, etc.",
-        "Wordpress": "Wordpress",
-        "Shopify": "Shopify",
-        "Diseños full stack": "Full stack designs",
-        "Diseño UX-UI": "UX-UI Design",
-        "Diseño gráfico": "Graphic design",
-        "Banners web, cartelería, brochure, catálogo, flyer, etc": "Web banners, posters, brochures, catalogs, flyers, etc.",
-        "Diseño audiovisual": "Audiovisual design",
-        "Motion graphics, edición de tomas": "Motion graphics, shot editing"
+        "title": "Congratulations!\nYour call has been scheduled.",
+        "subtitle": "Check your email for the confirmation and Meet link for the meeting and follow the next steps:",
+        "step1": "STEP #1",
+        "step1Text": "Watch this video to prepare for the session (1 minute):",
+        "step2": "STEP #2",
+        "step2Text": "Read this document (4 pages):",
+        "step3": "STEP #3",
+        "step3Text": "Complete the audit form (≈ 30 minutes):",
+        "aboutUs": "About us",
+        "aboutUsText": "We are <strong>Agustín (strategy) and Gonzalo (operations), founders of Kliv</strong> and passionate about performance marketing. Together with a great multidisciplinary team, we’ve spent the last 11 years helping over 80 companies across several countries scale their sales. Over time, we have perfected our performance-based methodology through experience across a wide range of industries. We are passionate about what we do — and how we do it.",
+        "seeYouLater": "See you on the call!"
     }
 }

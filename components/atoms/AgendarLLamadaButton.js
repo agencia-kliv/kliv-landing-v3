@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Link from "next-intl/link";
 
 export const AGENDAR_BUTTON_SIZES = {
   SMALL:
@@ -11,12 +12,12 @@ const AgendarLLamadaButton = ({ size = AGENDAR_BUTTON_SIZES.LARGE }) => {
   const t_globals = useTranslations("globals");
 
   return (
-    <button
-      type="button"
+    <Link
+      href={{ pathname: `/book-a-call` }}
       className={`text-white font-[700] tracking-[.04em]  grid place-items-center bg-kliv-tertiary rounded-full hover:bg-kliv-tertiary-hover transition-colors duration-150 ${size}`}
     >
       {t_globals("scheduleCall")}
-    </button>
+    </Link>
   );
 };
 
