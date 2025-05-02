@@ -64,7 +64,9 @@ const HeroSection = () => {
               autoPlay
               loop
               muted
-            />
+              playsInline /* ↓ habilita “inline” en móviles */
+              webkit-playsinline="true" /* para compatibilidad extra con iOS */
+            ></video>
           </div>
         </div>
       </section>
