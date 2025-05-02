@@ -87,9 +87,7 @@ const TeamMembersSection = () => {
         <div className="flex flex-col items-center text-center gap-[20px] ">
           <LogitoSection />
           <SectionTitle
-            className={
-              "max-w-[400px] lg:max-w-[457px] 2xl:max-w-[630px] lg:!font-[800]"
-            }
+            className={"max-w-[400px] lg:max-w-[457px] 2xl:max-w-[630px]"}
           >
             {t_team.rich("title", {
               br: () => <br />,

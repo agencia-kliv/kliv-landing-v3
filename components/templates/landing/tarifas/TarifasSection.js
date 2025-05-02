@@ -289,7 +289,7 @@ const TarifasSection = () => {
         data-section="tarifas"
       >
         <div className="landing-section-container-large ">
-          <div className="relative flex flex-col gap-[40px] items-center ">
+          <div className="relative flex flex-col gap-[22px] items-center ">
             <SectionTag>{t_header("pricing")}</SectionTag>
             <LogitoSection />
             <SectionTitle className="max-w-[440px] text-center">

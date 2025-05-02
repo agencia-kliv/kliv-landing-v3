@@ -37,8 +37,8 @@ const ServicesSection = () => {
       data-section="servicios"
     >
       <div className="w-full flex flex-col items-center text-center gap-[70px]">
-        <SectionTag>{t_header("services")}</SectionTag>
-        <div className="w-full flex flex-col gap-[50px] 2xl:gap-[60px] items-center text-center">
+        <div className="relative w-full flex flex-col gap-[50px] 2xl:gap-[60px] items-center text-center">
+          <SectionTag>{t_header("services")}</SectionTag>
           <div className="w-full flex flex-col gap-[32px] items-center">
             <div className="w-full flex flex-col gap-[22px] items-center">
               <LogitoSection />

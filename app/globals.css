@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -188,7 +189,7 @@ strong {
 
 .landing-section-container-large {
   /* max-w-[1130px] px-[15px] m-auto */
-  max-width: 1270px;
+  max-width: 1350px;
   padding: 75px 15px;
   margin: auto;
   width: 100%;
