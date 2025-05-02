@@ -331,6 +331,13 @@
         "title": "Algunos de nuestros socios"
     },
 
+    "testimonials": {
+        "title": "Testimonios",
+        "saniito": "Hace unos años venimos trabajando con Kliv y nuestra experiencia es súper positiva. Siempre están dispuestos y son los principales interesados en hacer que todo camine, quitando un gran peso y responsabilidad, y permitiéndonos enfocarnos en otras áreas de la empresa. Con Kliv sin lugar a dudas estamos en muy buenas manos.",
+        "solMillan": "Gracias a Agencia Kliv por su profesionalismo. Me acompañaron con dedicación, creatividad y conocimiento en campañas de marketing para mi empresa, y fue con resultados extraordinarios. Creo que lo más valioso es que son personas comprometidas con su trabajo, son verdaderas y saben lo que hacen. Los super recomiendo.",
+        "rolicred": "El equipo Kliv logró en poco tiempo lo que veníamos intentando hace años: que lleguen consultas calificadas a gran escala. Antes nos llenábamos de consultas basura, ahora cerramos casi todas y venimos rompiendo record de ventas mes a mes. Un lujo."
+    },
+
     "contactUs": {
         "title":"Contáctanos para hacer crecer tu negocio",
         "name":"Nombre",
@@ -347,11 +354,6 @@
         "phoneError": "El teléfono debe tener al menos 10 caracteres",
         "companyError": "La empresa debe tener al menos 3 caracteres",
         "contentError": "La consulta debe tener al menos 10 caracteres"
-    },
-
-    "calendly":{
-        "title": "Agenda una videollamada",
-        "subtitle": "Elige el momento adecuado para hablar con un profesional de performance marketing."
     },
 
     "thankYou": {

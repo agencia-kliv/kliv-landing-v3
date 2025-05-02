@@ -19,8 +19,8 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
   return (
     <>
       {/* <p className="text-base">{t_pricing_paidMediaTab("title")}</p> */}
-      <section className="max-w-[600px]  p-[40px] flex flex-col gap-[40px] items-center text-center rounded-[10px] w-full">
-        <h4 className="text-[28px] font-[500] leading-[36px]">
+      <section className="max-w-[600px] p-[0px] md:p-[40px] flex flex-col gap-[40px] items-center text-center rounded-[10px] w-full">
+        <h4 className="text-[28px] font-[700] leading-[36px]">
           {t_pricing_paidMediaTab.rich("campaignByMonth", {
             campaigns: pricesByCampaign[value].amount,
           })}

@@ -8,17 +8,17 @@ import Image from "next/image";
 const CardItem = ({ title, description, image, bg, zIndex, index }) => {
   return (
     <article
-      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[30px] p-[50px] [&:not(:last-child)]:pb-[130px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[90px] mb-[-80px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
+      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[20px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-70px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
     >
       <div className="pt-[20px] h-[80px] w-[80px] 2xl:w-[100px] 2xl:h-[100px] relative ">
         <Image src={image} alt={title} fill />
       </div>
 
-      <div className="flex flex-col items-center gap-[13px]">
+      <div className="flex flex-col items-center gap-[5px] md:gap-[13px]">
         <h3 className="text-[22px] lg:text-[16px] 2xl:text-[22px] font-[700] text-white">
           {title}
         </h3>
-        <p className="text-[22px] lg:text-[16px] 2xl:text-[22px] font-[400] text-white max-w-[350px]">
+        <p className="text-[18px] sm:text-[22px] lg:text-[16px] 2xl:text-[22px] font-[400] text-white max-w-[350px]">
           {description}
         </p>
       </div>

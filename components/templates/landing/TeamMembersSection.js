@@ -108,7 +108,7 @@ const TeamMembersSection = () => {
             </div>
             <div />
           </div>
-          <div className="w-full grid grid-cols-3 gap-y-[50px] gap-x-[50px] lg:gap-y-[13px] px-[100px] lg:px-0 lg:flex-1 2xl:max-w-full 2xl:flex-1">
+          <div className="w-full grid grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 2xl:px-[100px] lg:flex-1 2xl:max-w-full 2xl:flex-1">
             <TeamCard image={"/teamPhotos/agustin-ibanez_small.webp"} />
             <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
             <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
