@@ -8,17 +8,39 @@ import Image from "next/image";
 const CardItem = ({ title, description, image, bg, zIndex, index }) => {
   return (
     <article
-      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[20px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-70px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
+      className={`flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[20px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[24px] ${zIndex} bg-no-repeat bg-cover bg-right-top border-[2px] ${
+        index === 1
+          ? "border-kliv-secondary"
+          : index === 2
+          ? "border-kliv-primary"
+          : "border-kliv-tertiary"
+      }`}
     >
-      <div className="pt-[20px] h-[80px] w-[80px] 2xl:w-[100px] 2xl:h-[100px] relative ">
+      {/* <div className="pt-[20px] h-[80px] w-[80px] 2xl:w-[100px] 2xl:h-[100px] relative">
         <Image src={image} alt={title} fill />
-      </div>
+      </div> */}
 
-      <div className="flex flex-col items-center gap-[5px] md:gap-[13px]">
-        <h3 className="text-[22px] lg:text-[16px] 2xl:text-[22px] font-[700] text-white">
+      <div className="flex flex-col items-center gap-[5px] md:gap-[13px] w-full">
+        <h3
+          className={`text-[22px] lg:text-[16px] 2xl:text-[22px] font-[700] ${
+            index === 1
+              ? "text-kliv-secondary"
+              : index === 2
+              ? "text-kliv-primary"
+              : "text-kliv-tertiary"
+          }`}
+        >
           {title}
         </h3>
-        <p className="text-[18px] sm:text-[22px] lg:text-[16px] 2xl:text-[22px] font-[400] text-white max-w-[350px]">
+        <p
+          className={`text-[18px] sm:text-[22px] lg:text-[16px] 2xl:text-[18px] font-[400] !text-kliv-text-2 ${
+            index === 1
+              ? "text-kliv-secondary"
+              : index === 2
+              ? "text-kliv-primary"
+              : "text-kliv-tertiary"
+          }`}
+        >
           {description}
         </p>
       </div>
@@ -55,7 +77,7 @@ const ServicesSection = () => {
           </div>
 
           {/* ads logos */}
-          <div className="gap-[5px] grid grid-cols-3 w-full max-w-[400px] 2xl:max-w-[600px]">
+          <div className="gap-[5px] grid grid-cols-3 w-full max-w-[320px] 2xl:max-w-[400px]">
             <div className="w-full aspect-[1.14] relative">
               <Image src={"/images/meta_logo.png"} alt="Meta Ads" fill={true} />
             </div>
@@ -77,7 +99,7 @@ const ServicesSection = () => {
         </div>
 
         {/* cards */}
-        <div className="w-full flex flex-col lg:grid lg:grid-cols-3 items-stretch relative max-w-[466px] lg:max-w-[936px] 2xl:max-w-max">
+        <div className="w-full flex flex-col lg:grid lg:grid-cols-3 items-stretch relative max-w-[466px] lg:max-w-[936px] 2xl:max-w-max gap-[20px]">
           <CardItem
             image={"/illustrations/more-roi.svg"}
             title={t_services("moreROI")}

@@ -21,7 +21,7 @@ const PartnersSection = () => {
       <div className="w-[20dvw] absolute left-0 top-0 h-full  z-10 bg-gradient-to-r from-[#fff] to-transparent" />
       <div className="w-[20dvw] absolute right-0 top-0 h-full  z-10 bg-gradient-to-l from-[#fff] to-transparent" />
       <div className="w-full">
-        <div className="flex gap-[20px] min-w-max animate-marquee">
+        <div className="flex gap-[20px] lg:gap-[80px] min-w-max animate-marquee">
           {[...partnersImages.links, ...partnersImages.links].map((src, i) => (
             <PartnerCard key={i} src={src} alt={`carousel-${i}`} />
           ))}

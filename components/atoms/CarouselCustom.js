@@ -4,9 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 const CarouselCustom = (props) => {
   return (
     <Carousel
-      //   autoPlay={true}
+      autoPlay={true}
       infiniteLoop={true}
-      //   interval={6000}
+      interval={10000}
       showArrows={false}
       // showIndicators={false}
       showStatus={false}

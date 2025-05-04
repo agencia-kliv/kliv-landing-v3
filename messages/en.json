@@ -34,7 +34,7 @@
 
     "hero":{
         "title": "Boost Your Business Sales Profitably",
-        "subtitle": "e help companies grow through <strong>performance marketing</strong>."
+        "subtitle": "e help companies grow through \n<strong>performance marketing</strong>."
     },
 
     "services":{
@@ -115,8 +115,8 @@
 
     "footer":{
         "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
-        "privacyPolicy": "Política de privacidad",
-        "termsAndConditions": "Términos y condiciones"
+        "privacyPolicy": "Privacy Policy",
+        "termsAndConditions": "Terms and Conditions"
     },
 
     "planItems": {
@@ -327,7 +327,7 @@
     },
 
     "bookACall": {
-        "text": "During this 30-minute call, we'll analyze your business’s current situation together to determine if we can help you scale your sales through performance marketing, and provide you with a tailored campaign plan.<br></br><br></br>Select the date and time that best fits your schedule and complete the form below — please answer as accurately as possible so we can prepare a customized proposal. Otherwise, your call will be canceled."
+        "text": "<span>During this 30-minute call, we'll analyze your business’s current situation together to determine if we can help you scale your sales through performance marketing, and provide you with a tailored campaign plan.</span><span>Select the date and time that best fits your schedule and complete the form below — please answer as accurately as possible so we can prepare a customized proposal. Otherwise, your call will be canceled.</span>"
     },
 
     "thankYou": {

@@ -14,28 +14,28 @@ const PullDown = ({ startOpened, questionNumber }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className={`flex flex-col gap-[0px] w-full relative`}>
+    <div className={`flex flex-col gap-[0px] w-full relative border-t-[1px]`}>
       <div
-        className="flex items-center justify-between cursor-pointer relative z-[2]  gap-[10px]  p-[25px] rounded-[10px] transition-colors duration-300 ease-in-out shadow-[0px_3.63px_9.02px_0px_#00000040]  bg-white"
+        className="flex items-center justify-between cursor-pointer relative z-[2]  gap-[10px]  p-[25px] rounded-[10px] transition-colors duration-300 ease-in-out bg-white"
         onClick={toggle}
         onMouseDown={(e) => {
           e.preventDefault();
         }}
       >
-        <h4 className="text-[18px] font-[700] xl:text-[16px] 2xl:text-[22px] text-kliv-secondary">
+        <h4 className="text-[18px] font-[700] xl:text-[16px] 2xl:text-[18px] text-kliv-secondary">
           {t_faq_questions("title")}
         </h4>
         <span
-          className={`text-[40px] ${
-            !isOpen ? "rotate-[-90deg]" : "rotate-90"
-          } transition-transform origin-[15px_20px] duration-[500ms] ease-out`}
+          className={`text-[20px] ${
+            !isOpen ? "rotate-[180deg]" : "rotate-[270deg]"
+          } transition-transform duration-[300ms] ease-out`}
         >
           <MdArrowBackIos />
         </span>
       </div>
       {isOpen && (
         <div
-          className="p-[25px] text-[18px] xl:text-[16px] 2xl:text-[22px] pt-[40px] mb-[-20px] translate-y-[-20px] rounded-[10px] text-kliv-secondary shadow-[0px_3.63px_9.02px_0px_#00000040]  bg-white relative z-[1] whitespace-pre-wrap"
+          className="p-[25px] pt-[0] text-[18px] xl:text-[16px] 2xl:text-[16px]  text-kliv-secondary bg-white relative z-[1] whitespace-pre-wrap"
           data-aos="fade-in"
           data-aos-duration={500}
         >

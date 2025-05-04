@@ -326,7 +326,7 @@
     },
 
     "bookACall": {
-        "text": "Durante esta llamada de 30 minutos, analizaremos juntos la situación actual de tu empresa para determinar si con nuestros servicios podemos ayudarte a escalar tus ventas con performance marketing y brindarte un plan de campañas a medida.<br></br><br></br>Seleccioná la fecha y hora que mejor se adapte a tu agenda y respondé el formulario a continuación; te pedimos que lo hagas con la mayor precisión posible para poder prepararte una propuesta ajustada a tus necesidades y objetivos. Caso contrario, tu llamada será cancelada."
+        "text": "<span>Durante esta llamada de 30 minutos, analizaremos juntos la situación actual de tu empresa para determinar si con nuestros servicios podemos ayudarte a escalar tus ventas con performance marketing y brindarte un plan de campañas a medida.</span><span>Seleccioná la fecha y hora que mejor se adapte a tu agenda y respondé el formulario a continuación; te pedimos que lo hagas con la mayor precisión posible para poder prepararte una propuesta ajustada a tus necesidades y objetivos. Caso contrario, tu llamada será cancelada.</span>"
     },
 
     "thankYou": {

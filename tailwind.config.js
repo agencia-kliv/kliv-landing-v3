@@ -14,7 +14,7 @@ module.exports = {
         header: "0px 2px 7.1px 0px #00000040",
       },
       animation: {
-        marquee: "marquee 80s linear infinite",
+        marquee: "marquee 30s linear infinite",
         "infinite-scroll": "infinite-scroll 35s linear infinite",
         "fade-in": "fade-in 0.5s ease-in forwards",
         "hamburger-menu": "hamburger-menu 0.5s ease-in forwards",

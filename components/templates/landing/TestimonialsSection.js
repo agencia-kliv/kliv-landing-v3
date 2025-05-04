@@ -7,23 +7,23 @@ import Image from "next/image";
 const TestimonialCard = ({ logo, name, company, position, video, text }) => {
   return (
     <div className="w-full flex-1 px-[10px] lg:px-[10px] mb-[50px] max-w-[450px] md:max-w-[400px] lg:max-w-[450px] mx-auto">
-      <div className="aspect-[0.68] w-full p-[20px_30px] md:p-[30px] pt-[70px] md:pt-[70px] lg:pt-[60px] flex flex-col gap-[20px] bg-[url(/shapes/vertical-upside-folder-shape-primary.png)] bg-no-repeat bg-contain bg-right-top">
-        <header className="w-full flex gap-[20px] items-center [&_*]:pointer-events-none [&_*]:select-none">
+      <div className="aspect-[0.68] w-full p-[20px_30px] md:p-[30px] flex flex-col gap-[30px] border-[2px] border-kliv-primary rounded-[30px]">
+        <header className="w-full flex flex-col gap-[10px] items-start [&_*]:pointer-events-none [&_*]:select-none">
           <figure className="relative w-[70px] h-[70px] md:w-[80px] md:h-[80px] rounded-full bg-white">
             <Image src={logo} alt={name} fill objectFit="contain" />
           </figure>
 
           <div className="flex flex-col items-start gap-[0px]">
-            <h5 className="text-[22px] lg:text-[26px] font-[700] leading-[34px] text-white">
+            <h5 className="text-[22px] lg:text-[18px] font-[700] text-kliv-primary">
               {name}
             </h5>
             {(company || position) && (
               <div className="flex flex-col items-start">
-                <h6 className="text-[18px] lg:text-[21px] font-[700] leading-[25px] text-white">
+                <h6 className="text-[18px] lg:text-[18px] font-[400] leading-[25px] text-kliv-primary">
                   {company}
                 </h6>
                 {position && (
-                  <span className="text-[18px] lg:text-[21px] font-[400] leading-[25px] text-white">
+                  <span className="text-[18px] lg:text-[21px] font-[400] leading-[25px] text-kliv-primary">
                     {position}
                   </span>
                 )}
@@ -35,13 +35,13 @@ const TestimonialCard = ({ logo, name, company, position, video, text }) => {
           {video && (
             <video
               controls
-              className="px-[30px] aspect-[4:5] h-full w-auto mx-auto object-cover"
+              className="px-[30px] aspect-[5_/_4] h-full w-auto mx-auto object-cover"
             >
               <source src={video} type="video/mp4" />
             </video>
           )}
           {text && (
-            <p className="text-[14px] sm:text-[18px] sm:leading-normal text-left md:text-[16px] 2xl:text-[22px] font-[400] leading-[23px] md:leading-[28px] 2xl:leading-normal text-white pointer-events-none select-none">
+            <p className="text-[14px] sm:text-[18px] sm:leading-normal text-left md:text-[16px] 2xl:text-[16px] font-[400] leading-[23px] md:leading-[28px] 2xl:leading-normal text-kliv-text-2 pointer-events-none select-none">
               {text}
             </p>
           )}
@@ -122,7 +122,7 @@ const TestimonialsSection = () => {
             />
           </CarouselCustom>
         </section>
-        <section className="hidden md:block">
+        <section className="hidden lg:block">
           <CarouselCustom>
             <div className="flex gap-[0px] max-w-max mx-auto">
               <TestimonialCard
@@ -140,8 +140,6 @@ const TestimonialsSection = () => {
                 // position={"CEO"}
                 text={t("saniito")}
               />
-            </div>
-            <div className="flex gap-[0px] max-w-max mx-auto">
               <TestimonialCard
                 logo={"/logos/memeca.png"}
                 company={"Memeca"}
@@ -149,6 +147,8 @@ const TestimonialsSection = () => {
                 // position={"CEO"}
                 video={"/testimonials/memeca.mp4"}
               />
+            </div>
+            <div className="flex gap-[0px] max-w-max mx-auto">
               <TestimonialCard
                 logo={"/testimonials/sol-millan.png"}
                 //   company={"Sol Millán"}
@@ -156,8 +156,6 @@ const TestimonialsSection = () => {
                 //   position={"CEO"}
                 text={t("solMillan")}
               />
-            </div>
-            <div className="flex gap-[0px] max-w-max mx-auto">
               <TestimonialCard
                 logo={"/logos/frenck.png"}
                 company={"Frenck System"}
@@ -178,7 +176,6 @@ const TestimonialsSection = () => {
                 logo={"/logos/amalfi.png"}
                 company={"Lima + Amalfi"}
                 name={"Ignacio D."}
-                //   position={"CEO"}
                 video={"/testimonials/lima-amalfi.mp4"}
               />
               <TestimonialCard

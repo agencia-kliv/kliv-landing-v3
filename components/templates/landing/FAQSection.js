@@ -8,12 +8,12 @@ const FAQSection = () => {
 
   return (
     <section className="landing-section-container" data-aos="fade-bottom">
-      <section className="flex flex-col gap-[50px] items-center m-auto max-w-[1191px] w-full">
+      <section className="flex flex-col gap-[50px] items-center m-auto w-full">
         <div className="flex flex-col gap-[20px] items-center text-center">
           <LogitoSection />
           <SectionTitle>{t_faq("title")}</SectionTitle>
         </div>
-        <div className="flex flex-col gap-[10px] w-full">
+        <div className="flex flex-col gap-[0px]  w-full">
           {[...Array(9)].map((item, index) => (
             <PullDown
               key={index}

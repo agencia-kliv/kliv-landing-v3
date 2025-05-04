@@ -28,26 +28,30 @@ const HeroSection = () => {
             <div className="flex flex-col items-center gap-[30px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
               <LogitoSection />
               <SectionTitle
-                className={"lg:max-w-[300px] 2xl:max-w-[500px]"}
+                className={"max-w-[300px] lg:max-w-[300px] 2xl:max-w-[500px]"}
                 isLargeText={true}
               >
                 {t_hero("title")}
               </SectionTitle>
-              <SectionSubtitle className={"lg:max-w-[270px] 2xl:max-w-[472px]"}>
+              <SectionSubtitle
+                className={
+                  "lg:max-w-[270px] 2xl:max-w-[472px] whitespace-pre-wrap"
+                }
+              >
                 {t_hero.rich("subtitle", {
                   strong: (chunk) => <strong>{chunk}</strong>,
                 })}
               </SectionSubtitle>
               <div className="flex flex-col gap-[30px] lg:flex-col-reverse items-center lg:items-start">
-                <div className="flex items-center gap-[10px] py-[20px]">
+                <div className="flex items-center gap-[20px] py-[20px]">
                   <Image
-                    width={144}
+                    width={120}
                     height={50}
                     src={"/images/meta_partner.png"}
                     alt="meta partner"
                   />
                   <Image
-                    width={144}
+                    width={120}
                     height={50}
                     src={"/images/google_partner.png"}
                     alt="google partner"

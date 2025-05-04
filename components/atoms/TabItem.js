@@ -13,7 +13,7 @@ const TabItem = ({ href, isActive, ...props }) => {
   return (
     <Link
       href={href}
-      className={`nav-link ${color} whitespace-nowrap font-[500] cursor-pointer duration-200 ease-in-out text-[22px] lg:text-[16px] 2xl:text-[22px]  `}
+      className={`nav-link ${color} whitespace-nowrap font-[500] cursor-pointer duration-200 ease-in-out text-[22px] lg:text-[16px] 2xl:text-[18px]  `}
       {...props}
     >
       {props.children}
