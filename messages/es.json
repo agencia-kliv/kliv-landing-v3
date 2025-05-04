@@ -1,12 +1,12 @@
 {
     "metadata":{
-        "title": "Agencia KLIV - Performance Marketing",
+        "title": "Agencia KLIV",
         "description":
-          "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+          "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
         "openGraph": {
-          "title": "Agencia KLIV - Performance Marketing",
+          "title": "Agencia KLIV",
           "description":
-            "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+            "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
           "type": "website",
           "locale": "es_ES",
           "url": "https://www.agenciakliv.com/",
@@ -16,7 +16,7 @@
 
     "openGraphImage":{
         "image_url":  "https://www.agenciakliv.com/kliv-isotipo-green.png",
-        "image_alt": "Agencia KLIV - Performance Marketing"
+        "image_alt": "Agencia KLIV"
     },
 
     "header":{

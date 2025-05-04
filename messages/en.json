@@ -1,22 +1,20 @@
 {
-    "metadata":{
-        "title": "KLIV Agency - Performance Marketing",
-        "description":
-          "Increase your sales with 100% results-oriented strategies. Digital advertising, email marketing, network management, web design and multimedia design.",
+    "metadata": {
+        "title": "KLIV Agency",
+        "description": "We help companies increase their sales profitably with performance marketing.",
         "openGraph": {
-          "title": "Agencia KLIV - Performance Marketing",
-          "description":
-            "Increase your sales with 100% results-oriented strategies. Digital advertising, email marketing, network management, web design and multimedia design.",
-          "type": "website",
-          "locale": "es_ES",
-          "url": "https://www.agenciakliv.com/",
-          "site_name": "KLIV Agency"
+            "title": "KLIV Agency",
+            "description": "We help companies increase their sales profitably with performance marketing.",
+            "type": "website",
+            "locale": "en_US",
+            "url": "https://www.agenciakliv.com/",
+            "site_name": "KLIV Agency"
         }
     },
 
-    "openGraphImage":{
-        "image_url":  "https://www.agenciakliv.com/kliv-isotipo-green.png",
-        "image_alt": "KLIV Agency - Performance Marketing"
+    "openGraphImage": {
+        "image_url": "https://www.agenciakliv.com/kliv-isotipo-green.png",
+        "image_alt": "KLIV Agency"
     },
 
     "header":{
