@@ -1,16 +1,16 @@
 {
     "metadata":{
-        "title": "Agencia KLIV",
+        "title": "AGENCIA KLIV",
         "description":
           "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
         "openGraph": {
-          "title": "Agencia KLIV",
+          "title": "AGENCIA KLIV",
           "description":
             "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
           "type": "website",
           "locale": "es_ES",
           "url": "https://www.agenciakliv.com/",
-          "site_name": "Agencia KLIV"
+          "site_name": "AGENCIA KLIV"
         }
     },
 
@@ -29,7 +29,7 @@
         "startNow": "Comienza ahora",
         "whatsappCTA": "¿Tienes preguntas?",
         "ourServices": "Nuestros servicios",
-        "scheduleCall": "Agendar llamada"
+        "scheduleCall": "Agendar Llamada"
     },
 
   "hero":{
@@ -52,7 +52,7 @@
 
   "team": {
         "title": "Experiencia y resultados <br></br>que nos avalan",
-        "subtitle": "<strong>11 años en el mercado</strong> escalando las ventas de más de <strong>80 empresas en 10 países</strong>, con nuestro equipo de <strong>10+ marketers y creativos</strong> apasionados por el performance"
+        "subtitle": "11 años en el mercado escalando las ventas de más de 80 empresas en 9 países.\n\nCon nuestro equipo de 10+ marketers y creativos apasionados por el performance"
     },
 
     "partners": {
@@ -166,15 +166,15 @@
     },
 
     "pricing":{
-        "title": "Cotiza tu estrategia publicitaria",
+        "title": "Cotizá tu estrategia publicitaria",
         "packages": "Paquetes",
-        "paidMedia": "Empresas",
-        "agencies": "Agencias",
+        "paidMedia": "Empresa",
+        "agencies": "Agencia",
         "startNow": "Comienza ahora",
         "quote": "Cotizar",
         "from": "Desde",
         "contract":"Contratar",
-        "perMonth": "Por mes",
+        "perMonth": "por mes",
         "item1":"* Incluye plataformas de email marketing, reporting y concursos.",
         "item2":"* No incluye honorarios de productoras, costos CRM y chatbot. No incluye pauta publicitaria.",
         "item3": "* Cualquier servicio que exceda el alcance mensual del paquete se presupuesta por separado.",
@@ -266,7 +266,7 @@
         },
 
         "agenciesTab": {
-            "title": "Planes para agencias que buscan tercer izar gestión de campañas.",
+            "title": "Planes para agencias que buscan tercerizar gestión de campañas.",
             "features":{
                 "paidMedia": {
                     "name":"📣 Paid Media"

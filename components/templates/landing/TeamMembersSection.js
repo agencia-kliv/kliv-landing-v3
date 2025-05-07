@@ -81,38 +81,40 @@ const TeamMembersSection = () => {
       className="w-full landing-section-container relative"
       id="trayectoria"
     >
-      <div className="w-full flex flex-col gap-[50px] m-auto relative">
-        <SectionTag>{t_header("trajectory")}</SectionTag>
+      <div className="relative w-full">
+        <div className="w-full flex flex-col gap-[50px] m-auto max-w-[1000px]">
+          <SectionTag>{t_header("trajectory")}</SectionTag>
 
-        <div className="flex flex-col items-center text-center gap-[20px] ">
-          <LogitoSection />
-          <SectionTitle
-            className={"max-w-[400px] lg:max-w-[457px] 2xl:max-w-[630px]"}
-          >
-            {t_team.rich("title", {
-              br: () => <br />,
-            })}
-          </SectionTitle>
-        </div>
-        <div className="w-full flex flex-col items-center text-center gap-[70px] lg:flex-row lg:max-w-[850px] 2xl:max-w-full lg:gap-[100px] 2xl:gap-[200px] lg:mx-auto">
-          <div className="flex 2xl:flex-1 2xl:justify-end">
-            <div className="flex flex-col gap-[20px] items-center text-center max-w-[430px] lg:items-start lg:text-left lg:max-w-[328px] 2xl:max-w-[405px]">
-              <SectionSubtitle className={"2xl:max-w-[405px]"}>
-                {t_team.rich("subtitle", {
-                  strong: (children) => <strong>{children}</strong>,
-                })}
-              </SectionSubtitle>
-              <AgendarLLamadaButton />
-            </div>
-            <div />
+          <div className="flex flex-col items-center text-center gap-[20px] ">
+            <LogitoSection />
+            <SectionTitle
+              className={"max-w-[400px] lg:max-w-[457px] 2xl:max-w-[630px]"}
+            >
+              {t_team.rich("title", {
+                br: () => <br />,
+              })}
+            </SectionTitle>
           </div>
-          <div className="w-full grid grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 2xl:px-[100px] lg:flex-1 2xl:max-w-full 2xl:flex-1">
-            <TeamCard image={"/teamPhotos/agustin-ibanez_small.webp"} />
-            <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
-            <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
-            <TeamCard image="/teamPhotos/franco-montini_small.webp" />
-            <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
-            <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
+          <div className="w-full flex flex-col items-center text-center gap-[70px] lg:flex-row lg:max-w-[850px] 2xl:max-w-full lg:gap-[100px] 2xl:gap-[100px] lg:mx-auto">
+            <div className="flex 2xl:flex-1 2xl:justify-end">
+              <div className="flex flex-col gap-[20px] items-center text-center max-w-[430px] lg:items-start lg:text-left lg:max-w-[328px] 2xl:max-w-[405px]">
+                <SectionSubtitle
+                  className={"2xl:max-w-[405px] whitespace-pre-wrap"}
+                >
+                  {t_team("subtitle")}
+                </SectionSubtitle>
+                <AgendarLLamadaButton />
+              </div>
+              <div />
+            </div>
+            <div className="w-full max-w-[300px] grid grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 lg:flex-1 2xl:max-w-full 2xl:flex-1">
+              <TeamCard image={"/teamPhotos/agustin-ibanez_small.webp"} />
+              <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
+              <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
+              <TeamCard image="/teamPhotos/franco-montini_small.webp" />
+              <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
+              <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
+            </div>
           </div>
         </div>
       </div>

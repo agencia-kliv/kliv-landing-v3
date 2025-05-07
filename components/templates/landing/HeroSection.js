@@ -26,9 +26,11 @@ const HeroSection = () => {
         <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[30px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
           <div className="flex flex-col items-center lg:flex-1 lg:items-center">
             <div className="flex flex-col items-center gap-[30px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
-              <LogitoSection />
+              <figure className="hidden lg:flex">
+                <LogitoSection />
+              </figure>
               <SectionTitle
-                className={"max-w-[300px] lg:max-w-[300px] 2xl:max-w-[500px]"}
+                className={"max-w-[340px] lg:max-w-[300px] 2xl:max-w-[500px]"}
                 isLargeText={true}
               >
                 {t_hero("title")}
@@ -45,13 +47,13 @@ const HeroSection = () => {
               <div className="flex flex-col gap-[30px] lg:flex-col-reverse items-center lg:items-start">
                 <div className="flex items-center gap-[20px] py-[20px]">
                   <Image
-                    width={120}
+                    width={100}
                     height={50}
                     src={"/images/meta_partner.png"}
                     alt="meta partner"
                   />
                   <Image
-                    width={120}
+                    width={100}
                     height={50}
                     src={"/images/google_partner.png"}
                     alt="google partner"

@@ -19,7 +19,7 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
   return (
     <>
       {/* <p className="text-base">{t_pricing_paidMediaTab("title")}</p> */}
-      <section className="max-w-[600px] p-[0px] md:p-[40px] flex flex-col gap-[40px] items-center text-center rounded-[10px] w-full">
+      <section className="max-w-[580px] p-[0px] md:p-[40px] flex flex-col gap-[40px] items-center text-center rounded-[10px] w-full">
         <h4 className="text-[28px] font-[700] leading-[36px]">
           {t_pricing_paidMediaTab.rich("campaignByMonth", {
             campaigns: pricesByCampaign[value].amount,
@@ -33,16 +33,20 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
           onChange={(e) => setValue(e.target.value)}
         />
         <div className="flex flex-col gap-[0px] items-center text-center">
-          <div className="flex gap-[4px] items-center text-center text-kliv-tertiary">
-            {pricesByCampaign[value].price * pricesByCampaign[value].amount >
-              0 && (
-              <h5 className="font-[900] text-[48px] leading-[62px]">
-                {pricesByCampaign[value].price * pricesByCampaign[value].amount}
-              </h5>
-            )}
-            {pricesByCampaign[value].price * pricesByCampaign[value].amount >
-              0 && <span className="text-[22px] font-[800]">USD</span>}
-          </div>
+          {pricesByCampaign[value].price * pricesByCampaign[value].amount >
+            0 && (
+            <div className="flex gap-[4px] items-center text-center text-kliv-tertiary">
+              {pricesByCampaign[value].price * pricesByCampaign[value].amount >
+                0 && (
+                <h5 className="font-[900] text-[48px] leading-[62px]">
+                  {pricesByCampaign[value].price *
+                    pricesByCampaign[value].amount}
+                </h5>
+              )}
+              {pricesByCampaign[value].price * pricesByCampaign[value].amount >
+                0 && <span className="text-[22px] font-[800]">USD</span>}
+            </div>
+          )}
 
           {pricesByCampaign[value].price * pricesByCampaign[value].amount >
             0 && (
@@ -55,25 +59,26 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
             pricesByCampaign[value].price * pricesByCampaign[value].amount >
             0
           ) && (
-            <p className="text-base leading-[24px]">
-              {t_pricing_paidMediaTab("notSelectedTitle")}
-            </p>
+            <div className="flex flex-col gap-[20px]">
+              <p className="text-base leading-[24px]">
+                {t_pricing_paidMediaTab("notSelectedTitle")}
+              </p>
+              <p className="text-base leading-[24px]">
+                {t_pricing_paidMediaTab("notSelectedSubtitle")}
+              </p>
+            </div>
           )}
 
-          <p className="text-base leading-[24px]">
-            {pricesByCampaign[value].price * pricesByCampaign[value].amount >
-            0 ? (
-              <>
-                {t_pricing_paidMediaTab.rich("selectedCampaigns", {
-                  off: pricesByCampaign[value].off || 0,
-                  price: pricesByCampaign[value].price,
-                  strong: (str) => <strong>{str}</strong>,
-                })}
-              </>
-            ) : (
-              <strong>{t_pricing_paidMediaTab("notSelectedSubtitle")}</strong>
-            )}
-          </p>
+          {pricesByCampaign[value].price * pricesByCampaign[value].amount >
+            0 && (
+            <p className="text-base leading-[24px]">
+              {t_pricing_paidMediaTab.rich("selectedCampaigns", {
+                off: pricesByCampaign[value].off || 0,
+                price: pricesByCampaign[value].price,
+                strong: (str) => <strong>{str}</strong>,
+              })}
+            </p>
+          )}
         </div>
 
         <footer>

@@ -5,7 +5,7 @@ export const AGENDAR_BUTTON_SIZES = {
   SMALL:
     "px-[34px] py-[14px] lg:py-[9px] lg:px-[22px] text-[24px] lg:text-[16px]",
   LARGE:
-    "px-[30px] py-[15px] lg:py-[10px] lg:px-[28px] 2xl:px-[30px] 2xl:py-[12px] text-[18px] lg:text-[16px] 2xl:text-[22px]",
+    "px-[34px] py-[14px] lg:py-[9px] lg:px-[22px] text-[16px] lg:text-[16px]",
 };
 
 const AgendarLLamadaButton = ({ size = AGENDAR_BUTTON_SIZES.LARGE }) => {

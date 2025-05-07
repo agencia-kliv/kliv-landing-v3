@@ -6,7 +6,7 @@ const Slider = (props) => {
       {/* <label for="large-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Large range</label> */}
       <input
         // className="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-128"
-        className="appearance-none h-[24px] w-full outline-none bg-transparent [::-webkit-slider-thumb]"
+        className="appearance-none h-[28px] w-full outline-none bg-transparent [::-webkit-slider-thumb]"
         type="range"
         min={min}
         max={max}
@@ -19,17 +19,17 @@ const Slider = (props) => {
           @media screen and (-webkit-min-device-pixel-ratio: 0) {
             input[type="range"]::-webkit-slider-runnable-track {
               width: 100%;
-              height: 16px;
+              height: 20px;
               background: hsla(213, 13%, 90%, 1);
               border: none;
               border-radius: 1000px;
             }
 
             input[type="range"]::-webkit-slider-thumb {
-              width: 24px;
+              width: 28px;
               -webkit-appearance: none;
               appearance: none;
-              height: 24px;
+              height: 28px;
               cursor: pointer;
               background: hsla(162, 68%, 29%, 1);
               border-radius: 50%;
@@ -51,7 +51,7 @@ const Slider = (props) => {
                     (parseInt(max) - parseInt(min))) *
                   100}% - 3px
               );
-              height: 16px;
+              height: 20px;
               border-radius: 1000px 0 0 1000px;
               background: linear-gradient(
                 54.05deg,

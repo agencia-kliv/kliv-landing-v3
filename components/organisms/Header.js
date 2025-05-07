@@ -7,9 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdClose, MdMenu } from "react-icons/md";
-import AgendarLLamadaButton, {
-  AGENDAR_BUTTON_SIZES,
-} from "../atoms/AgendarLLamadaButton";
+import AgendarLLamadaButton from "../atoms/AgendarLLamadaButton";
 import LocaleSwitcher from "../atoms/LocaleSwitcher";
 import TabItem from "../atoms/TabItem";
 import { SocialNetworkButton } from "./Footer";
@@ -98,7 +96,7 @@ const Header = () => {
           <div className="flex w-full items-center gap-[15px] justify-end">
             <LocaleSwitcher />
             <div className="hidden lg:block">
-              <AgendarLLamadaButton size={AGENDAR_BUTTON_SIZES.SMALL} />
+              <AgendarLLamadaButton />
             </div>
             <span
               className="block lg:hidden w-[24px] h-[24px] text-[24px] text-kliv-text-2"
