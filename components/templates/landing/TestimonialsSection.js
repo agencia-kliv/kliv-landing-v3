@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
     },
     {
       id: "card2",
-      logo: "/testimonials/saniito.png",
+      logo: "/logos/Logo Saniito (Color).png",
       company: "Saniito",
       name: "Alejandro A.",
       position: "CEO",
@@ -55,13 +55,14 @@ const TestimonialsSection = () => {
     },
     {
       id: "card4",
-      logo: "/testimonials/sol-millan.png",
+      logo: "/logos/Logo Sol Millán (Color).png",
+      company: "Dra. Sol M.",
       name: "Sol Millán.",
       text: t("solMillan"),
     },
     {
       id: "card5",
-      logo: "/testimonials/valeria-rolicred.png",
+      logo: "/logos/Logo Rolicred (Color).png",
       company: "Rolicred",
       name: "Valeria L.",
       text: t("rolicred"),
