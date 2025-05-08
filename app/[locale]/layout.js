@@ -3,6 +3,7 @@ import { FacebookPixelEvents } from "@/components/FacebookPixel";
 import GTM from "@/components/GTM";
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -74,6 +75,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
   return (
     <html lang={locale}>
+      <SpeedInsights />
       {/* <AOSInit /> */}
       <body className={poppins.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
