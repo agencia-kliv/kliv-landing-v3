@@ -31,8 +31,8 @@
     },
 
     "hero":{
-        "title": "Boost Your ecommerce Sales Profitably",
-        "subtitle": "We help ecommerces grow through \n<strong>performance marketing</strong>."
+        "title": "Boost Your Ecommerce Sales Profitably",
+        "subtitle": "We help brands grow through \n<strong>performance marketing</strong>."
     },
 
     "services":{
@@ -168,8 +168,8 @@
     "pricing":{
         "title": "A simple and scalable pricing method",
         "packages": "Packages",
-        "paidMedia": "Paid Media",
-        "agencies": "Agencies",
+        "paidMedia": "Company",
+        "agencies": "Agency",
         "startNow": "Start now",
         "quote": "Quote",
         "from": "From",

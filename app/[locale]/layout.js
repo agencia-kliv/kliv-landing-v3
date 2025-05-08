@@ -4,7 +4,6 @@ import GTM from "@/components/GTM";
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
 import { NextIntlClientProvider } from "next-intl";
-// import { getTranslations } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -19,30 +18,31 @@ const poppins = Poppins({
 
 export async function generateMetadata({ params }) {
   return {
-    title: "Agencia KLIV - Performance Marketing",
+    title: "AGENCIA KLIV - Performance Marketing",
     description:
       "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
     openGraph: {
-      title: "Agencia KLIV - Performance Marketing",
+      title: "AGENCIA KLIV",
       description:
-        "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+        "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
       type: "website",
       locale: "es_ES",
       url: "https://www.agenciakliv.com/",
-      site_name: "Agencia KLIV",
+      site_name: "AGENCIA KLIV",
       images: [
         {
           url: "https://www.agenciakliv.com/kliv-isotipo-green.png",
           width: 1241,
           height: 1241,
-          alt: "Agencia KLIV - Performance Marketing",
+          alt: "AGENCIA KLIV - Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
         },
       ],
     },
   };
 }
 
-// export async function generateMetadata({ params: { locale } }) {
+// export async function generateMetadata({ params }) {
+//   const { locale } = await params;
 //   const t = await getTranslations({ locale, namespace: "metadata" });
 
 //   return {

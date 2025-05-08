@@ -30,7 +30,7 @@ const HeroSection = () => {
                 <LogitoSection />
               </figure>
               <SectionTitle
-                className={"max-w-[340px] lg:max-w-[300px] 2xl:max-w-[500px]"}
+                className={"max-w-[340px] lg:max-w-[500px] 2xl:max-w-[500px]"}
                 isLargeText={true}
               >
                 {t_hero("title")}

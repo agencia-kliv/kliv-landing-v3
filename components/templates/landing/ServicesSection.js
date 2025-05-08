@@ -51,7 +51,7 @@ const ServicesSection = () => {
               <SectionSubtitle className={"font-[700]"}>
                 {t_services("perks")}
               </SectionSubtitle>
-              <SectionSubtitle className={"italic"}>
+              <SectionSubtitle className={"italic mt-[-20px] mb-[-20px]"}>
                 {t_services("iaBoost")}
               </SectionSubtitle>
             </div>
