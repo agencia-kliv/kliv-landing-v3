@@ -295,7 +295,7 @@ const TarifasSection = () => {
             <SectionTitle className="max-w-[440px] text-center">
               {t_pricing("title")}
             </SectionTitle>
-            <nav className="flex gap-[10px] items-center justify-center">
+            <nav className="flex gap-[20px] items-center justify-center">
               {/* <PillFilter
               isActive={selectedTab === TARIFAS_TABS.PAQUETES}
               onClick={() => setSelectedTab(TARIFAS_TABS.PAQUETES)}

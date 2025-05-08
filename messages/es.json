@@ -42,6 +42,7 @@
         "title":"Performance marketing, mucho más que publicidad digital…",
         "subtitle":"Brindamos un servicio personalizado enfocado en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
         "perks": "Estrategia. Producción. Monitoreo. Analítica. Optimización.",
+        "iaBoost": "Potenciado con herramientas IA",
         "moreROI": "Más ROI",
         "moreROIText":"Maximizamos el rendimiento de tu presupuesto publicitario mediante experimentación, aprendizaje y mejora continua en función de las ventas.",
         "moreScalability": "Más Escalable",
@@ -83,11 +84,11 @@
             },
             "question4": {
                 "title": "¿Hay garantía de resultados?",
-                "content": "No ofrecemos garantías porque los resultados no dependen solo de los anuncios, sino también de variables fuera de nuestro control dentro del ecosistema de tu marca, como los contenidos en redes, la atención al cliente, el propio producto o servicio y las reseñas de clientes pasados, entre otras.\n<italic>Si una agencia te promete resultados, desconfiá</italic>.\nEn Kliv somos transparentes desde el inicio: auditamos tu empresa, analizamos su potencial y proponemos un plan de campañas que maximicen tus oportunidades, pero sincerando las expectativas. Si determinamos que tu empresa no está en condiciones de generar resultados rentables con nuestros servicios, te lo diremos con total honestidad."
+                "content": "No ofrecemos garantías porque los resultados no dependen solo de los anuncios, sino también de variables fuera de nuestro control dentro del ecosistema de tu marca, como los contenidos en redes, la atención al cliente, el propio producto o servicio y las reseñas de clientes pasados, entre otras.\n\n<italic>Si una agencia te promete resultados, desconfiá</italic>.\n\nEn Kliv somos transparentes desde el inicio: auditamos tu empresa, analizamos su potencial y proponemos un plan de campañas que maximicen tus oportunidades, pero sincerando las expectativas. Si determinamos que tu empresa no está en condiciones de generar resultados rentables con nuestros servicios, te lo diremos con total honestidad."
             },
             "question5": {
                 "title": "¿Ofrecen otros servicios además de publicidad?",
-                "content": "Nos especializamos exclusivamente en lo que mejor hacemos: publicidad digital bajo la filosofía del performance marketing; concentrarnos en nuestro expertise nos permite ofrecer resultados excepcionales.\nSi necesitas servicios como branding, desarrollo web o gestión de contenidos para redes sociales, contamos con una agencia partner de confianza a la que estaremos encantados de referirte."
+                "content": "Nos especializamos exclusivamente en lo que mejor hacemos: publicidad digital bajo la filosofía del performance marketing; concentrarnos en nuestro expertise nos permite ofrecer resultados excepcionales.\n\nSi necesitas servicios como branding, desarrollo web o gestión de contenidos para redes sociales, contamos con una agencia partner de confianza a la que estaremos encantados de referirte."
             },
             "question6": {
                 "title": "¿Cómo se diferencian de otras agencias?",
@@ -95,7 +96,7 @@
             },
             "question7": {
                 "title": "¿Qué métodos de pago aceptan?",
-                "content": "Solicitamos un anticipo del 100% para iniciar el proyecto, y los pagos de los meses siguientes deberán realizarse dentro de los primeros 10 días corridos de cada mes.\nAceptamos:\n\n- Transferencia bancaria dentro de Argentina (ARS, factura C).\n- Transferencia bancaria a banco en EE. UU. (USD, factura LLC).\n- Binance Pay (USDT)."
+                "content": "Solicitamos un anticipo del 100% para iniciar el proyecto, y los pagos de los meses siguientes deberán realizarse dentro de los primeros 10 días corridos de cada mes.\n\nAceptamos:\n\n- Transferencia bancaria dentro de Argentina (ARS, factura C).\n- Transferencia bancaria a banco en EE. UU. (USD, factura LLC).\n- Binance Pay (USDT)."
             },
             "question8": {
                 "title": "¿Cuál es el período de contrato?",
@@ -333,13 +334,13 @@
         "title": "¡Felicidades!\nTu llamada fue agendada",
         "subtitle": "Revisá tu correo, donde encontrarás la confirmación y el link Meet para la reunión y seguí los siguientes pasos:",
         "step1": "PASO 1",
-        "step1Text": "Mirá el siguiente video para prepararte para la sesión (1 minuto):",
+        "step1Text": "Mirá el siguiente video para prepararte para la sesión (1 minuto)",
         "step2": "PASO 2",
-        "step2Text": "Leé este documento (4 páginas):",
+        "step2Text": "Leé este documento (4 páginas)",
         "step3": "PASO 3",
-        "step3Text": "Completá el formulario de auditoría \n(≈ 30 minutos):",
+        "step3Text": "Completá el formulario de auditoría \n(≈ 30 minutos)",
         "aboutUs": "Sobre nosotros",
-        "aboutUsText": "Somos <strong>Agustín en la estrategia y Gonzalo en las operaciones, fundadores de Kliv</strong> y apasionados por el performance marketing. Junto a un gran equipo multidisciplinario, llevamos 11 años ayudando a más de 80 empresas en varios países a escalar sus ventas. Durante este tiempo, fuimos perfeccionado nuestra metodología basada en performance a través de experiencias en una amplia variedad de industrias. Nos entusiasma lo que hacemos y la forma en que lo hacemos.",
+        "aboutUsText": "Somos <strong>Agustín en la estrategia y Gonzalo en las operaciones, fundadores de Kliv</strong> y apasionados por el performance marketing.\n\nJunto a un gran equipo multidisciplinario, llevamos 11 años ayudando a más de 80 empresas en varios países a escalar sus ventas.\n\nDurante este tiempo, fuimos perfeccionado nuestra metodología basada en performance a través de experiencias en una amplia variedad de industrias. Nos entusiasma lo que hacemos y la forma en que lo hacemos.",
         "seeYouLater": "¡Nos vemos en la llamada!"
     }
 }

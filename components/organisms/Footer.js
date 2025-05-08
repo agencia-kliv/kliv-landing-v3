@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
-import Image from "next/image";
 import {
   FaFacebookF,
   FaInstagram,
@@ -34,12 +33,7 @@ const Footer = () => {
       <div className="flex lg:hidden flex-col gap-[40px] w-full items-center py-[30px]">
         <div className="flex flex-col gap-[10px] w-full items-start px-[20px]">
           <div className="flex w-full justify-between items-center">
-            <Image
-              width={"100"}
-              height={"50"}
-              src="/kliv-logo.svg"
-              alt="Kliv"
-            />
+            © 2025 Agencia Kliv LLC
             <div className="flex gap-[5px]">
               <SocialNetworkButton href="https://www.instagram.com/agenciakliv/">
                 <FaInstagram />
@@ -62,11 +56,12 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <div className="hidden lg:flex flex-row gap-[25px] items-center max-w-[1350px] mx-auto w-full justify-between">
+      <div className="hidden lg:flex flex-row gap-[25px] items-center max-w-[1350px] py-[30px] mx-auto w-full justify-between">
         <div className="flex gap-[25px] items-center">
-          <figure className="flex items-center relative justify-center w-[100px] h-[150px]">
+          {/* <figure className="flex items-center relative justify-center w-[100px] h-[150px]">
             <Image fill src="/kliv-logo.svg" alt="Kliv" />
-          </figure>
+          </figure> */}
+          © 2025 Agencia Kliv LLC
           <Link
             className="text-kliv-secondary font-[500] text-[22px] lg:text-[16px] 2xl:text-[14px] text-center leading-[38px]"
             href={{ pathname: `/politicas-de-privacidad` }}

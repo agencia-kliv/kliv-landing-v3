@@ -1,29 +1,119 @@
+// PartnersSection.js
 import usePartnersImages from "@/hooks/usePartnersImages";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
-const PartnerCard = ({ src, alt }) => {
-  return (
-    <figure className="w-[120px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] 22xl:w-[200px] aspect-[1.6] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium">
-      <Image src={src} alt={alt} fill={true} objectFit="contain" />
-    </figure>
-  );
-};
+const PartnerCard = ({ src, alt }) => (
+  <figure className="w-[120px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] 22xl:w-[200px] aspect-[1.6] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium flex-shrink-0">
+    <Image src={src} alt={alt} fill objectFit="contain" draggable={false} />
+  </figure>
+);
 
 const PartnersSection = () => {
-  const { data: partnersImages, refetch: refetchImages } = usePartnersImages();
+  const { data: partnersImages } = usePartnersImages();
+  const containerRef = useRef(null);
 
-  if (!partnersImages) return <></>;
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const speed = 100; // px per second
 
-  console.log(partnersImages);
+  // Auto-scroll logic
+  useEffect(() => {
+    let animationId;
+    let lastTime = performance.now();
+
+    const tick = (now) => {
+      const delta = now - lastTime;
+      lastTime = now;
+      if (!isHovered && !isDragging && containerRef.current) {
+        containerRef.current.scrollLeft += (speed * delta) / 1000;
+        // loop back when end reached
+        if (
+          containerRef.current.scrollLeft >=
+          containerRef.current.scrollWidth / 2
+        ) {
+          containerRef.current.scrollLeft = 0;
+        }
+      }
+      animationId = requestAnimationFrame(tick);
+    };
+
+    animationId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animationId);
+  }, [isHovered, isDragging]);
+
+  // Drag handlers
+  const onMouseDown = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setStartX(e.pageX - containerRef.current.getBoundingClientRect().left);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.getBoundingClientRect().left;
+    const walk = x - startX;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+  const onMouseUp = () => {
+    setIsDragging(false);
+  };
+  const onMouseLeave = () => {
+    if (isDragging) onMouseUp();
+  };
+
+  // Touch handlers (reusing mouse logic)
+  const onTouchStart = (e) => {
+    setIsDragging(true);
+    setStartX(
+      e.touches[0].pageX - containerRef.current.getBoundingClientRect().left
+    );
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+  const onTouchMove = (e) => {
+    if (!isDragging) return;
+    const x =
+      e.touches[0].pageX - containerRef.current.getBoundingClientRect().left;
+    const walk = x - startX;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+  const onTouchEnd = () => setIsDragging(false);
+
+  if (!partnersImages) return null;
+
+  // duplicate images for seamless looping
+  const imgs = [...partnersImages.links, ...partnersImages.links];
 
   return (
-    <section className="w-full py-[60px] px-[15px] gap-[40px] items-center flex flex-col lg:py-[100px] lg:gap-[50px] overflow-hidden relative">
-      <div className="w-[20dvw] absolute left-0 top-0 h-full  z-10 bg-gradient-to-r from-[#fff] to-transparent" />
-      <div className="w-[20dvw] absolute right-0 top-0 h-full  z-10 bg-gradient-to-l from-[#fff] to-transparent" />
-      <div className="w-full">
-        <div className="flex gap-[20px] lg:gap-[80px] min-w-max animate-marquee">
-          {[...partnersImages.links, ...partnersImages.links].map((src, i) => (
-            <PartnerCard key={i} src={src} alt={`carousel-${i}`} />
+    <section className="w-full py-[60px] px-[15px] flex flex-col items-center lg:py-[100px]">
+      <div className="relative w-full overflow-hidden">
+        {/* gradient overlays */}
+        <div className="absolute left-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-r from-white to-transparent" />
+        <div className="absolute right-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-l from-white to-transparent" />
+
+        {/* scroll container */}
+        <div
+          ref={containerRef}
+          className="flex gap-[20px] lg:gap-[80px] overflow-x-auto scroll-snap-type-none scrollbar-hide cursor-grab select-none"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            onMouseLeave();
+          }}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeaveCapture={onMouseLeave}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onDragStart={(e) => e.preventDefault()}
+        >
+          {imgs.map((src, idx) => (
+            <PartnerCard key={idx} src={src} alt={`partner-${idx}`} />
           ))}
         </div>
       </div>

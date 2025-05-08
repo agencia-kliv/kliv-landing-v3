@@ -46,18 +46,20 @@ const HeroSection = () => {
               </SectionSubtitle>
               <div className="flex flex-col gap-[30px] lg:flex-col-reverse items-center lg:items-start">
                 <div className="flex items-center gap-[20px] py-[20px]">
-                  <Image
-                    width={100}
-                    height={50}
-                    src={"/images/meta_partner.png"}
-                    alt="meta partner"
-                  />
-                  <Image
-                    width={100}
-                    height={50}
-                    src={"/images/google_partner.png"}
-                    alt="google partner"
-                  />
+                  <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.9] relative">
+                    <Image
+                      fill={true}
+                      src={"/images/meta_partner.png"}
+                      alt="meta partner"
+                    />
+                  </figure>
+                  <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.24] relative">
+                    <Image
+                      fill={true}
+                      src={"/images/google_partner.png"}
+                      alt="google partner"
+                    />
+                  </figure>
                 </div>
                 <AgendarLLamadaButton size={AGENDAR_BUTTON_SIZES.LARGE} />
               </div>

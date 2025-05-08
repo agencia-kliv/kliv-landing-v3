@@ -8,7 +8,7 @@ import Image from "next/image";
 const CardItem = ({ title, description, image, bg, zIndex, index }) => {
   return (
     <article
-      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[30px] px-[20px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-90px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
+      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[40px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-90px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
     >
       <div className="pt-[20px] h-[80px] w-[80px] 2xl:w-[100px] 2xl:h-[100px] relative ">
         <Image src={image} alt={title} fill />
@@ -51,6 +51,9 @@ const ServicesSection = () => {
               <SectionSubtitle className={"font-[700]"}>
                 {t_services("perks")}
               </SectionSubtitle>
+              <SectionSubtitle className={"italic"}>
+                {t_services("iaBoost")}
+              </SectionSubtitle>
             </div>
           </div>
 
@@ -67,11 +70,7 @@ const ServicesSection = () => {
               />
             </div>
             <div className="w-full aspect-[1.14] relative">
-              <Image
-                src={"/images/linkedin_logo.png"}
-                alt="LinkedIn Ads"
-                fill={true}
-              />
+              <Image src={"/images/ia.png"} alt="LinkedIn Ads" fill={true} />
             </div>
           </div>
         </div>

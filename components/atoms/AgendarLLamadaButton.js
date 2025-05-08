@@ -3,7 +3,7 @@ import Link from "next-intl/link";
 
 export const AGENDAR_BUTTON_SIZES = {
   SMALL:
-    "px-[34px] py-[14px] lg:py-[9px] lg:px-[22px] text-[24px] lg:text-[16px]",
+    "px-[34px] py-[14px] lg:py-[9px] lg:px-[22px] text-[16px] lg:text-[16px]",
   LARGE:
     "px-[34px] py-[14px] lg:py-[9px] lg:px-[22px] text-[16px] lg:text-[16px]",
 };
