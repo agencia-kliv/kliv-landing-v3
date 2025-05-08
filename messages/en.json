@@ -31,8 +31,8 @@
     },
 
     "hero":{
-        "title": "Boost Your Business Sales Profitably",
-        "subtitle": "e help companies grow through \n<strong>performance marketing</strong>."
+        "title": "Boost Your ecommerce Sales Profitably",
+        "subtitle": "We help ecommerces grow through \n<strong>performance marketing</strong>."
     },
 
     "services":{
@@ -40,6 +40,7 @@
         "title":"Performance marketing, much more than digital advertising...",
         "subtitle":"We provide a personalized service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
         "perks": "Strategy. Production. Monitoring. Analytics. Optimization.",
+        "iaBoost": "Powered by AI tools",
         "moreROI": "More ROI",
         "moreROIText":"We maximize the performance of your advertising budget through experimentation, learning, and continuous improvement focused on increasing sales.",
         "moreScalability": "More Scalability",
@@ -50,7 +51,7 @@
     
     "team": {
         "title": "Experience and results <br></br>that back us",
-        "subtitle": "<strong>11 years in the market</strong> scaling the sales of over <strong>80 companies across 10 countries</strong>, with a team of <strong>10+ passionate marketers and creatives</strong> specialized in performance marketing."
+        "subtitle": "11 years in the market scaling the sales of over 80 companies across 10 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
     },
  
     "partners": {
@@ -81,19 +82,19 @@
             },
             "question4": {
                 "title": "Is there a results guarantee?",
-                "content": "We do not offer guarantees because results depend not only on ads but also on external factors within your brand ecosystem, such as your social media content, customer service, product/service quality, and customer reviews.\n<italic>If an agency promises you guaranteed results, be cautious.</italic>.\nAt Kliv, we are transparent from the start: we audit your company, analyze its potential, and propose a campaign plan that maximizes opportunities, setting clear expectations. If we determine that your business is not ready to achieve profitable results through our services, we will let you know with total honesty."
+                "content": "We do not offer guarantees because results depend not only on ads but also on external factors within your brand ecosystem, such as your social media content, customer service, product/service quality, and customer reviews.\n\n<italic>If an agency promises you guaranteed results, be cautious.</italic>.\n\nAt Kliv, we are transparent from the start: we audit your company, analyze its potential, and propose a campaign plan that maximizes opportunities, setting clear expectations. If we determine that your business is not ready to achieve profitable results through our services, we will let you know with total honesty."
             },
             "question5": {
                 "title": "Do you offer services beyond advertising?",
-                "content": "We specialize exclusively in what we do best: digital advertising under the performance marketing philosophy.\n Focusing on our expertise allows us to deliver exceptional results.\nIf you need services such as branding, website development, or social media content management, we have a trusted partner agency we’ll be happy to refer you to."
+                "content": "We specialize exclusively in what we do best: digital advertising under the performance marketing philosophy.Focusing on our expertise allows us to deliver exceptional results.\n\nIf you need services such as branding, website development, or social media content management, we have a trusted partner agency we’ll be happy to refer you to."
             },
             "question6": {
                 "title": "How are you different from other agencies?",
-                "content": "We are a boutique agency exclusively specialized in performance marketing.\nWe work with a limited number of companies per month to guarantee close, high-quality support.\nOur focus is on scaling sales and maximizing advertising ROI with personalized, data-driven strategies — avoiding vanity metrics like likes, followers, or traffic.\nOur method is backed by over 10 years of experience and 80+ companies served."
+                "content": "We are a boutique agency exclusively specialized in performance marketing. We work with a limited number of companies per month to guarantee close, high-quality support. Our focus is on scaling sales and maximizing advertising ROI with personalized, data-driven strategies — avoiding vanity metrics like likes, followers, or traffic. Our method is backed by over 10 years of experience and 80+ companies served."
             },
             "question7": {
                 "title": "What payment methods do you accept?",
-                "content": "We require 100% upfront payment to start the project.Subsequent monthly payments must be made within the first 10 calendar days of each month.\nWe accept:\n\n- Bank transfer within Argentina (ARS, invoice type C).\n- Bank transfer to a U.S. bank account (USD, LLC invoice).\n- Binance Pay (USDT)."
+                "content": "We require 100% upfront payment to start the project.Subsequent monthly payments must be made within the first 10 calendar days of each month.\n\nWe accept:\n\n- Bank transfer within Argentina (ARS, invoice type C).\n- Bank transfer to a U.S. bank account (USD, LLC invoice).\n- Binance Pay (USDT)."
             },
             "question8": {
                 "title": "What is the contract term?",
@@ -101,7 +102,7 @@
             },
             "question9": {
                 "title": "When can I start?",
-                "content": "First, you’ll need to complete an audit form.\nIf we determine your business is compatible with our services, we’ll offer you a customized proposal that fits your goals and resources.\n\nHowever, spots are limited:\nWe can only accept 3 companies per month to maintain the quality of our services.\nIf no spots are available, we’ll reserve your place for the following month."
+                "content": "First, you’ll need to complete an audit form. If we determine your business is compatible with our services, we’ll offer you a customized proposal that fits your goals and resources.\n\nHowever, spots are limited: We can only accept 3 companies per month to maintain the quality of our services. If no spots are available, we’ll reserve your place for the following month."
             }
         }
     },
