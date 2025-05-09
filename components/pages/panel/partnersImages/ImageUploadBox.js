@@ -2,7 +2,8 @@ import Button from "@/components/atoms/Button";
 import InputFile from "@/components/atoms/InputFile";
 import { updatePartnersImagesData, uploadFile } from "@/firebase/Client";
 import { getDownloadURL } from "firebase/storage";
-import { useState } from "react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
 const TASK_STATE = {
   PROGRESS: "PROGRESS",
@@ -10,69 +11,98 @@ const TASK_STATE = {
   ERROR: "error",
 };
 
-const ImageUploadBox = ({ link, partnersImages, index, refetchImages }) => {
+const ImageUploadBox = ({
+  link,
+  index,
+  partnersImages,
+  refetchImages,
+  isNew = false,
+}) => {
   const [fileUploaded, setFileUploaded] = useState(null);
   const [taskState, setTaskState] = useState(null);
 
+  const inputRef = useRef();
+
   const handleUpload = async () => {
     setTaskState(null);
+    if (!fileUploaded) return;
 
-    const file = fileUploaded;
+    const task = uploadFile(fileUploaded, `partners/${index}`);
 
-    const task = uploadFile(file, `partners/${index}`);
+    task.on(
+      "state_changed",
+      () => setTaskState(TASK_STATE.PROGRESS),
+      (error) => {
+        setTaskState(TASK_STATE.ERROR);
+        console.error(error);
+      },
+      async () => {
+        const downloadURL = await getDownloadURL(task.snapshot.ref);
 
-    const onProgress = (snapshot) => {
-      setTaskState(TASK_STATE.PROGRESS);
-    };
+        // Copiamos el objeto para no mutar el state directamente
+        const newData = { ...partnersImages };
 
-    const onError = (error) => {
-      setTaskState(TASK_STATE.ERROR);
-      throw new Error(error);
-    };
+        if (isNew) {
+          // Push: si es nuevo, añadimos al final
+          newData.links = [...newData.links, downloadURL];
+        } else {
+          // Replace: si no es nuevo, reemplazamos en index
+          newData.links = [...newData.links];
+          newData.links[index] = downloadURL;
+        }
 
-    const onComplete = () => {
-      //   setProgress(null);
-      getDownloadURL(task.snapshot.ref).then((downloadURL) => {
-        const newPartnersImages = partnersImages;
-        newPartnersImages.links[index] = downloadURL;
-        updatePartnersImagesData(newPartnersImages).then(() => {
-          setTaskState(TASK_STATE.COMPLETE);
-          alert("Imagen subida correctamente");
-          setFileUploaded(null);
-          refetchImages();
-        });
-      });
-    };
-
-    task.on("state_changed", onProgress, onError, onComplete);
+        await updatePartnersImagesData(newData);
+        setTaskState(TASK_STATE.COMPLETE);
+        setFileUploaded(null);
+        refetchImages();
+      }
+    );
   };
 
   return (
-    <article className="flex flex-col gap-[20px]">
-      <div className="flex flex-col gap-[10px] h-[400px] rounded-[10px] border-[1px] border-kliv-text-6 p-[10px]">
-        <figure className="w-full h-full ">
-          <img
-            src={fileUploaded ? URL.createObjectURL(fileUploaded) : link}
-            className="w-full h-full object-contain mix-blend-multiply"
-            // alt={`foto de ${name}`}
-          />
-        </figure>
-
-        <div className="w-full flex flex-col gap-[20px]">
-          <InputFile
-            types={["image/png", "image/webp"]}
-            onFileLoad={(file) => {
-              setFileUploaded(file);
+    <article className="flex flex-col gap-5">
+      <div className="h-[400px] border rounded-lg p-2 flex flex-col">
+        {/* Si no hay link Y es isNew, mostramos un "+" */}
+        {!link && isNew && !fileUploaded && (
+          <button
+            onClick={() => {
+              inputRef.current.click();
             }}
-          />
-        </div>
+            className="flex-1 flex items-center justify-center text-4xl text-gray-400 hover:bg-gray-100 rounded-lg"
+          >
+            + Cargar nueva imagen
+          </button>
+        )}
+
+        {/* Vista previa de la imagen ya existente o del file seleccionado */}
+        {(link || fileUploaded) && (
+          <figure className="flex-1 relative aspect-partnerCard">
+            <Image
+              fill
+              src={fileUploaded ? URL.createObjectURL(fileUploaded) : link}
+              className="w-full h-full object-contain"
+              alt=""
+            />
+          </figure>
+        )}
+
+        {/*InputFile oculto pero enlazado al botón “+” */}
+        <InputFile
+          innerRef={inputRef}
+          id={`input-${index}`}
+          types={["image/png", "image/webp"]}
+          onFileLoad={setFileUploaded}
+          className="hidden"
+        />
       </div>
+
+      {/* Botón de subir solo si hay un file seleccionado */}
       {fileUploaded && (
         <Button
           onClick={handleUpload}
           loading={taskState === TASK_STATE.PROGRESS}
         >
-          Subir imagen
+          {isNew ? "Subir nueva imagen" : "Reemplazar imagen"}
         </Button>
       )}
     </article>

@@ -19,8 +19,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-const billingCollection = "packagesBilling";
-const partnersCollection = "partners";
+const billingCollection = "playgroundBilling";
+const partnersCollection = "playgroundPartners";
 
 //create a function to post a document to the firestore
 const db = getFirestore(app);

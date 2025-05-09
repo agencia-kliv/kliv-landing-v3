@@ -2,7 +2,7 @@ import { FileInput } from "flowbite-react";
 import { useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 
-const InputFile = ({ types, maxSize, onFileLoad }) => {
+const InputFile = ({ types, maxSize, onFileLoad, innerRef }) => {
   const [error, setError] = useState(false);
 
   const handleLoad = (event) => {
@@ -50,7 +50,7 @@ const InputFile = ({ types, maxSize, onFileLoad }) => {
 
   return (
     <div>
-      <FileInput onChange={handleLoad} />
+      <FileInput onChange={handleLoad} ref={innerRef} />
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </div>
   );
