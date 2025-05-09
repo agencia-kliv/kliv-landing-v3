@@ -1,7 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import {
+  deleteObject,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 // Add the missing import statement for FirebaseFirestore
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -73,4 +84,26 @@ export const uploadFile = (file, path) => {
 
 export const updatePartnersImagesData = async (newData) => {
   await setDoc(doc(db, partnersCollection, "PartnersImage"), newData);
+};
+
+/**
+ * Elimina un archivo del Storage
+ * @param {string} path Ruta en Storage, p.ej. "partners/2"
+ */
+export const deleteFile = async (path) => {
+  const fileRef = ref(storage, path);
+  try {
+    await deleteObject(fileRef);
+  } catch (err) {
+    console.error("Error borrando Storage:", err);
+    throw err;
+  }
+};
+
+/**
+ * Actualiza solo el campo links del documento (más seguro que setDoc completo)
+ */
+export const removePartnerImageLink = async (newLinks) => {
+  const docRef = doc(db, partnersCollection, "PartnersImage");
+  await updateDoc(docRef, { links: newLinks });
 };

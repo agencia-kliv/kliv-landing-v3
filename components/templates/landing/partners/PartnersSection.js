@@ -4,8 +4,16 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const PartnerCard = ({ src, alt }) => (
-  <figure className="w-[120px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] 22xl:w-[200px] aspect-[1.6] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium flex-shrink-0">
-    <Image src={src} alt={alt} fill objectFit="contain" draggable={false} />
+  <figure className="w-[120px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] h-[75px] lg:h-[150px] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium flex-shrink-0">
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      objectFit="contain"
+      draggable={false}
+      priority
+      quality={100}
+    />
   </figure>
 );
 
@@ -97,7 +105,7 @@ const PartnersSection = () => {
         {/* scroll container */}
         <div
           ref={containerRef}
-          className="flex gap-[20px] lg:gap-[80px] overflow-x-auto scroll-snap-type-none scrollbar-hide cursor-grab select-none"
+          className="flex gap-[0px] lg:gap-[40px] overflow-x-auto scroll-snap-type-none scrollbar-hide cursor-grab select-none"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => {
             setIsHovered(false);

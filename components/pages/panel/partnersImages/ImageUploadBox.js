@@ -1,9 +1,15 @@
 import Button from "@/components/atoms/Button";
 import InputFile from "@/components/atoms/InputFile";
-import { updatePartnersImagesData, uploadFile } from "@/firebase/Client";
+import {
+  deleteFile,
+  removePartnerImageLink,
+  updatePartnersImagesData,
+  uploadFile,
+} from "@/firebase/Client";
 import { getDownloadURL } from "firebase/storage";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { MdDelete } from "react-icons/md";
 
 const TASK_STATE = {
   PROGRESS: "PROGRESS",
@@ -61,9 +67,41 @@ const ImageUploadBox = ({
     );
   };
 
+  const handleDelete = async () => {
+    if (!link) return;
+    const ok = confirm("¿Seguro que querés borrar esta imagen?");
+    if (!ok) return;
+
+    try {
+      // 1) Borrar del Storage
+      await deleteFile(`partners/${index}`);
+
+      // 2) Borrar del array de links
+      const newLinks = partnersImages.links.filter((_, idx) => idx !== index);
+      await removePartnerImageLink(newLinks);
+
+      refetchImages();
+      alert("Imagen eliminada");
+    } catch (err) {
+      console.error(err);
+      alert("Error al eliminar la imagen");
+    }
+  };
+
   return (
     <article className="flex flex-col gap-5">
-      <div className="h-[400px] border rounded-lg p-2 flex flex-col">
+      <div className="h-[400px] border rounded-lg p-2 flex flex-col relative">
+        {/* Botón de delete (solo si hay link y no es caja "new") */}
+        {link && !isNew && (
+          <button
+            onClick={handleDelete}
+            className="absolute top-2 right-2 text-red-600 bg-red-200 p-[5px] rounded-md hover:text-red-700 z-30"
+            title="Eliminar imagen"
+          >
+            <MdDelete size={24} />
+          </button>
+        )}
+
         {/* Si no hay link Y es isNew, mostramos un "+" */}
         {!link && isNew && !fileUploaded && (
           <button
