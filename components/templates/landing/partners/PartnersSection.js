@@ -96,7 +96,7 @@ const PartnersSection = () => {
   const imgs = [...partnersImages.links, ...partnersImages.links];
 
   return (
-    <section className="w-full py-[60px] px-[15px] flex flex-col items-center lg:py-[100px]">
+    <section className="w-full py-[60px] px-[15px] flex flex-col items-center lg:py-[0px]">
       <div className="relative w-full overflow-hidden">
         {/* gradient overlays */}
         <div className="absolute left-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-r from-white to-transparent" />
