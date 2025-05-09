@@ -27,7 +27,9 @@ const ImageUploadBox = ({
     setTaskState(null);
     if (!fileUploaded) return;
 
-    const task = uploadFile(fileUploaded, `partners/${index}`);
+    const uuid = crypto.randomUUID();
+
+    const task = uploadFile(fileUploaded, `partners/${index}-${uuid}`);
 
     task.on(
       "state_changed",
@@ -44,10 +46,10 @@ const ImageUploadBox = ({
 
         if (isNew) {
           // Push: si es nuevo, añadimos al final
-          newData.links = [...newData.links, downloadURL];
+          newData.links = [...(newData.links || []), downloadURL];
         } else {
           // Replace: si no es nuevo, reemplazamos en index
-          newData.links = [...newData.links];
+          newData.links = [...(newData.links || [])];
           newData.links[index] = downloadURL;
         }
 
