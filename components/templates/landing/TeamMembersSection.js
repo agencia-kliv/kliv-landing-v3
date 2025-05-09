@@ -97,22 +97,30 @@ const TeamMembersSection = () => {
           </div>
           <div className="w-full flex flex-col items-center text-center gap-[70px] lg:flex-row lg:max-w-[850px] 2xl:max-w-full lg:gap-[100px] 2xl:gap-[100px] lg:mx-auto">
             <div className="flex 2xl:flex-1 2xl:justify-end">
-              <div className="flex flex-col gap-[20px] items-center text-center max-w-[430px] lg:items-start lg:text-left lg:max-w-[328px] 2xl:max-w-[405px]">
+              <div className="flex flex-col gap-[40px] items-center text-center max-w-[430px] lg:items-start lg:text-left lg:max-w-[328px] 2xl:max-w-[405px]">
                 <SectionSubtitle
                   className={"2xl:max-w-[405px] whitespace-pre-wrap"}
                 >
                   {t_team("subtitle")}
                 </SectionSubtitle>
+                <div className="grid lg:hidden w-full max-w-[300px] lg:max-w-[400px] grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 lg:flex-1 2xl:max-w-full 2xl:flex-1">
+                  <TeamCard image={"/teamPhotos/agustin-ibanez_small.webp"} />
+                  <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
+                  <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
+                  <TeamCard image="/teamPhotos/franco-montini_small.webp" />
+                  <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
+                  <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
+                </div>
                 <AgendarLLamadaButton />
               </div>
               <div />
             </div>
-            <div className="w-full max-w-[300px] grid grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 lg:flex-1 2xl:max-w-full 2xl:flex-1">
+            <div className="hidden lg:grid w-full max-w-[300px] lg:max-w-[400px] grid-cols-3 gap-[20px] md:gap-y-[50px] md:gap-x-[50px] lg:gap-y-[13px] lg:px-0 lg:flex-1 2xl:max-w-full 2xl:flex-1">
               <TeamCard image={"/teamPhotos/agustin-ibanez_small.webp"} />
               <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
-              <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
-              <TeamCard image="/teamPhotos/franco-montini_small.webp" />
               <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
+              <TeamCard image="/teamPhotos/franco-montini_small.webp" />
+              <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
               <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
             </div>
           </div>

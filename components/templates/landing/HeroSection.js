@@ -23,9 +23,9 @@ const HeroSection = () => {
         id="inicio"
         data-section="inicio"
       >
-        <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[30px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
+        <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[10px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
           <div className="flex flex-col items-center lg:flex-1 lg:items-center">
-            <div className="flex flex-col items-center gap-[30px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
+            <div className="flex flex-col items-center gap-[10px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
               <figure className="hidden lg:flex">
                 <LogitoSection />
               </figure>
@@ -44,8 +44,8 @@ const HeroSection = () => {
                   strong: (chunk) => <strong>{chunk}</strong>,
                 })}
               </SectionSubtitle>
-              <div className="flex flex-col gap-[30px] lg:flex-col-reverse items-center lg:items-start">
-                <div className="flex items-center gap-[20px] py-[20px]">
+              <div className="flex flex-col gap-[10px] lg:flex-col-reverse items-center lg:items-start">
+                <div className="flex items-center gap-[20px] py-[10px] lg:py-[30px]">
                   <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.9] relative">
                     <Image
                       fill={true}

@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const PartnerCard = ({ src, alt }) => (
-  <figure className="w-[120px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] h-[75px] lg:h-[150px] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium flex-shrink-0">
+  <figure className="w-[180px] md:w-[140px] lg:w-[160px] 2xl:w-[180px] h-[150px] lg:h-[150px] relative bg-background_elements rounded-small shadow-landing overflow-hidden lg:rounded-medium flex-shrink-0">
     <Image
       src={src}
       alt={alt}
-      fill
-      objectFit="contain"
+      width={180}
+      height={150}
+      objectFit="cover"
       draggable={false}
       priority
       quality={100}
@@ -96,7 +97,7 @@ const PartnersSection = () => {
   const imgs = [...partnersImages.links, ...partnersImages.links];
 
   return (
-    <section className="w-full py-[60px] px-[15px] flex flex-col items-center lg:py-[0px]">
+    <section className="max-w-[1350px] mx-auto w-full py-[0px] px-[15px] flex flex-col items-center lg:py-[0px]">
       <div className="relative w-full overflow-hidden">
         {/* gradient overlays */}
         <div className="absolute left-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-r from-white to-transparent" />

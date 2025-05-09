@@ -39,7 +39,7 @@
 
     "services":{
         "tag": "Servicios",
-        "title":"Performance marketing, mucho más que publicidad digital…",
+        "title":"Performance marketing, publicidad enfocada en las ventas",
         "subtitle":"Brindamos un servicio personalizado enfocado en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
         "perks": "Estrategia. Producción. Monitoreo. Analítica. Optimización.",
         "iaBoost": "Potenciado con herramientas IA",
@@ -53,7 +53,7 @@
 
   "team": {
         "title": "Experiencia y resultados <br></br>que nos avalan",
-        "subtitle": "11 años en el mercado escalando las ventas de más de 80 empresas en 9 países.\n\nCon nuestro equipo de 10+ marketers y creativos apasionados por el performance"
+        "subtitle": "11 años en el mercado escalando las ventas de más de 80 empresas en 9 países.\n\nCon nuestro equipo de 10+ marketers y creativos apasionados por el performance."
     },
 
     "partners": {
@@ -291,7 +291,7 @@
                     "name": "Dirección audiovisual"
                 },
                 "campaignConfiguration": {
-                    "name": "configuración de campañas"
+                    "name": "Configuración de campañas"
                 },
                 "monitoringAndOptimization": {
                     "name": "Monitoreo y optimización"
@@ -332,7 +332,7 @@
 
     "thankYou": {
         "title": "¡Felicidades!\nTu llamada fue agendada",
-        "subtitle": "Revisá tu correo, donde encontrarás la confirmación y el link Meet para la reunión y seguí los siguientes pasos:",
+        "subtitle": "Revisá tu correo, donde encontrarás la confirmación y el link Meet para la reunión, y seguí los siguientes pasos:",
         "step1": "PASO 1",
         "step1Text": "Mirá el siguiente video para prepararte para la sesión (1 minuto)",
         "step2": "PASO 2",

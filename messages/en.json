@@ -37,7 +37,7 @@
 
     "services":{
         "tag": "Service",
-        "title":"Performance marketing, much more than digital advertising...",
+        "title":"Performance marketing, sales-driven advertising",
         "subtitle":"We provide a personalized service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
         "perks": "Strategy. Production. Monitoring. Analytics. Optimization.",
         "iaBoost": "Powered by AI tools",
@@ -166,7 +166,7 @@
 
     
     "pricing":{
-        "title": "A simple and scalable pricing method",
+        "title": "Quote your advertising strategy",
         "packages": "Packages",
         "paidMedia": "Company",
         "agencies": "Agency",
@@ -339,7 +339,7 @@
         "step3": "STEP #3",
         "step3Text": "Complete the audit form (≈ 30 minutes):",
         "aboutUs": "About us",
-        "aboutUsText": "We are <strong>Agustín (strategy) and Gonzalo (operations), founders of Kliv</strong> and passionate about performance marketing. Together with a great multidisciplinary team, we’ve spent the last 11 years helping over 80 companies across several countries scale their sales. Over time, we have perfected our performance-based methodology through experience across a wide range of industries. We are passionate about what we do — and how we do it.",
+        "aboutUsText": "We are <strong>Agustín (strategy) and Gonzalo (operations), founders of Kliv</strong> and passionate about performance marketing.\n\nTogether with a great multidisciplinary team, we’ve spent the last 11 years helping over 80 companies across several countries scale their sales.\n\nOver time, we have perfected our performance-based methodology through experience across a wide range of industries. We are passionate about what we do — and how we do it.",
         "seeYouLater": "See you on the call!"
     }
 }

@@ -46,19 +46,44 @@ const ServicesSection = () => {
                 {t_services("title")}
               </SectionTitle>
             </div>
-            <div className="flex flex-col gap-[30px] text-center items-center max-w-[439px] lg:max-w-[490px] 2xl:max-w-[715px]">
-              <SectionSubtitle>{t_services("subtitle")}</SectionSubtitle>
-              <SectionSubtitle className={"font-[700]"}>
-                {t_services("perks")}
-              </SectionSubtitle>
-              <SectionSubtitle className={"italic mt-[-20px] mb-[-20px]"}>
+            <div className="w-full flex items-center gap-[100px] justify-center lg:py-[40px]">
+              <div className="lg:grid gap-[5px] hidden grid-cols-3 w-full max-w-[320px] lg:max-w-[380px] 2xl:max-w-[400px]">
+                <div className="w-full aspect-[1.14] relative">
+                  <Image
+                    src={"/images/meta_logo.png"}
+                    alt="Meta Ads"
+                    fill={true}
+                  />
+                </div>
+                <div className="w-full aspect-[1.14] relative">
+                  <Image
+                    src={"/images/google_logo.png"}
+                    alt="Google Ads"
+                    fill={true}
+                  />
+                </div>
+                <div className="w-full aspect-[1.14] relative">
+                  <Image
+                    src={"/images/ia.png"}
+                    alt="LinkedIn Ads"
+                    fill={true}
+                  />
+                </div>
+              </div>
+              <div className="lg:text-right flex flex-col gap-[30px] text-center items-center max-w-[439px] lg:max-w-[390px] 2xl:max-w-[500px]">
+                <SectionSubtitle>{t_services("subtitle")}</SectionSubtitle>
+                <SectionSubtitle className={"font-[700]"}>
+                  {t_services("perks")} {t_services("iaBoost")}
+                </SectionSubtitle>
+                {/* <SectionSubtitle className={"italic mt-[-20px] mb-[-20px]"}>
                 {t_services("iaBoost")}
-              </SectionSubtitle>
+              </SectionSubtitle> */}
+              </div>
             </div>
           </div>
 
           {/* ads logos */}
-          <div className="gap-[5px] grid grid-cols-3 w-full max-w-[320px] 2xl:max-w-[400px]">
+          <div className="lg:hidden gap-[5px] grid grid-cols-3 w-full max-w-[320px] 2xl:max-w-[400px]">
             <div className="w-full aspect-[1.14] relative">
               <Image src={"/images/meta_logo.png"} alt="Meta Ads" fill={true} />
             </div>

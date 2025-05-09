@@ -1,6 +1,7 @@
 import AgendarLLamadaButton, {
   AGENDAR_BUTTON_SIZES,
 } from "@/components/atoms/AgendarLLamadaButton";
+import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import Slider from "@/components/atoms/Slider";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -50,9 +51,9 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
 
           {pricesByCampaign[value].price * pricesByCampaign[value].amount >
             0 && (
-            <p className="leading-[24px] text-kliv-tertiary text-[20px] mb-[20px]">
+            <SectionSubtitle className="text-kliv-tertiary mb-[20px]">
               {t_pricing("perMonth")}
-            </p>
+            </SectionSubtitle>
           )}
 
           {!(
@@ -60,12 +61,12 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
             0
           ) && (
             <div className="flex flex-col gap-[20px]">
-              <p className="text-base leading-[24px]">
+              <SectionSubtitle className="">
                 {t_pricing_paidMediaTab("notSelectedTitle")}
-              </p>
-              <p className="text-base leading-[24px]">
+              </SectionSubtitle>
+              <SectionSubtitle className="font-[600]">
                 {t_pricing_paidMediaTab("notSelectedSubtitle")}
-              </p>
+              </SectionSubtitle>
             </div>
           )}
 

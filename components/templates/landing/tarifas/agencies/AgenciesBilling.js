@@ -1,3 +1,4 @@
+import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
@@ -16,9 +17,9 @@ const AgenciesBilling = ({ packagesBillingData }) => {
 
   return (
     <>
-      <p className="text-small lg:text-base text-center">
+      <SectionSubtitle className="text-center">
         {t_pricing_agenciesTab("title")}
-      </p>
+      </SectionSubtitle>
       <section className="hidden flex-col gap-[40px] items-center sm:flex w-full">
         <BillingPlans
           plans={packagesBillingData.agencies}

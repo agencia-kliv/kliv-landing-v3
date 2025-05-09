@@ -9,7 +9,6 @@ import PartnersSection from "../templates/landing/partners/PartnersSection";
 import ServicesSection from "../templates/landing/ServicesSection";
 import TarifasSection from "../templates/landing/tarifas/TarifasSection";
 import TeamMembersSection from "../templates/landing/TeamMembersSection";
-import TestimonialsSectionV2 from "../templates/landing/test";
 import TestimonialsSection from "../templates/landing/TestimonialsSection";
 
 const LandingPage = () => {
@@ -28,12 +27,7 @@ const LandingPage = () => {
       <ServicesSection />
       <TeamMembersSection />
       <PartnersSection />
-      <div className="block lg:hidden">
-        <TestimonialsSectionV2 />
-      </div>
-      <div className="hidden lg:block">
-        <TestimonialsSection />
-      </div>
+      <TestimonialsSection />
       <TarifasSection />
       {/* <WhyUsSection /> */}
       {/* <OurServicesSection /> */}

@@ -6,7 +6,7 @@ const Slider = (props) => {
       {/* <label for="large-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Large range</label> */}
       <input
         // className="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-128"
-        className="appearance-none h-[28px] w-full outline-none bg-transparent [::-webkit-slider-thumb]"
+        className="max-w-[300px] lg:max-w-full appearance-none h-[28px] w-full outline-none bg-transparent [::-webkit-slider-thumb]"
         type="range"
         min={min}
         max={max}

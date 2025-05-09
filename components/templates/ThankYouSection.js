@@ -11,11 +11,14 @@ const ThankYouSection = () => {
   return (
     <>
       <section
-        className="landing-section-container flex flex-col gap-[50px]"
+        className="landing-section-container flex flex-col gap-[50px] !pb-[0] relative"
         // data-aos="fade-up"
         id="thank-you"
         data-section="thank-you"
       >
+        <div className="absolute top-0 left-0 w-full aspect-square opacity-[4%] lg:w-[50dvw] max-w-[720px]">
+          <Image src={"/logito.svg"} alt="" fill={true} />
+        </div>
         <section className="flex flex-col place-items-center gap-[40px] text-center items-center">
           <div className="flex flex-col gap-[20px] items-center">
             <div className="hidden lg:block">
@@ -60,7 +63,7 @@ const ThankYouSection = () => {
                 </div>
               </div>
               <div className="w-full items-center flex flex-col justify-between gap-[20px] border-[2px] border-kliv-secondary rounded-[10px] p-[20px]">
-                <div className="max-w-max flex items-center gap-[15px]">
+                <div className="max-w-max flex items-start gap-[15px]">
                   <LogitoSection className="shrink-0" />
                   <SectionSubtitle className={"text-left !text-[16px]"}>
                     <strong>{t("step3")}</strong>: {t("step3Text")}
@@ -88,7 +91,7 @@ const ThankYouSection = () => {
         data-section="thank-you"
       >
         <section className="flex flex-col place-items-center py-[20px] gap-[20px] text-center items-center lg:flex-row-reverse lg:items-end lg:gap-[100px] max-w-[1270px] mx-auto">
-          <div className="flex flex-col items-center gap-[20px] lg:flex-[3] lg:items-start lg:text-left">
+          <div className="flex flex-col items-center gap-[20px] lg:flex-[3] lg:items-start lg:text-left lg:mb-[30px]">
             <LogitoSection />
             <SectionTitle>{t("aboutUs")}</SectionTitle>
             <SectionSubtitle className={"whitespace-pre-wrap"}>

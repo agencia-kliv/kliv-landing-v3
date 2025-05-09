@@ -4,6 +4,7 @@ import SectionTitle from "@/components/atoms/SectionTitle";
 import TestimonialCard from "@/components/atoms/TestimonialCard";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { TESTIMONIAL_ITEMS } from "./TestimonialsSection";
 
 // Hook simple para detectar breakpoints
 function useMediaQuery(query) {
@@ -27,56 +28,8 @@ const TestimonialsSectionV2 = () => {
   const isLg = useMediaQuery("(min-width:1024px)");
   const itemsPerPage = isLg ? 3 : 1;
 
-  const items = [
-    {
-      id: "card1",
-      logo: "/logos/camelinna.png",
-      company: "Camelinna",
-      name: "Lourdes H.",
-      position: "CEO",
-      video: "/testimonials/camelinna.mp4",
-    },
-    {
-      id: "card2",
-      logo: "/logos/Logo Saniito (Color).png",
-      company: "Saniito",
-      name: "Alejandro A.",
-      position: "CEO",
-      text: t("saniito"),
-    },
-    {
-      id: "card3",
-      logo: "/logos/memeca.png",
-      company: "Memeca",
-      name: "Natalia S.",
-      position: "CEO",
-      video: "/testimonials/memeca.mp4",
-    },
-    {
-      id: "card4",
-      logo: "/logos/Logo Sol Millán (Color).png",
-      name: "Sol Millán.",
-      company: "Dra. Sol M.",
-      text: t("solMillan"),
-    },
-    {
-      id: "card5",
-      logo: "/logos/Logo Rolicred (Color).png",
-      company: "Rolicred",
-      name: "Valeria L.",
-      text: t("rolicred"),
-    },
-    {
-      id: "card6",
-      logo: "/logos/amalfi.png",
-      company: "Lima + Amalfi",
-      name: "Ignacio D.",
-      video: "/testimonials/lima-amalfi.mp4",
-    },
-  ];
-
   // Número de páginas (dots)
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const pageCount = Math.ceil(TESTIMONIAL_ITEMS.length / itemsPerPage);
 
   // Estado de la página activa
   const [activePage, setActivePage] = useState(0);
@@ -119,7 +72,7 @@ const TestimonialsSectionV2 = () => {
             cursor-grab select-none
           "
         >
-          {items.map((item, idx) => (
+          {TESTIMONIAL_ITEMS.map((item, idx) => (
             <TestimonialCard
               key={item.id}
               innerRef={(el) => (cardRefs.current[idx] = el)}

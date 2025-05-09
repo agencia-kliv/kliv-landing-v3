@@ -1,19 +1,20 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-const CarouselCustom = (props) => {
+const CarouselCustom = ({ centerSlidePercentage = 100, ...props }) => {
   return (
     <Carousel
-      autoPlay={true}
+      // autoPlay={true}
       infiniteLoop={true}
-      interval={10000}
+      // interval={10000}
       showArrows={false}
+      centerMode={true}
+      centerSlidePercentage={centerSlidePercentage}
       // showIndicators={false}
       showStatus={false}
       showThumbs={false}
       preventMovementUntilSwipeScrollTolerance={true}
       // swipeScrollTolerance={50}
-      centerMode={false}
       emulateTouch={true}
       renderIndicator={(clickHandler, isSelected, index, label) => {
         //return dots in gray non-selected and in kliv-primary selected
