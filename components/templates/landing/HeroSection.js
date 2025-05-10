@@ -23,7 +23,7 @@ const HeroSection = () => {
         id="inicio"
         data-section="inicio"
       >
-        <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[10px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
+        <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[50px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
           <div className="flex flex-col items-center lg:flex-1 lg:items-center">
             <div className="flex flex-col items-center gap-[10px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
               <figure className="hidden lg:flex">
@@ -65,10 +65,10 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="w-[90dvw] flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1 ">
+          <div className="w-[90dvw] flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1 max-w-[90dvw] aspect-square lg:max-w-[483px] overflow-hidden 2xl:max-w-[672px]">
             <video
-              src="/hero-video.webm"
-              className="max-w-[90dvw] lg:max-w-[483px] 2xl:max-w-[672px]"
+              src="/hero_alt.mp4"
+              className="w-full h-full object-contain"
               autoPlay
               loop
               muted
