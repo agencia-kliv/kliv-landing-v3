@@ -97,11 +97,11 @@ const PartnersSection = () => {
   const imgs = [...partnersImages.links, ...partnersImages.links];
 
   return (
-    <section className="max-w-[1350px] mx-auto w-full py-[0px] px-[15px] flex flex-col items-center lg:py-[0px]">
+    <section className="max-w-[1370px] mx-auto w-full py-[0px] px-[15px] flex flex-col items-center lg:py-[0px]">
       <div className="relative w-full overflow-hidden">
         {/* gradient overlays */}
-        <div className="absolute left-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-r from-white to-transparent" />
-        <div className="absolute right-0 top-0 h-full w-[20dvw] z-10 bg-gradient-to-l from-white to-transparent" />
+        <div className="absolute left-0 top-0 h-full w-[10dvw] z-10 bg-gradient-to-r from-white to-transparent select-none" />
+        <div className="absolute right-0 top-0 h-full w-[10dvw] z-10 bg-gradient-to-l from-white to-transparent select-none" />
 
         {/* scroll container */}
         <div
