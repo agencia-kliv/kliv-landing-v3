@@ -74,7 +74,17 @@ const ImageUploadBox = ({
 
     try {
       // 1) Borrar del Storage
-      await deleteFile(`partners/${index}`);
+
+      // acomodar los escapes de caracteres del "-" la url
+      const fileRef = `${link
+        .split("/")
+        .pop()
+        .split("?")[0]
+        .replace(/%2F/g, "/")}`;
+
+      console.log(fileRef);
+
+      await deleteFile(fileRef);
 
       // 2) Borrar del array de links
       const newLinks = partnersImages.links.filter((_, idx) => idx !== index);
