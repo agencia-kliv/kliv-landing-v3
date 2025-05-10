@@ -3,16 +3,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 
-const TestimonialCard = ({
-  id,
-  logo,
-  name,
-  company,
-  position,
-  video,
-  text,
-  innerRef,
-}) => {
+const TestimonialCard = ({ id, logo, name, video, text, innerRef }) => {
   const t = useTranslations("testimonials");
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -75,7 +66,7 @@ const TestimonialCard = ({
               {/* El vídeo repite tus clases tal cual */}
               <video
                 ref={videoRef}
-                src={video}
+                src={`${video}#t=0.001`}
                 playsInline
                 preload="metadata"
                 controls={false} // quitamos controles nativos

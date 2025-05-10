@@ -17,7 +17,7 @@ const poppins = Poppins({
 
 // const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata() {
   return {
     title: "AGENCIA KLIV - Performance Marketing",
     description:

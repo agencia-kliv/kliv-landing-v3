@@ -193,7 +193,6 @@ export const PricingRowTitle = ({ title, price, id, sincePrice }) => {
 };
 
 export const FeaturesHeaderGrid = ({
-  gridCols,
   isStrong,
   children,
   description,

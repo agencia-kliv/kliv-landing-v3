@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Carousel } from "react-responsive-carousel";
 import RowItem from "./RowItem";
 
-const AdditionalServiceCard = ({ service, index, packagesBillingData, t }) => {
+const AdditionalServiceCard = ({ service, index, packagesBillingData }) => {
   const router = useRouter();
 
   const t_pricing_additionalServices_features = useTranslations(

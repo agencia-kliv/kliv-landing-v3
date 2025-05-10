@@ -14,7 +14,7 @@ const Page = () => {
     onProfilePageViewed: () => console.log("onProfilePageViewed"),
     onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
     onEventTypeViewed: () => console.log("onEventTypeViewed"),
-    onEventScheduled: (e) => {
+    onEventScheduled: () => {
       router.replace(`/${locale}/thank-you`);
     },
     onPageHeightResize: (e) => console.log(e.data.payload.height),

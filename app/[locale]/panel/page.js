@@ -2,7 +2,7 @@
 
 import PanelPage from "@/components/pages/panel/PanelPage";
 
-const page = ({ params }) => {
+const page = () => {
   return <PanelPage />;
 };
 

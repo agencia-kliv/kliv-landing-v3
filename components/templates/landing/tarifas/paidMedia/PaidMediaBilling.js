@@ -4,13 +4,10 @@ import AgendarLLamadaButton, {
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import Slider from "@/components/atoms/Slider";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const PaidMediaBilling = ({ pricesByCampaign }) => {
   const [value, setValue] = useState(0);
-
-  const router = useRouter();
 
   const t_pricing_paidMediaTab = useTranslations("pricing.paidMediaTab");
   const t_pricing = useTranslations("pricing");

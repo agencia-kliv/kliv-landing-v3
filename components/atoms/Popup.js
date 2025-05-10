@@ -1,6 +1,6 @@
 import { MdArrowBack } from "react-icons/md";
 
-const Popup = ({ isOpen, closePopup, maxWidth = "600px", ...props }) => {
+const Popup = ({ isOpen, closePopup, ...props }) => {
   const handleClickOutside = (e) => {
     if (e.target.id === "popup") {
       closePopup();

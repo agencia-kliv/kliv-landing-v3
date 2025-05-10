@@ -1,11 +1,6 @@
 const PillFilter = ({ isActive, onClick, children }) => {
   const border = !isActive ? "border-transparent" : "border-kliv-tertiary";
   const color = isActive ? "text-kliv-tertiary" : "text-kliv-text-3";
-  const bg = isActive ? "bg-kliv-tertiary" : "bg-white";
-
-  const hoverColor = isActive
-    ? `hover:bg-kliv-primary-hover-light`
-    : "hover:bg-kliv-primary-hover-light";
 
   return (
     <button

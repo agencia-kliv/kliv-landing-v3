@@ -1,10 +1,6 @@
 "use client";
 
 import LabelButton from "@/components/atoms/LabelButton";
-import {
-  getBackupPackagesBillingData,
-  updatePackagesBillingData,
-} from "@/firebase/Client";
 import { useState } from "react";
 import PanelLoginForm from "./PanelLoginForm";
 import PartnersImages from "./partnersImages/PartnersImages";
@@ -33,12 +29,6 @@ const PanelPage = () => {
       />
     );
   }
-
-  const handleBackup = async () => {
-    const data = await getBackupPackagesBillingData();
-
-    updatePackagesBillingData(data);
-  };
 
   return (
     <main className="w-full flex flex-col gap-[40px]">

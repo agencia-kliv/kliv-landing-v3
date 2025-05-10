@@ -11,7 +11,6 @@ const BillingPlans = ({
   setShowMore,
   showOnlyStrongItems,
   forceShow,
-  tTab,
   tFeatures,
 }) => {
   const t_pricing = useTranslations("pricing");

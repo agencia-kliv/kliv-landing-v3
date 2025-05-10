@@ -3,9 +3,9 @@
 import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { MdClose, MdMenu } from "react-icons/md";
 import AgendarLLamadaButton from "../atoms/AgendarLLamadaButton";
 import LocaleSwitcher from "../atoms/LocaleSwitcher";
@@ -13,8 +13,6 @@ import TabItem from "../atoms/TabItem";
 import { SocialNetworkButton } from "./Footer";
 
 const Header = () => {
-  const router = useRouter();
-
   const t_header = useTranslations("header");
 
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -47,6 +45,18 @@ const Header = () => {
       });
     };
   }, []);
+
+  //every time the window.location changes, close the menu (don't use router from next)
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const params = useParams();
+
+  useEffect(() => {
+    if (isOpenMenu) {
+      setIsOpenMenu(false);
+    }
+  }, [searchParams, pathname, params]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -141,9 +151,6 @@ const Header = () => {
           <AgendarLLamadaButton />
 
           <div className="flex gap-[5px]">
-            {/* <SocialNetworkButton href={"https://www.facebook.com/AgenciaKLIV"}>
-            <FaLinkedinIn />
-          </SocialNetworkButton> */}
             <SocialNetworkButton
               href="https://www.instagram.com/agenciakliv/"
               color="text-kliv-primary"
@@ -151,10 +158,9 @@ const Header = () => {
               <FaInstagram />
             </SocialNetworkButton>
             <SocialNetworkButton
-              href="https://www.facebook.com/AgenciaKLIV"
-              color="text-kliv-primary"
+              href={"https://www.linkedin.com/company/agencia-kliv/"}
             >
-              <FaFacebookF />
+              <FaLinkedinIn />
             </SocialNetworkButton>
             <SocialNetworkButton
               href="https://api.whatsapp.com/send/?phone=5493515504011&text&type=phone_number&app_absent=0"

@@ -5,7 +5,7 @@ import SectionTitle from "@/components/atoms/SectionTitle";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const CardItem = ({ title, description, image, bg, zIndex, index }) => {
+const CardItem = ({ title, description, image, bg, zIndex }) => {
   return (
     <article
       className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[40px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-90px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}

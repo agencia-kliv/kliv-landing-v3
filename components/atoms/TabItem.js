@@ -1,7 +1,7 @@
 "use client";
 import Link from "next-intl/link";
 import { useEffect, useState } from "react";
-const TabItem = ({ href, isActive, ...props }) => {
+const TabItem = ({ href, ...props }) => {
   const [color, setColor] = useState();
 
   useEffect(() => {

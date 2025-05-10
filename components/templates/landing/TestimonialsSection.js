@@ -3,23 +3,8 @@ import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionTitle from "@/components/atoms/SectionTitle";
 import TestimonialCard from "@/components/atoms/TestimonialCard";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-// Hook para detectar desktop (lg+)
-function useMediaQuery(query) {
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia(query);
-    setMatches(mql.matches);
-    const handler = (e) => setMatches(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, [query]);
-  return matches;
-}
 
 export const TESTIMONIAL_ITEMS = [
   {
@@ -92,10 +77,6 @@ const responsive = {
 const TestimonialsSection = () => {
   const t = useTranslations("testimonials");
 
-  // Detectamos desktop vs mobile
-  const isDesktop = useMediaQuery("(min-width:1024px)");
-  const itemsPerPage = isDesktop ? 3 : 1;
-
   return (
     <section className="landing-section-container">
       <div className="flex flex-col gap-[60px]">
@@ -111,7 +92,7 @@ const TestimonialsSection = () => {
           showDots={true}
           arrows={false}
         >
-          {TESTIMONIAL_ITEMS.map((item, idx) => (
+          {TESTIMONIAL_ITEMS.map((item) => (
             <TestimonialCard key={item.id} {...item} />
           ))}
         </Carousel>
