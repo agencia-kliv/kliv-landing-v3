@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import LogitoSection from "../atoms/LogitoSection";
 import SectionSubtitle from "../atoms/SectionSubtitle";
@@ -7,6 +7,10 @@ import FAQSection from "./landing/FAQSection";
 
 const ThankYouSection = () => {
   const t = useTranslations("thankYou");
+
+  const locale = useLocale();
+
+  console.log(locale);
 
   return (
     <>
@@ -32,10 +36,10 @@ const ThankYouSection = () => {
           {/* <span className="text-[22px] text-white bg-kliv-tertiary rounded-full p-[10px]">
             <MdArrowDownward />
           </span> */}
-          <section className="w-full max-w-[900px] flex flex-col gap-[40px]">
+          <section className="w-full max-w-[900px] flex flex-col gap-[20px] lg:gap-[40px]">
             <div className="w-full items-center flex flex-col gap-[20px] border-[2px] border-kliv-secondary rounded-[10px] p-[20px]">
               <div className="max-w-max flex items-center gap-[15px]">
-                <LogitoSection />
+                <LogitoSection className="shrink-0" />
                 <SectionSubtitle className={"text-left !text-[16px]"}>
                   <strong>{t("step1")}</strong>: {t("step1Text")}
                 </SectionSubtitle>
@@ -56,10 +60,26 @@ const ThankYouSection = () => {
                 <div
                   className="cajita-thank-you  w-full relative aspect-square cursor-pointer grid place-items-center rounded-[10px] overflow-hidden"
                   onClick={() => {
-                    window.open("https://bit.ly/ClavesPerformance", "_blank");
+                    if (locale === "es") {
+                      window.open("https://bit.ly/ClavesPerformance", "_blank");
+                    } else {
+                      window.open(
+                        "https://drive.google.com/file/d/1sQZ6FgQRx3u3m5cdPUTIW1ptWTWw-3yG/view",
+                        "_blank"
+                      );
+                    }
                   }}
                 >
-                  <Image src={"/images/pdf-ty-page.png"} alt="pdf" fill />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/images/pdf-ty-page.png"
+                        : "/images/pdf-ty-page-eng.png"
+                    }
+                    alt="pdf"
+                    fill
+                    objectFit="cover"
+                  />
                 </div>
               </div>
               <div className="w-full items-center flex flex-col justify-between gap-[20px] border-[2px] border-kliv-secondary rounded-[10px] p-[20px]">
@@ -72,10 +92,26 @@ const ThankYouSection = () => {
                 <div
                   className="cajita-thank-you w-full relative aspect-square cursor-pointer grid place-items-center rounded-[10px] overflow-hidden"
                   onClick={() => {
-                    window.open("https://bit.ly/AuditoriaKLIV", "_blank");
+                    if (locale === "es") {
+                      window.open("https://bit.ly/AuditoriaKLIV", "_blank");
+                    } else {
+                      window.open(
+                        "https://docs.google.com/forms/d/e/1FAIpQLSfOA8OwLgHY4-qy2N_Qzpi6eQj6-Qz4yBj7fiijsyqbpKbTOw/viewform",
+                        "_blank"
+                      );
+                    }
                   }}
                 >
-                  <Image src={"/images/form-ty-page.png"} alt="pdf" fill />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/images/form-ty-page.png"
+                        : "/images/form-ty-page-eng.png"
+                    }
+                    alt="pdf"
+                    fill
+                    objectFit="cover"
+                  />
                   {/* <FaWpforms size={172} /> */}
                 </div>
               </div>

@@ -35,7 +35,11 @@ const Page = () => {
         </p>
         <div className="w-full h-[1100px] lg:h-[1800px]">
           <InlineWidget
-            url="https://calendly.com/auditoria-kliv/30min"
+            url={
+              locale === "es"
+                ? "https://calendly.com/auditoria-kliv/30min"
+                : "https://calendly.com/agenciakliv/audit"
+            }
             styles={{
               width: "100%",
               height: "inherit", // ajusta este valor hasta que desaparezca el scroll

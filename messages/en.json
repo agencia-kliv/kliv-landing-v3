@@ -40,7 +40,7 @@
         "title":"Performance marketing, sales-driven advertising",
         "subtitle":"We provide a personalized service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
         "perks": "Strategy. Production. Monitoring. Analytics. Optimization.",
-        "iaBoost": "Powered by AI tools",
+        "iaBoost": "Powered by AI",
         "moreROI": "More ROI",
         "moreROIText":"We maximize the performance of your advertising budget through experimentation, learning, and continuous improvement focused on increasing sales.",
         "moreScalability": "More Scalability",
@@ -51,7 +51,7 @@
     
     "team": {
         "title": "Experience and results <br></br>that back us",
-        "subtitle": "11 years in the market scaling the sales of over 80 companies across 10 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
+        "subtitle": "11 years in the market scaling the sales of over 80 companies across 9 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
     },
  
     "partners": {
@@ -331,7 +331,7 @@
 
     "thankYou": {
         "title": "Congratulations!\nYour call has been scheduled.",
-        "subtitle": "Check your email for the confirmation and Meet link for the meeting and follow the next steps:",
+        "subtitle": "Check your email for the confirmation and Meet link for the meeting, and follow the next steps:",
         "step1": "STEP #1",
         "step1Text": "Watch this video to prepare for the session (1 minute):",
         "step2": "STEP #2",

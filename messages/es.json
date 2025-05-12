@@ -39,10 +39,10 @@
 
     "services":{
         "tag": "Servicios",
-        "title":"Performance marketing, publicidad enfocada en las ventas",
-        "subtitle":"Brindamos un servicio personalizado enfocado en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
+        "title":"Performance marketing, publicidad enfocada en ventas",
+        "subtitle":"Brindamos un servicio personalizado con foco en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
         "perks": "Estrategia. Producción. Monitoreo. Analítica. Optimización.",
-        "iaBoost": "Potenciado con herramientas IA",
+        "iaBoost": "Potenciado con IA",
         "moreROI": "Más ROI",
         "moreROIText":"Maximizamos el rendimiento de tu presupuesto publicitario mediante experimentación, aprendizaje y mejora continua en función de las ventas.",
         "moreScalability": "Más Escalable",

@@ -18,7 +18,7 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
     <>
       {/* <p className="text-base">{t_pricing_paidMediaTab("title")}</p> */}
       <section className="max-w-[580px] p-[0px] md:p-[40px] flex flex-col gap-[40px] items-center text-center rounded-[10px] w-full">
-        <h4 className="text-[28px] font-[700] leading-[36px]">
+        <h4 className="text-[28px] font-[400] leading-[36px]">
           {t_pricing_paidMediaTab.rich("campaignByMonth", {
             campaigns: pricesByCampaign[value].amount,
           })}
@@ -69,13 +69,13 @@ const PaidMediaBilling = ({ pricesByCampaign }) => {
 
           {pricesByCampaign[value].price * pricesByCampaign[value].amount >
             0 && (
-            <p className="text-base leading-[24px]">
+            <SectionSubtitle className="">
               {t_pricing_paidMediaTab.rich("selectedCampaigns", {
                 off: pricesByCampaign[value].off || 0,
                 price: pricesByCampaign[value].price,
                 strong: (str) => <strong>{str}</strong>,
               })}
-            </p>
+            </SectionSubtitle>
           )}
         </div>
 

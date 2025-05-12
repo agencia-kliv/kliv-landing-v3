@@ -8,17 +8,17 @@ import Image from "next/image";
 const CardItem = ({ title, description, image, bg, zIndex }) => {
   return (
     <article
-      className={`2xl:min-w-[483px] 2xl:[&:not(:last-child)]:pr-[90px] lg:min-w-[340px] lg:[&:not(:last-child)]:pr-[50px] flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[40px] [&:not(:last-child)]:pb-[90px] lg:[&:not(:last-child)]:pb-[60px] 2xl:[&:not(:last-child)]:pb-[110px] pb-[50px] mb-[-90px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top`}
+      className={`flex flex-col relative items-center gap-[10px] md:gap-[30px] p-[50px] pt-[50px] px-[40px] pb-[90px] lg:[&:not(:last-child)]:pb-[60px] mb-[-90px] lg:mb-0 lg:p-[30px] 2xl:p-[40px] 2xl:pb-[100px] lg:pt-[50px] 2xl:pt-[70px] rounded-[28px] lg:rounded-[18px] 2xl:rounded-[28px] ${zIndex} ${bg} bg-no-repeat bg-cover bg-right-top hover:scale-105 transition-transform duration-200`}
     >
       <div className="pt-[20px] h-[80px] w-[80px] 2xl:w-[100px] 2xl:h-[100px] relative ">
         <Image src={image} alt={title} fill />
       </div>
 
       <div className="flex flex-col items-center gap-[20px] md:gap-[13px]">
-        <h3 className="text-[18px] lg:text-[18px] 2xl:text-[20px] font-[700] text-white">
+        <h3 className="text-[18px] lg:text-[18px] 2xl:text-[24px] font-[700] text-white">
           {title}
         </h3>
-        <p className="text-[16px] sm:text-[16px] lg:text-[16px] 2xl:text-[18px] font-[400] text-white max-w-[350px]">
+        <p className="text-[16px] sm:text-[16px] lg:text-[14px] 2xl:text-[16px] font-[400] text-white max-w-[350px]">
           {description}
         </p>
       </div>
@@ -101,7 +101,7 @@ const ServicesSection = () => {
         </div>
 
         {/* cards */}
-        <div className="w-full flex flex-col lg:grid lg:grid-cols-3 items-stretch relative max-w-[466px] lg:max-w-[936px] 2xl:max-w-max gap-[20px]">
+        <div className="w-full flex flex-col lg:grid lg:grid-cols-3 items-stretch relative max-w-[466px] lg:max-w-[936px] 2xl:max-w-max gap-[20px] lg:gap-[10px] 2xl:gap-[20px]">
           <CardItem
             image={"/illustrations/more-roi.svg"}
             title={t_services("moreROI")}

@@ -158,7 +158,7 @@ strong {
 .landing-section-container {
   /* max-w-[1130px] px-[15px] m-auto */
   max-width: 1350px;
-  padding: 75px 20px;
+  padding: 75px 15px;
   margin: auto;
   width: 100%;
 }
@@ -169,7 +169,7 @@ strong {
 
 @media screen and (max-width: 1535px) {
   .landing-section-container {
-    padding: 40px 20px;
+    padding: 40px 55px;
   }
 
   .landing-section-container:first-child {

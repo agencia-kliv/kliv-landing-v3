@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 
-const TestimonialCard = ({ id, logo, name, video, text, innerRef }) => {
+const TestimonialCard = ({ id, logo, name, video, text, innerRef, number }) => {
   const t = useTranslations("testimonials");
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,6 +19,14 @@ const TestimonialCard = ({ id, logo, name, video, text, innerRef }) => {
       setIsPlaying(false);
     }
   };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [number]);
+
   return (
     <div
       id={id}

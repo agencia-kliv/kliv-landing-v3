@@ -3,6 +3,7 @@ import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionTitle from "@/components/atoms/SectionTitle";
 import TestimonialCard from "@/components/atoms/TestimonialCard";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -77,6 +78,8 @@ const responsive = {
 const TestimonialsSection = () => {
   const t = useTranslations("testimonials");
 
+  const [number, setNumber] = useState(0);
+
   return (
     <section className="landing-section-container">
       <div className="flex flex-col gap-[60px]">
@@ -91,9 +94,12 @@ const TestimonialsSection = () => {
           infinite={true}
           showDots={true}
           arrows={false}
+          beforeChange={() => {
+            setNumber((prev) => prev + 1);
+          }}
         >
           {TESTIMONIAL_ITEMS.map((item) => (
-            <TestimonialCard key={item.id} {...item} />
+            <TestimonialCard number={number} key={item.id} {...item} />
           ))}
         </Carousel>
       </div>

@@ -19,23 +19,23 @@ const poppins = Poppins({
 
 export async function generateMetadata() {
   return {
-    title: "AGENCIA KLIV - Performance Marketing",
+    title: "Agencia KLIV",
     description:
-      "Aumenta tus ventas con estrategias 100% orientadas a resultados. Publicidad digital, email marketing, gestión de redes, diseño web y diseño multimedia.",
+      "Ayudamos a empresas a aumentar sus ventas con performance marketing.",
     openGraph: {
-      title: "AGENCIA KLIV",
+      title: "Agencia KLIV",
       description:
-        "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
+        "Ayudamos a empresas a aumentar sus ventas con performance marketing.",
       type: "website",
       locale: "es_ES",
       url: "https://www.agenciakliv.com/",
-      site_name: "AGENCIA KLIV",
+      site_name: "Agencia KLIV",
       images: [
         {
           url: "https://www.agenciakliv.com/kliv-isotipo-green.png",
           width: 1241,
           height: 1241,
-          alt: "AGENCIA KLIV - Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
+          alt: "AGENCIA KLIV - Ayudamos a empresas a aumentar sus ventas con performance marketing.",
         },
       ],
     },
