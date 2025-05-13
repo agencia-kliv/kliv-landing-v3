@@ -42,7 +42,7 @@ const ServicesSection = () => {
           <div className="w-full flex flex-col gap-[32px] items-center">
             <div className="w-full flex flex-col gap-[22px] items-center">
               <LogitoSection />
-              <SectionTitle className={"max-w-[523px] 2xl:max-w-[605px]"}>
+              <SectionTitle className={"max-w-[523px] 2xl:max-w-[545px]"}>
                 {t_services("title")}
               </SectionTitle>
             </div>
@@ -73,7 +73,7 @@ const ServicesSection = () => {
               <div className="lg:text-right flex flex-col gap-[30px] text-center items-center max-w-[439px] lg:max-w-[390px] 2xl:max-w-[500px]">
                 <SectionSubtitle>{t_services("subtitle")}</SectionSubtitle>
                 <SectionSubtitle className={"font-[700]"}>
-                  {t_services("perks")} {t_services("iaBoost")}
+                  {t_services("perks")} {t_services("iaBoost")}.
                 </SectionSubtitle>
                 {/* <SectionSubtitle className={"italic mt-[-20px] mb-[-20px]"}>
                 {t_services("iaBoost")}
