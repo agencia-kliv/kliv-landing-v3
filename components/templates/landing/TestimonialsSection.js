@@ -78,7 +78,7 @@ const responsive = {
 const TestimonialsSection = () => {
   const t = useTranslations("testimonials");
 
-  const [number, setNumber] = useState(0);
+  const [reproducingVideoID, setReproducingVideoID] = useState(null);
 
   return (
     <section className="landing-section-container">
@@ -95,11 +95,21 @@ const TestimonialsSection = () => {
           showDots={true}
           arrows={false}
           beforeChange={() => {
-            setNumber((prev) => prev + 1);
+            setReproducingVideoID(null);
           }}
         >
           {TESTIMONIAL_ITEMS.map((item) => (
-            <TestimonialCard number={number} key={item.id} {...item} />
+            <TestimonialCard
+              key={item.id}
+              reproducingVideoID={reproducingVideoID}
+              onVideoPause={() => {
+                setReproducingVideoID(null);
+              }}
+              onVideoPlay={() => {
+                setReproducingVideoID(item.id);
+              }}
+              {...item}
+            />
           ))}
         </Carousel>
       </div>

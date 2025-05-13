@@ -1,15 +1,33 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 
-const TestimonialCard = ({ id, logo, name, video, text, innerRef, number }) => {
+const TestimonialCard = ({
+  id,
+  logo,
+  name,
+  video,
+  text,
+  innerRef,
+  reproducingVideoID,
+  onVideoPlay = () => {},
+  onVideoPause = () => {},
+}) => {
   const t = useTranslations("testimonials");
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hovered, setHovered] = useState(false);
-
+  const [isVisible, setIsVisible] = useState(false);
   const togglePlay = () => {
+    if (isPlaying) {
+      onVideoPause();
+    } else {
+      onVideoPlay();
+    }
+
+    return;
+
     if (!videoRef.current) return;
     if (videoRef.current.paused) {
       videoRef.current.play();
@@ -21,11 +39,37 @@ const TestimonialCard = ({ id, logo, name, video, text, innerRef, number }) => {
   };
 
   useEffect(() => {
-    if (videoRef.current) {
+    if (!videoRef.current) return;
+
+    if (reproducingVideoID === id && isVisible) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
       videoRef.current.pause();
       setIsPlaying(false);
     }
-  }, [number]);
+  }, [reproducingVideoID, videoRef, id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      {
+        threshold: 0.1, // Ajusta este valor según lo que consideres "en pantalla"
+      }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
+  const locale = useLocale();
 
   return (
     <div
@@ -74,7 +118,11 @@ const TestimonialCard = ({ id, logo, name, video, text, innerRef, number }) => {
               {/* El vídeo repite tus clases tal cual */}
               <video
                 ref={videoRef}
-                src={`${video}#t=0.001`}
+                src={`${
+                  locale === "es"
+                    ? video
+                    : `${video.split(".mp4")[0] + "-eng.mp4"}`
+                }#t=0.001`}
                 playsInline
                 preload="metadata"
                 controls={false} // quitamos controles nativos
