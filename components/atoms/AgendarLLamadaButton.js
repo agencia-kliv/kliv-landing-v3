@@ -16,6 +16,7 @@ const AgendarLLamadaButton = ({
 
   return (
     <Link
+      scroll={true}
       href={definitive ? { pathname: `/book-a-call` } : { pathname: `/quiz` }}
       className={`text-white font-[500] min-w-[200px] tracking-[.04em]  grid place-items-center bg-kliv-tertiary rounded-full hover:bg-kliv-tertiary-hover transition-colors duration-150 ${size}`}
     >
