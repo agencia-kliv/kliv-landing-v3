@@ -15,7 +15,7 @@ export default function TallyEmbed() {
   }, []);
 
   return (
-    <div className="animate-fade-in-large w-full">
+    <div className="animate-fade-in-large w-full relative">
       {locale === "es" && (
         <iframe
           data-tally-src="https://tally.so/embed/31Y4ZQ?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
@@ -51,6 +51,8 @@ export default function TallyEmbed() {
           }
         }}
       />
+
+      <div className="absolute w-[60px] md:w-[200px] h-[60px] bg-white bottom-0 right-0"></div>
     </div>
   );
 }

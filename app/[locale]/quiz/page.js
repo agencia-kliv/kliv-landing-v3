@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const Page = () => {
   const t = useTranslations("quiz");
 
+  const [formCompleted, setFormCompleted] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
   // Dentro de un componente client o en un useEffect:
@@ -16,6 +17,8 @@ const Page = () => {
     const handler = (e) => {
       // Tally.FormSubmitted es la señal de envío
       if (e?.data?.includes("Tally.FormSubmitted")) {
+        setFormCompleted(true);
+
         const payload = JSON.parse(e.data).payload;
         console.log("Formulario enviado:", payload);
         // aquí tu lógica: cerrar modal, mostrar gracias, etc.
@@ -45,15 +48,14 @@ const Page = () => {
             {t("title")}
           </SectionTitle>
 
-          <div className="text-left flex flex-col gap-[10px] items-center w-full">
-            <SectionSubtitle>
-              <strong>{t("question")}</strong>
-            </SectionSubtitle>
-            <SectionSubtitle>{t("text")}</SectionSubtitle>
-            {/* <SectionSubtitle className={"italic mt-[-20px] mb-[-20px]"}>
-                {t_services("iaBoost")}
-              </SectionSubtitle> */}
-          </div>
+          {!formCompleted && (
+            <div className="text-left flex flex-col gap-[10px] items-center w-full">
+              <SectionSubtitle>
+                <strong>{t("question")}</strong>
+              </SectionSubtitle>
+              <SectionSubtitle>{t("text")}</SectionSubtitle>
+            </div>
+          )}
         </div>
         <TallyEmbed />
         {showButton && (

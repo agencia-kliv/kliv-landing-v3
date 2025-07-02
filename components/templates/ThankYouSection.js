@@ -69,10 +69,13 @@ const ThankYouSection = () => {
                   className="cajita-thank-you  w-full relative aspect-square cursor-pointer grid place-items-center rounded-[10px] overflow-hidden"
                   onClick={() => {
                     if (locale === "es") {
-                      window.open("https://bit.ly/ClavesPerformance", "_blank");
+                      window.open(
+                        "https://drive.google.com/file/d/1YeghuT5A8iS6qUAOAZjI18P81b9AZYYd/view?usp=drive_link",
+                        "_blank"
+                      );
                     } else {
                       window.open(
-                        "https://drive.google.com/file/d/1sQZ6FgQRx3u3m5cdPUTIW1ptWTWw-3yG/view",
+                        "https://drive.google.com/file/d/114kuK6bZbv5PrlyLDlVfQ6NcgcXy-81k/view?usp=drive_link ",
                         "_blank"
                       );
                     }
