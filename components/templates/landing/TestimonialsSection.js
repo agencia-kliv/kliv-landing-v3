@@ -34,7 +34,7 @@ export const TESTIMONIAL_ITEMS = [
   },
   {
     id: "card4",
-    logo: "/logos/Logo Sol Millán (Color).png",
+    logo: "/logos/Logo Sol Millan (Color).png",
     company: "Dra. Sol M.",
     name: "Sol Millán.",
     text: "solMillan",
