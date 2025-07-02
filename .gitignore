@@ -40,3 +40,5 @@ next-env.d.ts
 
 # Contentlayer
 .contentlayer
+
+out.zip

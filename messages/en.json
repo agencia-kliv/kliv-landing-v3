@@ -118,6 +118,12 @@
         "termsAndConditions": "Terms and Conditions"
     },
 
+    "quiz":{
+        "title": "Advertising Potential Assessment",
+        "question": "Do you want to know if your business has what it takes to scale sales with performance marketing?",
+        "text": "Not all brands are ready to apply this methodology in a profitable and sustainable way. That’s why, before scheduling a call, we invite you to complete this short questionnaire to evaluate whether your business has the key attributes to make the most of this strategy."
+    },
+
     "planItems": {
         "8 publicaciones por mes": "8 publications per month",
         "Instagram, Facebook, Whatsapp": "Instagram, Facebook, Whatsapp",
@@ -125,8 +131,8 @@
         "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn",
         "4 campañas por mes": "4 campaigns per month",
         "A partir de 10 campañas por mes": "Starting from 10 campaigns per month",
-        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (100 USD per campaign)",
-        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (140 USD per campaign)",
+        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (125 USD per campaign)",
+        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (175 USD per campaign)",
         "Meta Ads, Google Ads": "Meta Ads, Google Ads",
         "10 campañas por mes": "10 campaigns per month",
         "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
@@ -326,7 +332,9 @@
     },
 
     "bookACall": {
-        "text": "<span>During this 30-minute call, we'll analyze your business’s current situation together to determine if we can help you scale your sales through performance marketing, and provide you with a tailored campaign plan.</span><span>Select the date and time that best fits your schedule and complete the form below — please answer as accurately as possible so we can prepare a customized proposal. Otherwise, your call will be canceled.</span>"
+        "title":"Schedule Your Audit Call",
+        "text1": "Thank you for your interest and trust. Now, choose the date and time that best fits your schedule and complete your contact information.",
+        "text2": "During this 30-minute call, we’ll analyze your company’s current situation to determine how we can help you scale your sales through performance marketing, and we’ll provide you with a tailored campaign plan."
     },
 
     "thankYou": {

@@ -17,6 +17,7 @@ module.exports = {
         marquee: "marquee 30s linear infinite",
         "infinite-scroll": "infinite-scroll 35s linear infinite",
         "fade-in": "fade-in 0.5s ease-in forwards",
+        "fade-in-large": "fade-in-out 1.5s ease-in forwards",
         "hamburger-menu": "hamburger-menu 0.5s ease-in forwards",
       },
       keyframes: {
@@ -30,6 +31,11 @@ module.exports = {
         },
         "fade-in": {
           "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        "fade-in-out": {
+          "0%": { opacity: 0 },
+          "60%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
         marquee: {

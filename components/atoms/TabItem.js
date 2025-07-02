@@ -10,6 +10,10 @@ const TabItem = ({ href, ...props }) => {
     );
   }, [href]);
 
+  if (!href) {
+    return <></>;
+  }
+
   return (
     <Link
       href={href}

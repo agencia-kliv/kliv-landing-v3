@@ -4,6 +4,8 @@ import LogitoSection from "../atoms/LogitoSection";
 import SectionSubtitle from "../atoms/SectionSubtitle";
 import SectionTitle from "../atoms/SectionTitle";
 import FAQSection from "./landing/FAQSection";
+import PartnersSection from "./landing/partners/PartnersSection";
+import TestimonialsSection from "./landing/TestimonialsSection";
 
 const ThankYouSection = () => {
   const t = useTranslations("thankYou");
@@ -44,8 +46,14 @@ const ThankYouSection = () => {
                   <strong>{t("step1")}</strong>: {t("step1Text")}
                 </SectionSubtitle>
               </div>
-              <video className="w-full aspect-video" controls>
-                <source src="/videos/thank-you-video.mp4" type="video/mp4" />
+              <video
+                className="aspect-[4_/_5] w-full h-auto md:w-auto md:h-[70dvh] !max-h-[1200px] rounded-[10px] object-cover overflow-hidden"
+                controls
+              >
+                <source
+                  src={`/videos/thank-you-video-${locale}.mp4`}
+                  type="video/mp4"
+                />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -146,6 +154,9 @@ const ThankYouSection = () => {
           </div>
         </section>
       </section>
+
+      <PartnersSection />
+      <TestimonialsSection />
 
       <FAQSection />
 

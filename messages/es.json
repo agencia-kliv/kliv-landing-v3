@@ -120,6 +120,12 @@
         "termsAndConditions": "Términos y condiciones"
     },
 
+    "quiz":{
+        "title": "Evaluación de Potencial Publicitario",
+        "question": "¿Querés saber si tu empresa tiene lo necesario para escalar ventas con performance marketing?",
+        "text": "No todas las marcas están listas para aplicar esta metodología de forma rentable y sostenible. Por eso, antes de agendar una llamada, te invitamos a completar este breve cuestionario que evalúa si tu negocio cumple con los atributos clave para aprovechar al máximo esta estrategia."
+    },
+
     "planItems": {
         "8 publicaciones por mes": "8 publicaciones por mes",
         "Instagram, Facebook, Whatsapp": "Instagram, Facebook, Whatsapp",
@@ -129,8 +135,8 @@
         "Meta Ads, Google Ads": "Meta Ads, Google Ads",
         "10 campañas por mes": "10 campañas por mes",
         "A partir de 10 campañas por mes": "A partir de 10 campañas por mes",
-        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (100 USD cada campaña)",
-        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (140 USD cada campaña)",
+        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (125 USD cada campaña)",
+        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (175 USD cada campaña)",
         "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
         "Hasta 3000 contactos": "Hasta 3.000 contactos",
         "2 newsletters por mes": "2 newsletters por mes",
@@ -327,7 +333,9 @@
     },
 
     "bookACall": {
-        "text": "<span>Durante esta llamada de 30 minutos, analizaremos juntos la situación actual de tu empresa para determinar si con nuestros servicios podemos ayudarte a escalar tus ventas con performance marketing y brindarte un plan de campañas a medida.</span><span>Seleccioná la fecha y hora que mejor se adapte a tu agenda y respondé el formulario a continuación; te pedimos que lo hagas con la mayor precisión posible para poder prepararte una propuesta ajustada a tus necesidades y objetivos. Caso contrario, tu llamada será cancelada.</span>"
+        "title":"Agendar Llamada de Auditoría",
+        "text1": "Gracias por tu interés y confianza. Ahora seleccioná el día y horario que mejor se adapte a tu agenda y completá la información de contacto.",
+        "text2": "Durante esta llamada de 30 minutos, analizaremos la situación actual de tu empresa para determinar cómo podemos ayudarte a escalar tus ventas con performance marketing y te brindaremos un plan de campañas a medida."
     },
 
     "thankYou": {

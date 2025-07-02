@@ -24,7 +24,7 @@ const Footer = () => {
   const t_footer = useTranslations("footer");
 
   return (
-    <footer>
+    <footer className="mt-auto">
       <div className="flex lg:hidden flex-col gap-[40px] w-full items-center py-[30px]">
         <div className="flex flex-col gap-[10px] w-full items-start px-[20px]">
           <div className="flex w-full justify-between items-center">
