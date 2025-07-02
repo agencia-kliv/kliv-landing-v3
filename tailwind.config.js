@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "550px",
+      },
       boxShadow: {
         tableHead: "inset 0 0px 0px 2px hsla(162, 68%, 29%, 1)",
         tableBody: "0 1px 0 0 hsla(162, 68%, 29%, 1)",

@@ -2,10 +2,42 @@
 
 import { useLocale } from "next-intl";
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function TallyEmbed() {
   const locale = useLocale();
+
+  const [formCompleted, setFormCompleted] = useState(false);
+
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobile =
+        typeof window !== "undefined" &&
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+      setIsMobileDevice(isMobile);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const handler = (e) => {
+      // Tally.FormSubmitted es la señal de envío
+      if (e?.data?.includes("Tally.FormSubmitted")) {
+        setFormCompleted(true);
+      }
+    };
+
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
 
   useEffect(() => {
     // Si el script ya cargó antes de montar el componente
@@ -52,7 +84,11 @@ export default function TallyEmbed() {
         }}
       />
 
-      <div className="absolute w-[60px] md:w-[200px] h-[60px] bg-white bottom-0 right-0"></div>
+      <div
+        className={`absolute ${formCompleted ? "!w-[200px]" : ""} ${
+          isMobileDevice ? "!h-[130px]" : ""
+        } w-[60px] xs:w-[200px] h-[60px] bg-white bottom-0 right-0`}
+      ></div>
     </div>
   );
 }
