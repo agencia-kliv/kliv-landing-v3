@@ -1,21 +1,11 @@
 // app/[locale]/layout.tsx
-import GTM from "@/components/GTM";
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
-import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import "../globals.css";
-const FacebookPixelEvents = dynamic(
-  () => import("@/components/FacebookPixel"),
-  {
-    ssr: false,
-    suspense: true,
-  }
-);
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -89,10 +79,6 @@ export default async function RootLayout({ children, params: { locale } }) {
           <Header />
           {children}
           <Footer />
-          <GTM />
-          <Suspense fallback={null}>
-            <FacebookPixelEvents />
-          </Suspense>
         </NextIntlClientProvider>
       </body>
     </html>

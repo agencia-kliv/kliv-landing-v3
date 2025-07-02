@@ -1,7 +1,5 @@
 "use client";
 
-import { FB_PIXEL_ID } from "@/lib/fpixel";
-import { useEffect } from "react";
 import ContactUsSection from "../templates/landing/contactUs/ContactUsSection";
 import FAQSection from "../templates/landing/FAQSection";
 import HeroSection from "../templates/landing/HeroSection";
@@ -12,15 +10,6 @@ import TeamMembersSection from "../templates/landing/TeamMembersSection";
 import TestimonialsSection from "../templates/landing/TestimonialsSection";
 
 const LandingPage = () => {
-  useEffect(() => {
-    import("react-facebook-pixel")
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init(FB_PIXEL_ID); // facebookPixelId
-        ReactPixel.pageView();
-      });
-  }, []);
-
   return (
     <main className=" flex flex-col">
       <HeroSection />
