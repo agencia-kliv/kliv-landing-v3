@@ -70,7 +70,7 @@ const ThankYouSection = () => {
                   onClick={() => {
                     if (locale === "es") {
                       window.open(
-                        "https://drive.google.com/file/d/1YeghuT5A8iS6qUAOAZjI18P81b9AZYYd/view?usp=drive_link",
+                        "https://drive.google.com/file/d/1yb1TMv_ggrt98jgJXfxnK4kSoBdTVbGe/view?usp=drive_link ",
                         "_blank"
                       );
                     } else {
