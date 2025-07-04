@@ -86,7 +86,7 @@ export default function TallyEmbed() {
 
       <div
         className={`absolute ${formCompleted ? "!w-[200px]" : ""} ${
-          isMobileDevice ? "!h-[91px]" : ""
+          isMobileDevice ? "!h-[85px]" : ""
         } w-[60px] xs:w-[200px] h-[60px] bg-white bottom-0 right-0`}
       ></div>
     </div>
