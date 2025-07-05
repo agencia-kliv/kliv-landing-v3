@@ -26,7 +26,7 @@ const Page = () => {
         const scoreItem = payload?.fields?.find(
           (item) => item.type === "CALCULATED_FIELDS"
         );
-        if (scoreItem?.answer?.value >= 8) {
+        if (scoreItem?.answer?.value >= 7) {
           setShowButton(true);
         }
       }
