@@ -1,6 +1,12 @@
 // app/layout.tsx
 
 import Script from "next/script";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 // Since we have a `not-found.tsx` page on the root, a layout file
 // is required, even if it's just passing children through.
@@ -56,7 +62,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body>
+      <body className={poppins.className}>
         {/* Fragmento <noscript> tras abrir <body> */}
         <noscript
           dangerouslySetInnerHTML={{

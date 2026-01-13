@@ -16,7 +16,10 @@ const Page = () => {
   useEffect(() => {
     const handler = (e) => {
       // Tally.FormSubmitted es la señal de envío
-      if (e?.data?.includes("Tally.FormSubmitted")) {
+
+      console.log(e);
+
+      if (typeof e?.data === "string" && e.data.includes("Tally.FormSubmitted")) {
         setFormCompleted(true);
 
         const payload = JSON.parse(e.data).payload;
@@ -26,6 +29,9 @@ const Page = () => {
         const scoreItem = payload?.fields?.find(
           (item) => item.type === "CALCULATED_FIELDS"
         );
+
+        console.log(scoreItem?.answer?.value);
+
         if (scoreItem?.answer?.value >= 7) {
           setShowButton(true);
         }
