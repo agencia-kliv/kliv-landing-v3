@@ -85,7 +85,7 @@ module.exports = {
           "linear-gradient(54.05deg, #2BA8C3 -30.22%, #219190 28.5%, #177B5D 87.22%)",
       },
       fontFamily: {
-        "DM Sans": "DM Sans, sans-serif",
+        "DM Sans": ["var(--font-dm-sans)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

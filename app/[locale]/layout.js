@@ -1,6 +1,7 @@
 // app/[locale]/layout.tsx
 import Footer from "@/components/organisms/Footer";
 import Header from "@/components/organisms/Header";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -64,6 +65,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <Analytics />
       <SpeedInsights />
       {/* <AOSInit /> */}
       <Header />

@@ -1,13 +1,34 @@
 "use client";
 
-import ContactUsSection from "../templates/landing/contactUs/ContactUsSection";
-import FAQSection from "../templates/landing/FAQSection";
+import dynamic from "next/dynamic";
 import HeroSection from "../templates/landing/HeroSection";
-import PartnersSection from "../templates/landing/partners/PartnersSection";
 import ServicesSection from "../templates/landing/ServicesSection";
-import TarifasSection from "../templates/landing/tarifas/TarifasSection";
-import TeamMembersSection from "../templates/landing/TeamMembersSection";
-import TestimonialsSection from "../templates/landing/TestimonialsSection";
+
+// Lazy load components that are below the fold
+const TeamMembersSection = dynamic(
+  () => import("../templates/landing/TeamMembersSection"),
+  { ssr: true }
+);
+const PartnersSection = dynamic(
+  () => import("../templates/landing/partners/PartnersSection"),
+  { ssr: true }
+);
+const TestimonialsSection = dynamic(
+  () => import("../templates/landing/TestimonialsSection"),
+  { ssr: true }
+);
+const TarifasSection = dynamic(
+  () => import("../templates/landing/tarifas/TarifasSection"),
+  { ssr: true }
+);
+const FAQSection = dynamic(
+  () => import("../templates/landing/FAQSection"),
+  { ssr: true }
+);
+const ContactUsSection = dynamic(
+  () => import("../templates/landing/contactUs/ContactUsSection"),
+  { ssr: true }
+);
 
 const LandingPage = () => {
   return (

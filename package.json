@@ -13,6 +13,7 @@
     "@emotion/react": "11.11.3",
     "@emotion/styled": "11.11.0",
     "@mui/material": "^5.15.3",
+    "@vercel/analytics": "^1.6.1",
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.2.0",
     "aos": "^2.3.4",
