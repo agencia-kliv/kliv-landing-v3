@@ -1,7 +1,8 @@
 "use client";
 import Link from "next-intl/link";
 import { useEffect, useState } from "react";
-const TabItem = ({ href, ...props }) => {
+// eslint-disable-next-line no-unused-vars
+const TabItem = ({ href, isActive, ...props }) => {
   const [color, setColor] = useState();
 
   useEffect(() => {

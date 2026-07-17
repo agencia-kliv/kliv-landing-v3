@@ -10,10 +10,10 @@ const PartnerCard = ({ src, alt }) => (
       alt={alt}
       width={180}
       height={150}
-      objectFit="cover"
+      style={{ objectFit: "cover" }}
       draggable={false}
-      priority
-      quality={100}
+      loading="lazy"
+      quality={85}
     />
   </figure>
 );
@@ -115,7 +115,6 @@ const PartnersSection = () => {
           onMouseDown={onMouseDown}
           onMouseMove={onMouseMove}
           onMouseUp={onMouseUp}
-          onMouseLeaveCapture={onMouseLeave}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}

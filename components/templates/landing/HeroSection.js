@@ -47,6 +47,8 @@ const HeroSection = () => {
                       fill={true}
                       src={"/images/meta_partner.png"}
                       alt="meta partner"
+                      priority
+                      sizes="(max-width: 768px) 90px, 100px"
                     />
                   </figure>
                   <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.24] relative">
@@ -54,6 +56,8 @@ const HeroSection = () => {
                       fill={true}
                       src={"/images/google_partner.png"}
                       alt="google partner"
+                      priority
+                      sizes="(max-width: 768px) 90px, 100px"
                     />
                   </figure>
                 </div>
@@ -75,7 +79,13 @@ const HeroSection = () => {
         </div>
       </section>
       <div className="absolute top-0 left-0 w-full aspect-square opacity-[4%] lg:w-[50dvw] max-w-[720px]">
-        <Image src={"/logito.svg"} alt="" fill={true} />
+        <Image
+          src={"/logito.svg"}
+          alt=""
+          fill={true}
+          loading="lazy"
+          aria-hidden="true"
+        />
       </div>
     </div>
     // <section

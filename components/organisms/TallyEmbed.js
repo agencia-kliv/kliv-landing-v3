@@ -30,8 +30,12 @@ export default function TallyEmbed() {
   useEffect(() => {
     const handler = (e) => {
       // Tally.FormSubmitted es la señal de envío
-      if (e?.data?.includes("Tally.FormSubmitted")) {
-        setFormCompleted(true);
+      try {
+        if (typeof e?.data === "string" && e.data.includes("Tally.FormSubmitted")) {
+          setFormCompleted(true);
+        }
+      } catch (error) {
+        console.log("error", error);
       }
     };
 
