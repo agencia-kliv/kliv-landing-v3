@@ -45,7 +45,7 @@ export const MEMBERS = [
   {
     id: 8,
     name: "Ezequiel Ruiz",
-    photoPath: "/teamPhotos/ezequiel-ruiz_small.webp",
+    photoPath: "/teamPhotos/chica_small.webp",
   },
   {
     id: 9,
@@ -64,10 +64,16 @@ export const MEMBERS = [
   },
 ];
 
-const TeamCard = ({ image }) => {
+const TeamCard = ({ image, zoomed }) => {
   return (
     <figure className="relative w-full aspect-square rounded-full border-[1px] border-[#D9D9D9] overflow-hidden">
-      <Image src={image} alt="Team member" fill objectFit="cover" />
+      <Image
+        src={image}
+        alt="Team member"
+        fill
+        objectFit="cover "
+        className={zoomed ? "scale-[135%] translate-y-[16%]" : ""}
+      />
     </figure>
   );
 };
@@ -108,7 +114,10 @@ const TeamMembersSection = () => {
                   <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
                   <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
                   <TeamCard image="/teamPhotos/franco-montini_small.webp" />
-                  <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
+                  <TeamCard
+                    image="/teamPhotos/chica-small.webp"
+                    zoomed={true}
+                  />
                   <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
                 </div>
                 <AgendarLLamadaButton />
@@ -120,7 +129,7 @@ const TeamMembersSection = () => {
               <TeamCard image="/teamPhotos/gonzalo-nazar_small.webp" />
               <TeamCard image="/teamPhotos/rocio-cambria_small.webp" />
               <TeamCard image="/teamPhotos/franco-montini_small.webp" />
-              <TeamCard image="/teamPhotos/ezequiel-ruiz_small.webp" />
+              <TeamCard image="/teamPhotos/chica-small.webp" zoomed={true} />
               <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
             </div>
           </div>
