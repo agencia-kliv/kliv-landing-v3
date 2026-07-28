@@ -31,8 +31,8 @@
     },
 
     "hero":{
-        "title": "Boost Your Ecommerce Sales Profitably",
-        "subtitle": "We help brands grow through \n<strong>performance marketing</strong>."
+        "title": "Boost Your Business Sales Profitably",
+        "subtitle": "We help you grow through \n<strong>performance marketing</strong>."
     },
 
     "services":{
@@ -51,7 +51,7 @@
     
     "team": {
         "title": "Experience and results <br></br>that back us",
-        "subtitle": "11 years in the market scaling the sales of over 80 companies across 9 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
+        "subtitle": "12 years in the market scaling the sales of over 80 companies across 9 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
     },
  
     "partners": {
@@ -90,7 +90,7 @@
             },
             "question6": {
                 "title": "How are you different from other agencies?",
-                "content": "We are a boutique agency exclusively specialized in performance marketing. We work with a limited number of companies per month to guarantee close, high-quality support. Our focus is on scaling sales and maximizing advertising ROI with personalized, data-driven strategies — avoiding vanity metrics like likes, followers, or traffic. Our method is backed by over 10 years of experience and 80+ companies served."
+                "content": "We are a boutique agency exclusively specialized in performance marketing. We work with a limited number of companies per month to guarantee close, high-quality support. Our focus is on scaling sales and maximizing advertising ROI with personalized, data-driven strategies — avoiding vanity metrics like likes, followers, or traffic. Our method is backed by over 12 years of experience and 80+ companies served."
             },
             "question7": {
                 "title": "What payment methods do you accept?",
@@ -131,8 +131,8 @@
         "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn",
         "4 campañas por mes": "4 campaigns per month",
         "A partir de 10 campañas por mes": "Starting from 10 campaigns per month",
-        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (125 USD per campaign)",
-        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (175 USD per campaign)",
+        "<strong>50% OFF</strong> (100 USD cada campaña)": "<strong>50% OFF</strong> (150 USD per campaign)",
+        "<strong>30% OFF</strong> ($140 USD cada campaña)": "<strong>30% OFF</strong> (210 USD per campaign)",
         "Meta Ads, Google Ads": "Meta Ads, Google Ads",
         "10 campañas por mes": "10 campaigns per month",
         "Meta Ads, Google Ads, LinkedIn Ads": "Meta Ads, Google Ads, LinkedIn Ads",
@@ -347,7 +347,7 @@
         "step3": "STEP #3",
         "step3Text": "Complete the audit form (≈ 30 minutes):",
         "aboutUs": "About us",
-        "aboutUsText": "We are <strong>Agustín (strategy) and Gonzalo (operations), founders of Kliv</strong> and passionate about performance marketing.\n\nTogether with a great multidisciplinary team, we’ve spent the last 11 years helping over 80 companies across several countries scale their sales.\n\nOver time, we have perfected our performance-based methodology through experience across a wide range of industries. We are passionate about what we do — and how we do it.",
+        "aboutUsText": "We are <strong>Agustín (strategy) and Gonzalo (operations), founders of Kliv</strong> and passionate about performance marketing.\n\nTogether with a great multidisciplinary team, we’ve spent the last 12 years helping over 80 companies across several countries scale their sales.\n\nOver time, we have perfected our performance-based methodology through experience across a wide range of industries. We are passionate about what we do — and how we do it.",
         "seeYouLater": "See you on the call!"
     }
 }
