@@ -1,19 +1,5 @@
-import { getPartnersImagesData } from "@/firebase/Client";
-import { useEffect, useState } from "react";
+import data from "@/data/partners.json";
 
-const usePartnersImages = () => {
-  const [data, setPartnersImages] = useState(undefined);
-
-  const getData = async () => {
-    const data = await getPartnersImagesData();
-    setPartnersImages(data);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  return { data, refetch: getData };
-};
+const usePartnersImages = () => ({ data });
 
 export default usePartnersImages;

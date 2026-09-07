@@ -1,9 +1,5 @@
-"use client";
+import { notFound } from "next/navigation";
 
-import PanelPage from "@/components/pages/panel/PanelPage";
-
-const page = () => {
-  return <PanelPage />;
-};
-
-export default page;
+export default function Page() {
+  notFound();
+}

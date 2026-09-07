@@ -1,0 +1,851 @@
+{
+  "campaigns": {
+    "0": {
+      "amount": "?",
+      "price": 0
+    },
+    "1": {
+      "amount": "2",
+      "price": "300",
+      "off": 0
+    },
+    "2": {
+      "amount": "3",
+      "price": "270",
+      "off": 10
+    },
+    "3": {
+      "amount": "4",
+      "off": 15,
+      "price": "255"
+    },
+    "4": {
+      "off": 20,
+      "price": "240",
+      "amount": "+5"
+    }
+  },
+  "packages": {
+    "features": [
+      {
+        "id": "socialMedia",
+        "name": "📸 Social Media",
+        "description": "Estrategia de contenidos a distribuir o replicar entre redes asignadas.",
+        "strong": true,
+        "features": {
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "standard": [
+            {
+              "content": "8 publicaciones por mes",
+              "type": "title"
+            },
+            {
+              "content": "Instagram, Facebook, Whatsapp",
+              "type": "subtitle"
+            }
+          ],
+          "professional": [
+            {
+              "type": "title",
+              "content": "14 publicaciones por mes"
+            },
+            {
+              "type": "subtitle",
+              "content": "Instagram, Facebook, Whatsapp, Google My Business, TikTok, LinkedIn"
+            }
+          ]
+        }
+      },
+      {
+        "name": "📣 Paid Media",
+        "description": "Campañas publicitarias orientadas a resultados, adaptadas a embudo de conversión.",
+        "id": "paidMedia",
+        "features": {
+          "professional": [
+            {
+              "content": "10 campañas por mes",
+              "type": "title"
+            },
+            {
+              "content": "Meta Ads, Google Ads, LinkedIn Ads",
+              "type": "subtitle"
+            }
+          ],
+          "standard": [
+            {
+              "type": "title",
+              "content": "4 campañas por mes"
+            },
+            {
+              "type": "subtitle",
+              "content": "Meta Ads, Google Ads"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ]
+        },
+        "strong": true
+      },
+      {
+        "id": "emailMarketing",
+        "description": "Diseño y disparos de newsletters y/o programación de automations (Carrito abandonado, bienvenida, etc.)",
+        "name": "✉️ Email Marketing",
+        "strong": true,
+        "features": {
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "content": "Hasta 3000 contactos",
+              "type": "title"
+            },
+            {
+              "type": "title",
+              "content": "2 newsletters por mes"
+            },
+            {
+              "type": "subtitle",
+              "content": "Klaviyo"
+            }
+          ],
+          "professional": [
+            {
+              "type": "title",
+              "content": "Hasta 10000 contactos"
+            },
+            {
+              "type": "title",
+              "content": "4 newsletters por mes + automations"
+            },
+            {
+              "content": "Klaviyo",
+              "type": "subtitle"
+            }
+          ]
+        }
+      },
+      {
+        "features": {
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Auditoría, análisis y estrategia",
+        "description": "Auditoria del perfil e identidad visual, benchmarking, audiencias, keyword research, diseño embudo de conversión, etc.",
+        "id": "auditAnalysisAndStrategy"
+      },
+      {
+        "name": "Atención a mensajes de RRSS",
+        "features": {
+          "professional": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "standard": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ]
+        },
+        "description": "Monitoreo redes y respuesta dos veces al día de mensajes y comentarios según manual FAQs estipulado.",
+        "id": "socialMediaMessages"
+      },
+      {
+        "id": "multimediaDesign",
+        "features": {
+          "professional": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "standard": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ]
+        },
+        "name": "Diseño Multimedia",
+        "description": "Diseños gráficos y videos, sujeto a las necesidades de social media, paid media e email marketing."
+      },
+      {
+        "name": "Copywriting",
+        "features": {
+          "standard": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "description": "Redacción, sujeto a las necesidades de social media, paid media e email marketing.",
+        "id": "copyWriting"
+      },
+      {
+        "features": {
+          "standard": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Informe con dashboard personalizado",
+        "description": "Acceso a panel personalizado con todas las métricas en tiempo real.",
+        "id": "customDashboardReport"
+      },
+      {
+        "id": "webTagsSetup",
+        "features": {
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "standard": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ]
+        },
+        "name": "Setup de etiquetas Web",
+        "description": "Setup de etiquetas de seguimiento publicitario y eventos de conversión."
+      },
+      {
+        "features": {
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "standard": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Configuración de catálogos",
+        "description": "Setup y mantenimiento de catálogos Gg Merchant Center, Facebook e Instagram Shops.",
+        "id": "catalogSetup"
+      },
+      {
+        "description": "Coordinación con productoras audiovisuales locales que generen los contenidos requeridos. (No incluye el costo de productora)",
+        "name": "Coordinación de prod. audiovisual",
+        "features": {
+          "professional": [
+            {
+              "content": "2 por semestre",
+              "type": "title"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "type": "title",
+              "content": "1 por semestre"
+            }
+          ]
+        },
+        "id": "audiovisualProductionCoordination"
+      },
+      {
+        "id": "influencersManagement",
+        "name": "Gestión de influencers",
+        "features": {
+          "professional": [
+            {
+              "content": "3 por mes",
+              "type": "title"
+            }
+          ],
+          "standard": [
+            {
+              "content": "1 por mes",
+              "type": "title"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ]
+        },
+        "description": "Relevamiento de perfiles, selección, intermediación y propuestas de dinámicas creativas."
+      },
+      {
+        "id": "contestsManagement",
+        "description": "Coordinación de dinámicas creativas, e intermediación con ganadores.",
+        "features": {
+          "standard": [
+            {
+              "type": "title",
+              "content": "1 por bimestre"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "professional": [
+            {
+              "type": "title",
+              "content": "1 por mes"
+            }
+          ]
+        },
+        "name": "Gestión de concursos"
+      },
+      {
+        "id": "landingPageDevelopment",
+        "name": "Desarrollo de Landing Page",
+        "features": {
+          "professional": [
+            {
+              "content": "2 por semestre",
+              "type": "title"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "content": "1 por semestre",
+              "type": "title"
+            }
+          ]
+        },
+        "description": "Diseño estratégico de landing page para campañas. No incluye costos de hosting y dominios."
+      },
+      {
+        "id": "webSupport",
+        "description": "Asistencia técnica para mantener la web actualizada y en correcto funcionamiento.",
+        "name": "Soporte Web",
+        "features": {
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "type": "title",
+              "content": "4hs por mes"
+            }
+          ],
+          "professional": [
+            {
+              "type": "title",
+              "content": "12hs por mes"
+            }
+          ]
+        }
+      },
+      {
+        "description": "Setup de chatbot en web y/o redes según se requiera.",
+        "features": {
+          "standard": [
+            {
+              "content": "cross",
+              "type": "icon"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "professional": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Configuración de chatbot",
+        "id": "chatbotSetup"
+      },
+      {
+        "description": "Setup CRM y vinculación con plataformas publicitarias según se requiera.",
+        "features": {
+          "professional": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "content": "cross",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Configuración de CRM",
+        "id": "crmSetup"
+      },
+      {
+        "name": "Idiomas",
+        "features": {
+          "professional": [
+            {
+              "content": "2",
+              "type": "title"
+            }
+          ],
+          "enterprise": [
+            {
+              "type": "subtitle",
+              "content": "Personalizado"
+            }
+          ],
+          "standard": [
+            {
+              "type": "title",
+              "content": "1"
+            }
+          ]
+        },
+        "description": "Alcance de traducción, sujeto a audiencias objetivo.",
+        "id": "languages"
+      },
+      {
+        "name": "Reuniones",
+        "features": {
+          "professional": [
+            {
+              "type": "title",
+              "content": "Semanales"
+            }
+          ],
+          "enterprise": [
+            {
+              "content": "Personalizado",
+              "type": "subtitle"
+            }
+          ],
+          "standard": [
+            {
+              "type": "title",
+              "content": "Quincenales"
+            }
+          ]
+        },
+        "description": "Encuentros de seguimiento, presentación de campañas, contenidos e informes.",
+        "id": "meetings"
+      }
+    ],
+    "items": [
+      {
+        "id": "standard",
+        "price": "",
+        "name": ""
+      },
+      {
+        "name": "",
+        "id": "professional",
+        "price": ""
+      },
+      {
+        "id": "enterprise",
+        "price": "",
+        "name": ""
+      }
+    ]
+  },
+  "agencies": {
+    "features": [
+      {
+        "id": "paidMedia",
+        "strong": true,
+        "features": {
+          "full": [
+            {
+              "type": "subtitle",
+              "content": "A partir de 10 campañas por mes"
+            },
+            {
+              "content": "<strong>30% OFF</strong> ($140 USD cada campaña)",
+              "type": "subtitle"
+            }
+          ],
+          "basic": [
+            {
+              "type": "subtitle",
+              "content": "A partir de 10 campañas por mes"
+            },
+            {
+              "content": "<strong>50% OFF</strong> (100 USD cada campaña)",
+              "type": "subtitle"
+            }
+          ]
+        },
+        "name": "📣 Paid Media"
+      },
+      {
+        "id": "generalAdvice",
+        "name": "Asesoramiento general",
+        "features": {
+          "basic": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Contacto con el cliente",
+        "features": {
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "basic": [
+            {
+              "type": "icon",
+              "content": "cross"
+            }
+          ]
+        },
+        "id": "clientContact"
+      },
+      {
+        "id": "fullRelevancy",
+        "features": {
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "basic": [
+            {
+              "content": "cross",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Relevamiento completo"
+      },
+      {
+        "id": "customFunnel",
+        "name": "Diseño de embudo a medida",
+        "features": {
+          "basic": [
+            {
+              "type": "icon",
+              "content": "cross"
+            }
+          ],
+          "full": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ]
+        }
+      },
+      {
+        "id": "graphicDesign",
+        "features": {
+          "full": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "basic": [
+            {
+              "content": "cross",
+              "type": "icon"
+            }
+          ]
+        },
+        "name": "Diseño de piezas gráficas"
+      },
+      {
+        "id": "audiovisualDirection",
+        "features": {
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "basic": [
+            {
+              "type": "icon",
+              "content": "cross"
+            }
+          ]
+        },
+        "name": "Dirección audiovisual"
+      },
+      {
+        "name": "Configuración de campañas",
+        "features": {
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ],
+          "basic": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "id": "campaignConfiguration"
+      },
+      {
+        "name": "Monitoreo y optimización",
+        "features": {
+          "basic": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "full": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "id": "monitoringAndOptimization"
+      },
+      {
+        "name": "Informes interactivos",
+        "features": {
+          "full": [
+            {
+              "type": "icon",
+              "content": "check"
+            }
+          ],
+          "basic": [
+            {
+              "content": "check",
+              "type": "icon"
+            }
+          ]
+        },
+        "id": "interactiveReports"
+      }
+    ],
+    "items": [
+      {
+        "id": "basic",
+        "price": "1500",
+        "sincePrice": true,
+        "name": "Basic Plan"
+      },
+      {
+        "name": "Full Plan",
+        "sincePrice": true,
+        "price": "2100",
+        "id": "full"
+      }
+    ]
+  },
+  "additionalServices": [
+    {
+      "id": "branding",
+      "price": "",
+      "name": "",
+      "features": [
+        {
+          "content": "Logotipo y sus variaciones",
+          "type": "itemCheck"
+        },
+        {
+          "content": "Brandbook",
+          "type": "itemCheck"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Paleta de colores"
+        },
+        {
+          "content": "Tipografías",
+          "type": "itemCheck"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Elementos gráficos"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Elementos corporativos"
+        },
+        {
+          "type": "subtitleCheck",
+          "content": "Tarjeta de presentación, firma electrónica, fólder, banner corporativo"
+        }
+      ]
+    },
+    {
+      "sincePrice": true,
+      "features": [
+        {
+          "content": "Wordpress",
+          "type": "itemCheck"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Shopify"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Diseños full stack"
+        },
+        {
+          "content": "Diseño UX-UI",
+          "type": "itemCheck"
+        }
+      ],
+      "price": "",
+      "id": "webDevelopment",
+      "name": ""
+    },
+    {
+      "sincePrice": true,
+      "features": [
+        {
+          "type": "itemCheck",
+          "content": "Diseño gráfico"
+        },
+        {
+          "content": "Banners web, cartelería, brochure, catálogo, flyer, etc",
+          "type": "subtitleCheck"
+        },
+        {
+          "type": "itemCheck",
+          "content": "Diseño audiovisual"
+        },
+        {
+          "content": "Motion graphics, edición de tomas",
+          "type": "subtitleCheck"
+        }
+      ],
+      "price": "",
+      "id": "multimediaDesign",
+      "name": ""
+    }
+  ]
+}
