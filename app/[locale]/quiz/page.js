@@ -50,7 +50,7 @@ const Page = () => {
     >
       <div className="w-full flex flex-col gap-[10px] text-left items-stretch mx-auto max-w-[900px] ">
         <div className="w-full flex flex-col gap-[32px] items-center mb-[20px]">
-          <SectionTitle className={"w-full text-center"}>
+          <SectionTitle as="h1" className={"w-full text-center"}>
             {t("title")}
           </SectionTitle>
 

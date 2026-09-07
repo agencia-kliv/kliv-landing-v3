@@ -16,7 +16,15 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The landing page lives in `app/[locale]/page.js`; its sections are in `components/templates/landing/`. The page auto-updates as you edit the files.
+
+## SEO
+
+The canonical domain is configured in `lib/seo.js`. Titles and descriptions use `messages/es.json` and `messages/en.json`. Internal pages have their own metadata and canonical URLs. The legal document is Spanish-only; its English route redirects to Spanish.
+
+`app/sitemap.js` lists the seven public canonical pages. `app/robots.js` permits crawling so crawlers can read `noindex` on thank-you pages and the 404 response from removed panel routes.
+
+After `npm run build` and `npm start`, run `npm run check:seo -- http://127.0.0.1:3000` to check metadata, language alternates, H1 headings, redirects, error statuses, robots.txt and the sitemap against the production server.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 

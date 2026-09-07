@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import Image from "next/image";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { MdClose, MdMenu } from "react-icons/md";
@@ -48,7 +48,6 @@ const Header = () => {
 
   //every time the window.location changes, close the menu (don't use router from next)
 
-  const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = useParams();
 
@@ -56,7 +55,7 @@ const Header = () => {
     if (isOpenMenu) {
       setIsOpenMenu(false);
     }
-  }, [searchParams, pathname, params]); //eslint-disable-line react-hooks/exhaustive-deps
+  }, [pathname, params]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

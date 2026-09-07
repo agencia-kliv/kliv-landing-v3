@@ -29,7 +29,7 @@ const Page = () => {
     >
       <div className="w-full flex flex-col gap-[40px] text-left items-stretch mx-auto max-w-[1350px]">
         <div className="w-full flex flex-col gap-[32px] items-center max-w-[900px] mx-auto  animate-fade-in">
-          <SectionTitle className={"w-full text-center"}>
+          <SectionTitle as="h1" className={"w-full text-center"}>
             {t("title")}
           </SectionTitle>
 

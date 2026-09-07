@@ -1,7 +1,7 @@
 const page = () => {
   return (
     <div className="flex flex-col gap-[6px] px-[20px]">
-      <h3 className="head-h2">Términos y Condiciones</h3>
+      <h1 className="head-h2">Términos y Condiciones</h1>
       <br />
       <p>
         Bienvenido a AGENCIA KLIV, una agencia de marketing propiedad de Agencia

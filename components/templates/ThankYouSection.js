@@ -30,7 +30,7 @@ const ThankYouSection = () => {
             <div className="hidden lg:block">
               <LogitoSection />
             </div>
-            <SectionTitle className={""}>{t("title")}</SectionTitle>
+            <SectionTitle as="h1" className={""}>{t("title")}</SectionTitle>
             <SectionSubtitle className={"lg:max-w-[350px] 2xl:max-w-[520px]"}>
               {t("subtitle")}
             </SectionSubtitle>

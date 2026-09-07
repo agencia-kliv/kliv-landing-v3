@@ -26,6 +26,7 @@ const HeroSection = () => {
                 <LogitoSection />
               </figure>
               <SectionTitle
+                as="h1"
                 className={"max-w-[340px] lg:max-w-[500px] 2xl:max-w-[500px]"}
                 isLargeText={true}
               >

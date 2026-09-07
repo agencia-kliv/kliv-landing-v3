@@ -1,6 +1,6 @@
 {
     "metadata":{
-        "title": "AGENCIA KLIV",
+        "title": "Agencia KLIV | Performance Marketing",
         "description":
           "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
         "openGraph": {
@@ -9,13 +9,13 @@
             "Ayudamos a empresas a aumentar sus ventas de manera rentable con performance marketing.",
           "type": "website",
           "locale": "es_ES",
-          "url": "https://www.agenciakliv.com/",
+          "url": "https://agenciakliv.com/",
           "site_name": "AGENCIA KLIV"
         }
     },
 
     "openGraphImage":{
-        "image_url":  "https://www.agenciakliv.com/kliv-isotipo-green.png",
+        "image_url":  "/kliv-isotipo-green.png",
         "image_alt": "Agencia KLIV"
     },
 
