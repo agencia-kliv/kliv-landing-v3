@@ -1,13 +1,22 @@
-"use client";
 import LandingPage from "@/components/pages/LandingPage";
-import { LinkedInInsightTag } from "nextjs-linkedin-insight-tag";
+import HomeTracking from "@/components/organisms/HomeTracking";
+import { getMessages } from "@/lib/metadata";
+import { homeStructuredData, serializeStructuredData } from "@/lib/structured-data";
 
-export default function Home() {
+export default async function Home({ params: { locale } }) {
+  const messages = await getMessages(locale);
   return (
     <>
+      <script
+        id="kliv-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeStructuredData(homeStructuredData(locale, messages)),
+        }}
+      />
       <LandingPage />
       {/* <WhatsappCTA /> */}
-      <LinkedInInsightTag />
+      <HomeTracking />
     </>
   );
 }

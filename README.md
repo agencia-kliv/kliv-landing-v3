@@ -28,6 +28,14 @@ After `npm run build` and `npm start`, run `npm run check:seo -- http://127.0.0.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Structured data — first GEO stage
+
+The two home pages render an Organization, WebSite, WebPage and Service JSON-LD graph in the initial server HTML. `lib/structured-data.js` reuses the existing translated metadata and visible service copy, with stable organization/website identifiers shared across languages. It escapes `<` before embedding JSON. The client-side LinkedIn tag remains isolated in `HomeTracking`.
+
+`check:seo` also validates JSON parsing, internal entity references, localized copy, initial-HTML service content and absence of home markup on funnel pages. This is a technical baseline, not a guarantee of mentions in AI answers or a completed GEO program.
+
+Next content review: verify case-study evidence and publication permission, make testimonials readable in initial HTML, and review existing FAQ clarity. Confirm official business/contact details before adding addresses, founding dates or other claims. No ratings or invented results are included.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

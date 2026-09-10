@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 
 // Run against a production server: node scripts/check-seo.mjs http://127.0.0.1:3100
 const base = process.argv[2] || "http://127.0.0.1:3000";
@@ -18,6 +19,33 @@ for (const locale of ["es", "en"]) {
     const response = await request(route);
     assert.equal(response.status, 200, route);
     const html = await response.text();
+    const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+    if (!path) {
+      assert.equal(structured.length, 1, `${route} single server-rendered JSON-LD`);
+      const data = JSON.parse(structured[0][1]);
+      assert.equal(data["@context"], "https://schema.org");
+      const graph = data["@graph"];
+      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service"]);
+      const ids = new Set(graph.map((node) => node["@id"]));
+      assert.equal(ids.size, 4);
+      for (const node of graph) {
+        for (const field of ["publisher", "isPartOf", "about", "mainEntity", "provider"]) {
+          if (node[field]) assert.ok(ids.has(node[field]["@id"]), `${route} resolved ${field}`);
+        }
+      }
+      const messages = JSON.parse(await readFile(new URL(`../messages/${locale}.json`, import.meta.url), "utf8"));
+      assert.equal(graph[2].url, origin + route);
+      assert.equal(graph[2].inLanguage, locale);
+      assert.equal(graph[2].name, messages.metadata.title);
+      assert.equal(graph[3].name, messages.services.title);
+      assert.equal(graph[3].description, messages.services.subtitle);
+      const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+      assert.ok(visibleHtml.includes(messages.services.subtitle), `${route} service copy is in initial HTML`);
+      assert.ok(visibleHtml.includes('id="servicios"'));
+      assert.equal(graph[0].logo, `${origin}/kliv-isotipo-green.png`);
+    } else {
+      assert.equal(structured.length, 0, `${route} does not inherit home schema`);
+    }
     const links = tags(html, "link");
     const metas = tags(html, "meta");
     assert.equal(tags(html, "html")[0]?.lang, locale, `${route} language`);
@@ -65,4 +93,4 @@ for (const url of locations) {
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);
-console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 7 sitemap URLs and sharing image.`);
+console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 7 sitemap URLs, sharing image and bilingual server-rendered JSON-LD.`);
