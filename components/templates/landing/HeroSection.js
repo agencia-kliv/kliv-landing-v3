@@ -3,8 +3,6 @@ import AgendarLLamadaButton, {
   AGENDAR_BUTTON_SIZES,
 } from "@/components/atoms/AgendarLLamadaButton";
 import LogitoSection from "@/components/atoms/LogitoSection";
-import SectionSubtitle from "@/components/atoms/SectionSubtitle";
-import SectionTitle from "@/components/atoms/SectionTitle";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -19,28 +17,23 @@ const HeroSection = () => {
         id="inicio"
         data-section="inicio"
       >
-        <div className="relative z-10 flex w-full flex-col lg:flex-row gap-[10px] lg:gap-[100px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full justify-self-center">
-          <div className="flex flex-col items-center lg:flex-1 lg:items-center">
-            <div className="flex flex-col items-center gap-[10px] lg:gap-[10px] 2xl:gap-[40px] lg:flex-1 lg:items-start lg:text-start">
+        <div className="relative z-10 mx-auto flex w-full flex-col lg:flex-row gap-[24px] lg:gap-[48px] xl:gap-[72px] lg:justify-center items-center text-center max-w-[465px] lg:max-w-full">
+          <div className="flex min-w-0 w-full flex-col items-center lg:flex-1">
+            <div className="flex w-full flex-col items-center gap-[18px] lg:gap-[22px] lg:items-start lg:text-start">
               <figure className="hidden lg:flex">
                 <LogitoSection />
               </figure>
-              <SectionTitle
-                as="h1"
-                className={"max-w-[340px] lg:max-w-[500px] 2xl:max-w-[500px]"}
-                isLargeText={true}
-              >
-                {t_hero("title")}
-              </SectionTitle>
-              <SectionSubtitle
-                className={
-                  "lg:max-w-[270px] 2xl:max-w-[472px] whitespace-pre-wrap"
-                }
-              >
-                {t_hero.rich("subtitle", {
-                  strong: (chunk) => <strong>{chunk}</strong>,
-                })}
-              </SectionSubtitle>
+              <h1 className="w-full max-w-[520px] text-kliv-secondary">
+                <span className="block text-[1rem] leading-[1.5] font-normal text-kliv-tertiary mb-[16px]">
+                  {t_hero("kicker")}
+                </span>
+                <span className="block text-[2rem] sm:text-[2.375rem] lg:text-[2.625rem] leading-[1.15] font-bold">
+                  {t_hero("title")}
+                </span>
+              </h1>
+              <p className="max-w-[472px] text-[1.125rem] leading-[1.55] font-normal text-kliv-text-2">
+                {t_hero("subtitle")}
+              </p>
               <div className="flex flex-col gap-[10px] lg:flex-col-reverse items-center lg:items-start">
                 <div className="flex items-center gap-[20px] py-[10px] lg:py-[30px]">
                   <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.9] relative">
@@ -66,10 +59,10 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="w-[90dvw] flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1 ">
+          <div className="min-w-0 w-full flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1">
             <video
               src="/hero-video.webm"
-              className="max-w-[90dvw] lg:max-w-[483px] 2xl:max-w-[672px]"
+              className="w-full max-w-full h-auto"
               autoPlay
               loop
               muted

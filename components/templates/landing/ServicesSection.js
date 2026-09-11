@@ -4,6 +4,7 @@ import SectionTag from "@/components/atoms/SectionTag";
 import SectionTitle from "@/components/atoms/SectionTitle";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import AdPlatformLogos from "@/components/atoms/AdPlatformLogos";
 
 const CardItem = ({ title, description, image, bg, zIndex }) => {
   return (
@@ -47,29 +48,7 @@ const ServicesSection = () => {
               </SectionTitle>
             </div>
             <div className="w-full flex items-center gap-[100px] justify-center lg:py-[40px]">
-              <div className="lg:grid gap-[5px] hidden grid-cols-3 w-full max-w-[320px] lg:max-w-[380px] 2xl:max-w-[400px]">
-                <div className="w-full aspect-[1.14] relative">
-                  <Image
-                    src={"/images/meta_logo.png"}
-                    alt="Meta Ads"
-                    fill={true}
-                  />
-                </div>
-                <div className="w-full aspect-[1.14] relative">
-                  <Image
-                    src={"/images/google_logo.png"}
-                    alt="Google Ads"
-                    fill={true}
-                  />
-                </div>
-                <div className="w-full aspect-[1.14] relative">
-                  <Image
-                    src={"/images/ia.png"}
-                    alt="LinkedIn Ads"
-                    fill={true}
-                  />
-                </div>
-              </div>
+              <AdPlatformLogos className="hidden lg:grid" />
               <div className="lg:text-right flex flex-col gap-[30px] text-center items-center max-w-[439px] lg:max-w-[390px] 2xl:max-w-[500px]">
                 <SectionSubtitle>{t_services("subtitle")}</SectionSubtitle>
                 <SectionSubtitle className={"font-[700]"}>
@@ -83,21 +62,7 @@ const ServicesSection = () => {
           </div>
 
           {/* ads logos */}
-          <div className="lg:hidden gap-[5px] grid grid-cols-3 w-full max-w-[320px] 2xl:max-w-[400px]">
-            <div className="w-full aspect-[1.14] relative">
-              <Image src={"/images/meta_logo.png"} alt="Meta Ads" fill={true} />
-            </div>
-            <div className="w-full aspect-[1.14] relative">
-              <Image
-                src={"/images/google_logo.png"}
-                alt="Google Ads"
-                fill={true}
-              />
-            </div>
-            <div className="w-full aspect-[1.14] relative">
-              <Image src={"/images/ia.png"} alt="LinkedIn Ads" fill={true} />
-            </div>
-          </div>
+          <AdPlatformLogos className="grid lg:hidden" />
         </div>
 
         {/* cards */}

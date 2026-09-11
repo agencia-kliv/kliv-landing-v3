@@ -31,8 +31,9 @@
     },
 
     "hero":{
-        "title": "Boost Your Business Sales Profitably",
-        "subtitle": "We help you grow through \n<strong>performance marketing</strong>."
+        "kicker": "PERFORMANCE MARKETING AGENCY",
+        "title": "We scale your sales profitably",
+        "subtitle": "Conversion-focused advertising campaigns on Meta, Google and TikTok Ads."
     },
 
     "services":{

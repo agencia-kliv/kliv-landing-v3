@@ -27,8 +27,8 @@ const Footer = () => {
     <footer className="mt-auto">
       <div className="flex lg:hidden flex-col gap-[40px] w-full items-center py-[30px]">
         <div className="flex flex-col gap-[10px] w-full items-start px-[20px]">
-          <div className="flex w-full justify-between items-center">
-            © 2025 Agencia Kliv LLC
+          <div className="flex w-full flex-wrap gap-[12px] justify-between items-center">
+            © 2026 Agencia Kliv LLC
             <div className="flex gap-[5px]">
               <SocialNetworkButton href="https://www.instagram.com/agenciakliv/">
                 <FaInstagram />
@@ -56,7 +56,7 @@ const Footer = () => {
           {/* <figure className="flex items-center relative justify-center w-[100px] h-[150px]">
             <Image fill src="/kliv-logo.svg" alt="Kliv" />
           </figure> */}
-          © 2025 Agencia Kliv LLC
+          © 2026 Agencia Kliv LLC
           <Link
             className="text-kliv-secondary font-[500] text-[22px] lg:text-[16px] 2xl:text-[14px] text-center leading-[38px]"
             href={{ pathname: `/politicas-de-privacidad` }}

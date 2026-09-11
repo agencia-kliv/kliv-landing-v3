@@ -42,6 +42,15 @@ for (const locale of ["es", "en"]) {
       const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
       assert.ok(visibleHtml.includes(messages.services.subtitle), `${route} service copy is in initial HTML`);
       assert.ok(visibleHtml.includes('id="servicios"'));
+      const heading = visibleHtml.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1] || "";
+      assert.ok(heading.includes(messages.hero.kicker), `${route} kicker within H1`);
+      assert.ok(heading.includes(messages.hero.title), `${route} title within H1`);
+      assert.ok(visibleHtml.includes(messages.hero.subtitle), `${route} new hero subtitle`);
+      for (const platform of ["Meta Ads", "Google Ads", "TikTok"]) {
+        assert.ok(visibleHtml.includes(`>${platform}<`), `${route} platform in HTML text`);
+      }
+      assert.ok(visibleHtml.includes("2026 Agencia Kliv LLC"), `${route} current footer year`);
+      assert.ok(!visibleHtml.includes("2025 Agencia Kliv LLC"), `${route} old footer removed`);
       assert.equal(graph[0].logo, `${origin}/kliv-isotipo-green.png`);
     } else {
       assert.equal(structured.length, 0, `${route} does not inherit home schema`);
