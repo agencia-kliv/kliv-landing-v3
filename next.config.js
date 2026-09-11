@@ -1,3 +1,16 @@
+const clientPortals = require("./data/clientPortals.json");
+
+// /cliente/<Nombre>/ lleva al portal de cada cliente. Para sumar uno, basta
+// con agregarlo en data/clientPortals.json. Se acepta el nombre tal cual y
+// en minúsculas. 307 para poder cambiar el destino sin caché en navegadores.
+const clientPortalRedirects = Object.entries(clientPortals).flatMap(([slug, { url }]) =>
+  [...new Set([slug, slug.toLowerCase()])].map((name) => ({
+    source: `/cliente/${name}`,
+    destination: url,
+    permanent: false,
+  }))
+);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // output: "export",
@@ -34,6 +47,7 @@ const nextConfig = {
       { source: "/quiz", destination: "/es/quiz/", permanent: false },
       // El documento legal solo existe en español.
       { source: "/en/politicas-de-privacidad", destination: "/es/politicas-de-privacidad/", permanent: true },
+      ...clientPortalRedirects,
     ];
   },
 };
