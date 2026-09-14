@@ -1,0 +1,52 @@
+.page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 40px 24px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 50% 35%, #e2f4ee 0, #f6faf8 55%, #fff 100%);
+  color: #003629;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.page * { box-sizing: border-box; }
+.embedded { min-height: 80svh; padding-top: 140px; padding-bottom: 72px; font-family: inherit; }
+.content { width: 100%; max-width: 760px; }
+.brand { display: inline-flex; margin-bottom: 28px; }
+.brand img { display: block; width: 112px; height: 40px; object-fit: contain; }
+.code {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 20px;
+  font-family: Arial, sans-serif;
+  font-size: clamp(112px, 22vw, 208px);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -.075em;
+  color: #1e7a5e;
+}
+.spark { position: absolute; right: -28px; top: -6px; font-size: 52px; color: #3bb59e; }
+.label { margin: 0 0 20px; font-size: 11px; font-weight: 700; letter-spacing: .14em; line-height: 1.7; }
+.title { margin: 0 auto 20px; max-width: 700px; font-size: clamp(30px, 4.5vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -.035em; text-wrap: balance; }
+.description { max-width: 500px; margin: 0 auto; font-size: 17px; line-height: 1.75; color: #486159; }
+.actions { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.primary, .secondary { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 14px; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1.5; transition: background-color .15s; }
+.primary { background: #1e7a5e; color: #fff; border: 1px solid #1e7a5e; }
+.primary:hover { background: #155a45; }
+.secondary { background: transparent; color: #003629; border: 1px solid #9ab9ac; }
+.secondary:hover { background: #e2f4ee; }
+.page a:focus-visible { outline: 3px solid #003629; outline-offset: 5px; }
+.note { margin: 40px 0 0; font-size: 13px; line-height: 1.6; color: #486159; }
+@media (max-width: 540px) {
+  .page { padding: 32px 22px; }
+  .embedded { padding-top: 120px; padding-bottom: 48px; }
+  .actions { flex-direction: column; }
+  .primary, .secondary { width: 100%; max-width: 330px; }
+  .description { font-size: 16px; }
+  .spark { right: -20px; top: -10px; font-size: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary, .secondary { transition: none; }
+}
