@@ -115,6 +115,22 @@
         "subtitle":"Empecemos por una llamada de auditoría."
     },
 
+    "resources": {
+        "title": "Recursos de Performance Marketing",
+        "subtitle": "Ideas, estrategias y aprendizajes para mejorar el rendimiento de tu publicidad.",
+        "navigationLabel": "Navegación de recursos",
+        "previous": "Ver recursos anteriores",
+        "next": "Ver más recursos",
+        "readArticle": "Leer artículo",
+        "previewArticle": "Ver adelanto",
+        "items": {
+            "highPerformance": { "title": "Claves para el alto performance", "description": "Consideraciones para construir campañas de alto rendimiento." },
+            "soulfulBrands": { "title": "Marcas con alma", "description": "Cómo conectar con las personas sin perder de vista los objetivos de negocio." },
+            "convertingWebsite": { "title": "Claves para una web que convierte", "description": "Principios de UX, CRO y estructura web para transformar visitas en oportunidades y ventas." },
+            "whatsappSales": { "title": "Claves para vender por WhatsApp", "description": "Buenas prácticas para convertir conversaciones iniciadas desde publicidad en oportunidades comerciales." }
+        }
+    },
+
     "footer":{
         "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
         "privacyPolicy": "Política de privacidad",

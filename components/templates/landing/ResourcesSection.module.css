@@ -1,0 +1,29 @@
+.section { background: #f5faf8; overflow: hidden; }
+.heading { width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.heading > * { max-width: 100%; }
+.controls { display: flex; justify-content: flex-end; gap: 10px; margin: 34px 0 16px; }
+.controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #b8cec6; border-radius: 999px; color: #003629; background: white; font-size: 20px; transition: .2s ease; }
+.controls button:hover { color: white; background: #1e7a5e; border-color: #1e7a5e; }
+.controls button:focus-visible, .link:focus-visible { outline: 3px solid #3bb59e; outline-offset: 3px; }
+.rail { width: 100%; min-width: 0; display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 36px) / 3); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 2px 2px 18px; }
+.rail::-webkit-scrollbar { display: none; }
+.card { min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 28px; border: 1px solid #b8cec6; border-radius: 18px; background: white; scroll-snap-align: start; transition: border-color .2s ease; }
+.card:hover, .card:focus-within { border-color: #3bb59e; }
+.cardTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; color: #1e7a5e; font-size: 24px; }
+.number { font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+.card h3 { margin-bottom: 14px; max-width: 290px; color: #003629; font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -.025em; text-transform: uppercase; }
+.card p { color: #52655f; font-size: 15px; line-height: 1.65; }
+.link { width: fit-content; display: inline-flex; align-items: center; gap: 12px; color: #1e7a5e; font-size: 15px; font-weight: 700; text-decoration: none; }
+.link span { transition: transform .2s ease; }
+.link:hover span { transform: translateX(4px); }
+@media (max-width: 1024px) {
+  .rail { grid-auto-columns: calc((100% - 18px) / 2); }
+}
+@media (max-width: 640px) {
+  .controls { margin-top: 28px; }
+  .rail { grid-auto-columns: 100%; }
+  .card { min-height: 290px; padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .controls button, .link span { transition: none; }
+}

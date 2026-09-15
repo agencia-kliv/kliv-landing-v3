@@ -46,6 +46,8 @@ for (const locale of ["es", "en"]) {
       assert.ok(heading.includes(messages.hero.kicker), `${route} kicker within H1`);
       assert.ok(heading.includes(messages.hero.title), `${route} title within H1`);
       assert.ok(visibleHtml.includes(messages.hero.subtitle), `${route} new hero subtitle`);
+      assert.ok(visibleHtml.includes(messages.resources.title), `${route} resources title in initial HTML`);
+      assert.ok(visibleHtml.includes(messages.resources.items.highPerformance.title), `${route} resource cards in initial HTML`);
       for (const platform of ["Meta Ads", "Google Ads", "TikTok"]) {
         assert.ok(visibleHtml.includes(`>${platform}<`), `${route} platform in HTML text`);
       }
@@ -75,6 +77,19 @@ for (const locale of ["es", "en"]) {
     checks++;
   }
 }
+const publishedResource = await request("/es/claves-alto-performance/");
+assert.equal(publishedResource.status, 200);
+const publishedResourceHtml = await publishedResource.text();
+assert.ok(publishedResourceHtml.includes("Diversidad creativa"));
+assert.equal(tags(publishedResourceHtml, "link").find((x) => x.rel === "canonical")?.href, `${origin}/es/claves-alto-performance/`);
+assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name === "robots")?.content || ""));
+checks++;
+for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
+  const response = await request(path);
+  assert.equal(response.status, 200, path);
+  assert.match(tags(await response.text(), "meta").find((x) => x.name === "robots")?.content || "", /noindex/);
+  checks++;
+}
 for (const [path, status, destination] of [["/", 307, "/es/"], ["/quiz", 308, "/quiz/"], ["/quiz/", 307, "/es/quiz/"], ["/en/politicas-de-privacidad/", 308, "/es/politicas-de-privacidad/"]]) {
   const response = await request(path);
   assert.equal(response.status, status, path);
@@ -94,12 +109,13 @@ const sitemap = await request("/sitemap.xml");
 assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-assert.equal(locations.length, 7);
-assert.equal(new Set(locations).size, 7);
+assert.equal(locations.length, 8);
+assert.equal(new Set(locations).size, 8);
+assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));
 for (const url of locations) {
   assert.ok(url.startsWith(origin + "/") && url.endsWith("/"));
   assert.ok(!/panel|thank-you|#|\/en\/politicas/.test(url));
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);
-console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 7 sitemap URLs, sharing image and bilingual server-rendered JSON-LD.`);
+console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 8 sitemap URLs, resources and bilingual server-rendered JSON-LD.`);
