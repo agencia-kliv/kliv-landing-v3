@@ -1,5 +1,3 @@
-import PortalFooter from "@/components/organisms/PortalFooter";
-import PortalHeader from "@/components/organisms/PortalHeader";
 import { DM_Sans, Poppins } from "next/font/google";
 import "../globals.css";
 
@@ -22,11 +20,7 @@ const dmSans = DM_Sans({
 export default function ClientePortalLayout({ children }) {
   return (
     <html lang="es">
-      <body className={`${poppins.className} ${dmSans.variable} bg-kliv-sand`}>
-        <PortalHeader />
-        {children}
-        <PortalFooter />
-      </body>
+      <body className={`${poppins.className} ${dmSans.variable} min-h-screen bg-kliv-sand`}>{children}</body>
     </html>
   );
 }
