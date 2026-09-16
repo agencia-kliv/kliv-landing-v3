@@ -1,0 +1,69 @@
+{
+  "slug": "ISADA",
+  "name": "ISADA",
+  "meta": {
+    "period_label": "Últimos 30 días",
+    "updated_at": "2026-09-11",
+    "spend_ars": 1119693.37,
+    "results_total": 1010,
+    "impressions_total": 754657,
+    "clicks_total": 9188
+  },
+  "campaigns": [
+    {
+      "id": "6932057608711",
+      "name": "01/26#2_ConsideraciónWAPP",
+      "objective": "Interacción (mensajes a WhatsApp)",
+      "status": "ACTIVE",
+      "spend": "$122.976,14 ARS",
+      "impressions": "65.243",
+      "clicks": "1.505",
+      "ctr": "2,31%",
+      "cpc": "$81,71 ARS",
+      "reach": "18.256",
+      "result_label": "Conversaciones de mensajería iniciadas",
+      "result_value": "310",
+      "cost_per_result": "$396,70 ARS"
+    },
+    {
+      "id": "6932027152111",
+      "name": "01/26#1_ConcienciaWEB",
+      "objective": "Clientes potenciales (formulario web)",
+      "status": "ACTIVE",
+      "spend": "$929.404,98 ARS",
+      "impressions": "689.327",
+      "clicks": "7.222",
+      "ctr": "1,05%",
+      "cpc": "$128,69 ARS",
+      "reach": "298.508",
+      "result_label": "Leads de sitio web",
+      "result_value": "700",
+      "cost_per_result": "$1.327,72 ARS"
+    }
+  ],
+  "campaigns_paused": [
+    {
+      "id": "52576896474915",
+      "name": "09/26#1_ConcienciaWAPP",
+      "objective": "Interacción (mensajes a WhatsApp)",
+      "status": "PAUSED",
+      "spend": "$67.312,25 ARS",
+      "impressions": "29.087",
+      "clicks": "461",
+      "ctr": "1,58%",
+      "cpc": "$146,01 ARS",
+      "reach": "25.076",
+      "result_label": "Conversaciones de mensajería iniciadas",
+      "result_value": "86",
+      "cost_per_result": "$782,70 ARS"
+    }
+  ],
+  "changelog": [
+    {
+      "date": "2026-09-11",
+      "tag": "Setup",
+      "text": "Se creó este portal de seguimiento para ISADA con el estado actual de campañas, rendimiento de los últimos 30 días y espacio para registrar cambios y reuniones."
+    }
+  ],
+  "meetings": []
+}
