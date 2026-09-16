@@ -47,7 +47,8 @@ for (const locale of ["es", "en"]) {
       assert.ok(heading.includes(messages.hero.title), `${route} title within H1`);
       assert.ok(visibleHtml.includes(messages.hero.subtitle), `${route} new hero subtitle`);
       assert.ok(visibleHtml.includes(messages.resources.title), `${route} resources title in initial HTML`);
-      assert.ok(visibleHtml.includes(messages.resources.items.highPerformance.title), `${route} resource cards in initial HTML`);
+      const firstBlogItem = locale === "es" ? "performanceMarketing" : "highPerformance";
+      assert.ok(visibleHtml.includes(messages.resources.items[firstBlogItem].title), `${route} blog cards in initial HTML`);
       for (const platform of ["Meta Ads", "Google Ads", "TikTok"]) {
         assert.ok(visibleHtml.includes(`>${platform}<`), `${route} platform in HTML text`);
       }
@@ -84,6 +85,48 @@ assert.ok(publishedResourceHtml.includes("Diversidad creativa"));
 assert.equal(tags(publishedResourceHtml, "link").find((x) => x.rel === "canonical")?.href, `${origin}/es/claves-alto-performance/`);
 assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name === "robots")?.content || ""));
 checks++;
+const blogSlugs = [
+  "que-es-performance-marketing-guia-completa",
+  "performance-marketing-ecommerce",
+  "performance-marketing-empresas-de-servicios",
+  "performance-marketing-productos-digitales",
+  "roas-mer-cac-que-metrica-mirar",
+];
+for (const slug of blogSlugs) {
+  const route = `/es/blog/${slug}/`;
+  const response = await request(route);
+  assert.equal(response.status, 200, route);
+  const html = await response.text();
+  const links = tags(html, "link");
+  const metas = tags(html, "meta");
+  const pageTitle = html.match(/<title>([^<]+)<\/title>/)?.[1] || "";
+  const description = metas.find((x) => x.name === "description")?.content || "";
+  const cover = `${origin}/api/blog-cover/${slug}/`;
+  assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
+  assert.equal(links.find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
+  assert.equal(links.filter((x) => x.hreflang).length, 0, `${route} no false English alternate`);
+  assert.ok(pageTitle.length > 20 && pageTitle.length <= 65, `${route} concise title (${pageTitle.length})`);
+  assert.ok(description.length >= 100 && description.length <= 160, `${route} useful description (${description.length})`);
+  assert.equal(metas.find((x) => x.property === "og:type")?.content, "article", `${route} Open Graph article`);
+  assert.equal(metas.find((x) => x.property === "og:url")?.content, origin + route, `${route} Open Graph URL`);
+  assert.equal(metas.find((x) => x.property === "og:image")?.content, cover, `${route} dedicated social image`);
+  assert.equal(metas.find((x) => x.name === "twitter:card")?.content, "summary_large_image", `${route} Twitter card`);
+  const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+  assert.equal(structured.length, 1, `${route} single BlogPosting JSON-LD`);
+  const data = JSON.parse(structured[0][1]);
+  assert.equal(data["@type"], "BlogPosting");
+  assert.equal(data.image, cover);
+  assert.equal(data.url, origin + route);
+  assert.equal(data.mainEntityOfPage["@id"], origin + route);
+  assert.ok(!data.datePublished && !data.dateModified, `${route} does not invent publication dates`);
+  assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
+  const coverResponse = await request(`/api/blog-cover/${slug}/`);
+  assert.equal(coverResponse.status, 200, `${route} social image`);
+  assert.match(coverResponse.headers.get("content-type") || "", /^image\/png/, `${route} PNG social image`);
+  checks++;
+}
+assert.equal((await request("/en/blog/que-es-performance-marketing-guia-completa/")).status, 404);
+checks++;
 for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
   const response = await request(path);
   assert.equal(response.status, 200, path);
@@ -109,13 +152,14 @@ const sitemap = await request("/sitemap.xml");
 assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-assert.equal(locations.length, 8);
-assert.equal(new Set(locations).size, 8);
+assert.equal(locations.length, 13);
+assert.equal(new Set(locations).size, 13);
 assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));
+for (const slug of blogSlugs) assert.ok(locations.includes(`${origin}/es/blog/${slug}/`));
 for (const url of locations) {
   assert.ok(url.startsWith(origin + "/") && url.endsWith("/"));
   assert.ok(!/panel|thank-you|#|\/en\/politicas/.test(url));
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);
-console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 8 sitemap URLs, resources and bilingual server-rendered JSON-LD.`);
+console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 13 sitemap URLs, blog and bilingual server-rendered JSON-LD.`);

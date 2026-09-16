@@ -20,7 +20,8 @@
     "header":{
         "services": "Service",
         "trajectory": "About Us",
-        "pricing": "Pricing"
+        "pricing": "Pricing",
+        "blog": "Blog"
     },
     
     "globals":{
@@ -114,7 +115,7 @@
     },
 
     "resources": {
-        "title": "Performance Marketing Resources",
+        "title": "Performance Marketing Blog",
         "subtitle": "Ideas, strategies and lessons to improve your advertising performance.",
         "navigationLabel": "Resources navigation",
         "previous": "View previous resources",
