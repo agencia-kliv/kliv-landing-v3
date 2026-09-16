@@ -3,7 +3,9 @@
 import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTitle from "@/components/atoms/SectionTitle";
+import { getBlogCover } from "@/data/blogCovers";
 import Link from "next-intl/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useRef } from "react";
 import { FiArrowLeft, FiArrowRight, FiBookOpen } from "react-icons/fi";
@@ -74,6 +76,16 @@ export default function ResourcesSection() {
         >
           {items.map((item, index) => (
             <article className={styles.card} key={item.slug}>
+              {getBlogCover(item.slug) && (
+                <div className={styles.cover}>
+                  <Image
+                    src={getBlogCover(item.slug)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+              )}
               <div>
                 <div className={styles.cardTop}>
                   <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>

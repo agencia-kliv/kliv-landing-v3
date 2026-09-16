@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next-intl/link";
+import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { getBlogCover } from "@/data/blogCovers";
 import styles from "./BlogArticle.module.css";
 
 export default function BlogArticle({ article }) {
@@ -12,6 +14,18 @@ export default function BlogArticle({ article }) {
           <Link href="/#blog" className={styles.back}>
             <FiArrowLeft aria-hidden="true" /> Volver al Blog
           </Link>
+          {getBlogCover(article.slug) && (
+            <div className={styles.coverFrame}>
+              <Image
+                src={getBlogCover(article.slug)}
+                alt={article.title}
+                fill
+                priority
+                sizes="(max-width: 960px) 100vw, 920px"
+                className={styles.coverImage}
+              />
+            </div>
+          )}
           <p className={styles.eyebrow}>Blog KLIV · {article.category}</p>
           <h1 className={styles.title}>{article.title}</h1>
           <p className={styles.description}>{article.description}</p>
