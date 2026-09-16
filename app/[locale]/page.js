@@ -1,4 +1,5 @@
 import LandingPage from "@/components/pages/LandingPage";
+import HashAnchorScroll from "@/components/organisms/HashAnchorScroll";
 import HomeTracking from "@/components/organisms/HomeTracking";
 import { getMessages } from "@/lib/metadata";
 import { homeStructuredData, serializeStructuredData } from "@/lib/structured-data";
@@ -32,6 +33,7 @@ export default async function Home({ params: { locale } }) {
         }}
       />
       <LandingPage />
+      <HashAnchorScroll />
       <nav className="sr-only" aria-label={messages.resources.title} data-section="blog-index-fallback">
         <h2>{messages.resources.title}</h2>
         <ul>
