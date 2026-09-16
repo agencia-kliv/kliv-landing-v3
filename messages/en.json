@@ -20,7 +20,8 @@
     "header":{
         "services": "Service",
         "trajectory": "About Us",
-        "pricing": "Pricing"
+        "pricing": "Pricing",
+        "blog": "Blog"
     },
     
     "globals":{
@@ -111,6 +112,22 @@
     "contactUs": {
         "title":"Ready to scale your sales?",
         "subtitle":"Let's start with an audit call."
+    },
+
+    "resources": {
+        "title": "Performance Marketing Blog",
+        "subtitle": "Ideas, strategies and lessons to improve your advertising performance.",
+        "navigationLabel": "Resources navigation",
+        "previous": "View previous resources",
+        "next": "View more resources",
+        "readArticle": "Read article",
+        "previewArticle": "View preview",
+        "items": {
+            "highPerformance": { "title": "Keys to high performance", "description": "What to consider when building high-performing campaigns." },
+            "soulfulBrands": { "title": "Brands with soul", "description": "How to connect with people without losing sight of business goals." },
+            "convertingWebsite": { "title": "Keys to a website that converts", "description": "UX, CRO and structure principles that turn visits into opportunities and sales." },
+            "whatsappSales": { "title": "Keys to selling through WhatsApp", "description": "Best practices to turn advertising conversations into business opportunities." }
+        }
     },
 
     "footer":{

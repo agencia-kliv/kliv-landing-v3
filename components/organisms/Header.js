@@ -86,6 +86,9 @@ const Header = () => {
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
             </TabItem>
+            <TabItem href={"/#blog"} isActive={activeSection === "blog"}>
+              {t_header("blog")}
+            </TabItem>
             {/* <TabItem
               href={"/#nosotros"}
               isActive={activeSection === "nosotros"}
@@ -144,6 +147,9 @@ const Header = () => {
             </TabItem>
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
+            </TabItem>
+            <TabItem href={"/#blog"} isActive={activeSection === "blog"}>
+              {t_header("blog")}
             </TabItem>
           </nav>
 

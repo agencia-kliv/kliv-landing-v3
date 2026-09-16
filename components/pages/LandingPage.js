@@ -29,6 +29,10 @@ const ContactUsSection = dynamic(
   () => import("../templates/landing/contactUs/ContactUsSection"),
   { ssr: true }
 );
+const ResourcesSection = dynamic(
+  () => import("../templates/landing/ResourcesSection"),
+  { ssr: true }
+);
 
 const LandingPage = () => {
   return (
@@ -44,6 +48,7 @@ const LandingPage = () => {
       {/* <HowWeWorkSection /> */}
       <FAQSection />
       <ContactUsSection />
+      <ResourcesSection />
       {/* <CalendlySection /> */}
     </main>
   );

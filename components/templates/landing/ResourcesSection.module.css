@@ -1,0 +1,34 @@
+.section { background: #f5faf8; overflow: hidden; }
+.heading { width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.heading > * { max-width: 100%; }
+.controls { display: flex; justify-content: flex-end; gap: 10px; margin: 34px 0 16px; }
+.controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #b8cec6; border-radius: 999px; color: #003629; background: white; font-size: 20px; transition: .2s ease; }
+.controls button:hover { color: white; background: #1e7a5e; border-color: #1e7a5e; }
+.controls button:focus-visible, .link:focus-visible { outline: 3px solid #3bb59e; outline-offset: 3px; }
+.rail { width: 100%; min-width: 0; padding-bottom: 18px; }
+.rail :global(.react-multi-carousel-track) { align-items: stretch; }
+.slide { height: auto; display: flex; padding: 2px 9px; }
+.card { width: 100%; min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 0 0 28px; border: 1px solid #b8cec6; border-radius: 18px; background: white; overflow: hidden; transition: border-color .2s ease; }
+.card:hover, .card:focus-within { border-color: #3bb59e; }
+.cover { position: relative; aspect-ratio: 1.9; width: 100%; overflow: hidden; background: #003629; }
+.cover img { object-fit: cover; transition: transform .35s ease; }
+.card:hover .cover img { transform: scale(1.035); }
+.card > div:not(.cover) { padding: 0 28px; }
+.card > .link { margin-left: 28px; }
+.cardTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; color: #1e7a5e; font-size: 24px; }
+.number { font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+.card h3 { margin-bottom: 14px; max-width: 290px; color: #003629; font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -.025em; text-transform: uppercase; }
+.card p { color: #52655f; font-size: 15px; line-height: 1.65; }
+.link { width: fit-content; display: inline-flex; align-items: center; gap: 12px; color: #1e7a5e; font-size: 15px; font-weight: 700; text-decoration: none; }
+.link span { transition: transform .2s ease; }
+.link:hover span { transform: translateX(4px); }
+@media (max-width: 640px) {
+  .controls { margin-top: 28px; }
+  .slide { padding-inline: 2px; }
+  .card { min-height: 290px; padding-bottom: 24px; }
+  .card > div:not(.cover) { padding-inline: 24px; }
+  .card > .link { margin-left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .controls button, .link span, .cover img { transition: none; }
+}
