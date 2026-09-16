@@ -4,8 +4,10 @@ import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return BLOG_SLUGS.map((slug) => ({ slug }));
+  return BLOG_SLUGS.map((slug) => ({ locale: "es", slug }));
 }
+
+export const dynamicParams = false;
 
 export function generateMetadata({ params: { locale, slug } }) {
   const article = getBlogArticle(slug);
