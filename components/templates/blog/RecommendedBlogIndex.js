@@ -10,6 +10,7 @@ const COLLECTIONS = [
   { label: "Fundamentos", value: "Fundamentos" },
   { label: "E-commerce", value: "E-commerce" },
   { label: "Servicios", value: "Empresas de servicios" },
+  { label: "Productos digitales", value: "Productos digitales" },
   { label: "Métricas", value: "Métricas" },
 ];
 

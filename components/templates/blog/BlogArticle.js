@@ -11,58 +11,48 @@ function withCollapsibleFaqs(content) {
   );
 }
 
-const ACRONYM_DEFINITIONS = {
-  API: "interfaz de programación de aplicaciones",
-  B2B: "empresa a empresa",
-  B2C: "empresa a consumidor",
-  CAC: "costo de adquisición de clientes",
-  CPA: "costo por adquisición o acción",
-  CPL: "costo por lead o contacto potencial",
-  CRO: "optimización de la tasa de conversión",
-  CTR: "tasa de clics",
-  CRM: "sistema de gestión de relaciones con clientes",
-  D2C: "venta directa al consumidor",
-  LTV: "valor de vida del cliente",
-  MER: "ratio de eficiencia de marketing",
-  PM: "performance marketing",
-  ROAS: "retorno de la inversión publicitaria",
-  SaaS: "software como servicio",
-  SKU: "unidad de mantenimiento de inventario",
+const RECOMMENDED_LINK_ALIASES = {
+  "/blog/marca-solo-vende-con-promociones":
+    "/blog/por-que-tu-marca-solo-vende-con-promociones",
+  "/blog/optimizar-seguimiento-de-leads-para-vender-mas":
+    "/blog/seguimiento-de-leads-para-aumentar-conversion",
+  "/es/casos-de-exito/": "/es/#trayectoria",
+  "/es/cro/": "/es/#servicios",
+  "/es/google-ads/": "/es/#servicios",
+  "/es/implementacion-crm/":
+    "/blog/seguimiento-de-leads-para-aumentar-conversion",
+  "/es/meta-ads/": "/es/#servicios",
+  "/es/performance-marketing-empresas-de-servicios/":
+    "/blog/performance-marketing-empresas-de-servicios",
+  "/es/performance-marketing-productos-digitales/":
+    "/blog/performance-marketing-productos-digitales",
 };
 
-function withAcronymExpansions(content, used = new Set()) {
-  const acronymPattern = new RegExp(
-    `\\b(${Object.keys(ACRONYM_DEFINITIONS).join("|")})\\b`,
-    "g"
+function recommendedHref(target) {
+  const normalizedTarget = RECOMMENDED_LINK_ALIASES[target] ?? target;
+  const blogMatch = normalizedTarget.match(/^\/blog\/([^/?#]+)\/?$/);
+
+  // Relative URLs preserve the active locale (/es or /en) inside the blog.
+  if (blogMatch) return `../${blogMatch[1]}/`;
+
+  return normalizedTarget;
+}
+
+function withRecommendedLinks(content) {
+  return content.replace(
+    /<li><span class="anchor">([\s\S]*?)<\/span>\s*→\s*<span class="target">([\s\S]*?)<\/span>[\s\S]*?<\/li>/g,
+    (_item, rawLabel, rawTarget) => {
+      const label = rawLabel.trim().replace(/^["“”]+|["“”]+$/g, "");
+      const target = rawTarget.replace(/<[^>]*>/g, "").trim();
+      const href = recommendedHref(target);
+
+      return `<li><a href="${href}">${label}<span aria-hidden="true">→</span></a></li>`;
+    }
   );
-
-  return content
-    .split(/(<[^>]+>)/g)
-    .map((part) => {
-      if (part.startsWith("<")) return part;
-
-      return part.replace(acronymPattern, (match, acronym, offset, text) => {
-        if (used.has(acronym)) return match;
-
-        const afterMatch = text.slice(offset + match.length);
-        if (/^\s*\(/.test(afterMatch)) {
-          used.add(acronym);
-          return match;
-        }
-
-        used.add(acronym);
-        return `${match} (${ACRONYM_DEFINITIONS[acronym]})`;
-      });
-    })
-    .join("");
 }
 
 export default function BlogArticle({ article }) {
-  const usedAcronyms = new Set();
-  const description = withAcronymExpansions(article.description, usedAcronyms);
-  const content = withCollapsibleFaqs(
-    withAcronymExpansions(article.content, usedAcronyms)
-  );
+  const content = withCollapsibleFaqs(withRecommendedLinks(article.content));
 
   return (
     <main>
@@ -73,7 +63,7 @@ export default function BlogArticle({ article }) {
           </Link>
           <p className={styles.eyebrow}>Blog KLIV · {article.category}</p>
           <h1 className={styles.title}>{article.title}</h1>
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{article.description}</p>
         </div>
       </header>
 

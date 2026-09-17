@@ -15,7 +15,7 @@ export function generateMetadata({ params: { locale, slug } }) {
 
   const canonical = localePath("es", `blog/${slug}`);
   const image = absoluteUrl(`/api/blog-cover/${slug}/`);
-  const title = `${article.seoTitle} | Agencia KLIV`;
+  const title = article.seoTitle;
 
   return {
     metadataBase: new URL(SITE_URL),
