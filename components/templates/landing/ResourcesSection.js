@@ -8,30 +8,19 @@ import { getBlogCover } from "@/data/blogCovers";
 import Image from "next/image";
 import Link from "next-intl/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import styles from "./ResourcesSection.module.css";
 
 const SPANISH_ITEMS = [
   { key: "performanceMarketing", slug: "que-es-performance-marketing-guia-completa", ready: true },
   { key: "ecommerce", slug: "performance-marketing-ecommerce", ready: true },
   { key: "services", slug: "performance-marketing-empresas-de-servicios", ready: true },
-  { key: "digitalProducts", slug: "performance-marketing-productos-digitales", ready: true },
-  { key: "metrics", slug: "roas-mer-cac-que-metrica-mirar", ready: true },
-  { key: "cacReduction", slug: "como-bajar-el-cac-sin-frenar-la-adquisicion", ready: true },
-  { key: "channelChoice", slug: "meta-ads-vs-google-ads-donde-invertir", ready: true },
-  { key: "adBudget", slug: "cuanto-invertir-en-publicidad-digital", ready: true },
-  { key: "leadQuality", slug: "leads-baratos-vs-leads-rentables", ready: true },
-  { key: "agencyChoice", slug: "cuando-contratar-una-agencia-de-performance-marketing", ready: true },
 ];
 
 const ENGLISH_ITEMS = [
   { key: "highPerformance", slug: "claves-alto-performance", ready: true },
   { key: "soulfulBrands", slug: "marcas-con-alma" },
   { key: "convertingWebsite", slug: "claves-web" },
-  { key: "whatsappSales", slug: "claves-whatsapp" },
 ];
 
 function itemHref(locale, slug) {
@@ -55,50 +44,10 @@ function readingTime(slug) {
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 }
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 640 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 640, min: 0 },
-    items: 1,
-  },
-};
-
-function CarouselArrow({ direction, label, onClick }) {
-  const isLeft = direction === "left";
-  return (
-    <button
-      type="button"
-      className={`${styles.carouselArrow} ${isLeft ? styles.carouselArrowLeft : styles.carouselArrowRight}`}
-      onClick={onClick}
-      aria-label={label}
-    >
-      {isLeft ? <FiArrowLeft aria-hidden="true" /> : <FiArrowRight aria-hidden="true" />}
-    </button>
-  );
-}
-
 export default function ResourcesSection() {
   const t = useTranslations("resources");
   const locale = useLocale();
   const items = locale === "es" ? SPANISH_ITEMS : ENGLISH_ITEMS;
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotionPreference = () => setReduceMotion(mediaQuery.matches);
-
-    updateMotionPreference();
-    mediaQuery.addEventListener?.("change", updateMotionPreference);
-
-    return () => mediaQuery.removeEventListener?.("change", updateMotionPreference);
-  }, []);
 
   return (
     <section className={styles.section} id="blog" data-section="blog">
@@ -117,27 +66,7 @@ export default function ResourcesSection() {
           </Link>
         </div>
 
-        <Carousel
-          responsive={responsive}
-          infinite={items.length > 1}
-          autoPlay={!reduceMotion && items.length > 1}
-          autoPlaySpeed={5600}
-          pauseOnHover
-          keyBoardControl
-          swipeable
-          draggable
-          showDots
-          arrows
-          customLeftArrow={
-            <CarouselArrow direction="left" label={locale === "es" ? "Artículo anterior" : "Previous article"} />
-          }
-          customRightArrow={
-            <CarouselArrow direction="right" label={locale === "es" ? "Artículo siguiente" : "Next article"} />
-          }
-          containerClass={styles.carouselContainer}
-          itemClass={styles.carouselItem}
-          dotListClass={styles.carouselDots}
-        >
+        <div className={styles.articleGrid}>
           {items.map((item, index) => (
             <Link key={item.slug} href={itemHref(locale, item.slug)} className={styles.articleCard}>
               {getBlogCover(item.slug) && (
@@ -168,7 +97,7 @@ export default function ResourcesSection() {
               </div>
             </Link>
           ))}
-        </Carousel>
+        </div>
       </div>
     </section>
   );

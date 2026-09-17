@@ -2,13 +2,17 @@
 .heroInner { max-width: 920px; margin: 0 auto; }
 .back { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 42px; color: #1e7a5e; font-weight: 700; text-decoration: none; }
 .eyebrow { margin-bottom: 18px; color: #1e7a5e; font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
-.title { max-width: 900px; color: #003629; font-size: clamp(36px, 4.2vw, 54px); font-weight: 700; line-height: 1.06; letter-spacing: -.04em; }
+.title { max-width: 900px; color: #003629; font-size: clamp(32px, 3.8vw, 48px); font-weight: 700; line-height: 1.06; letter-spacing: -.04em; }
 .description { max-width: 760px; margin-top: 26px; color: #52655f; font-size: clamp(18px, 2vw, 21px); line-height: 1.65; }
 .article { max-width: 820px; margin: 0 auto; padding: 70px 20px 100px; }
 .body { color: #40544e; font-size: 17px; line-height: 1.78; }
-.body h2 { margin: 58px 0 20px; color: #003629; font-size: clamp(27px, 3.3vw, 36px); font-weight: 700; line-height: 1.2; letter-spacing: -.025em; }
+.body h2 { margin: 50px 0 18px; color: #003629; font-size: clamp(24px, 2.8vw, 31px); font-weight: 700; line-height: 1.18; letter-spacing: -.025em; }
+.body h3 { margin: 30px 0 12px; color: #003629; font-size: clamp(19px, 2.1vw, 24px); font-weight: 700; line-height: 1.25; letter-spacing: -.02em; }
 .body p { margin: 0 0 18px; }
-.body ol, .body ul { margin: 0 0 24px; padding-left: 24px; }
+.body ol, .body ul { margin: 0 0 24px; padding-left: 30px; }
+.body ol { list-style: decimal; }
+.body ul { list-style: disc; }
+.body li::marker { color: #1e7a5e; font-weight: 700; }
 .body li { margin-bottom: 12px; }
 .body a { color: #1e7a5e; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .body :global(.callout) { margin: 28px 0; padding: 22px 24px; border-left: 4px solid #3bb59e; border-radius: 12px; background: #edf8f4; color: #003629; }

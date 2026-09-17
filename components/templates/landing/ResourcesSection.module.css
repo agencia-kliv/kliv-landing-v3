@@ -5,9 +5,8 @@
 .allLink, .read { display: inline-flex; align-items: center; gap: 8px; color: #1e7a5e; font-size: 15px; font-weight: 700; text-decoration: none; }
 .allLink svg, .read svg { transition: transform .2s ease; }
 .allLink:hover svg, .read:hover svg { transform: translate(3px, -3px); }
-.carouselContainer { position: relative; overflow: hidden; padding: 0 0 52px; }
-.carouselItem { height: auto; padding: 0 8px; }
-.articleCard { display: flex; height: 100%; min-height: 490px; flex-direction: column; overflow: hidden; border: 1px solid #b8cec6; border-radius: 22px; color: inherit; background: #fff; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.articleGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.articleCard { display: flex; min-height: 470px; flex-direction: column; overflow: hidden; border: 1px solid #b8cec6; border-radius: 22px; color: inherit; background: #fff; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 .articleCard:hover { border-color: #3bb59e; box-shadow: 0 18px 42px rgba(0,54,41,.1); transform: translateY(-3px); }
 .articleCover { position: relative; aspect-ratio: 1.55; flex: 0 0 auto; overflow: hidden; background: #003629; }
 .articleCover img { object-fit: cover; transition: transform .35s ease; }
@@ -17,17 +16,9 @@
 .metaRight { display: inline-flex; align-items: center; gap: 14px; }
 .readingTime { color: #52655f; font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; white-space: nowrap; }
 .articleNumber { color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .1em; }
-.articleBody h3 { margin: 22px 0 12px; color: #003629; font-size: clamp(22px, 2.15vw, 31px); line-height: 1.06; letter-spacing: -.045em; }
+.articleBody h3 { margin: 20px 0 12px; color: #003629; font-size: clamp(22px, 2.1vw, 28px); line-height: 1.08; letter-spacing: -.04em; }
 .articleBody p { margin: 0; color: #52655f; font-size: 15px; line-height: 1.55; }
-.read { margin-top: auto; padding-top: 28px; }
-.carouselArrow { position: absolute; top: 42%; z-index: 2; display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid #b8cec6; border-radius: 50%; color: #003629; background: #fff; cursor: pointer; transform: translateY(-50%); transition: border-color .2s ease, background .2s ease, color .2s ease; }
-.carouselArrow:hover { border-color: #1e7a5e; color: #fff; background: #1e7a5e; }
-.carouselArrow svg { width: 18px; height: 18px; }
-.carouselArrowLeft { left: 14px; }
-.carouselArrowRight { right: 14px; }
-.carouselDots { bottom: 8px; display: flex; gap: 7px; justify-content: center; }
-.carouselDots li { width: auto; height: auto; margin: 0; }
-.carouselDots li button { width: 7px; height: 7px; min-width: 7px; padding: 0; border: 0; border-radius: 50%; background: #b8cec6; opacity: 1; }
-.carouselDots li.react-multi-carousel-dot--active button { background: #1e7a5e; }
-@media (max-width: 640px) { .headingAction { margin-top: 32px; } .carouselItem { padding: 0 4px; } .articleCard { min-height: 450px; } .articleBody { padding: 20px 22px 24px; } .carouselArrow { width: 36px; height: 36px; } .carouselArrowLeft { left: 10px; } .carouselArrowRight { right: 10px; } }
-@media (prefers-reduced-motion: reduce) { .articleCard, .articleCover img, .allLink svg, .read svg, .carouselArrow { transition: none; } }
+.read { margin-top: auto; padding-top: 26px; }
+@media (max-width: 900px) { .articleGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .headingAction { margin-top: 32px; } .articleGrid { grid-template-columns: 1fr; } .articleCard { min-height: 0; } .articleBody { padding: 20px 22px 24px; } }
+@media (prefers-reduced-motion: reduce) { .articleCard, .articleCover img, .allLink svg, .read svg { transition: none; } }
