@@ -44,7 +44,10 @@ export default function RecommendedBlogIndex({ articles }) {
       <section className={styles.content} id="biblioteca">
         <div className={styles.libraryIntro}>
           <p className={styles.sectionKicker}>BLOG KLIV / PERFORMANCE</p>
-          <h1>Lo que hace que tu publicidad funcione de verdad</h1>
+          <h1>
+            Lo que hace que tu publicidad{" "}
+            <span className={styles.titleAccent}>funcione de verdad</span>
+          </h1>
           <p className={styles.librarySubtitle}>
             Ideas y marcos de decisión para conectar la pauta con el negocio:
             adquisición, margen, rentabilidad y escala.

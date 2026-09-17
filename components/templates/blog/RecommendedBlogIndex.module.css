@@ -41,6 +41,10 @@
   line-height: 1.5;
 }
 
+.titleAccent {
+  color: #1e7a5e;
+}
+
 .libraryHeader {
   display: flex;
   justify-content: space-between;
@@ -132,7 +136,7 @@
   max-width: 930px;
   margin: 11px 0 8px;
   font-size: clamp(22px, 2.8vw, 34px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -.045em;
 }
