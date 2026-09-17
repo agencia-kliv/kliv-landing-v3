@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next-intl/link";
 import { useLocale, useTranslations } from "next-intl";
 import { FiArrowUpRight } from "react-icons/fi";
+import { withoutDashes } from "@/lib/visibleText";
 import styles from "./ResourcesSection.module.css";
 
 const SPANISH_ITEMS = [
@@ -91,8 +92,8 @@ export default function ResourcesSection() {
                     <span className={styles.articleNumber}>{String(index + 1).padStart(2, "0")}</span>
                   </span>
                 </div>
-                <h3>{t(`items.${item.key}.title`)}</h3>
-                <p>{t(`items.${item.key}.description`)}</p>
+                <h3>{withoutDashes(t(`items.${item.key}.title`))}</h3>
+                <p>{withoutDashes(t(`items.${item.key}.description`))}</p>
                 <span className={styles.read}>{t("readArticle")} <FiArrowUpRight aria-hidden="true" /></span>
               </div>
             </Link>

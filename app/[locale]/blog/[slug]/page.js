@@ -1,6 +1,7 @@
 import BlogArticle from "@/components/templates/blog/BlogArticle";
 import { BLOG_SLUGS, getBlogArticle } from "@/data/blogArticles";
 import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
+import { withoutDashes } from "@/lib/visibleText";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
@@ -15,27 +16,28 @@ export function generateMetadata({ params: { locale, slug } }) {
 
   const canonical = localePath("es", `blog/${slug}`);
   const image = absoluteUrl(`/api/blog-cover/${slug}/`);
-  const title = article.seoTitle;
+  const title = withoutDashes(article.seoTitle);
+  const description = withoutDashes(article.description);
 
   return {
     metadataBase: new URL(SITE_URL),
     title,
-    description: article.description,
+    description,
     alternates: { canonical },
     robots: { index: true, follow: true },
     openGraph: {
       title,
-      description: article.description,
+      description,
       type: "article",
       url: canonical,
       siteName: "Agencia KLIV",
       locale: "es_ES",
-      images: [{ url: image, width: 1200, height: 630, alt: article.title }],
+      images: [{ url: image, width: 1200, height: 630, alt: withoutDashes(article.title) }],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: article.description,
+      description,
       images: [image],
     },
   };
@@ -51,8 +53,8 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: article.title,
-    description: article.description,
+    headline: withoutDashes(article.title),
+    description: withoutDashes(article.description),
     inLanguage: "es",
     image,
     url: canonical,

@@ -5,6 +5,7 @@ import Link from "next-intl/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { FiArrowLeft, FiArrowUpRight } from "react-icons/fi";
+import { withoutDashes } from "@/lib/visibleText";
 import styles from "./BlogIndex.module.css";
 
 const WORDS_PER_MINUTE = 220;
@@ -76,7 +77,7 @@ export default function BlogIndex({ articles }) {
               aria-pressed={activeFilter === filter}
               onClick={() => setActiveFilter(filter)}
             >
-              {filter}
+              {withoutDashes(filter)}
             </button>
           ))}
         </div>
@@ -100,13 +101,13 @@ export default function BlogIndex({ articles }) {
               </div>
               <div className={styles.cardBody}>
                 <div className={styles.meta}>
-                  <span>{article.category}</span>
+                  <span>{withoutDashes(article.category)}</span>
                   <span>{readingTime(article.content)} min de lectura</span>
                 </div>
-                <h3>{article.title}</h3>
-                <p>{article.description}</p>
+                <h3>{withoutDashes(article.title)}</h3>
+                <p>{withoutDashes(article.description)}</p>
                 <div className={styles.tags}>
-                  {(article.tags || []).map((tag) => <span key={tag}>{tag}</span>)}
+                  {(article.tags || []).map((tag) => <span key={tag}>{withoutDashes(tag)}</span>)}
                 </div>
                 <span className={styles.read}>
                   Leer artículo <FiArrowUpRight aria-hidden="true" />

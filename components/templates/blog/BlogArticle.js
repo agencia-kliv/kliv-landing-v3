@@ -2,6 +2,7 @@
 
 import Link from "next-intl/link";
 import { FiArrowLeft } from "react-icons/fi";
+import { withoutDashes, withoutDashesInHtml } from "@/lib/visibleText";
 import styles from "./BlogArticle.module.css";
 
 function withCollapsibleFaqs(content) {
@@ -55,7 +56,9 @@ function withRecommendedLinks(content) {
 }
 
 export default function BlogArticle({ article }) {
-  const content = withCollapsibleFaqs(withRecommendedLinks(article.content));
+  const content = withoutDashesInHtml(
+    withCollapsibleFaqs(withRecommendedLinks(article.content))
+  );
 
   return (
     <main>
@@ -64,9 +67,9 @@ export default function BlogArticle({ article }) {
           <Link href="/blog/" className={styles.back}>
             <FiArrowLeft aria-hidden="true" /> Volver al Blog
           </Link>
-          <p className={styles.eyebrow}>Blog KLIV · {article.category}</p>
-          <h1 className={styles.title}>{article.title}</h1>
-          <p className={styles.description}>{article.description}</p>
+          <p className={styles.eyebrow}>Blog KLIV · {withoutDashes(article.category)}</p>
+          <h1 className={styles.title}>{withoutDashes(article.title)}</h1>
+          <p className={styles.description}>{withoutDashes(article.description)}</p>
         </div>
       </header>
 

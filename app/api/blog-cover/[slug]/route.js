@@ -8,8 +8,8 @@ const COVERS = {
     title: "Qué es el Performance Marketing y cómo funciona",
   },
   "performance-marketing-ecommerce": {
-    category: "E-commerce",
-    title: "Performance Marketing para E‑commerce",
+    category: "Ecommerce",
+    title: "Performance Marketing para Ecommerce",
   },
   "performance-marketing-empresas-de-servicios": {
     category: "Empresas de servicios",

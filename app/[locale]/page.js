@@ -9,19 +9,11 @@ const BLOG_FALLBACK_ITEMS = {
     ["performanceMarketing", "blog/que-es-performance-marketing-guia-completa"],
     ["ecommerce", "blog/performance-marketing-ecommerce"],
     ["services", "blog/performance-marketing-empresas-de-servicios"],
-    ["digitalProducts", "blog/performance-marketing-productos-digitales"],
-    ["metrics", "blog/roas-mer-cac-que-metrica-mirar"],
-    ["cacReduction", "blog/como-bajar-el-cac-sin-frenar-la-adquisicion"],
-    ["channelChoice", "blog/meta-ads-vs-google-ads-donde-invertir"],
-    ["adBudget", "blog/cuanto-invertir-en-publicidad-digital"],
-    ["leadQuality", "blog/leads-baratos-vs-leads-rentables"],
-    ["agencyChoice", "blog/cuando-contratar-una-agencia-de-performance-marketing"],
   ],
   en: [
     ["highPerformance", "claves-alto-performance"],
     ["soulfulBrands", "marcas-con-alma"],
     ["convertingWebsite", "claves-web"],
-    ["whatsappSales", "claves-whatsapp"],
   ],
 };
 

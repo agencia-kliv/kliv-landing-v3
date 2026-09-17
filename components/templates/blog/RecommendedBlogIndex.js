@@ -3,12 +3,13 @@
 import Link from "next-intl/link";
 import { useMemo, useState } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
+import { withoutDashes } from "@/lib/visibleText";
 import styles from "./RecommendedBlogIndex.module.css";
 
 const COLLECTIONS = [
   { label: "Todo", value: "Todos" },
   { label: "Fundamentos", value: "Fundamentos" },
-  { label: "E-commerce", value: "E-commerce" },
+  { label: "Ecommerce", value: "E-commerce" },
   { label: "Servicios", value: "Empresas de servicios" },
   { label: "Productos digitales", value: "Productos digitales" },
   { label: "Métricas", value: "Métricas" },
@@ -77,11 +78,11 @@ export default function RecommendedBlogIndex({ articles }) {
               <span className={styles.rowNumber}>{String(index + 1).padStart(2, "0")}</span>
               <div className={styles.rowBody}>
                 <div className={styles.articleMeta}>
-                  <span>{article.category}</span>
+                  <span>{withoutDashes(article.category)}</span>
                   <span>{readingTime(article.content)} min de lectura</span>
                 </div>
-                <h2>{article.title}</h2>
-                <p>{article.description}</p>
+                <h2>{withoutDashes(article.title)}</h2>
+                <p>{withoutDashes(article.description)}</p>
               </div>
               <span className={styles.rowArrow} aria-hidden="true">
                 <FiArrowUpRight />
