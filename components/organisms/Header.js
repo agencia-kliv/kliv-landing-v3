@@ -50,6 +50,8 @@ const Header = () => {
 
   const pathname = usePathname();
   const params = useParams();
+  const blogHref = params?.locale === "es" ? "/blog/" : "/#blog";
+  const blogIsActive = activeSection === "blog" || pathname?.endsWith("/blog");
 
   useEffect(() => {
     if (isOpenMenu) {
@@ -86,7 +88,7 @@ const Header = () => {
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
             </TabItem>
-            <TabItem href={"/#blog"} isActive={activeSection === "blog"}>
+            <TabItem href={blogHref} isActive={blogIsActive}>
               {t_header("blog")}
             </TabItem>
             {/* <TabItem
@@ -148,7 +150,7 @@ const Header = () => {
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
             </TabItem>
-            <TabItem href={"/#blog"} isActive={activeSection === "blog"}>
+            <TabItem href={blogHref} isActive={blogIsActive}>
               {t_header("blog")}
             </TabItem>
           </nav>
