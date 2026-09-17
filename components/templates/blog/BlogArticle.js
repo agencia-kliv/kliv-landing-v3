@@ -42,7 +42,10 @@ function withRecommendedLinks(content) {
   return content.replace(
     /<li><span class="anchor">([\s\S]*?)<\/span>\s*→\s*<span class="target">([\s\S]*?)<\/span>[\s\S]*?<\/li>/g,
     (_item, rawLabel, rawTarget) => {
-      const label = rawLabel.trim().replace(/^["“”]+|["“”]+$/g, "");
+      const cleanedLabel = rawLabel.trim().replace(/^["“”]+|["“”]+$/g, "");
+      const label = cleanedLabel.replace(/^\p{L}/u, (letter) =>
+        letter.toLocaleUpperCase("es")
+      );
       const target = rawTarget.replace(/<[^>]*>/g, "").trim();
       const href = recommendedHref(target);
 
