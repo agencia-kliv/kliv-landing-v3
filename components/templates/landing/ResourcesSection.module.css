@@ -1,34 +1,33 @@
 .section { background: #f5faf8; overflow: hidden; }
 .heading { width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .heading > * { max-width: 100%; }
-.controls { display: flex; justify-content: flex-end; gap: 10px; margin: 34px 0 16px; }
-.controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #b8cec6; border-radius: 999px; color: #003629; background: white; font-size: 20px; transition: .2s ease; }
-.controls button:hover { color: white; background: #1e7a5e; border-color: #1e7a5e; }
-.controls button:focus-visible, .link:focus-visible { outline: 3px solid #3bb59e; outline-offset: 3px; }
-.rail { width: 100%; min-width: 0; padding-bottom: 18px; }
-.rail :global(.react-multi-carousel-track) { align-items: stretch; }
-.slide { height: auto; display: flex; padding: 2px 9px; }
-.card { width: 100%; min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 0 0 28px; border: 1px solid #b8cec6; border-radius: 18px; background: white; overflow: hidden; transition: border-color .2s ease; }
-.card:hover, .card:focus-within { border-color: #3bb59e; }
-.cover { position: relative; aspect-ratio: 1.9; width: 100%; overflow: hidden; background: #003629; }
-.cover img { object-fit: cover; transition: transform .35s ease; }
-.card:hover .cover img { transform: scale(1.035); }
-.card > div:not(.cover) { padding: 0 28px; }
-.card > .link { margin-left: 28px; }
-.cardTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; color: #1e7a5e; font-size: 24px; }
-.number { font-size: 12px; font-weight: 700; letter-spacing: .14em; }
-.card h3 { margin-bottom: 14px; max-width: 290px; color: #003629; font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -.025em; text-transform: uppercase; }
-.card p { color: #52655f; font-size: 15px; line-height: 1.65; }
-.link { width: fit-content; display: inline-flex; align-items: center; gap: 12px; color: #1e7a5e; font-size: 15px; font-weight: 700; text-decoration: none; }
-.link span { transition: transform .2s ease; }
-.link:hover span { transform: translateX(4px); }
-@media (max-width: 640px) {
-  .controls { margin-top: 28px; }
-  .slide { padding-inline: 2px; }
-  .card { min-height: 290px; padding-bottom: 24px; }
-  .card > div:not(.cover) { padding-inline: 24px; }
-  .card > .link { margin-left: 24px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .card, .controls button, .link span, .cover img { transition: none; }
-}
+.headingAction { display: flex; align-items: center; justify-content: flex-end; margin: 42px 0 26px; padding-top: 20px; border-top: 1px solid #b8cec6; }
+.allLink, .read { display: inline-flex; align-items: center; gap: 8px; color: #1e7a5e; font-size: 15px; font-weight: 700; text-decoration: none; }
+.allLink svg, .read svg { transition: transform .2s ease; }
+.allLink:hover svg, .read:hover svg { transform: translate(3px, -3px); }
+.carouselContainer { position: relative; overflow: hidden; padding: 0 0 52px; }
+.carouselItem { height: auto; padding: 0 8px; }
+.articleCard { display: flex; height: 100%; min-height: 490px; flex-direction: column; overflow: hidden; border: 1px solid #b8cec6; border-radius: 22px; color: inherit; background: #fff; text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.articleCard:hover { border-color: #3bb59e; box-shadow: 0 18px 42px rgba(0,54,41,.1); transform: translateY(-3px); }
+.articleCover { position: relative; aspect-ratio: 1.55; flex: 0 0 auto; overflow: hidden; background: #003629; }
+.articleCover img { object-fit: cover; transition: transform .35s ease; }
+.articleCard:hover .articleCover img { transform: scale(1.035); }
+.articleBody { display: flex; flex: 1; flex-direction: column; padding: 22px 24px 26px; }
+.meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.metaRight { display: inline-flex; align-items: center; gap: 14px; }
+.readingTime { color: #52655f; font-size: 11px; font-weight: 600; letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.articleNumber { color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+.articleBody h3 { margin: 22px 0 12px; color: #003629; font-size: clamp(22px, 2.15vw, 31px); line-height: 1.06; letter-spacing: -.045em; }
+.articleBody p { margin: 0; color: #52655f; font-size: 15px; line-height: 1.55; }
+.read { margin-top: auto; padding-top: 28px; }
+.carouselArrow { position: absolute; top: 42%; z-index: 2; display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid #b8cec6; border-radius: 50%; color: #003629; background: #fff; cursor: pointer; transform: translateY(-50%); transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.carouselArrow:hover { border-color: #1e7a5e; color: #fff; background: #1e7a5e; }
+.carouselArrow svg { width: 18px; height: 18px; }
+.carouselArrowLeft { left: 14px; }
+.carouselArrowRight { right: 14px; }
+.carouselDots { bottom: 8px; display: flex; gap: 7px; justify-content: center; }
+.carouselDots li { width: auto; height: auto; margin: 0; }
+.carouselDots li button { width: 7px; height: 7px; min-width: 7px; padding: 0; border: 0; border-radius: 50%; background: #b8cec6; opacity: 1; }
+.carouselDots li.react-multi-carousel-dot--active button { background: #1e7a5e; }
+@media (max-width: 640px) { .headingAction { margin-top: 32px; } .carouselItem { padding: 0 4px; } .articleCard { min-height: 450px; } .articleBody { padding: 20px 22px 24px; } .carouselArrow { width: 36px; height: 36px; } .carouselArrowLeft { left: 10px; } .carouselArrowRight { right: 10px; } }
+@media (prefers-reduced-motion: reduce) { .articleCard, .articleCover img, .allLink svg, .read svg, .carouselArrow { transition: none; } }
