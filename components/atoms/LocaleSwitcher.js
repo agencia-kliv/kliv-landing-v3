@@ -10,6 +10,11 @@ const LocaleSwitcher = () => {
   const changeLanguage = (newLocale) => {
     // change the locale
 
+    if (pathname.startsWith(`/${currentLanguage}/blog`)) {
+      router.push(`/${newLocale}/#blog`);
+      return;
+    }
+
     router.push(
       `/${newLocale}/${pathname.replace(`/${currentLanguage}`, "") || ""}`
     );

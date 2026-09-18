@@ -2,11 +2,24 @@ import LogitoSection from "@/components/atoms/LogitoSection";
 import PullDown from "@/components/atoms/PullDown";
 import SectionTitle from "@/components/atoms/SectionTitle";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { faqId } from "@/lib/faq";
 
 const FAQSection = () => {
   const t_faq = useTranslations("faq");
   const [openIndex, setOpenIndex] = useState(0); // el primero abierto por defecto
+
+  useEffect(() => {
+    const openFragment = () => {
+      const index = Array.from({ length: 9 }, (_, i) =>
+        faqId(t_faq(`questions.question${i + 1}.title`))
+      ).indexOf(window.location.hash.slice(1));
+      if (index !== -1) setOpenIndex(index);
+    };
+    openFragment();
+    window.addEventListener("hashchange", openFragment);
+    return () => window.removeEventListener("hashchange", openFragment);
+  }, [t_faq]);
 
   const handleToggle = (idx) => {
     setOpenIndex((prev) => (prev === idx ? -1 : idx));

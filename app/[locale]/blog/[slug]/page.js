@@ -3,6 +3,9 @@ import { BLOG_SLUGS, getBlogArticle } from "@/data/blogArticles";
 import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
 import { withoutDashes } from "@/lib/visibleText";
 import { notFound } from "next/navigation";
+import contentDates from "@/data/contentDates.json";
+import { serializeStructuredData } from "@/lib/structured-data";
+import { BLOG_SEO } from "@/data/blogSeo";
 
 export function generateStaticParams() {
   return BLOG_SLUGS.map((slug) => ({ locale: "es", slug }));
@@ -16,8 +19,8 @@ export function generateMetadata({ params: { locale, slug } }) {
 
   const canonical = localePath("es", `blog/${slug}`);
   const image = absoluteUrl(`/api/blog-cover/${slug}/`);
-  const title = withoutDashes(article.seoTitle);
-  const description = withoutDashes(article.description);
+  const title = withoutDashes(BLOG_SEO[slug]?.title || article.seoTitle);
+  const description = withoutDashes(BLOG_SEO[slug]?.description || article.description);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -58,6 +61,7 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
     inLanguage: "es",
     image,
     url: canonical,
+    ...contentDates.articles[slug],
     author: { "@type": "Organization", name: "Agencia KLIV", url: SITE_URL },
     publisher: {
       "@type": "Organization",
@@ -68,12 +72,23 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
   };
 
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Agencia KLIV", item: absoluteUrl("/es/") },
+      { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/es/blog/") },
+      { "@type": "ListItem", position: 3, name: withoutDashes(article.title), item: canonical },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbs) }} />
       <BlogArticle article={article} />
     </>
   );

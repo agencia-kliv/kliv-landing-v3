@@ -4,6 +4,9 @@ import { readFile } from "node:fs/promises";
 // Run against a production server: node scripts/check-seo.mjs http://127.0.0.1:3100
 const base = process.argv[2] || "http://127.0.0.1:3000";
 const origin = "https://agenciakliv.com";
+const articleSource = await readFile(new URL("../data/blogArticles.js", import.meta.url), "utf8");
+const { BLOG_SLUGS: blogSlugs } = await import(`data:text/javascript;base64,${Buffer.from(articleSource).toString("base64")}`);
+const contentDates = JSON.parse(await readFile(new URL("../data/contentDates.json", import.meta.url), "utf8"));
 let checks = 0;
 async function request(path) {
   return fetch(`${base}${path}`, { redirect: "manual" });
@@ -25,12 +28,12 @@ for (const locale of ["es", "en"]) {
       const data = JSON.parse(structured[0][1]);
       assert.equal(data["@context"], "https://schema.org");
       const graph = data["@graph"];
-      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service"]);
+      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service", "ProfessionalService", "Service", "Service", "Service", "FAQPage"]);
       const ids = new Set(graph.map((node) => node["@id"]));
-      assert.equal(ids.size, 4);
+      assert.equal(ids.size, graph.length);
       for (const node of graph) {
         for (const field of ["publisher", "isPartOf", "about", "mainEntity", "provider"]) {
-          if (node[field]) assert.ok(ids.has(node[field]["@id"]), `${route} resolved ${field}`);
+          if (node[field]?.["@id"]) assert.ok(ids.has(node[field]["@id"]), `${route} resolved ${field}`);
         }
       }
       const messages = JSON.parse(await readFile(new URL(`../messages/${locale}.json`, import.meta.url), "utf8"));
@@ -40,6 +43,20 @@ for (const locale of ["es", "en"]) {
       assert.equal(graph[3].name, messages.services.title);
       assert.equal(graph[3].description, messages.services.subtitle);
       const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+      assert.equal(graph[0].sameAs.length, 2);
+      assert.equal(graph[0].telephone, "+5493515504011");
+      assert.ok(visibleHtml.includes("Rosario de Santa Fe 1106"));
+      assert.ok(visibleHtml.includes("+54 9 351 550-4011"));
+      for (const key of ["saniito", "solMillan", "rolicred"]) {
+        assert.ok(visibleHtml.includes(messages.testimonials[key]), `${route} testimonial ${key} in initial HTML`);
+      }
+      const faq = graph.find((node) => node["@type"] === "FAQPage");
+      assert.equal(faq.mainEntity.length, 9);
+      for (const question of faq.mainEntity) {
+        assert.ok(visibleHtml.includes(`id="${question["@id"].split("#")[1]}"`));
+        assert.ok(visibleHtml.includes(question.name));
+      }
+      assert.ok(!visibleHtml.includes('alt="Team member"'));
       assert.ok(visibleHtml.includes(messages.services.subtitle), `${route} service copy is in initial HTML`);
       assert.ok(visibleHtml.includes('id="servicios"'));
       const heading = visibleHtml.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1] || "";
@@ -85,13 +102,12 @@ assert.ok(publishedResourceHtml.includes("Diversidad creativa"));
 assert.equal(tags(publishedResourceHtml, "link").find((x) => x.rel === "canonical")?.href, `${origin}/es/claves-alto-performance/`);
 assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name === "robots")?.content || ""));
 checks++;
-const blogSlugs = [
-  "que-es-performance-marketing-guia-completa",
-  "performance-marketing-ecommerce",
-  "performance-marketing-empresas-de-servicios",
-  "performance-marketing-productos-digitales",
-  "roas-mer-cac-que-metrica-mirar",
-];
+const library = await request("/es/blog/");
+assert.equal(library.status, 200);
+const libraryHtml = await library.text();
+assert.equal(tags(libraryHtml, "link").filter((link) => link.hreflang).length, 0);
+assert.equal(tags(libraryHtml, "link").find((link) => link.rel === "canonical")?.href, `${origin}/es/blog/`);
+checks++;
 for (const slug of blogSlugs) {
   const route = `/es/blog/${slug}/`;
   const response = await request(route);
@@ -112,13 +128,18 @@ for (const slug of blogSlugs) {
   assert.equal(metas.find((x) => x.property === "og:image")?.content, cover, `${route} dedicated social image`);
   assert.equal(metas.find((x) => x.name === "twitter:card")?.content, "summary_large_image", `${route} Twitter card`);
   const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
-  assert.equal(structured.length, 1, `${route} single BlogPosting JSON-LD`);
+  assert.equal(structured.length, 2, `${route} BlogPosting and breadcrumbs JSON-LD`);
   const data = JSON.parse(structured[0][1]);
   assert.equal(data["@type"], "BlogPosting");
   assert.equal(data.image, cover);
   assert.equal(data.url, origin + route);
   assert.equal(data.mainEntityOfPage["@id"], origin + route);
-  assert.ok(!data.datePublished && !data.dateModified, `${route} does not invent publication dates`);
+  assert.equal(data.datePublished, contentDates.articles[slug].datePublished);
+  assert.equal(data.dateModified, contentDates.articles[slug].dateModified);
+  assert.ok(tags(html, "time").some((tag) => tag.datetime === data.datePublished));
+  const breadcrumbs = JSON.parse(structured[1][1]);
+  assert.equal(breadcrumbs["@type"], "BreadcrumbList");
+  assert.equal(breadcrumbs.itemListElement[2].item, origin + route);
   assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
   const coverResponse = await request(`/api/blog-cover/${slug}/`);
   assert.equal(coverResponse.status, 200, `${route} social image`);
@@ -152,8 +173,11 @@ const sitemap = await request("/sitemap.xml");
 assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-assert.equal(locations.length, 13);
-assert.equal(new Set(locations).size, 13);
+assert.equal(locations.length, 9 + blogSlugs.length);
+assert.equal(new Set(locations).size, locations.length);
+assert.equal((xml.match(/<lastmod>/g) || []).length, locations.length);
+assert.ok(locations.includes(`${origin}/es/blog/`));
+assert.ok(!locations.includes(`${origin}/en/blog/`));
 assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));
 for (const slug of blogSlugs) assert.ok(locations.includes(`${origin}/es/blog/${slug}/`));
 for (const url of locations) {
@@ -162,4 +186,4 @@ for (const url of locations) {
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);
-console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, 13 sitemap URLs, blog and bilingual server-rendered JSON-LD.`);
+console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, ${locations.length} sitemap URLs with lastmod, ${blogSlugs.length} articles, testimonials and bilingual server-rendered JSON-LD.`);

@@ -62,6 +62,8 @@ const HeroSection = () => {
           <div className="min-w-0 w-full flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1">
             <video
               src="/hero-video.webm"
+              poster="/hero-video-poster.jpg"
+              preload="metadata"
               className="w-full max-w-full h-auto"
               autoPlay
               loop

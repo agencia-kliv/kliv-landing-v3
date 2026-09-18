@@ -1,5 +1,23 @@
 # Contenido local
 
+- `business.js`: contacto y domicilio confirmados el 18/09/2026. Reutilizados en footer y schema; no se infieren coordenadas, horarios ni zonas de servicio.
+- `contentDates.json`: publicación de los 33 artículos el 17/09/2026, confirmada por el usuario. Las fechas de edición del resto de las páginas se recuperaron del historial Git de sus archivos de contenido. Actualizar `dateModified`/`pages` solo cuando cambie contenido significativo; nunca usar la fecha automática del build. Si se edita un artículo, actualizar también su fecha visible y el sitemap a través de este archivo.
+- `blogSeo.js`: ajustes de título y descripción para metadatos. El texto editorial original permanece en `blogArticles.js`.
+
+## Estado de la auditoría GEO (18/09/2026)
+
+Se implementaron testimonios escritos en HTML inicial, contacto visible y schema de organización/oficina, perfiles sociales, servicios individuales, FAQPage y anchors accesibles, breadcrumbs y fechas del blog, sitemap con biblioteca y lastmod, y metadatos concisos para los 33 artículos.
+
+Los videos testimoniales usan posters extraídos de los originales y `preload="none"` para que las copias del carrusel no descarguen metadatos al montar. La reproducción se limita a las tarjetas visibles y la promesa de reproducción maneja rechazos del navegador.
+
+No se añadió VideoObject: se desconocen las fechas originales de publicación de los videos, y `uploadDate` es obligatorio para el resultado enriquecido de Google. Incorporarlo cuando se recupere evidencia, junto con nombre, thumbnailUrl y contentUrl reales. No usar la fecha del archivo ni del commit como sustituto.
+
+No se añadió AggregateRating: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. Los testimonios se mantienen como contenido publicado, sin ratings inventados.
+
+Cinco fotos tienen nombre respaldado por `MEMBERS` y el archivo correspondiente. `chica-small.webp` conserva su imagen y usa «Equipo de Agencia KLIV»: su identidad no se deduce del registro `chica_small.webp`, que es otro nombre de archivo. Confirmar esa persona antes de nombrarla.
+
+El redirect directo de www requiere conectar ese dominio al entorno Production en Vercel, después de publicar las reglas de host de `next.config.js`. La home www redirige a `/es/`; las otras rutas conservan su path. No configurar todo www hacia `/es/`, porque perdería las URLs de artículos.
+
 - `billing.json`: tarifas y servicios recuperados el 7 de septiembre de 2026. Se conservaron los valores originales, incluidos campos vacíos.
 - `partners.json`: orden de las imágenes de socios. Los archivos están en `public/partners/`.
 - `clientPortals.json`: portales de clientes que siguen siendo un redirect externo. Cada entrada `"Nombre": { "name": "Nombre", "url": "https://..." }` hace que `/cliente/Nombre/` (y en minúsculas) redirija a esa URL. Usar nombres sin espacios ni acentos.

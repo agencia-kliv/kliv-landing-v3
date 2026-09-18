@@ -1,32 +1,12 @@
 import { ImageResponse } from "@vercel/og";
+import { getBlogArticle } from "@/data/blogArticles";
+import { withoutDashes } from "@/lib/visibleText";
 
 export const runtime = "edge";
 
-const COVERS = {
-  "que-es-performance-marketing-guia-completa": {
-    category: "Fundamentos",
-    title: "Qué es el Performance Marketing y cómo funciona",
-  },
-  "performance-marketing-ecommerce": {
-    category: "Ecommerce",
-    title: "Performance Marketing para Ecommerce",
-  },
-  "performance-marketing-empresas-de-servicios": {
-    category: "Empresas de servicios",
-    title: "Performance Marketing para Empresas de Servicios",
-  },
-  "performance-marketing-productos-digitales": {
-    category: "Productos digitales",
-    title: "Performance Marketing para Productos Digitales",
-  },
-  "roas-mer-cac-que-metrica-mirar": {
-    category: "Métricas",
-    title: "ROAS, MER y CAC: qué métrica mirar",
-  },
-};
-
 export async function GET(_request, { params }) {
-  const cover = COVERS[params.slug];
+  const article = getBlogArticle(params.slug);
+  const cover = article && { title: withoutDashes(article.title), category: withoutDashes(article.category) };
   if (!cover) return new Response("Not found", { status: 404 });
 
   return new ImageResponse(
@@ -68,7 +48,7 @@ export async function GET(_request, { params }) {
           <div style={{ display: "flex", color: "#8ddcca", fontSize: 22, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase" }}>
             Blog de Performance Marketing · {cover.category}
           </div>
-          <div style={{ fontSize: 66, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>
+          <div style={{ fontSize: cover.title.length > 90 ? 48 : cover.title.length > 65 ? 56 : 66, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>
             {cover.title}
           </div>
         </div>

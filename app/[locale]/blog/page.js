@@ -6,13 +6,18 @@ import { notFound } from "next/navigation";
 export function generateMetadata({ params: { locale } }) {
   if (locale !== "es") return {};
 
-  return pageMetadata({
+  const metadata = pageMetadata({
     locale,
     path: "blog",
     title: "Blog de Performance Marketing",
     description:
       "Ideas, estrategias y aprendizajes de Agencia KLIV para mejorar el rendimiento de tu publicidad y tomar mejores decisiones de negocio.",
   });
+
+  return {
+    ...metadata,
+    alternates: { canonical: metadata.alternates.canonical },
+  };
 }
 
 export default function BlogPage({ params: { locale } }) {

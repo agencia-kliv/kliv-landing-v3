@@ -4,6 +4,7 @@ import Link from "next-intl/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { withoutDashes, withoutDashesInHtml } from "@/lib/visibleText";
 import styles from "./BlogArticle.module.css";
+import contentDates from "@/data/contentDates.json";
 
 function withCollapsibleFaqs(content) {
   return content.replace(
@@ -59,6 +60,10 @@ export default function BlogArticle({ article }) {
   const content = withoutDashesInHtml(
     withCollapsibleFaqs(withRecommendedLinks(article.content))
   );
+  const dates = contentDates.articles[article.slug];
+  const formatDate = (date) => new Intl.DateTimeFormat("es-AR", {
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
+  }).format(new Date(date));
 
   return (
     <main>
@@ -68,8 +73,17 @@ export default function BlogArticle({ article }) {
             <FiArrowLeft aria-hidden="true" /> Volver al Blog
           </Link>
           <p className={styles.eyebrow}>Blog KLIV · {withoutDashes(article.category)}</p>
+          <nav aria-label="Ruta de navegación" className="flex flex-wrap gap-[8px] text-[14px] mb-[16px]">
+            <Link href="/">Inicio</Link><span aria-hidden="true">/</span><Link href="/blog/">Blog</Link>
+          </nav>
           <h1 className={styles.title}>{withoutDashes(article.title)}</h1>
           <p className={styles.description}>{withoutDashes(article.description)}</p>
+          {dates && (
+            <p className="text-[14px] mt-[16px]">
+              Publicado el <time dateTime={dates.datePublished}>{formatDate(dates.datePublished)}</time>
+              {dates.dateModified !== dates.datePublished && <> · Actualizado el <time dateTime={dates.dateModified}>{formatDate(dates.dateModified)}</time></>}
+            </p>
+          )}
         </div>
       </header>
 

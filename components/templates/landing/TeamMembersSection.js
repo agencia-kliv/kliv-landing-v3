@@ -65,11 +65,12 @@ export const MEMBERS = [
 ];
 
 const TeamCard = ({ image, zoomed }) => {
+  const member = MEMBERS.find((item) => item.photoPath === image);
   return (
     <figure className="relative w-full aspect-square rounded-full border-[1px] border-[#D9D9D9] overflow-hidden">
       <Image
         src={image}
-        alt="Team member"
+        alt={member ? `${member.name}, equipo de Agencia KLIV` : "Equipo de Agencia KLIV"}
         fill
         objectFit="cover "
         className={zoomed ? "scale-[135%] translate-y-[16%]" : ""}

@@ -43,6 +43,9 @@ const nextConfig = {
   // muy difícil de revertir. El canonical ya consolida las señales.
   async redirects() {
     return [
+      { source: "/", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/es/", permanent: true },
+      { source: "/:path(.*\\..+)", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/:path", permanent: true },
+      { source: "/:path*", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/:path*/", permanent: true },
       { source: "/", destination: "/es/", permanent: false },
       { source: "/quiz", destination: "/es/quiz/", permanent: false },
       // El documento legal solo existe en español.

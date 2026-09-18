@@ -26,29 +26,18 @@ const TestimonialCard = ({
       onVideoPlay();
     }
 
-    return;
-
-    if (!videoRef.current) return;
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
   };
 
   useEffect(() => {
     if (!videoRef.current) return;
 
     if (reproducingVideoID === id && isVisible) {
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
     } else {
       videoRef.current.pause();
       setIsPlaying(false);
     }
-  }, [reproducingVideoID, videoRef, id]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [reproducingVideoID, id, isVisible]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,14 +47,13 @@ const TestimonialCard = ({
       }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    const element = videoRef.current;
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
@@ -124,7 +112,8 @@ const TestimonialCard = ({
                     : `${video.split(".mp4")[0] + "-eng.mp4"}`
                 }#t=0.001`}
                 playsInline
-                preload="metadata"
+                preload="none"
+                poster={video.replace(".mp4", "-poster.jpg")}
                 controls={false} // quitamos controles nativos
                 className="aspect-[4_/_5] mx-auto object-cover rounded-[30px]"
                 onClick={togglePlay}
@@ -141,6 +130,8 @@ const TestimonialCard = ({
                 onTouchEnd={() => setHovered(false)} // ← touch support
               >
                 <button
+                  type="button"
+                  aria-label={`${isPlaying ? (locale === "es" ? "Pausar" : "Pause") : (locale === "es" ? "Reproducir" : "Play")} ${name}`}
                   onClick={togglePlay}
                   className="bg-black bg-opacity-30 rounded-full p-2"
                 >

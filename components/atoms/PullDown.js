@@ -1,11 +1,13 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { MdArrowBackIos } from "react-icons/md";
+import { faqId } from "@/lib/faq";
 
 const PullDown = ({ isOpen, onToggle, questionNumber }) => {
   const t = useTranslations(`faq.questions.question${questionNumber}`);
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
+  const id = faqId(t("title"));
 
   // Cuando abra/cierre, actualizamos la altura objetivo
   useEffect(() => {
@@ -17,14 +19,17 @@ const PullDown = ({ isOpen, onToggle, questionNumber }) => {
   return (
     <div className="w-full border-t-[1px]">
       {/* Header clickeable */}
-      <div
-        className="flex items-center justify-between cursor-pointer gap-[10px] py-[25px] bg-white rounded-[10px] transition-colors duration-300 ease-in-out"
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={`${id}-answer`}
+        className="w-full text-left flex items-center justify-between cursor-pointer gap-[10px] py-[25px] bg-white rounded-[10px] transition-colors duration-300 ease-in-out"
         onClick={onToggle}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <h4 className="text-[16px] font-[700] 2xl:text-[18px] text-kliv-secondary">
+        <span id={id} className="scroll-mt-[100px] text-[16px] font-[700] 2xl:text-[18px] text-kliv-secondary">
           {t("title")}
-        </h4>
+        </span>
         <span
           className={`text-[20px] transition-transform duration-300 ease-out ${
             isOpen ? "rotate-[270deg]" : "rotate-[180deg]"
@@ -32,10 +37,11 @@ const PullDown = ({ isOpen, onToggle, questionNumber }) => {
         >
           <MdArrowBackIos />
         </span>
-      </div>
+      </button>
 
       {/* Contenido siempre renderizado, con overflow-hidden y transición de max-height */}
       <div
+        id={`${id}-answer`}
         ref={contentRef}
         style={{ maxHeight: `${height}px` }}
         className="overflow-hidden transition-[max-height] duration-300 ease-in-out bg-white"

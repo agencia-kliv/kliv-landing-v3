@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { BUSINESS } from "@/data/business";
 
 export const SocialNetworkButton = ({ color, href, ...props }) => {
   return (
@@ -25,6 +26,11 @@ const Footer = () => {
 
   return (
     <footer className="mt-auto">
+      <address className="not-italic px-[20px] py-[24px] max-w-[1350px] mx-auto flex flex-col sm:flex-row flex-wrap gap-[12px] justify-between text-[14px] text-kliv-secondary">
+        <span>{BUSINESS.name} · {BUSINESS.addressText}</span>
+        <a href={`tel:${BUSINESS.telephone}`}>{BUSINESS.displayTelephone}</a>
+        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+      </address>
       <div className="flex lg:hidden flex-col gap-[40px] w-full items-center py-[30px]">
         <div className="flex flex-col gap-[10px] w-full items-start px-[20px]">
           <div className="flex w-full flex-wrap gap-[12px] justify-between items-center">
