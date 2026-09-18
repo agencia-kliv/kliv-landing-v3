@@ -25,63 +25,38 @@ const Footer = () => {
   const t_footer = useTranslations("footer");
 
   return (
-    <footer className="mt-auto">
-      <address className="not-italic px-[20px] py-[24px] max-w-[1350px] mx-auto flex flex-col sm:flex-row flex-wrap gap-[12px] justify-between text-[14px] text-kliv-secondary">
-        <span>{BUSINESS.name} · {BUSINESS.addressText}</span>
-        <a href={`tel:${BUSINESS.telephone}`}>{BUSINESS.displayTelephone}</a>
-        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
-      </address>
-      <div className="flex lg:hidden flex-col gap-[40px] w-full items-center py-[30px]">
-        <div className="flex flex-col gap-[10px] w-full items-start px-[20px]">
-          <div className="flex w-full flex-wrap gap-[12px] justify-between items-center">
-            © 2026 Agencia Kliv LLC
-            <div className="flex gap-[5px]">
-              <SocialNetworkButton href="https://www.instagram.com/agenciakliv/">
-                <FaInstagram />
-              </SocialNetworkButton>
-              <SocialNetworkButton
-                href={"https://www.linkedin.com/company/agencia-kliv/"}
-              >
-                <FaLinkedinIn />
-              </SocialNetworkButton>
-              {/* <SocialNetworkButton href="https://api.whatsapp.com/send/?phone=5493515504011&text&type=phone_number&app_absent=0">
-            <FaWhatsapp />
-          </SocialNetworkButton> */}
-            </div>
+    <footer className="mt-auto border-t border-kliv-primary/10 bg-kliv-lightgreen text-kliv-secondary">
+      <div className="mx-auto max-w-[1350px] px-5 py-8 sm:px-8 lg:py-10">
+        <div className="grid gap-7 md:grid-cols-[1fr_1fr_auto] md:gap-10">
+          <div>
+            <p className="mb-3 text-[18px] font-semibold">{BUSINESS.name}</p>
+            <address className="not-italic text-[14px] leading-6 text-kliv-secondary/75">
+              <span className="block">{BUSINESS.address.streetAddress}</span>
+              <span className="block">{BUSINESS.address.postalCode} · {BUSINESS.address.addressLocality}, Argentina</span>
+            </address>
           </div>
-          <Link
-            className="text-kliv-secondary font-[500] text-[14px] text-left leading-[38px]"
-            href={{ pathname: `/politicas-de-privacidad` }}
-          >
-            {t_footer("privacyPolicy")} - {t_footer("termsAndConditions")}
-          </Link>
+          <div className="flex flex-col items-start gap-2 text-[14px] leading-6 md:pt-1">
+            <a className="transition-colors hover:text-kliv-primary hover:underline underline-offset-4" href={`mailto:${BUSINESS.email}`}>
+              {BUSINESS.email}
+            </a>
+            <a className="text-kliv-secondary/75 transition-colors hover:text-kliv-primary hover:underline underline-offset-4" href={`tel:${BUSINESS.telephone}`}>
+              {BUSINESS.displayTelephone}
+            </a>
+          </div>
+          <div className="flex items-start gap-3 md:pt-1">
+            <a href="https://www.instagram.com/agenciakliv/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-kliv-primary/20 text-[20px] text-kliv-primary transition-colors hover:bg-kliv-primary/10">
+              <FaInstagram />
+            </a>
+            <a href="https://www.linkedin.com/company/agencia-kliv/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-kliv-primary/20 text-[20px] text-kliv-primary transition-colors hover:bg-kliv-primary/10">
+              <FaLinkedinIn />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="hidden lg:flex flex-row gap-[25px] items-center max-w-[1350px] py-[30px] mx-auto w-full justify-between">
-        <div className="flex gap-[25px] items-center">
-          {/* <figure className="flex items-center relative justify-center w-[100px] h-[150px]">
-            <Image fill src="/kliv-logo.svg" alt="Kliv" />
-          </figure> */}
-          © 2026 Agencia Kliv LLC
-          <Link
-            className="text-kliv-secondary font-[500] text-[22px] lg:text-[16px] 2xl:text-[14px] text-center leading-[38px]"
-            href={{ pathname: `/politicas-de-privacidad` }}
-          >
-            {t_footer("privacyPolicy")} - {t_footer("termsAndConditions")}
+        <div className="mt-7 flex flex-col gap-3 border-t border-kliv-primary/10 pt-5 text-[12px] leading-5 text-kliv-secondary/65 sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Agencia Kliv LLC</span>
+          <Link className="transition-colors hover:text-kliv-primary" href={{ pathname: "/politicas-de-privacidad" }}>
+            {t_footer("privacyPolicy")} · {t_footer("termsAndConditions")}
           </Link>
-        </div>
-        <div className="flex gap-[20px] lg:gap-[10px]">
-          <SocialNetworkButton href="https://www.instagram.com/agenciakliv/">
-            <FaInstagram />
-          </SocialNetworkButton>
-          <SocialNetworkButton
-            href={"https://www.linkedin.com/company/agencia-kliv/"}
-          >
-            <FaLinkedinIn />
-          </SocialNetworkButton>
-          {/* <SocialNetworkButton href="https://api.whatsapp.com/send/?phone=5493515504011&text&type=phone_number&app_absent=0">
-            <FaWhatsapp />
-          </SocialNetworkButton> */}
         </div>
       </div>
     </footer>
