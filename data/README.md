@@ -10,7 +10,7 @@ Se implementaron testimonios escritos en HTML inicial, contacto visible y schema
 
 Los videos testimoniales usan posters extraídos de los originales y `preload="none"` para que las copias del carrusel no descarguen metadatos al montar. La reproducción se limita a las tarjetas visibles y la promesa de reproducción maneja rechazos del navegador.
 
-No se añadió VideoObject: se desconocen las fechas originales de publicación de los videos, y `uploadDate` es obligatorio para el resultado enriquecido de Google. Incorporarlo cuando se recupere evidencia, junto con nombre, thumbnailUrl y contentUrl reales. No usar la fecha del archivo ni del commit como sustituto.
+`videoMetadata.json` registra 2025 como año de publicación del video principal y los tres testimoniales, indicado por el usuario. No se añadió VideoObject: falta mes y día para una fecha completa de `uploadDate`, obligatorio para el resultado enriquecido de Google. Incorporarlo cuando se recupere evidencia, junto con nombre, thumbnailUrl y contentUrl reales. No convertir el año en 1 de enero ni usar la fecha del archivo o del commit como sustituto.
 
 No se añadió AggregateRating: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. Los testimonios se mantienen como contenido publicado, sin ratings inventados.
 
