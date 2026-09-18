@@ -10,11 +10,11 @@ Se implementaron testimonios escritos en HTML inicial, contacto visible y schema
 
 Los videos testimoniales usan posters extraídos de los originales y `preload="none"` para que las copias del carrusel no descarguen metadatos al montar. La reproducción se limita a las tarjetas visibles y la promesa de reproducción maneja rechazos del navegador.
 
-`videoMetadata.json` registra 2025 como año de publicación del video principal y los tres testimoniales, indicado por el usuario. No se añadió VideoObject: falta mes y día para una fecha completa de `uploadDate`, obligatorio para el resultado enriquecido de Google. Incorporarlo cuando se recupere evidencia, junto con nombre, thumbnailUrl y contentUrl reales. No convertir el año en 1 de enero ni usar la fecha del archivo o del commit como sustituto.
+`videoMetadata.json` registra el 20/07/2025 como fecha de publicación del video principal y los tres testimoniales, confirmada por el usuario. Los cuatro VideoObject se sirven en el JSON-LD inicial de ambas home, con nombres/descripciones localizados, thumbnails reales y contentUrl correspondiente al video español o inglés. No se inventan horarios, duración, reproducciones ni puntuaciones. Este marcado no garantiza indexación o resultados enriquecidos de video.
 
 No se añadió AggregateRating: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. Los testimonios se mantienen como contenido publicado, sin ratings inventados.
 
-Cinco fotos tienen nombre respaldado por `MEMBERS` y el archivo correspondiente. `chica-small.webp` conserva su imagen y usa «Equipo de Agencia KLIV»: su identidad no se deduce del registro `chica_small.webp`, que es otro nombre de archivo. Confirmar esa persona antes de nombrarla.
+Las seis fotos visibles tienen nombre respaldado por `MEMBERS`. El usuario identificó a Genesis Leal en `chica-small.webp`; el mismo alt se usa en móvil y escritorio. El registro anterior de `chica_small.webp` no se reutiliza porque corresponde a otro nombre de archivo.
 
 El redirect directo de www requiere conectar ese dominio al entorno Production en Vercel, después de publicar las reglas de host de `next.config.js`. La home www redirige a `/es/`; las otras rutas conservan su path. No configurar todo www hacia `/es/`, porque perdería las URLs de artículos.
 

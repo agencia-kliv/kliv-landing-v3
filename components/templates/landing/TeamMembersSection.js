@@ -53,6 +53,11 @@ export const MEMBERS = [
     photoPath: "/teamPhotos/ana-paula-heredia_small.webp",
   },
   {
+    id: 12,
+    name: "Genesis Leal",
+    photoPath: "/teamPhotos/chica-small.webp",
+  },
+  {
     id: 10,
     name: "Paula Gómez",
     photoPath: "/teamPhotos/paula-gomez_small.webp",

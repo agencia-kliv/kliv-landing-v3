@@ -28,7 +28,7 @@ for (const locale of ["es", "en"]) {
       const data = JSON.parse(structured[0][1]);
       assert.equal(data["@context"], "https://schema.org");
       const graph = data["@graph"];
-      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service", "ProfessionalService", "Service", "Service", "Service", "FAQPage"]);
+      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service", "ProfessionalService", "Service", "Service", "Service", "FAQPage", "VideoObject", "VideoObject", "VideoObject", "VideoObject"]);
       const ids = new Set(graph.map((node) => node["@id"]));
       assert.equal(ids.size, graph.length);
       for (const node of graph) {
@@ -57,6 +57,22 @@ for (const locale of ["es", "en"]) {
         assert.ok(visibleHtml.includes(question.name));
       }
       assert.ok(!visibleHtml.includes('alt="Team member"'));
+      assert.equal(tags(visibleHtml, "img").filter((image) => image.alt === "Genesis Leal, equipo de Agencia KLIV").length, 2);
+      const videos = graph.filter((node) => node["@type"] === "VideoObject");
+      assert.equal(videos.length, 4);
+      for (const video of videos) {
+        assert.equal(video.uploadDate, "2025-07-20");
+        assert.ok(video.name && video.description);
+        assert.equal(video.inLanguage, locale);
+        const thumbnail = await request(new URL(video.thumbnailUrl).pathname);
+        assert.equal(thumbnail.status, 200);
+        assert.match(thumbnail.headers.get("content-type") || "", /^image\//);
+        const asset = await fetch(`${base}${new URL(video.contentUrl).pathname}`, { headers: { Range: "bytes=0-0" } });
+        assert.ok([200, 206].includes(asset.status));
+        assert.match(asset.headers.get("content-type") || "", /^video\//);
+        await asset.body?.cancel();
+        if (locale === "en" && video.contentUrl.endsWith(".mp4")) assert.ok(video.contentUrl.endsWith("-eng.mp4"));
+      }
       assert.ok(visibleHtml.includes(messages.services.subtitle), `${route} service copy is in initial HTML`);
       assert.ok(visibleHtml.includes('id="servicios"'));
       const heading = visibleHtml.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1] || "";

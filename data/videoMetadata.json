@@ -1,6 +1,30 @@
 {
-  "/hero-video.webm": { "publicationYear": 2025 },
-  "/testimonials/camelinna.mp4": { "publicationYear": 2025 },
-  "/testimonials/memeca.mp4": { "publicationYear": 2025 },
-  "/testimonials/lima-amalfi.mp4": { "publicationYear": 2025 }
+  "/hero-video.webm": {
+    "publicationYear": 2025,
+    "uploadDate": "2025-07-20",
+    "thumbnailUrl": "/hero-video-poster.jpg",
+    "name": { "es": "Video principal de Agencia KLIV", "en": "Agencia KLIV main video" },
+    "description": { "es": "Video principal publicado en la página de Agencia KLIV.", "en": "Main video published on the Agencia KLIV home page." }
+  },
+  "/testimonials/camelinna.mp4": {
+    "publicationYear": 2025,
+    "uploadDate": "2025-07-20",
+    "thumbnailUrl": "/testimonials/camelinna-poster.jpg",
+    "name": { "es": "Testimonio de Lourdes H., Camelinna", "en": "Testimonial from Lourdes H., Camelinna" },
+    "description": { "es": "Testimonio en video de Lourdes H., de Camelinna, publicado por Agencia KLIV.", "en": "Video testimonial from Lourdes H., from Camelinna, published by Agencia KLIV." }
+  },
+  "/testimonials/memeca.mp4": {
+    "publicationYear": 2025,
+    "uploadDate": "2025-07-20",
+    "thumbnailUrl": "/testimonials/memeca-poster.jpg",
+    "name": { "es": "Testimonio de Natalia S., Memeca", "en": "Testimonial from Natalia S., Memeca" },
+    "description": { "es": "Testimonio en video de Natalia S., de Memeca, publicado por Agencia KLIV.", "en": "Video testimonial from Natalia S., from Memeca, published by Agencia KLIV." }
+  },
+  "/testimonials/lima-amalfi.mp4": {
+    "publicationYear": 2025,
+    "uploadDate": "2025-07-20",
+    "thumbnailUrl": "/testimonials/lima-amalfi-poster.jpg",
+    "name": { "es": "Testimonio de Ignacio D., Lima + Amalfi", "en": "Testimonial from Ignacio D., Lima + Amalfi" },
+    "description": { "es": "Testimonio en video de Ignacio D., de Lima + Amalfi, publicado por Agencia KLIV.", "en": "Video testimonial from Ignacio D., from Lima + Amalfi, published by Agencia KLIV." }
+  }
 }
