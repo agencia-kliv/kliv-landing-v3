@@ -18,7 +18,9 @@ Los videos testimoniales usan posters extraídos de los originales y `preload="n
 
 `videoMetadata.json` registra el 20/07/2025 como fecha de publicación del video principal y los tres testimoniales, confirmada por el usuario. Los cuatro VideoObject se sirven en el JSON-LD inicial de ambas home, con nombres/descripciones localizados, thumbnails reales y contentUrl correspondiente al video español o inglés. La `duration` de cada video se midió con `ffprobe` sobre los archivos de `public/` (21/09/2026). No se inventan horarios, reproducciones ni puntuaciones. Este marcado no garantiza indexación o resultados enriquecidos de video.
 
-No se añadió AggregateRating: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. Los testimonios se mantienen como contenido publicado, sin ratings inventados.
+Los tres testimonios escritos van como `Review` en el JSON-LD de ambas home (`data/testimonials.js` + `messages/<locale>.json`), con el mismo texto y autor que se ven en la tarjeta. No llevan `reviewRating` ni `AggregateRating`: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. `check:seo` comprueba que cada `reviewBody` coincida con el texto visible y que no exista rating.
+
+`Organization` declara `alternateName: "KLIV Agency"`, la forma con la que se presenta la home en inglés en `title` y Open Graph; el `name` canónico sigue siendo "Agencia KLIV" en los dos idiomas. Los alt de las fotos del equipo se traducen desde `team.memberAlt`/`team.groupAlt`.
 
 Las seis fotos visibles tienen nombre respaldado por `MEMBERS`. El usuario identificó a Genesis Leal en `chica-small.webp`; el mismo alt se usa en móvil y escritorio. El registro anterior de `chica_small.webp` no se reutiliza porque corresponde a otro nombre de archivo.
 

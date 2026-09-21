@@ -55,7 +55,9 @@
 
   "team": {
         "title": "Experiencia y resultados <br></br>que nos avalan",
-        "subtitle": "12 años en el mercado escalando las ventas de más de 80 empresas en 9 países.\n\nCon nuestro equipo de 10+ marketers y creativos apasionados por el performance."
+        "subtitle": "12 años en el mercado escalando las ventas de más de 80 empresas en 9 países.\n\nCon nuestro equipo de 10+ marketers y creativos apasionados por el performance.",
+        "memberAlt": "{name}, equipo de Agencia KLIV",
+        "groupAlt": "Equipo de Agencia KLIV"
     },
 
     "partners": {

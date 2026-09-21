@@ -36,11 +36,11 @@ for (const locale of ["es", "en"]) {
       const data = JSON.parse(structured[0][1]);
       assert.equal(data["@context"], "https://schema.org");
       const graph = data["@graph"];
-      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service", "ProfessionalService", "Service", "Service", "Service", "FAQPage", "VideoObject", "VideoObject", "VideoObject", "VideoObject"]);
+      assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "Service", "ProfessionalService", "Service", "Service", "Service", "Review", "Review", "Review", "FAQPage", "VideoObject", "VideoObject", "VideoObject", "VideoObject"]);
       const ids = new Set(graph.map((node) => node["@id"]));
       assert.equal(ids.size, graph.length);
       for (const node of graph) {
-        for (const field of ["publisher", "isPartOf", "about", "mainEntity", "provider"]) {
+        for (const field of ["publisher", "isPartOf", "about", "mainEntity", "provider", "itemReviewed"]) {
           if (node[field]?.["@id"]) assert.ok(ids.has(node[field]["@id"]), `${route} resolved ${field}`);
         }
       }
@@ -57,7 +57,13 @@ for (const locale of ["es", "en"]) {
       assert.ok(visibleHtml.includes("+54 9 351 550-4011"));
       for (const key of ["saniito", "solMillan", "rolicred"]) {
         assert.ok(visibleHtml.includes(messages.testimonials[key]), `${route} testimonial ${key} in initial HTML`);
+        const review = graph.find((node) => node["@id"] === `${origin}${route}#review-${key.toLowerCase()}`);
+        assert.equal(review?.reviewBody, messages.testimonials[key], `${route} review ${key} matches visible text`);
+        assert.ok(review.author.name && review.author.worksFor.name, `${route} review ${key} author`);
+        assert.ok(visibleHtml.includes(review.author.name), `${route} review ${key} author visible`);
+        assert.equal(review.reviewRating, undefined, `${route} review ${key} without invented rating`);
       }
+      assert.equal(graph[0].alternateName, "KLIV Agency");
       const faq = graph.find((node) => node["@type"] === "FAQPage");
       assert.equal(faq.mainEntity.length, 9);
       for (const question of faq.mainEntity) {
@@ -65,7 +71,8 @@ for (const locale of ["es", "en"]) {
         assert.ok(visibleHtml.includes(question.name));
       }
       assert.ok(!visibleHtml.includes('alt="Team member"'));
-      assert.equal(tags(visibleHtml, "img").filter((image) => image.alt === "Genesis Leal, equipo de Agencia KLIV").length, 2);
+      assert.equal(tags(visibleHtml, "img").filter((image) => image.alt === messages.team.memberAlt.replace("{name}", "Genesis Leal")).length, 2, `${route} localized team alt`);
+      assert.ok(!tags(visibleHtml, "img").some((image) => locale === "en" && /equipo de/.test(image.alt || "")), `${route} no Spanish alt in English`);
       const videos = graph.filter((node) => node["@type"] === "VideoObject");
       assert.equal(videos.length, 4);
       for (const video of videos) {

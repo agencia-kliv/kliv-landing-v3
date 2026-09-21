@@ -70,12 +70,13 @@ export const MEMBERS = [
 ];
 
 const TeamCard = ({ image, zoomed }) => {
+  const t = useTranslations("team");
   const member = MEMBERS.find((item) => item.photoPath === image);
   return (
     <figure className="relative w-full aspect-square rounded-full border-[1px] border-[#D9D9D9] overflow-hidden">
       <Image
         src={image}
-        alt={member ? `${member.name}, equipo de Agencia KLIV` : "Equipo de Agencia KLIV"}
+        alt={member ? t("memberAlt", { name: member.name }) : t("groupAlt")}
         fill
         objectFit="cover "
         className={zoomed ? "scale-[135%] translate-y-[16%]" : ""}

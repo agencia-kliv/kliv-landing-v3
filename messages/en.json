@@ -53,7 +53,9 @@
     
     "team": {
         "title": "Experience and results <br></br>that back us",
-        "subtitle": "12 years in the market scaling the sales of over 80 companies across 9 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing."
+        "subtitle": "12 years in the market scaling the sales of over 80 companies across 9 countries.\n\nWith a team of 10+ passionate marketers and creatives specialized in performance marketing.",
+        "memberAlt": "{name}, Agencia KLIV team",
+        "groupAlt": "Agencia KLIV team"
     },
  
     "partners": {
