@@ -30,9 +30,9 @@
 .caseLogo { position: relative; z-index: 1; width: auto; max-width: 180px; height: auto; max-height: 68px; object-fit: contain; transform: scale(1.55); }
 .caseIcon { position: relative; z-index: 1; display: grid; width: 58px; height: 58px; place-items: center; border-radius: 18px; background: #fff; color: #1e7a5e; box-shadow: 0 12px 30px rgba(0,54,41,.12); font-size: 26px; }
 .cardVisualCompact { margin: 0; }
-.cardMeta { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 18px; color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.cardMeta { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 34px; margin: 0 0 18px; color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .cardLocation { color: #52655f; font-size: 12px; letter-spacing: .02em; text-transform: none; text-align: right; }
-.metric { display: flex; flex-direction: column; gap: 4px; margin: 0 0 22px; padding-bottom: 20px; border-bottom: 1px solid #dde8e4; }
+.metric { display: flex; flex-direction: column; gap: 4px; min-height: 104px; margin: 0 0 22px; padding-bottom: 20px; border-bottom: 1px solid #dde8e4; }
 .metric strong { color: #087a59; font-size: clamp(38px, 3.2vw, 48px); font-weight: 700; line-height: 1; letter-spacing: -.05em; }
 .metric span { color: #52655f; font-size: 13px; line-height: 1.4; }
 .card h3 { margin: 0 0 8px; color: #003629; font-size: 20px; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
@@ -112,6 +112,7 @@
   .main { padding-top: 40px; padding-bottom: 72px; font-size: 16px; line-height: 1.7; }
   .card { padding: 0 22px 22px; }
   .cardVisual { margin-right: -22px; margin-left: -22px; }
+  .cardMeta, .metric { min-height: 0; }
   .heroProof { max-width: none; }
   .storyGrid .story { padding: 24px; }
   .callout { padding: 18px; }
