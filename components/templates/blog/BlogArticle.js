@@ -7,6 +7,7 @@ import { FAQ_ITEM_PATTERN } from "@/lib/blogFaq";
 import { faqId } from "@/lib/faq";
 import styles from "./BlogArticle.module.css";
 import { articleDates } from "@/lib/contentDates";
+import { CASE_STUDIES_PATHS } from "@/lib/caseStudies";
 
 // Cada pregunta lleva un id (mismo criterio que el FAQ de la home) para poder
 // enlazarla por fragmento, y va en <h3> para que conserve jerarquía semántica.
@@ -22,7 +23,6 @@ const RECOMMENDED_LINK_ALIASES = {
     "/blog/por-que-tu-marca-solo-vende-con-promociones",
   "/blog/optimizar-seguimiento-de-leads-para-vender-mas":
     "/blog/seguimiento-de-leads-para-aumentar-conversion",
-  "/es/casos-de-exito/": "/es/#trayectoria",
   "/es/cro/": "/es/#servicios",
   "/es/google-ads/": "/es/#servicios",
   "/es/implementacion-crm/":
@@ -42,6 +42,11 @@ function recommendedHref(target, locale) {
 
   // Relative URLs preserve the active locale (/es or /en) inside the blog.
   if (blogMatch) return `../${blogMatch[1]}/`;
+
+  // Casos de éxito tiene slug propio por idioma; sin versión en ese idioma, va a la trayectoria de la home.
+  if (normalizedTarget === `/es/${CASE_STUDIES_PATHS.es}/`) {
+    return CASE_STUDIES_PATHS[locale] ? `/${locale}/${CASE_STUDIES_PATHS[locale]}/` : `/${locale}/#trayectoria`;
+  }
 
   return normalizedTarget.replace(/^\/es\//, `/${locale}/`);
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { caseStudiesPath, getCaseStudies } from "@/lib/caseStudies";
 import Link from "next-intl/link";
 import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
@@ -52,6 +53,10 @@ const Header = () => {
   const params = useParams();
   const blogHref = "/blog/";
   const blogIsActive = activeSection === "blog" || pathname?.endsWith("/blog");
+  // Casos de éxito solo en los idiomas que ya tienen la página.
+  const locale = useLocale();
+  const caseStudiesHref = getCaseStudies(locale) ? `/${caseStudiesPath(locale)}/` : null;
+  const caseStudiesIsActive = activeSection === "casos-de-exito" || (caseStudiesHref && pathname?.includes(caseStudiesHref));
 
   useEffect(() => {
     if (isOpenMenu) {
@@ -72,7 +77,7 @@ const Header = () => {
             />
           </Link>
 
-          <nav className="hidden items-center justify-center lg:flex gap-[60px]">
+          <nav className="hidden items-center justify-center lg:flex gap-[36px] 2xl:gap-[48px]">
             <TabItem
               href={"/#servicios"}
               isActive={activeSection === "servicios"}
@@ -85,6 +90,11 @@ const Header = () => {
             >
               {t_header("trajectory")}
             </TabItem>
+            {caseStudiesHref && (
+              <TabItem href={caseStudiesHref} isActive={caseStudiesIsActive}>
+                {t_header("caseStudies")}
+              </TabItem>
+            )}
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
             </TabItem>
@@ -147,6 +157,11 @@ const Header = () => {
             >
               {t_header("trajectory")}
             </TabItem>
+            {caseStudiesHref && (
+              <TabItem href={caseStudiesHref} isActive={caseStudiesIsActive}>
+                {t_header("caseStudies")}
+              </TabItem>
+            )}
             <TabItem href={"/#tarifas"} isActive={activeSection === "tarifas"}>
               {t_header("pricing")}
             </TabItem>

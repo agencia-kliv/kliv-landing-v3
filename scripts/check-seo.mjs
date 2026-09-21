@@ -64,6 +64,7 @@ for (const locale of ["es", "en"]) {
         assert.equal(review.reviewRating, undefined, `${route} review ${key} without invented rating`);
       }
       assert.equal(graph[0].alternateName, "KLIV Agency");
+      assert.equal(graph[0].foundingDate, "2014");
       const faq = graph.find((node) => node["@type"] === "FAQPage");
       assert.equal(faq.mainEntity.length, 9);
       for (const question of faq.mainEntity) {
@@ -133,6 +134,74 @@ assert.ok(publishedResourceHtml.includes("Diversidad creativa"));
 assert.equal(tags(publishedResourceHtml, "link").find((x) => x.rel === "canonical")?.href, `${origin}/es/claves-alto-performance/`);
 assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name === "robots")?.content || ""));
 checks++;
+// Casos de éxito: índice con slug propio por idioma y una página por caso debajo;
+// solo los idiomas publicados, el resto responde 404 real.
+const CASE_STUDIES_PATHS = { es: "casos-de-exito", en: "case-studies" };
+const caseStudiesSource = await readFile(new URL("../data/caseStudies.js", import.meta.url), "utf8");
+const { CASE_STUDIES_ES: caseStudiesEs } = await import(`data:text/javascript;base64,${Buffer.from(caseStudiesSource).toString("base64")}`);
+const caseStudiesContent = { es: caseStudiesEs };
+const structuredTypes = (html) =>
+  JSON.parse(html.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1])["@graph"];
+const visible = (html) => html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+for (const locale of ["es", "en"]) {
+  const route = `/${locale}/${CASE_STUDIES_PATHS[locale]}/`;
+  const response = await request(route);
+  const content = caseStudiesContent[locale];
+  if (!content) {
+    assert.equal(response.status, 404, `${route} without content is a real 404`);
+    assert.equal((await request(`${route}rolicred/`)).status, 404, `${route}rolicred/ without content is a real 404`);
+    continue;
+  }
+  assert.equal(response.status, 200, route);
+  const html = await response.text();
+  const visibleHtml = visible(html);
+  assert.equal(tags(html, "html")[0]?.lang, locale, `${route} language`);
+  assert.equal(tags(html, "link").find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
+  assert.ok(!/noindex/.test(tags(html, "meta").find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
+  for (const lang of Object.keys(caseStudiesContent)) {
+    assert.equal(tags(html, "link").find((x) => x.hreflang === lang)?.href, `${origin}/${lang}/${CASE_STUDIES_PATHS[lang]}/`, `${route} hreflang ${lang}`);
+  }
+  assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
+  const graph = structuredTypes(html);
+  assert.deepEqual(graph.map((node) => node["@type"]), ["CollectionPage", "BreadcrumbList", "ItemList", "FAQPage"]);
+  assert.equal(graph[0].dateModified, contentDates.pages["casos-de-exito"][locale], `${route} content date`);
+  assert.equal(graph[2].itemListElement.length, content.cases.length);
+  const faq = graph[3];
+  assert.equal(faq.mainEntity.length, content.faq.items.length);
+  for (const question of faq.mainEntity) {
+    assert.ok(visibleHtml.includes(`id="${question["@id"].split("#")[1]}"`), `${route} faq anchor`);
+    assert.ok(text(visibleHtml).includes(question.name), `${route} faq question visible`);
+    assert.ok(text(visibleHtml).includes(question.acceptedAnswer.text), `${route} faq answer visible`);
+  }
+  assert.ok(!/[—–]/.test(text(visibleHtml)), `${route} no long dashes in visible copy`);
+  const home = await (await request(`/${locale}/`)).text();
+  assert.ok(home.includes('id="casos-de-exito"'), `/${locale}/ has the case studies section`);
+  checks++;
+  for (const item of content.cases) {
+    const caseRoute = `${route}${item.id}/`;
+    assert.ok(visibleHtml.includes(`href="${caseRoute}"`), `${route} links case ${item.id}`);
+    assert.ok(home.includes(`href="${caseRoute}"`), `/${locale}/ links case ${item.id}`);
+    assert.ok(home.includes(item.metric.value), `/${locale}/ shows metric of ${item.id}`);
+    const caseResponse = await request(caseRoute);
+    assert.equal(caseResponse.status, 200, caseRoute);
+    const caseHtml = await caseResponse.text();
+    const caseVisible = text(visible(caseHtml));
+    assert.equal(tags(caseHtml, "link").find((x) => x.rel === "canonical")?.href, origin + caseRoute, `${caseRoute} canonical`);
+    assert.equal((caseHtml.match(/<h1\b/g) || []).length, 1, `${caseRoute} H1`);
+    assert.ok(caseVisible.includes(item.name) && caseVisible.includes(item.challenge), `${caseRoute} content visible`);
+    for (const row of item.results) assert.ok(caseVisible.includes(row.after), `${caseRoute} result "${row.after}"`);
+    const caseGraph = structuredTypes(caseHtml);
+    assert.deepEqual(caseGraph.map((node) => node["@type"]), ["WebPage", "BreadcrumbList"]);
+    assert.equal(caseGraph[1].itemListElement.length, 3, `${caseRoute} breadcrumb`);
+    assert.ok(!/[—–]/.test(caseVisible), `${caseRoute} no long dashes in visible copy`);
+    const description = text(tags(caseHtml, "meta").find((x) => x.name === "description")?.content || "");
+    assert.ok(description.length >= 80 && description.length <= 160, `${caseRoute} description (${description.length})`);
+    checks++;
+  }
+  assert.equal((await request(`${route}no-existe/`)).status, 404, `${route}no-existe/ is a real 404`);
+}
+const enHomeForCases = await (await request("/en/")).text();
+if (!caseStudiesContent.en) assert.ok(!enHomeForCases.includes('id="casos-de-exito"'), "/en/ hides the section until the English cases exist");
 const BLOG_LOCALES = ["es", "en"];
 const hreflangs = (links, path) => {
   const paths = typeof path === "string" ? { es: path, en: path } : path;
@@ -250,7 +319,13 @@ const sitemap = await request("/sitemap.xml");
 assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-assert.equal(locations.length, 8 + BLOG_LOCALES.length * (1 + blogSlugs.length));
+const caseStudyUrls = Object.entries(caseStudiesContent).reduce((total, [, content]) => total + 1 + content.cases.length, 0);
+assert.equal(locations.length, 8 + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
+for (const [locale, content] of Object.entries(caseStudiesContent)) {
+  assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/`), `sitemap ${locale} case studies`);
+  for (const item of content.cases) assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/${item.id}/`), `sitemap ${locale} case ${item.id}`);
+}
+assert.ok(!locations.some((url) => url.includes("/en/casos-de-exito/") || url.includes("/es/case-studies/")), "sitemap has no cross-language case studies slug");
 assert.equal(new Set(locations).size, locations.length);
 assert.equal((xml.match(/<lastmod>/g) || []).length, locations.length);
 assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));

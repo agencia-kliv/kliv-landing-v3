@@ -20,6 +20,7 @@
     "header":{
         "services": "Service",
         "trajectory": "About Us",
+        "caseStudies": "Case studies",
         "pricing": "Pricing",
         "blog": "Blog"
     },
@@ -139,6 +140,22 @@
         }
     },
 
+    "caseStudies": {
+        "title": "Case studies",
+        "subtitle": "Results from brands we manage across countries and industries.",
+        "viewAll": "See all case studies",
+        "readCase": "Read the case",
+        "moreCases": "More case studies",
+        "caseLabel": "Case",
+        "home": "Home",
+        "profile": "Profile",
+        "website": "Website",
+        "challenge": "Initial challenge",
+        "solution": "What we did",
+        "metric": "Metric",
+        "before": "Before",
+        "after": "After"
+    },
     "footer":{
         "privacyPolicy": "Privacy Policy",
         "termsAndConditions": "Terms and Conditions"

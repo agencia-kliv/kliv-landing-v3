@@ -3,6 +3,8 @@ export const BUSINESS = {
   name: "Agencia KLIV",
   // Razón social, tal como figura en la política de privacidad. La marca visible sigue siendo "Agencia KLIV".
   legalName: "Agencia Kliv LLC",
+  // "Desde 2014", según el documento de casos de éxito entregado el 21/09/2026.
+  foundingYear: "2014",
   telephone: "+5493515504011",
   displayTelephone: "+54 9 351 550-4011",
   email: "contacto@agenciakliv.com",

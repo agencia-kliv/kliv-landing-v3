@@ -1,5 +1,6 @@
 import { BUSINESS } from "@/data/business";
 import { getBlogArticles, pageDate } from "@/lib/blog";
+import { caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
 import es from "@/messages/es.json";
 import { absoluteUrl, localePath } from "@/lib/seo";
 import { withoutDashes } from "@/lib/visibleText";
@@ -34,6 +35,13 @@ export function GET() {
     link(es.quiz.title, localePath("es", "quiz"), "Formulario de evaluación previo a la auditoría gratuita."),
     link(es.bookACall.title, localePath("es", "book-a-call"), "Reserva de llamada de auditoría."),
     link("Política de privacidad", localePath("es", "politicas-de-privacidad")),
+    "",
+    "## Casos de éxito",
+    "",
+    link(getCaseStudies("es").title, localePath("es", caseStudiesPath("es")), getCaseStudies("es").description),
+    ...getCaseStudies("es").cases.map((item) =>
+      link(`${item.name} (${item.sector}, ${item.location})`, localePath("es", caseStudyPath("es", item.id)), item.summary)
+    ),
     "",
     `## Blog (${getBlogArticles("es").length} artículos, en español)`,
     "",

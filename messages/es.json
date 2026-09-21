@@ -22,6 +22,7 @@
     "header":{
         "services": "Servicios",
         "trajectory": "Trayectoria",
+        "caseStudies": "Casos de éxito",
         "pricing": "Tarifas",
         "blog": "Blog"
     },
@@ -148,6 +149,22 @@
         }
     },
 
+    "caseStudies": {
+        "title": "Casos de éxito",
+        "subtitle": "Resultados de marcas que gestionamos en distintos países y rubros.",
+        "viewAll": "Ver todos los casos",
+        "readCase": "Ver el caso",
+        "moreCases": "Otros casos",
+        "caseLabel": "Caso",
+        "home": "Inicio",
+        "profile": "Perfil",
+        "website": "Sitio",
+        "challenge": "Desafío inicial",
+        "solution": "Solución aplicada",
+        "metric": "Métrica",
+        "before": "Antes",
+        "after": "Después"
+    },
     "footer":{
         "privacyPolicy": "Política de privacidad",
         "termsAndConditions": "Términos y condiciones"
