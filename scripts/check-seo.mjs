@@ -11,6 +11,10 @@ let checks = 0;
 async function request(path) {
   return fetch(`${base}${path}`, { redirect: "manual" });
 }
+// Texto visible de un fragmento HTML, con las entidades que React escapa al renderizar.
+function text(html) {
+  return html.replace(/<[^>]*>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/<!-- -->/g, "").replace(/\s+/g, " ").trim();
+}
 function tags(html, tag) {
   return [...html.matchAll(new RegExp(`<${tag}\\b[^>]*>`, "g"))].map(([text]) =>
     Object.fromEntries([...text.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1].toLowerCase(), m[2]]))
@@ -144,7 +148,7 @@ for (const slug of blogSlugs) {
   assert.equal(metas.find((x) => x.property === "og:image")?.content, cover, `${route} dedicated social image`);
   assert.equal(metas.find((x) => x.name === "twitter:card")?.content, "summary_large_image", `${route} Twitter card`);
   const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
-  assert.equal(structured.length, 2, `${route} BlogPosting and breadcrumbs JSON-LD`);
+  assert.equal(structured.length, 3, `${route} BlogPosting, breadcrumbs and FAQPage JSON-LD`);
   const data = JSON.parse(structured[0][1]);
   assert.equal(data["@type"], "BlogPosting");
   assert.equal(data.image, cover);
@@ -156,13 +160,37 @@ for (const slug of blogSlugs) {
   const breadcrumbs = JSON.parse(structured[1][1]);
   assert.equal(breadcrumbs["@type"], "BreadcrumbList");
   assert.equal(breadcrumbs.itemListElement[2].item, origin + route);
+  // Cada pregunta del schema debe existir, con el mismo texto, en el acordeón visible.
+  const faq = JSON.parse(structured[2][1]);
+  assert.equal(faq["@type"], "FAQPage");
+  const visibleFaqs = [...html.matchAll(/<details class="faq-item" id="([^"]+)"><summary><h3>([\s\S]*?)<\/h3><\/summary><p>([\s\S]*?)<\/p><\/details>/g)]
+    .map(([, id, question, answer]) => ({ id, question: text(question), answer: text(answer) }));
+  assert.ok(faq.mainEntity.length > 0 && faq.mainEntity.length === visibleFaqs.length, `${route} FAQ count`);
+  faq.mainEntity.forEach((entry, index) => {
+    assert.equal(entry["@id"], `${origin}${route}#${visibleFaqs[index].id}`, `${route} FAQ anchor`);
+    assert.equal(entry.name, visibleFaqs[index].question, `${route} FAQ question matches visible text`);
+    assert.equal(entry.acceptedAnswer.text, visibleFaqs[index].answer, `${route} FAQ answer matches visible text`);
+  });
   assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
   const coverResponse = await request(`/api/blog-cover/${slug}/`);
   assert.equal(coverResponse.status, 200, `${route} social image`);
   assert.match(coverResponse.headers.get("content-type") || "", /^image\/png/, `${route} PNG social image`);
   checks++;
 }
-assert.equal((await request("/en/blog/que-es-performance-marketing-guia-completa/")).status, 404);
+for (const path of ["/en/blog/que-es-performance-marketing-guia-completa/", "/en/blog/", "/en/blog-recomendado/"]) {
+  assert.equal((await request(path)).status, 404, `${path} real 404, not soft 404`);
+  checks++;
+}
+const libraryData = JSON.parse(libraryHtml.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1]);
+assert.deepEqual(libraryData["@graph"].map((node) => node["@type"]), ["CollectionPage", "Blog"]);
+assert.equal(libraryData["@graph"][1].blogPost.length, blogSlugs.length, "blog index lists every article");
+checks++;
+const llms = await request("/llms.txt");
+assert.equal(llms.status, 200);
+assert.match(llms.headers.get("content-type") || "", /^text\/plain/);
+const llmsText = await llms.text();
+assert.ok(llmsText.startsWith("# Agencia KLIV"));
+for (const slug of blogSlugs) assert.ok(llmsText.includes(`${origin}/es/blog/${slug}/`), `llms.txt lists ${slug}`);
 checks++;
 for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
   const response = await request(path);

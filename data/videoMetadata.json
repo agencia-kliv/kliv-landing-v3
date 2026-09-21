@@ -1,5 +1,6 @@
 {
   "/hero-video.webm": {
+    "duration": "PT10S",
     "publicationYear": 2025,
     "uploadDate": "2025-07-20",
     "thumbnailUrl": "/hero-video-poster.jpg",
@@ -7,6 +8,7 @@
     "description": { "es": "Video principal publicado en la página de Agencia KLIV.", "en": "Main video published on the Agencia KLIV home page." }
   },
   "/testimonials/camelinna.mp4": {
+    "duration": "PT38S",
     "publicationYear": 2025,
     "uploadDate": "2025-07-20",
     "thumbnailUrl": "/testimonials/camelinna-poster.jpg",
@@ -14,6 +16,7 @@
     "description": { "es": "Testimonio en video de Lourdes H., de Camelinna, publicado por Agencia KLIV.", "en": "Video testimonial from Lourdes H., from Camelinna, published by Agencia KLIV." }
   },
   "/testimonials/memeca.mp4": {
+    "duration": "PT56S",
     "publicationYear": 2025,
     "uploadDate": "2025-07-20",
     "thumbnailUrl": "/testimonials/memeca-poster.jpg",
@@ -21,6 +24,7 @@
     "description": { "es": "Testimonio en video de Natalia S., de Memeca, publicado por Agencia KLIV.", "en": "Video testimonial from Natalia S., from Memeca, published by Agencia KLIV." }
   },
   "/testimonials/lima-amalfi.mp4": {
+    "duration": "PT26S",
     "publicationYear": 2025,
     "uploadDate": "2025-07-20",
     "thumbnailUrl": "/testimonials/lima-amalfi-poster.jpg",

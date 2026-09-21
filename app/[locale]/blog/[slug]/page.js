@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import contentDates from "@/data/contentDates.json";
 import { serializeStructuredData } from "@/lib/structured-data";
 import { BLOG_SEO } from "@/data/blogSeo";
+import { extractArticleFaqs } from "@/lib/blogFaq";
+import { faqId } from "@/lib/faq";
 
 export function generateStaticParams() {
   return BLOG_SLUGS.map((slug) => ({ locale: "es", slug }));
@@ -82,6 +84,23 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
     ],
   };
 
+  // Las preguntas frecuentes del cierre de cada artículo, con el mismo texto
+  // visible del acordeón y el mismo id de fragmento que usa BlogArticle.
+  const faqs = extractArticleFaqs(article.content);
+  const faqPage = faqs.length > 0 && {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${canonical}#faq`,
+    inLanguage: "es",
+    isPartOf: { "@id": canonical },
+    mainEntity: faqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      "@id": `${canonical}#${faqId(question)}`,
+      name: question,
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  };
+
   return (
     <>
       <script
@@ -89,6 +108,9 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(breadcrumbs) }} />
+      {faqPage && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqPage) }} />
+      )}
       <BlogArticle article={article} />
     </>
   );

@@ -26,7 +26,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="landing-section-container" data-aos="fade-bottom">
+    <section className="landing-section-container" id="faq" data-aos="fade-bottom">
       <section className="flex flex-col gap-[50px] items-center m-auto w-full max-w-[1100px]">
         <div className="flex flex-col gap-[20px] items-center text-center">
           <LogitoSection />

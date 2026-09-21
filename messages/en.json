@@ -75,7 +75,7 @@
                 "content": "Advertising platforms are structured into three levels: campaigns, audiences, and ads. Each campaign responds to a business objective and sales funnel stage, and may include multiple audiences and ads. Your campaign structure will be tailored based on your business objectives and resources, focusing on maximizing sales and return on investment."
             },
             "question2": {
-                "title": " How many campaigns does my business need?",
+                "title": "How many campaigns does my business need?",
                 "content": "We understand that every organization is unique, with specific goals, processes, and resources, requiring a customized campaign structure. Contact us to receive a free audit and determine the ideal package for your business."
             },
             "question3": {
@@ -135,7 +135,6 @@
     },
 
     "footer":{
-        "address": "Rosario de Sta Fé 1106 · piso 6 · Of. E · x5004 · Córdoba, Argentina",
         "privacyPolicy": "Privacy Policy",
         "termsAndConditions": "Terms and Conditions"
     },

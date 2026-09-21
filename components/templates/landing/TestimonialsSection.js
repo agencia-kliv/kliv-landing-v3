@@ -86,7 +86,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="landing-section-container">
+    <section className="landing-section-container" id="testimonios">
       <div className="flex flex-col gap-[60px]">
         {/* Título */}
         <div className="flex flex-col items-center gap-[20px]">

@@ -3,6 +3,9 @@
 - `business.js`: contacto y domicilio confirmados el 18/09/2026. Reutilizados en footer y schema; no se infieren coordenadas, horarios ni zonas de servicio.
 - `contentDates.json`: publicación de los 33 artículos el 17/09/2026, confirmada por el usuario. Las fechas de edición del resto de las páginas se recuperaron del historial Git de sus archivos de contenido. Actualizar `dateModified`/`pages` solo cuando cambie contenido significativo; nunca usar la fecha automática del build. Si se edita un artículo, actualizar también su fecha visible y el sitemap a través de este archivo.
 - `blogSeo.js`: ajustes de título y descripción para metadatos. El texto editorial original permanece en `blogArticles.js`.
+- Cada artículo cierra con bloques `<div class="faq-item"><div class="q">…</div><p>…</p></div>`. `lib/blogFaq.js` los convierte en el schema `FAQPage` de cada artículo y `BlogArticle` en el acordeón visible (con `id` de fragmento y `<h3>`), así el texto marcado es el mismo que se ve. Mantener ese formato al agregar preguntas; `check:seo` comprueba que coincidan.
+- `/es/blog/` publica un `CollectionPage` + `Blog` con los 33 `BlogPosting` y sus fechas. `/llms.txt` (`app/llms.txt/route.js`) reutiliza el mismo copy y `business.js`; no agregar ahí afirmaciones que no estén publicadas en el sitio.
+- Las rutas del blog no existen en inglés: `blog/page.js` y `blog-recomendado/page.js` declaran `generateStaticParams` solo con `es` y `dynamicParams = false` para que `/en/blog/` responda 404 real (antes se prerenderizaba con status 200 y `noindex`, un soft 404).
 
 ## Estado de la auditoría GEO (18/09/2026)
 
@@ -10,13 +13,13 @@ Se implementaron testimonios escritos en HTML inicial, contacto visible y schema
 
 Los videos testimoniales usan posters extraídos de los originales y `preload="none"` para que las copias del carrusel no descarguen metadatos al montar. La reproducción se limita a las tarjetas visibles y la promesa de reproducción maneja rechazos del navegador.
 
-`videoMetadata.json` registra el 20/07/2025 como fecha de publicación del video principal y los tres testimoniales, confirmada por el usuario. Los cuatro VideoObject se sirven en el JSON-LD inicial de ambas home, con nombres/descripciones localizados, thumbnails reales y contentUrl correspondiente al video español o inglés. No se inventan horarios, duración, reproducciones ni puntuaciones. Este marcado no garantiza indexación o resultados enriquecidos de video.
+`videoMetadata.json` registra el 20/07/2025 como fecha de publicación del video principal y los tres testimoniales, confirmada por el usuario. Los cuatro VideoObject se sirven en el JSON-LD inicial de ambas home, con nombres/descripciones localizados, thumbnails reales y contentUrl correspondiente al video español o inglés. La `duration` de cada video se midió con `ffprobe` sobre los archivos de `public/` (21/09/2026). No se inventan horarios, reproducciones ni puntuaciones. Este marcado no garantiza indexación o resultados enriquecidos de video.
 
 No se añadió AggregateRating: no hay puntuaciones verificadas, y las reseñas sobre la propia organización no habilitan estrellas de Google. Los testimonios se mantienen como contenido publicado, sin ratings inventados.
 
 Las seis fotos visibles tienen nombre respaldado por `MEMBERS`. El usuario identificó a Genesis Leal en `chica-small.webp`; el mismo alt se usa en móvil y escritorio. El registro anterior de `chica_small.webp` no se reutiliza porque corresponde a otro nombre de archivo.
 
-El redirect directo de www requiere conectar ese dominio al entorno Production en Vercel, después de publicar las reglas de host de `next.config.js`. La home www redirige a `/es/`; las otras rutas conservan su path. No configurar todo www hacia `/es/`, porque perdería las URLs de artículos.
+El redirect directo de www está activo en producción (verificado el 21/09/2026): el dominio www está conectado al entorno Production en Vercel y aplica las reglas de host de `next.config.js`. La home www responde 308 hacia `/es/`; las otras rutas conservan su path (por ejemplo, `www.agenciakliv.com/es/blog/` → `agenciakliv.com/es/blog/`). No configurar todo www hacia `/es/`, porque perdería las URLs de artículos.
 
 - `billing.json`: tarifas y servicios recuperados el 7 de septiembre de 2026. Se conservaron los valores originales, incluidos campos vacíos.
 - `partners.json`: orden de las imágenes de socios. Los archivos están en `public/partners/`.

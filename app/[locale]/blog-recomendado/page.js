@@ -2,6 +2,15 @@ import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogInd
 import { BLOG_ARTICLES } from "@/data/blogArticles";
 import { notFound } from "next/navigation";
 
+// El blog solo existe en español. Sin esto, /en/blog/ se prerenderizaba
+// como página estática y el notFound() del componente salía con status 200
+// (soft 404). Con dynamicParams = false, Next responde 404 real.
+export function generateStaticParams() {
+  return [{ locale: "es" }];
+}
+
+export const dynamicParams = false;
+
 export function generateMetadata() {
   return {
     title: "Preview · Blog KLIV",

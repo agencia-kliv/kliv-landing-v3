@@ -3,14 +3,18 @@
 import Link from "next-intl/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { withoutDashes, withoutDashesInHtml } from "@/lib/visibleText";
+import { FAQ_ITEM_PATTERN } from "@/lib/blogFaq";
+import { faqId } from "@/lib/faq";
 import styles from "./BlogArticle.module.css";
 import contentDates from "@/data/contentDates.json";
 
+// Cada pregunta lleva un id (mismo criterio que el FAQ de la home) para poder
+// enlazarla por fragmento, y va en <h3> para que conserve jerarquía semántica.
 function withCollapsibleFaqs(content) {
-  return content.replace(
-    /<div class="faq-item"><div class="q">([\s\S]*?)<\/div><p>([\s\S]*?)<\/p><\/div>/g,
-    '<details class="faq-item"><summary>$1</summary><p>$2</p></details>'
-  );
+  return content.replace(FAQ_ITEM_PATTERN, (_item, question, answer) => {
+    const id = faqId(withoutDashes(question.replace(/<[^>]*>/g, "")));
+    return `<details class="faq-item" id="${id}"><summary><h3>${question}</h3></summary><p>${answer}</p></details>`;
+  });
 }
 
 const RECOMMENDED_LINK_ALIASES = {
