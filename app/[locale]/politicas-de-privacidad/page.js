@@ -235,7 +235,7 @@ const page = () => {
       <p>
         Si tiene alguna consulta o preocupación sobre el procesamiento de su
         información que está disponible con nosotros, puede enviar un correo
-        electrónico a nuestro Oficial de Quejas en Agencia Kliv LLCC., email:
+        electrónico a nuestro Oficial de Quejas en Agencia Kliv LLC, email:
         contacto@agenciakliv.com. Abordaremos sus preocupaciones de acuerdo con
         la ley aplicable.
       </p>
