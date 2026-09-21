@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-7 flex flex-col gap-3 border-t border-kliv-primary/10 pt-5 text-[12px] leading-5 text-kliv-secondary/65 sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 Agencia Kliv LLC</span>
+          <span>© 2026 Agencia KLIV</span>
           <Link className="transition-colors hover:text-kliv-primary" href={{ pathname: "/politicas-de-privacidad" }}>
             {t_footer("privacyPolicy")} · {t_footer("termsAndConditions")}
           </Link>
