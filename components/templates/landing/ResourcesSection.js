@@ -3,7 +3,7 @@
 import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTitle from "@/components/atoms/SectionTitle";
-import { BLOG_ARTICLES } from "@/data/blogArticles";
+import { getBlogArticles } from "@/lib/blog";
 import { getBlogCover } from "@/data/blogCovers";
 import Image from "next/image";
 import Link from "next-intl/link";
@@ -12,27 +12,17 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { withoutDashes } from "@/lib/visibleText";
 import styles from "./ResourcesSection.module.css";
 
-const SPANISH_ITEMS = [
-  { key: "performanceMarketing", slug: "que-es-performance-marketing-guia-completa", ready: true },
-  { key: "ecommerce", slug: "performance-marketing-ecommerce", ready: true },
-  { key: "services", slug: "performance-marketing-empresas-de-servicios", ready: true },
+// Los tres pilares del blog; el mismo slug existe en /es/blog/ y /en/blog/.
+const ITEMS = [
+  { key: "performanceMarketing", slug: "que-es-performance-marketing-guia-completa" },
+  { key: "ecommerce", slug: "performance-marketing-ecommerce" },
+  { key: "services", slug: "performance-marketing-empresas-de-servicios" },
 ];
-
-const ENGLISH_ITEMS = [
-  { key: "highPerformance", slug: "claves-alto-performance", ready: true },
-  { key: "soulfulBrands", slug: "marcas-con-alma" },
-  { key: "convertingWebsite", slug: "claves-web" },
-];
-
-function itemHref(locale, slug) {
-  return locale === "es" ? `/blog/${slug}/` : `/${slug}`;
-}
 
 const WORDS_PER_MINUTE = 220;
-const ARTICLES_BY_SLUG = new Map(BLOG_ARTICLES.map((article) => [article.slug, article]));
 
-function readingTime(slug) {
-  const article = ARTICLES_BY_SLUG.get(slug);
+function readingTime(slug, locale) {
+  const article = getBlogArticles(locale)?.find((item) => item.slug === slug);
   if (!article?.content) return null;
 
   const words = article.content
@@ -48,7 +38,6 @@ function readingTime(slug) {
 export default function ResourcesSection() {
   const t = useTranslations("resources");
   const locale = useLocale();
-  const items = locale === "es" ? SPANISH_ITEMS : ENGLISH_ITEMS;
 
   return (
     <section className={styles.section} id="blog" data-section="blog">
@@ -62,14 +51,14 @@ export default function ResourcesSection() {
         </div>
 
         <div className={styles.headingAction}>
-          <Link href={locale === "es" ? "/blog/" : "/#blog"} className={styles.allLink}>
+          <Link href="/blog/" className={styles.allLink}>
             {t("viewAll")} <FiArrowUpRight aria-hidden="true" />
           </Link>
         </div>
 
         <div className={styles.articleGrid}>
-          {items.map((item, index) => (
-            <Link key={item.slug} href={itemHref(locale, item.slug)} className={styles.articleCard}>
+          {ITEMS.map((item, index) => (
+            <Link key={item.slug} href={`/blog/${item.slug}/`} className={styles.articleCard}>
               {getBlogCover(item.slug) && (
                 <div className={styles.articleCover}>
                   <Image
@@ -84,16 +73,16 @@ export default function ResourcesSection() {
                 <div className={styles.meta}>
                   <span>{index < 4 ? t("pillar") : t("guide")}</span>
                   <span className={styles.metaRight}>
-                    {readingTime(item.slug) && (
+                    {readingTime(item.slug, locale) && (
                       <span className={styles.readingTime}>
-                        {t("readingTime", { minutes: readingTime(item.slug) })}
+                        {t("readingTime", { minutes: readingTime(item.slug, locale) })}
                       </span>
                     )}
                     <span className={styles.articleNumber}>{String(index + 1).padStart(2, "0")}</span>
                   </span>
                 </div>
-                <h3>{withoutDashes(t(`items.${item.key}.title`))}</h3>
-                <p>{withoutDashes(t(`items.${item.key}.description`))}</p>
+                <h3>{withoutDashes(t(`items.${item.key}.title`), locale)}</h3>
+                <p>{withoutDashes(t(`items.${item.key}.description`), locale)}</p>
                 <span className={styles.read}>{t("readArticle")} <FiArrowUpRight aria-hidden="true" /></span>
               </div>
             </Link>

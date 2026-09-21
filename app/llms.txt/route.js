@@ -1,6 +1,5 @@
-import { BLOG_ARTICLES } from "@/data/blogArticles";
 import { BUSINESS } from "@/data/business";
-import contentDates from "@/data/contentDates.json";
+import { getBlogArticles, pageDate } from "@/lib/blog";
 import es from "@/messages/es.json";
 import { absoluteUrl, localePath } from "@/lib/seo";
 import { withoutDashes } from "@/lib/visibleText";
@@ -36,11 +35,18 @@ export function GET() {
     link(es.bookACall.title, localePath("es", "book-a-call"), "Reserva de llamada de auditoría."),
     link("Política de privacidad", localePath("es", "politicas-de-privacidad")),
     "",
-    `## Blog (${BLOG_ARTICLES.length} artículos, en español)`,
+    `## Blog (${getBlogArticles("es").length} artículos, en español)`,
     "",
-    link("Índice del blog", localePath("es", "blog"), `Última actualización: ${contentDates.pages.blog}.`),
-    ...BLOG_ARTICLES.map((article) =>
+    link("Índice del blog", localePath("es", "blog"), `Última actualización: ${pageDate("blog", "es")}.`),
+    ...getBlogArticles("es").map((article) =>
       link(withoutDashes(article.title), localePath("es", `blog/${article.slug}`), withoutDashes(article.description))
+    ),
+    "",
+    `## Blog (${getBlogArticles("en").length} articles, in English)`,
+    "",
+    link("Blog index", localePath("en", "blog"), `Last updated: ${pageDate("blog", "en")}.`),
+    ...getBlogArticles("en").map((article) =>
+      link(withoutDashes(article.title, "en"), localePath("en", `blog/${article.slug}`), withoutDashes(article.description, "en"))
     ),
     "",
     "## Contacto",

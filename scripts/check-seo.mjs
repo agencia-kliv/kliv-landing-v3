@@ -89,8 +89,8 @@ for (const locale of ["es", "en"]) {
       for (const platform of ["Meta Ads", "Google Ads", "TikTok"]) {
         assert.ok(visibleHtml.includes(`>${platform}<`), `${route} platform in HTML text`);
       }
-      assert.ok(visibleHtml.includes("2026 Agencia Kliv LLC"), `${route} current footer year`);
-      assert.ok(!visibleHtml.includes("2025 Agencia Kliv LLC"), `${route} old footer removed`);
+      assert.ok(visibleHtml.includes("© 2026 Agencia KLIV"), `${route} current footer year`);
+      assert.ok(!/2025 Agencia Kliv|Kliv LLC</.test(visibleHtml), `${route} old footer removed`);
       assert.equal(graph[0].logo, `${origin}/kliv-isotipo-green.png`);
     } else {
       assert.equal(structured.length, 0, `${route} does not inherit home schema`);
@@ -122,75 +122,92 @@ assert.ok(publishedResourceHtml.includes("Diversidad creativa"));
 assert.equal(tags(publishedResourceHtml, "link").find((x) => x.rel === "canonical")?.href, `${origin}/es/claves-alto-performance/`);
 assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name === "robots")?.content || ""));
 checks++;
-const library = await request("/es/blog/");
-assert.equal(library.status, 200);
-const libraryHtml = await library.text();
-assert.equal(tags(libraryHtml, "link").filter((link) => link.hreflang).length, 0);
-assert.equal(tags(libraryHtml, "link").find((link) => link.rel === "canonical")?.href, `${origin}/es/blog/`);
-checks++;
-for (const slug of blogSlugs) {
-  const route = `/es/blog/${slug}/`;
-  const response = await request(route);
-  assert.equal(response.status, 200, route);
-  const html = await response.text();
-  const links = tags(html, "link");
-  const metas = tags(html, "meta");
-  const pageTitle = html.match(/<title>([^<]+)<\/title>/)?.[1] || "";
-  const description = metas.find((x) => x.name === "description")?.content || "";
-  const cover = `${origin}/api/blog-cover/${slug}/`;
-  assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
-  assert.equal(links.find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
-  assert.equal(links.filter((x) => x.hreflang).length, 0, `${route} no false English alternate`);
-  assert.ok(pageTitle.length > 20 && pageTitle.length <= 65, `${route} concise title (${pageTitle.length})`);
-  assert.ok(description.length >= 100 && description.length <= 160, `${route} useful description (${description.length})`);
-  assert.equal(metas.find((x) => x.property === "og:type")?.content, "article", `${route} Open Graph article`);
-  assert.equal(metas.find((x) => x.property === "og:url")?.content, origin + route, `${route} Open Graph URL`);
-  assert.equal(metas.find((x) => x.property === "og:image")?.content, cover, `${route} dedicated social image`);
-  assert.equal(metas.find((x) => x.name === "twitter:card")?.content, "summary_large_image", `${route} Twitter card`);
-  const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
-  assert.equal(structured.length, 3, `${route} BlogPosting, breadcrumbs and FAQPage JSON-LD`);
-  const data = JSON.parse(structured[0][1]);
-  assert.equal(data["@type"], "BlogPosting");
-  assert.equal(data.image, cover);
-  assert.equal(data.url, origin + route);
-  assert.equal(data.mainEntityOfPage["@id"], origin + route);
-  assert.equal(data.datePublished, contentDates.articles[slug].datePublished);
-  assert.equal(data.dateModified, contentDates.articles[slug].dateModified);
-  assert.ok(tags(html, "time").some((tag) => tag.datetime === data.datePublished));
-  const breadcrumbs = JSON.parse(structured[1][1]);
-  assert.equal(breadcrumbs["@type"], "BreadcrumbList");
-  assert.equal(breadcrumbs.itemListElement[2].item, origin + route);
-  // Cada pregunta del schema debe existir, con el mismo texto, en el acordeón visible.
-  const faq = JSON.parse(structured[2][1]);
-  assert.equal(faq["@type"], "FAQPage");
-  const visibleFaqs = [...html.matchAll(/<details class="faq-item" id="([^"]+)"><summary><h3>([\s\S]*?)<\/h3><\/summary><p>([\s\S]*?)<\/p><\/details>/g)]
-    .map(([, id, question, answer]) => ({ id, question: text(question), answer: text(answer) }));
-  assert.ok(faq.mainEntity.length > 0 && faq.mainEntity.length === visibleFaqs.length, `${route} FAQ count`);
-  faq.mainEntity.forEach((entry, index) => {
-    assert.equal(entry["@id"], `${origin}${route}#${visibleFaqs[index].id}`, `${route} FAQ anchor`);
-    assert.equal(entry.name, visibleFaqs[index].question, `${route} FAQ question matches visible text`);
-    assert.equal(entry.acceptedAnswer.text, visibleFaqs[index].answer, `${route} FAQ answer matches visible text`);
-  });
-  assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
-  const coverResponse = await request(`/api/blog-cover/${slug}/`);
-  assert.equal(coverResponse.status, 200, `${route} social image`);
-  assert.match(coverResponse.headers.get("content-type") || "", /^image\/png/, `${route} PNG social image`);
+const BLOG_LOCALES = ["es", "en"];
+const hreflangs = (links, path) => {
+  for (const lang of ["es", "en", "x-default"]) {
+    assert.equal(links.find((x) => x.hreflang === lang)?.href, `${origin}/${lang === "x-default" ? "es" : lang}/${path}`, `${path} hreflang ${lang}`);
+  }
+};
+for (const locale of BLOG_LOCALES) {
+  const library = await request(`/${locale}/blog/`);
+  assert.equal(library.status, 200, `/${locale}/blog/`);
+  const libraryHtml = await library.text();
+  assert.equal(tags(libraryHtml, "html")[0]?.lang, locale);
+  assert.equal(tags(libraryHtml, "link").find((link) => link.rel === "canonical")?.href, `${origin}/${locale}/blog/`);
+  hreflangs(tags(libraryHtml, "link"), "blog/");
+  const libraryData = JSON.parse(libraryHtml.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1]);
+  assert.deepEqual(libraryData["@graph"].map((node) => node["@type"]), ["CollectionPage", "Blog"]);
+  assert.equal(libraryData["@graph"][1].inLanguage, locale);
+  assert.equal(libraryData["@graph"][1].blogPost.length, blogSlugs.length, `${locale} blog index lists every article`);
   checks++;
+  for (const slug of blogSlugs) {
+    const route = `/${locale}/blog/${slug}/`;
+    const response = await request(route);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    const links = tags(html, "link");
+    const metas = tags(html, "meta");
+    // Longitudes sobre el texto real: React serializa el apóstrofo como &#x27;.
+    const pageTitle = text(html.match(/<title>([^<]+)<\/title>/)?.[1] || "");
+    const description = text(metas.find((x) => x.name === "description")?.content || "");
+    const coverPath = `/api/blog-cover/${slug}/${locale === "es" ? "" : `?locale=${locale}`}`;
+    const cover = origin + coverPath;
+    assert.equal(tags(html, "html")[0]?.lang, locale, `${route} language`);
+    assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
+    assert.equal(links.find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
+    hreflangs(links, `blog/${slug}/`);
+    assert.ok(pageTitle.length > 20 && pageTitle.length <= 65, `${route} concise title (${pageTitle.length})`);
+    assert.ok(description.length >= 100 && description.length <= 160, `${route} useful description (${description.length})`);
+    assert.equal(metas.find((x) => x.property === "og:type")?.content, "article", `${route} Open Graph article`);
+    assert.equal(metas.find((x) => x.property === "og:url")?.content, origin + route, `${route} Open Graph URL`);
+    assert.equal(metas.find((x) => x.property === "og:image")?.content, cover, `${route} dedicated social image`);
+    assert.equal(metas.find((x) => x.property === "og:locale")?.content, locale === "en" ? "en_US" : "es_ES", `${route} Open Graph locale`);
+    assert.equal(metas.find((x) => x.name === "twitter:card")?.content, "summary_large_image", `${route} Twitter card`);
+    const structured = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+    assert.equal(structured.length, 3, `${route} BlogPosting, breadcrumbs and FAQPage JSON-LD`);
+    const data = JSON.parse(structured[0][1]);
+    assert.equal(data["@type"], "BlogPosting");
+    assert.equal(data.inLanguage, locale);
+    assert.equal(data.image, cover);
+    assert.equal(data.url, origin + route);
+    assert.equal(data.mainEntityOfPage["@id"], origin + route);
+    assert.equal(data.datePublished, contentDates.articles[slug][locale].datePublished);
+    assert.equal(data.dateModified, contentDates.articles[slug][locale].dateModified);
+    assert.ok(tags(html, "time").some((tag) => tag.datetime === data.datePublished));
+    const breadcrumbs = JSON.parse(structured[1][1]);
+    assert.equal(breadcrumbs["@type"], "BreadcrumbList");
+    assert.equal(breadcrumbs.itemListElement[1].item, `${origin}/${locale}/blog/`);
+    assert.equal(breadcrumbs.itemListElement[2].item, origin + route);
+    // Cada pregunta del schema debe existir, con el mismo texto, en el acordeón visible.
+    const faq = JSON.parse(structured[2][1]);
+    assert.equal(faq["@type"], "FAQPage");
+    const visibleFaqs = [...html.matchAll(/<details class="faq-item" id="([^"]+)"><summary><h3>([\s\S]*?)<\/h3><\/summary><p>([\s\S]*?)<\/p><\/details>/g)]
+      .map(([, id, question, answer]) => ({ id, question: text(question), answer: text(answer) }));
+    assert.ok(faq.mainEntity.length > 0 && faq.mainEntity.length === visibleFaqs.length, `${route} FAQ count`);
+    faq.mainEntity.forEach((entry, index) => {
+      assert.equal(entry["@id"], `${origin}${route}#${visibleFaqs[index].id}`, `${route} FAQ anchor`);
+      assert.equal(entry.name, visibleFaqs[index].question, `${route} FAQ question matches visible text`);
+      assert.equal(entry.acceptedAnswer.text, visibleFaqs[index].answer, `${route} FAQ answer matches visible text`);
+    });
+    // Los enlaces internos del artículo tienen que quedarse en su idioma.
+    assert.ok(!new RegExp(`href="/${locale === "es" ? "en" : "es"}/`).test(html), `${route} links stay in ${locale}`);
+    assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
+    const coverResponse = await request(coverPath);
+    assert.equal(coverResponse.status, 200, `${route} social image`);
+    assert.match(coverResponse.headers.get("content-type") || "", /^image\/png/, `${route} PNG social image`);
+    checks++;
+  }
 }
-for (const path of ["/en/blog/que-es-performance-marketing-guia-completa/", "/en/blog/", "/en/blog-recomendado/"]) {
+for (const path of ["/fr/blog/", "/fr/blog/que-es-performance-marketing-guia-completa/", "/en/blog/no-existe/", "/fr/blog-recomendado/"]) {
   assert.equal((await request(path)).status, 404, `${path} real 404, not soft 404`);
   checks++;
 }
-const libraryData = JSON.parse(libraryHtml.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1]);
-assert.deepEqual(libraryData["@graph"].map((node) => node["@type"]), ["CollectionPage", "Blog"]);
-assert.equal(libraryData["@graph"][1].blogPost.length, blogSlugs.length, "blog index lists every article");
-checks++;
 const llms = await request("/llms.txt");
 assert.equal(llms.status, 200);
 assert.match(llms.headers.get("content-type") || "", /^text\/plain/);
 const llmsText = await llms.text();
 assert.ok(llmsText.startsWith("# Agencia KLIV"));
-for (const slug of blogSlugs) assert.ok(llmsText.includes(`${origin}/es/blog/${slug}/`), `llms.txt lists ${slug}`);
+for (const locale of BLOG_LOCALES) for (const slug of blogSlugs) assert.ok(llmsText.includes(`${origin}/${locale}/blog/${slug}/`), `llms.txt lists ${locale} ${slug}`);
 checks++;
 for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
   const response = await request(path);
@@ -217,17 +234,18 @@ const sitemap = await request("/sitemap.xml");
 assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
-assert.equal(locations.length, 9 + blogSlugs.length);
+assert.equal(locations.length, 8 + BLOG_LOCALES.length * (1 + blogSlugs.length));
 assert.equal(new Set(locations).size, locations.length);
 assert.equal((xml.match(/<lastmod>/g) || []).length, locations.length);
-assert.ok(locations.includes(`${origin}/es/blog/`));
-assert.ok(!locations.includes(`${origin}/en/blog/`));
 assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));
-for (const slug of blogSlugs) assert.ok(locations.includes(`${origin}/es/blog/${slug}/`));
+for (const locale of BLOG_LOCALES) {
+  assert.ok(locations.includes(`${origin}/${locale}/blog/`));
+  for (const slug of blogSlugs) assert.ok(locations.includes(`${origin}/${locale}/blog/${slug}/`));
+}
 for (const url of locations) {
   assert.ok(url.startsWith(origin + "/") && url.endsWith("/"));
   assert.ok(!/panel|thank-you|#|\/en\/politicas/.test(url));
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);
-console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, ${locations.length} sitemap URLs with lastmod, ${blogSlugs.length} articles, testimonials and bilingual server-rendered JSON-LD.`);
+console.log(`SEO OK: ${checks} page/redirect/error checks, robots.txt, ${locations.length} sitemap URLs with lastmod, ${blogSlugs.length} articles in ${BLOG_LOCALES.length} languages, testimonials and bilingual server-rendered JSON-LD.`);

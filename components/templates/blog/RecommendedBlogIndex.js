@@ -6,14 +6,53 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { withoutDashes } from "@/lib/visibleText";
 import styles from "./RecommendedBlogIndex.module.css";
 
-const COLLECTIONS = [
-  { label: "Todo", value: "Todos" },
-  { label: "Fundamentos", value: "Fundamentos" },
-  { label: "Ecommerce", value: "E-commerce" },
-  { label: "Servicios", value: "Empresas de servicios" },
-  { label: "Productos digitales", value: "Productos digitales" },
-  { label: "Métricas", value: "Métricas" },
-];
+const ALL = "*";
+
+// Las colecciones filtran por la categoría de cada artículo en su idioma.
+const COPY = {
+  es: {
+    collections: [
+      { label: "Todo", value: ALL },
+      { label: "Fundamentos", value: "Fundamentos" },
+      { label: "Ecommerce", value: "E-commerce" },
+      { label: "Servicios", value: "Empresas de servicios" },
+      { label: "Productos digitales", value: "Productos digitales" },
+      { label: "Métricas", value: "Métricas" },
+    ],
+    kicker: "BLOG KLIV / PERFORMANCE",
+    titleStart: "Lo que hace que tu publicidad",
+    titleAccent: "funcione de verdad",
+    subtitle: "Ideas y marcos de decisión para conectar la pauta con el negocio: adquisición, margen, rentabilidad y escala.",
+    library: "Biblioteca completa",
+    result: "resultado",
+    results: "resultados",
+    filterLabel: "Filtrar colecciones",
+    readingTime: (minutes) => `${minutes} min de lectura`,
+    cta: "Encontrá qué está frenando tu crecimiento y qué mover primero.",
+    ctaAction: "Agendar una llamada",
+  },
+  en: {
+    collections: [
+      { label: "All", value: ALL },
+      { label: "Fundamentals", value: "Fundamentals" },
+      { label: "Ecommerce", value: "E-commerce" },
+      { label: "Services", value: "Service businesses" },
+      { label: "Digital products", value: "Digital products" },
+      { label: "Metrics", value: "Metrics" },
+    ],
+    kicker: "KLIV BLOG / PERFORMANCE",
+    titleStart: "What makes your advertising",
+    titleAccent: "actually work",
+    subtitle: "Ideas and decision frameworks to connect ad spend with the business: acquisition, margin, profitability and scale.",
+    library: "Full library",
+    result: "result",
+    results: "results",
+    filterLabel: "Filter collections",
+    readingTime: (minutes) => `${minutes} min read`,
+    cta: "Find out what is holding back your growth and what to move first.",
+    ctaAction: "Book a call",
+  },
+};
 
 function readingTime(content) {
   const words = content
@@ -26,11 +65,12 @@ function readingTime(content) {
   return Math.max(1, Math.ceil(words / 220));
 }
 
-export default function RecommendedBlogIndex({ articles }) {
-  const [activeCollection, setActiveCollection] = useState("Todos");
+export default function RecommendedBlogIndex({ articles, locale = "es" }) {
+  const copy = COPY[locale] || COPY.es;
+  const [activeCollection, setActiveCollection] = useState(ALL);
 
   const filteredArticles = useMemo(() => {
-    if (activeCollection === "Todos") return articles;
+    if (activeCollection === ALL) return articles;
 
     return articles.filter(
       (article) =>
@@ -43,26 +83,23 @@ export default function RecommendedBlogIndex({ articles }) {
     <main className={styles.page}>
       <section className={styles.content} id="biblioteca">
         <div className={styles.libraryIntro}>
-          <p className={styles.sectionKicker}>BLOG KLIV / PERFORMANCE</p>
+          <p className={styles.sectionKicker}>{copy.kicker}</p>
           <h1>
-            Lo que hace que tu publicidad{" "}
-            <span className={styles.titleAccent}>funcione de verdad</span>
+            {copy.titleStart}{" "}
+            <span className={styles.titleAccent}>{copy.titleAccent}</span>
           </h1>
-          <p className={styles.librarySubtitle}>
-            Ideas y marcos de decisión para conectar la pauta con el negocio:
-            adquisición, margen, rentabilidad y escala.
-          </p>
+          <p className={styles.librarySubtitle}>{copy.subtitle}</p>
         </div>
 
         <div className={styles.libraryHeader}>
-          <p className={styles.sectionKicker}>Biblioteca completa</p>
+          <p className={styles.sectionKicker}>{copy.library}</p>
           <span className={styles.resultCount} aria-live="polite">
-            {filteredArticles.length} {filteredArticles.length === 1 ? "resultado" : "resultados"}
+            {filteredArticles.length} {filteredArticles.length === 1 ? copy.result : copy.results}
           </span>
         </div>
 
-        <div className={styles.filters} aria-label="Filtrar colecciones">
-          {COLLECTIONS.map((collection) => (
+        <div className={styles.filters} aria-label={copy.filterLabel}>
+          {copy.collections.map((collection) => (
             <button
               type="button"
               key={collection.value}
@@ -81,11 +118,11 @@ export default function RecommendedBlogIndex({ articles }) {
               <span className={styles.rowNumber}>{String(index + 1).padStart(2, "0")}</span>
               <div className={styles.rowBody}>
                 <div className={styles.articleMeta}>
-                  <span>{withoutDashes(article.category)}</span>
-                  <span>{readingTime(article.content)} min de lectura</span>
+                  <span>{withoutDashes(article.category, locale)}</span>
+                  <span>{copy.readingTime(readingTime(article.content))}</span>
                 </div>
-                <h2>{withoutDashes(article.title)}</h2>
-                <p>{withoutDashes(article.description)}</p>
+                <h2>{withoutDashes(article.title, locale)}</h2>
+                <p>{withoutDashes(article.description, locale)}</p>
               </div>
               <span className={styles.rowArrow} aria-hidden="true">
                 <FiArrowUpRight />
@@ -96,10 +133,10 @@ export default function RecommendedBlogIndex({ articles }) {
 
         <section className={styles.cta}>
           <div>
-            <h2>Encontrá qué está frenando tu crecimiento y qué mover primero.</h2>
+            <h2>{copy.cta}</h2>
           </div>
           <Link href="/quiz/" className={styles.ctaAction}>
-            Agendar una llamada <FiArrowUpRight aria-hidden="true" />
+            {copy.ctaAction} <FiArrowUpRight aria-hidden="true" />
           </Link>
         </section>
       </section>

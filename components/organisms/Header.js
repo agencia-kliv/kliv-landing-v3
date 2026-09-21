@@ -50,7 +50,7 @@ const Header = () => {
 
   const pathname = usePathname();
   const params = useParams();
-  const blogHref = params?.locale === "es" ? "/blog/" : "/#blog";
+  const blogHref = "/blog/";
   const blogIsActive = activeSection === "blog" || pathname?.endsWith("/blog");
 
   useEffect(() => {

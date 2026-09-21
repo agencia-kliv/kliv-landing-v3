@@ -1,40 +1,31 @@
 import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogIndex";
-import { BLOG_ARTICLES } from "@/data/blogArticles";
+import { BLOG_COPY, BLOG_LOCALES, articleDates, getBlogArticles, pageDate } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, localePath, SITE_URL } from "@/lib/seo";
 import { serializeStructuredData } from "@/lib/structured-data";
 import { withoutDashes } from "@/lib/visibleText";
-import contentDates from "@/data/contentDates.json";
 import { notFound } from "next/navigation";
 
-// El blog solo existe en español. Sin esto, /en/blog/ se prerenderizaba
-// como página estática y el notFound() del componente salía con status 200
-// (soft 404). Con dynamicParams = false, Next responde 404 real.
+// Solo los locales con blog se prerenderizan; cualquier otro responde 404 real
+// (sin dynamicParams = false, el notFound() salía como soft 404 con status 200).
 export function generateStaticParams() {
-  return [{ locale: "es" }];
+  return BLOG_LOCALES.map((locale) => ({ locale }));
 }
 
 export const dynamicParams = false;
 
-const TITLE = "Blog de Performance Marketing";
-const DESCRIPTION =
-  "Ideas, estrategias y aprendizajes de Agencia KLIV para mejorar el rendimiento de tu publicidad y tomar mejores decisiones de negocio.";
-
 export function generateMetadata({ params: { locale } }) {
-  if (locale !== "es") return {};
+  const copy = BLOG_COPY[locale];
+  if (!copy) return {};
 
-  const metadata = pageMetadata({ locale, path: "blog", title: TITLE, description: DESCRIPTION });
-
-  return {
-    ...metadata,
-    alternates: { canonical: metadata.alternates.canonical },
-  };
+  return pageMetadata({ locale, path: "blog", title: copy.title, description: copy.description });
 }
 
 // El índice describe al blog como entidad y enumera sus artículos con las
 // mismas fechas que cada BlogPosting, para que el listado sea legible sin JS.
-function blogStructuredData() {
-  const url = absoluteUrl(localePath("es", "blog"));
+function blogStructuredData(locale, articles) {
+  const copy = BLOG_COPY[locale];
+  const url = absoluteUrl(localePath(locale, "blog"));
   const organization = `${SITE_URL}/#organization`;
 
   return {
@@ -44,10 +35,10 @@ function blogStructuredData() {
         "@type": "CollectionPage",
         "@id": `${url}#webpage`,
         url,
-        name: TITLE,
-        description: DESCRIPTION,
-        inLanguage: "es",
-        dateModified: contentDates.pages.blog,
+        name: copy.title,
+        description: copy.description,
+        inLanguage: locale,
+        dateModified: pageDate("blog", locale),
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": organization },
         mainEntity: { "@id": `${url}#blog` },
@@ -56,19 +47,19 @@ function blogStructuredData() {
         "@type": "Blog",
         "@id": `${url}#blog`,
         url,
-        name: TITLE,
-        inLanguage: "es",
+        name: copy.title,
+        inLanguage: locale,
         publisher: { "@id": organization },
-        blogPost: BLOG_ARTICLES.map((article) => {
-          const postUrl = absoluteUrl(localePath("es", `blog/${article.slug}`));
+        blogPost: articles.map((article) => {
+          const postUrl = absoluteUrl(localePath(locale, `blog/${article.slug}`));
           return {
             "@type": "BlogPosting",
             "@id": postUrl,
             url: postUrl,
-            headline: withoutDashes(article.title),
-            description: withoutDashes(article.description),
-            inLanguage: "es",
-            ...contentDates.articles[article.slug],
+            headline: withoutDashes(article.title, locale),
+            description: withoutDashes(article.description, locale),
+            inLanguage: locale,
+            ...articleDates(article.slug, locale),
           };
         }),
       },
@@ -77,15 +68,16 @@ function blogStructuredData() {
 }
 
 export default function BlogPage({ params: { locale } }) {
-  if (locale !== "es") notFound();
+  const articles = getBlogArticles(locale);
+  if (!articles) notFound();
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeStructuredData(blogStructuredData()) }}
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(blogStructuredData(locale, articles)) }}
       />
-      <RecommendedBlogIndex articles={BLOG_ARTICLES} />
+      <RecommendedBlogIndex articles={articles} locale={locale} />
     </>
   );
 }

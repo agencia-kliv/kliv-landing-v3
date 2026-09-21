@@ -1,12 +1,11 @@
 import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogIndex";
-import { BLOG_ARTICLES } from "@/data/blogArticles";
+import { BLOG_LOCALES, getBlogArticles } from "@/lib/blog";
 import { notFound } from "next/navigation";
 
-// El blog solo existe en español. Sin esto, /en/blog/ se prerenderizaba
-// como página estática y el notFound() del componente salía con status 200
-// (soft 404). Con dynamicParams = false, Next responde 404 real.
+// Solo los locales con blog se prerenderizan; cualquier otro responde 404 real
+// (sin dynamicParams = false, el notFound() salía como soft 404 con status 200).
 export function generateStaticParams() {
-  return [{ locale: "es" }];
+  return BLOG_LOCALES.map((locale) => ({ locale }));
 }
 
 export const dynamicParams = false;
@@ -23,7 +22,8 @@ export function generateMetadata() {
 }
 
 export default function RecommendedBlogPage({ params: { locale } }) {
-  if (locale !== "es") notFound();
+  const articles = getBlogArticles(locale);
+  if (!articles) notFound();
 
-  return <RecommendedBlogIndex articles={BLOG_ARTICLES} />;
+  return <RecommendedBlogIndex articles={articles} locale={locale} />;
 }

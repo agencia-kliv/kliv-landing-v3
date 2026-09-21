@@ -1,12 +1,20 @@
 import { ImageResponse } from "@vercel/og";
-import { getBlogArticle } from "@/data/blogArticles";
+import { getBlogArticle } from "@/lib/blog";
 import { withoutDashes } from "@/lib/visibleText";
 
 export const runtime = "edge";
 
-export async function GET(_request, { params }) {
-  const article = getBlogArticle(params.slug);
-  const cover = article && { title: withoutDashes(article.title), category: withoutDashes(article.category) };
+const COPY = {
+  es: { blog: "Blog de Performance Marketing", tagline: "Ideas para convertir inversión en crecimiento rentable" },
+  en: { blog: "Performance Marketing Blog", tagline: "Ideas to turn ad spend into profitable growth" },
+};
+
+// /api/blog-cover/<slug>/ es la portada en español; ?locale=en usa el artículo en inglés.
+export async function GET(request, { params }) {
+  const locale = new URL(request.url).searchParams.get("locale") || "es";
+  const article = getBlogArticle(params.slug, locale);
+  const copy = COPY[locale];
+  const cover = article && copy && { title: withoutDashes(article.title, locale), category: withoutDashes(article.category, locale) };
   if (!cover) return new Response("Not found", { status: 404 });
 
   return new ImageResponse(
@@ -46,7 +54,7 @@ export async function GET(_request, { params }) {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 22, maxWidth: 1000 }}>
           <div style={{ display: "flex", color: "#8ddcca", fontSize: 22, fontWeight: 700, letterSpacing: 4, textTransform: "uppercase" }}>
-            Blog de Performance Marketing · {cover.category}
+            {copy.blog} · {cover.category}
           </div>
           <div style={{ fontSize: cover.title.length > 90 ? 48 : cover.title.length > 65 ? 56 : 66, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>
             {cover.title}
@@ -54,7 +62,7 @@ export async function GET(_request, { params }) {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", color: "#d9f3ec", fontSize: 24 }}>
-          <span>Ideas para convertir inversión en crecimiento rentable</span>
+          <span>{copy.tagline}</span>
           <span>agenciakliv.com</span>
         </div>
       </div>

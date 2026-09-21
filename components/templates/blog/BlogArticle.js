@@ -6,13 +6,13 @@ import { withoutDashes, withoutDashesInHtml } from "@/lib/visibleText";
 import { FAQ_ITEM_PATTERN } from "@/lib/blogFaq";
 import { faqId } from "@/lib/faq";
 import styles from "./BlogArticle.module.css";
-import contentDates from "@/data/contentDates.json";
+import { articleDates } from "@/lib/contentDates";
 
 // Cada pregunta lleva un id (mismo criterio que el FAQ de la home) para poder
 // enlazarla por fragmento, y va en <h3> para que conserve jerarquía semántica.
-function withCollapsibleFaqs(content) {
+function withCollapsibleFaqs(content, locale) {
   return content.replace(FAQ_ITEM_PATTERN, (_item, question, answer) => {
-    const id = faqId(withoutDashes(question.replace(/<[^>]*>/g, "")));
+    const id = faqId(withoutDashes(question.replace(/<[^>]*>/g, ""), locale));
     return `<details class="faq-item" id="${id}"><summary><h3>${question}</h3></summary><p>${answer}</p></details>`;
   });
 }
@@ -34,38 +34,47 @@ const RECOMMENDED_LINK_ALIASES = {
     "/blog/performance-marketing-productos-digitales",
 };
 
-function recommendedHref(target) {
-  const normalizedTarget = RECOMMENDED_LINK_ALIASES[target] ?? target;
+function recommendedHref(target, locale) {
+  // Los destinos del export apuntan al sitio en español; se siguen en el locale activo.
+  const spanishTarget = target.replace(/^\/en\//, "/es/");
+  const normalizedTarget = RECOMMENDED_LINK_ALIASES[spanishTarget] ?? spanishTarget;
   const blogMatch = normalizedTarget.match(/^\/blog\/([^/?#]+)\/?$/);
 
   // Relative URLs preserve the active locale (/es or /en) inside the blog.
   if (blogMatch) return `../${blogMatch[1]}/`;
 
-  return normalizedTarget;
+  return normalizedTarget.replace(/^\/es\//, `/${locale}/`);
 }
 
-function withRecommendedLinks(content) {
+const COPY = {
+  es: { back: "Volver al Blog", breadcrumb: "Ruta de navegación", home: "Inicio", blog: "Blog", published: "Publicado el", updated: "Actualizado el", sources: "Fuentes y lecturas recomendadas", sourcesIntro: "Documentación oficial consultada para ampliar y verificar los conceptos del artículo.", dateLocale: "es-AR" },
+  en: { back: "Back to the Blog", breadcrumb: "Breadcrumb", home: "Home", blog: "Blog", published: "Published on", updated: "Updated on", sources: "Sources and recommended reading", sourcesIntro: "Official documentation consulted to expand and verify the concepts in this article.", dateLocale: "en-US" },
+};
+
+function withRecommendedLinks(content, locale) {
   return content.replace(
     /<li><span class="anchor">([\s\S]*?)<\/span>\s*→\s*<span class="target">([\s\S]*?)<\/span>[\s\S]*?<\/li>/g,
     (_item, rawLabel, rawTarget) => {
       const cleanedLabel = rawLabel.trim().replace(/^["“”]+|["“”]+$/g, "");
       const label = cleanedLabel.replace(/^\p{L}/u, (letter) =>
-        letter.toLocaleUpperCase("es")
+        letter.toLocaleUpperCase(locale)
       );
       const target = rawTarget.replace(/<[^>]*>/g, "").trim();
-      const href = recommendedHref(target);
+      const href = recommendedHref(target, locale);
 
       return `<li><a href="${href}">${label}<span aria-hidden="true">→</span></a></li>`;
     }
   );
 }
 
-export default function BlogArticle({ article }) {
+export default function BlogArticle({ article, locale = "es" }) {
+  const copy = COPY[locale] || COPY.es;
   const content = withoutDashesInHtml(
-    withCollapsibleFaqs(withRecommendedLinks(article.content))
+    withCollapsibleFaqs(withRecommendedLinks(article.content, locale), locale),
+    locale
   );
-  const dates = contentDates.articles[article.slug];
-  const formatDate = (date) => new Intl.DateTimeFormat("es-AR", {
+  const dates = articleDates(article.slug, locale);
+  const formatDate = (date) => new Intl.DateTimeFormat(copy.dateLocale, {
     day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
   }).format(new Date(date));
 
@@ -74,18 +83,18 @@ export default function BlogArticle({ article }) {
       <header className={styles.hero}>
         <div className={styles.heroInner}>
           <Link href="/blog/" className={styles.back}>
-            <FiArrowLeft aria-hidden="true" /> Volver al Blog
+            <FiArrowLeft aria-hidden="true" /> {copy.back}
           </Link>
-          <p className={styles.eyebrow}>Blog KLIV · {withoutDashes(article.category)}</p>
-          <nav aria-label="Ruta de navegación" className="flex flex-wrap gap-[8px] text-[14px] mb-[16px]">
-            <Link href="/">Inicio</Link><span aria-hidden="true">/</span><Link href="/blog/">Blog</Link>
+          <p className={styles.eyebrow}>Blog KLIV · {withoutDashes(article.category, locale)}</p>
+          <nav aria-label={copy.breadcrumb} className="flex flex-wrap gap-[8px] text-[14px] mb-[16px]">
+            <Link href="/">{copy.home}</Link><span aria-hidden="true">/</span><Link href="/blog/">{copy.blog}</Link>
           </nav>
-          <h1 className={styles.title}>{withoutDashes(article.title)}</h1>
-          <p className={styles.description}>{withoutDashes(article.description)}</p>
+          <h1 className={styles.title}>{withoutDashes(article.title, locale)}</h1>
+          <p className={styles.description}>{withoutDashes(article.description, locale)}</p>
           {dates && (
             <p className="text-[14px] mt-[16px]">
-              Publicado el <time dateTime={dates.datePublished}>{formatDate(dates.datePublished)}</time>
-              {dates.dateModified !== dates.datePublished && <> · Actualizado el <time dateTime={dates.dateModified}>{formatDate(dates.dateModified)}</time></>}
+              {copy.published} <time dateTime={dates.datePublished}>{formatDate(dates.datePublished)}</time>
+              {dates.dateModified !== dates.datePublished && <> · {copy.updated} <time dateTime={dates.dateModified}>{formatDate(dates.dateModified)}</time></>}
             </p>
           )}
         </div>
@@ -100,8 +109,8 @@ export default function BlogArticle({ article }) {
         />
         {article.sources?.length > 0 && (
           <section className={styles.sources} aria-labelledby="article-sources">
-            <h2 id="article-sources">Fuentes y lecturas recomendadas</h2>
-            <p>Documentación oficial consultada para ampliar y verificar los conceptos del artículo.</p>
+            <h2 id="article-sources">{copy.sources}</h2>
+            <p>{copy.sourcesIntro}</p>
             <ul>
               {article.sources.map((source) => (
                 <li key={source.url}>

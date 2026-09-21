@@ -1,43 +1,46 @@
 import BlogArticle from "@/components/templates/blog/BlogArticle";
-import { BLOG_SLUGS, getBlogArticle } from "@/data/blogArticles";
-import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
+import { BLOG_COPY, BLOG_LOCALES, BLOG_SLUGS, articleDates, blogSeoFor, getBlogArticle } from "@/lib/blog";
+import { absoluteUrl, alternatesFor, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
 import { withoutDashes } from "@/lib/visibleText";
 import { notFound } from "next/navigation";
-import contentDates from "@/data/contentDates.json";
 import { serializeStructuredData } from "@/lib/structured-data";
-import { BLOG_SEO } from "@/data/blogSeo";
 import { extractArticleFaqs } from "@/lib/blogFaq";
 import { faqId } from "@/lib/faq";
 
 export function generateStaticParams() {
-  return BLOG_SLUGS.map((slug) => ({ locale: "es", slug }));
+  return BLOG_LOCALES.flatMap((locale) => BLOG_SLUGS.map((slug) => ({ locale, slug })));
 }
 
 export const dynamicParams = false;
 
-export function generateMetadata({ params: { locale, slug } }) {
-  const article = getBlogArticle(slug);
-  if (!article || locale !== "es") return NO_INDEX;
+// Portada social por idioma: el texto de la imagen sale del artículo en ese locale.
+const coverUrl = (slug, locale) => absoluteUrl(`/api/blog-cover/${slug}/${locale === "es" ? "" : `?locale=${locale}`}`);
 
-  const canonical = localePath("es", `blog/${slug}`);
-  const image = absoluteUrl(`/api/blog-cover/${slug}/`);
-  const title = withoutDashes(BLOG_SEO[slug]?.title || article.seoTitle);
-  const description = withoutDashes(BLOG_SEO[slug]?.description || article.description);
+export function generateMetadata({ params: { locale, slug } }) {
+  const article = getBlogArticle(slug, locale);
+  if (!article) return NO_INDEX;
+
+  const copy = BLOG_COPY[locale];
+  const seo = blogSeoFor(slug, locale);
+  const alternates = alternatesFor(locale, `blog/${slug}`);
+  const image = coverUrl(slug, locale);
+  const title = withoutDashes(seo.title || article.seoTitle, locale);
+  const description = withoutDashes(seo.description || article.description, locale);
 
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description,
-    alternates: { canonical },
+    alternates,
     robots: { index: true, follow: true },
     openGraph: {
       title,
       description,
       type: "article",
-      url: canonical,
-      siteName: "Agencia KLIV",
-      locale: "es_ES",
-      images: [{ url: image, width: 1200, height: 630, alt: withoutDashes(article.title) }],
+      url: alternates.canonical,
+      siteName: copy.siteName,
+      locale: copy.ogLocale,
+      images: [{ url: image, width: 1200, height: 630, alt: withoutDashes(article.title, locale) }],
     },
     twitter: {
       card: "summary_large_image",
@@ -49,21 +52,22 @@ export function generateMetadata({ params: { locale, slug } }) {
 }
 
 export default function BlogArticlePage({ params: { locale, slug } }) {
-  const article = getBlogArticle(slug);
-  if (!article || locale !== "es") notFound();
+  const article = getBlogArticle(slug, locale);
+  if (!article) notFound();
 
-  const canonical = absoluteUrl(localePath("es", `blog/${article.slug}`));
-  const image = absoluteUrl(`/api/blog-cover/${article.slug}/`);
+  const copy = BLOG_COPY[locale];
+  const canonical = absoluteUrl(localePath(locale, `blog/${article.slug}`));
+  const image = coverUrl(slug, locale);
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: withoutDashes(article.title),
-    description: withoutDashes(article.description),
-    inLanguage: "es",
+    headline: withoutDashes(article.title, locale),
+    description: withoutDashes(article.description, locale),
+    inLanguage: locale,
     image,
     url: canonical,
-    ...contentDates.articles[slug],
+    ...articleDates(slug, locale),
     author: { "@type": "Organization", name: "Agencia KLIV", url: SITE_URL },
     publisher: {
       "@type": "Organization",
@@ -78,20 +82,20 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Agencia KLIV", item: absoluteUrl("/es/") },
-      { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/es/blog/") },
-      { "@type": "ListItem", position: 3, name: withoutDashes(article.title), item: canonical },
+      { "@type": "ListItem", position: 1, name: "Agencia KLIV", item: absoluteUrl(localePath(locale)) },
+      { "@type": "ListItem", position: 2, name: copy.blog, item: absoluteUrl(localePath(locale, "blog")) },
+      { "@type": "ListItem", position: 3, name: withoutDashes(article.title, locale), item: canonical },
     ],
   };
 
   // Las preguntas frecuentes del cierre de cada artículo, con el mismo texto
   // visible del acordeón y el mismo id de fragmento que usa BlogArticle.
-  const faqs = extractArticleFaqs(article.content);
+  const faqs = extractArticleFaqs(article.content, locale);
   const faqPage = faqs.length > 0 && {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${canonical}#faq`,
-    inLanguage: "es",
+    inLanguage: locale,
     isPartOf: { "@id": canonical },
     mainEntity: faqs.map(({ question, answer }) => ({
       "@type": "Question",
@@ -111,7 +115,7 @@ export default function BlogArticlePage({ params: { locale, slug } }) {
       {faqPage && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(faqPage) }} />
       )}
-      <BlogArticle article={article} />
+      <BlogArticle article={article} locale={locale} />
     </>
   );
 }
