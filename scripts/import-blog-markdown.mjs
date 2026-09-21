@@ -66,13 +66,29 @@ const spanishSource = await readFile(new URL("../data/blogArticles.js", import.m
 const { BLOG_ARTICLES: spanish } = await import(`data:text/javascript;base64,${Buffer.from(spanishSource).toString("base64")}`);
 const spanishBySlug = new Map(spanish.map((article) => [article.slug, article]));
 
+// Cada idioma tiene su propio slug; el español es el identificador estable.
+const slugSource = await readFile(new URL("../data/blogSlugs.en.js", import.meta.url), "utf8");
+const { BLOG_SLUGS_EN: slugsEn } = await import(`data:text/javascript;base64,${Buffer.from(slugSource).toString("base64")}`);
+// El export enlaza dos artículos por un slug provisional que nunca se publicó.
+const SLUG_ALIASES = {
+  "marca-solo-vende-con-promociones": "por-que-tu-marca-solo-vende-con-promociones",
+  "optimizar-seguimiento-de-leads-para-vender-mas": "seguimiento-de-leads-para-aumentar-conversion",
+};
+const localizedSlug = (rawSlug) => {
+  const spanishSlug = SLUG_ALIASES[rawSlug] || rawSlug;
+  if (locale === "es") return spanishSlug;
+  const slug = slugsEn[spanishSlug];
+  if (!slug) throw new Error(`Sin slug en ${locale} para ${spanishSlug}`);
+  return slug;
+};
+
 const escape = (text) => text.replace(/&(?![a-z]+;|#\d+;)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // Enlaces: los internos del blog quedan relativos al artículo (funcionan en
 // /es/ y /en/); los que apuntan al sitio en español siguen al locale actual.
 function href(url) {
   const blog = url.match(/^\/blog\/([^/?#]+)\/?(#.*)?$/);
-  if (blog) return `../${blog[1]}/${blog[2] || ""}`;
+  if (blog) return `../${localizedSlug(blog[1])}/${blog[2] || ""}`;
   return url.replace(/^(https:\/\/agenciakliv\.com)?\/es\//, `$1/${locale}/`);
 }
 
@@ -132,7 +148,8 @@ function table(lines) {
 function recommendedLink(line) {
   const match = line.match(/^- "([^"]+)" → (\S+)(.*)$/);
   if (!match) return `<li>${inline(line.slice(2))}</li>`;
-  const [, anchor, target, rest] = match;
+  const [, anchor, rawTarget, rest] = match;
+  const target = rawTarget.replace(/^\/blog\/([^/?#]+)\/?$/, (_m, slug) => `/blog/${localizedSlug(slug)}`);
   const tail = rest.replace(/(\/\S+?)(?=[\s)]|$)/g, '<span class="target">$1</span>');
   return `<li><span class="anchor">"${escape(anchor)}"</span> → <span class="target">${escape(target)}</span>${escape(tail).replace(/&lt;(\/?span[^&]*)&gt;/g, "<$1>")}</li>`;
 }
@@ -212,9 +229,10 @@ function parseArticle(chunk, index) {
     const match = line.match(/^- \*\*([^:*]+):\*\*\s*(.*)$/);
     if (match) metadata[match[1]] = match[2].trim();
   }
-  const slug = metadata.Slug.replace(/^\/blog\//, "").replace(/\/$/, "");
-  const source = spanishBySlug.get(slug);
-  if (!source) throw new Error(`Sin artículo español para ${slug}`);
+  const sourceSlug = metadata.Slug.replace(/^\/blog\//, "").replace(/\/$/, "");
+  const source = spanishBySlug.get(sourceSlug);
+  if (!source) throw new Error(`Sin artículo español para ${sourceSlug}`);
+  const slug = localizedSlug(sourceSlug);
   const bodyStart = lines.findIndex((line, at) => at > 0 && line.startsWith("# "));
   const content = convertBody(lines.slice(bodyStart + 1));
   const excerpt = content.match(/<p>([\s\S]*?)<\/p>/)[1].replace(/<[^>]*>/g, "");
@@ -225,6 +243,7 @@ function parseArticle(chunk, index) {
     artifactId: source.artifactId,
     articleNumber: String(index + 1).padStart(2, "0"),
     slug,
+    ...(slug !== sourceSlug && { sourceSlug }),
     title,
     seoTitle: field("seoTitle"),
     description: field("description"),

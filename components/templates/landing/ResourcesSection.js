@@ -3,7 +3,7 @@
 import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTitle from "@/components/atoms/SectionTitle";
-import { getBlogArticles } from "@/lib/blog";
+import { getBlogArticles, localizedSlug } from "@/lib/blog";
 import { getBlogCover } from "@/data/blogCovers";
 import Image from "next/image";
 import Link from "next-intl/link";
@@ -12,7 +12,8 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { withoutDashes } from "@/lib/visibleText";
 import styles from "./ResourcesSection.module.css";
 
-// Los tres pilares del blog; el mismo slug existe en /es/blog/ y /en/blog/.
+// Los tres pilares del blog, por su slug español (identificador estable); el
+// enlace usa el slug del idioma activo.
 const ITEMS = [
   { key: "performanceMarketing", slug: "que-es-performance-marketing-guia-completa" },
   { key: "ecommerce", slug: "performance-marketing-ecommerce" },
@@ -21,8 +22,8 @@ const ITEMS = [
 
 const WORDS_PER_MINUTE = 220;
 
-function readingTime(slug, locale) {
-  const article = getBlogArticles(locale)?.find((item) => item.slug === slug);
+function readingTime(key, locale) {
+  const article = getBlogArticles(locale)?.find((item) => (item.sourceSlug || item.slug) === key);
   if (!article?.content) return null;
 
   const words = article.content
@@ -58,7 +59,7 @@ export default function ResourcesSection() {
 
         <div className={styles.articleGrid}>
           {ITEMS.map((item, index) => (
-            <Link key={item.slug} href={`/blog/${item.slug}/`} className={styles.articleCard}>
+            <Link key={item.slug} href={`/blog/${localizedSlug(item.slug, locale) || item.slug}/`} className={styles.articleCard}>
               {getBlogCover(item.slug) && (
                 <div className={styles.articleCover}>
                   <Image

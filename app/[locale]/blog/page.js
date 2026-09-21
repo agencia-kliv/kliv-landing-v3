@@ -59,7 +59,7 @@ function blogStructuredData(locale, articles) {
             headline: withoutDashes(article.title, locale),
             description: withoutDashes(article.description, locale),
             inLanguage: locale,
-            ...articleDates(article.slug, locale),
+            ...articleDates(article, locale),
           };
         }),
       },

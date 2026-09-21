@@ -73,7 +73,7 @@ export default function BlogArticle({ article, locale = "es" }) {
     withCollapsibleFaqs(withRecommendedLinks(article.content, locale), locale),
     locale
   );
-  const dates = articleDates(article.slug, locale);
+  const dates = articleDates(article.sourceSlug || article.slug, locale);
   const formatDate = (date) => new Intl.DateTimeFormat(copy.dateLocale, {
     day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
   }).format(new Date(date));

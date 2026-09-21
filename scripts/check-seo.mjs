@@ -6,6 +6,10 @@ const base = process.argv[2] || "http://127.0.0.1:3000";
 const origin = "https://agenciakliv.com";
 const articleSource = await readFile(new URL("../data/blogArticles.js", import.meta.url), "utf8");
 const { BLOG_SLUGS: blogSlugs } = await import(`data:text/javascript;base64,${Buffer.from(articleSource).toString("base64")}`);
+const slugSource = await readFile(new URL("../data/blogSlugs.en.js", import.meta.url), "utf8");
+const { BLOG_SLUGS_EN: englishSlugs } = await import(`data:text/javascript;base64,${Buffer.from(slugSource).toString("base64")}`);
+// Slug de cada artículo por idioma, indexado por el slug español.
+const articleSlug = (slug, locale) => (locale === "es" ? slug : englishSlugs[slug]);
 const contentDates = JSON.parse(await readFile(new URL("../data/contentDates.json", import.meta.url), "utf8"));
 let checks = 0;
 async function request(path) {
@@ -124,8 +128,10 @@ assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name
 checks++;
 const BLOG_LOCALES = ["es", "en"];
 const hreflangs = (links, path) => {
+  const paths = typeof path === "string" ? { es: path, en: path } : path;
   for (const lang of ["es", "en", "x-default"]) {
-    assert.equal(links.find((x) => x.hreflang === lang)?.href, `${origin}/${lang === "x-default" ? "es" : lang}/${path}`, `${path} hreflang ${lang}`);
+    const target = lang === "x-default" ? "es" : lang;
+    assert.equal(links.find((x) => x.hreflang === lang)?.href, `${origin}/${target}/${paths[target]}`, `${paths.es} hreflang ${lang}`);
   }
 };
 for (const locale of BLOG_LOCALES) {
@@ -140,7 +146,9 @@ for (const locale of BLOG_LOCALES) {
   assert.equal(libraryData["@graph"][1].inLanguage, locale);
   assert.equal(libraryData["@graph"][1].blogPost.length, blogSlugs.length, `${locale} blog index lists every article`);
   checks++;
-  for (const slug of blogSlugs) {
+  for (const key of blogSlugs) {
+    const slug = articleSlug(key, locale);
+    assert.ok(slug, `${locale} slug for ${key}`);
     const route = `/${locale}/blog/${slug}/`;
     const response = await request(route);
     assert.equal(response.status, 200, route);
@@ -155,7 +163,7 @@ for (const locale of BLOG_LOCALES) {
     assert.equal(tags(html, "html")[0]?.lang, locale, `${route} language`);
     assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
     assert.equal(links.find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
-    hreflangs(links, `blog/${slug}/`);
+    hreflangs(links, { es: `blog/${key}/`, en: `blog/${articleSlug(key, "en")}/` });
     assert.ok(pageTitle.length > 20 && pageTitle.length <= 65, `${route} concise title (${pageTitle.length})`);
     assert.ok(description.length >= 100 && description.length <= 160, `${route} useful description (${description.length})`);
     assert.equal(metas.find((x) => x.property === "og:type")?.content, "article", `${route} Open Graph article`);
@@ -171,8 +179,8 @@ for (const locale of BLOG_LOCALES) {
     assert.equal(data.image, cover);
     assert.equal(data.url, origin + route);
     assert.equal(data.mainEntityOfPage["@id"], origin + route);
-    assert.equal(data.datePublished, contentDates.articles[slug][locale].datePublished);
-    assert.equal(data.dateModified, contentDates.articles[slug][locale].dateModified);
+    assert.equal(data.datePublished, contentDates.articles[key][locale].datePublished);
+    assert.equal(data.dateModified, contentDates.articles[key][locale].dateModified);
     assert.ok(tags(html, "time").some((tag) => tag.datetime === data.datePublished));
     const breadcrumbs = JSON.parse(structured[1][1]);
     assert.equal(breadcrumbs["@type"], "BreadcrumbList");
@@ -198,7 +206,8 @@ for (const locale of BLOG_LOCALES) {
     checks++;
   }
 }
-for (const path of ["/fr/blog/", "/fr/blog/que-es-performance-marketing-guia-completa/", "/en/blog/no-existe/", "/fr/blog-recomendado/"]) {
+// Los slugs no se cruzan entre idiomas: el español no existe bajo /en/ ni al revés.
+for (const path of ["/fr/blog/", "/fr/blog/que-es-performance-marketing-guia-completa/", "/en/blog/no-existe/", "/fr/blog-recomendado/", "/en/blog/que-es-performance-marketing-guia-completa/", "/es/blog/what-is-performance-marketing/"]) {
   assert.equal((await request(path)).status, 404, `${path} real 404, not soft 404`);
   checks++;
 }
@@ -207,7 +216,7 @@ assert.equal(llms.status, 200);
 assert.match(llms.headers.get("content-type") || "", /^text\/plain/);
 const llmsText = await llms.text();
 assert.ok(llmsText.startsWith("# Agencia KLIV"));
-for (const locale of BLOG_LOCALES) for (const slug of blogSlugs) assert.ok(llmsText.includes(`${origin}/${locale}/blog/${slug}/`), `llms.txt lists ${locale} ${slug}`);
+for (const locale of BLOG_LOCALES) for (const key of blogSlugs) assert.ok(llmsText.includes(`${origin}/${locale}/blog/${articleSlug(key, locale)}/`), `llms.txt lists ${locale} ${key}`);
 checks++;
 for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
   const response = await request(path);
@@ -240,7 +249,7 @@ assert.equal((xml.match(/<lastmod>/g) || []).length, locations.length);
 assert.ok(locations.includes(`${origin}/es/claves-alto-performance/`));
 for (const locale of BLOG_LOCALES) {
   assert.ok(locations.includes(`${origin}/${locale}/blog/`));
-  for (const slug of blogSlugs) assert.ok(locations.includes(`${origin}/${locale}/blog/${slug}/`));
+  for (const key of blogSlugs) assert.ok(locations.includes(`${origin}/${locale}/blog/${articleSlug(key, locale)}/`), `sitemap ${locale} ${key}`);
 }
 for (const url of locations) {
   assert.ok(url.startsWith(origin + "/") && url.endsWith("/"));

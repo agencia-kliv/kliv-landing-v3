@@ -1,5 +1,18 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { BLOG_SLUGS_EN } from "@/data/blogSlugs.en";
+
+// El blog tiene un slug por idioma: al cambiar de idioma se va al mismo
+// artículo traducido. El mapa es chico, así que no arrastra los artículos.
+const SPANISH_SLUGS = Object.fromEntries(Object.entries(BLOG_SLUGS_EN).map(([es, en]) => [en, es]));
+
+function translatedBlogPath(pathname, currentLocale, newLocale) {
+  const match = pathname.match(new RegExp(`^/${currentLocale}/blog(?:/([^/]+))?/?$`));
+  if (!match) return null;
+  if (!match[1]) return `/${newLocale}/blog/`;
+  const slug = newLocale === "en" ? BLOG_SLUGS_EN[match[1]] : SPANISH_SLUGS[match[1]];
+  return slug ? `/${newLocale}/blog/${slug}/` : `/${newLocale}/blog/`;
+}
 
 const LocaleSwitcher = () => {
   const router = useRouter();
@@ -10,8 +23,9 @@ const LocaleSwitcher = () => {
   const changeLanguage = (newLocale) => {
     // change the locale
 
-    if (pathname.startsWith(`/${currentLanguage}/blog`)) {
-      router.push(`/${newLocale}/#blog`);
+    const blogPath = translatedBlogPath(pathname, currentLanguage, newLocale);
+    if (blogPath) {
+      router.push(blogPath);
       return;
     }
 
