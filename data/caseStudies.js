@@ -22,6 +22,7 @@ export const CASE_STUDIES_ES = {
     {
       id: "rolicred",
       name: "Rolicred",
+      logo: "/logos/Logo Rolicred (Color).png",
       sector: "Créditos personales",
       location: "Córdoba, Argentina",
       website: "https://rolicred.com",
@@ -84,6 +85,7 @@ export const CASE_STUDIES_ES = {
     {
       id: "saniito",
       name: "Saniito",
+      logo: "/logos/Logo Saniito (Color).png",
       sector: "Fábrica de alimentos",
       location: "Chile → Perú → España",
       profile:

@@ -3,7 +3,7 @@
 import AgendarLLamadaButton from "@/components/atoms/AgendarLLamadaButton";
 import Link from "next-intl/link";
 import { FiArrowLeft } from "react-icons/fi";
-import CaseStudyCard from "./CaseStudyCard";
+import CaseStudyCard, { CaseStudyVisual } from "./CaseStudyCard";
 import styles from "./caseStudies.module.css";
 
 // Página de un caso: resultados antes/después arriba (tabla semántica), luego
@@ -14,7 +14,8 @@ export default function CaseStudyPage({ content, item, labels, basePath }) {
   return (
     <>
       <header className={styles.hero}>
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.heroGrid}`}>
+          <div>
           <Link href={basePath} className={styles.back}>
             <FiArrowLeft aria-hidden="true" /> {labels.title}
           </Link>
@@ -34,6 +35,14 @@ export default function CaseStudyPage({ content, item, labels, basePath }) {
               </>
             )}
           </p>
+          </div>
+          <aside className={styles.heroProof} aria-label={item.metric.label}>
+            <CaseStudyVisual item={item} compact />
+            <p className={styles.heroMetric}>
+              <strong>{item.metric.value}</strong>
+              <span>{item.metric.label}</span>
+            </p>
+          </aside>
         </div>
       </header>
 
@@ -66,19 +75,23 @@ export default function CaseStudyPage({ content, item, labels, basePath }) {
           </table>
         </section>
 
-        <section className={styles.story}>
-          <h2>{labels.challenge}</h2>
-          <p>{item.challenge}</p>
-        </section>
+        <div className={styles.storyGrid}>
+          <section className={`${styles.story} ${styles.challenge}`}>
+            <span className={styles.storyNumber}>01</span>
+            <h2>{labels.challenge}</h2>
+            <p>{item.challenge}</p>
+          </section>
 
-        <section className={styles.story}>
-          <h2>{labels.solution}</h2>
-          <ul>
-            {item.solution.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ul>
-        </section>
+          <section className={`${styles.story} ${styles.solution}`}>
+            <span className={styles.storyNumber}>02</span>
+            <h2>{labels.solution}</h2>
+            <ul>
+              {item.solution.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
 
         {item.outcome && <p className={styles.outcome}>{item.outcome}</p>}
         {item.note && (
