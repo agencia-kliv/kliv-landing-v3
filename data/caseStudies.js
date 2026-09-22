@@ -3,19 +3,18 @@
 // real por autorización del cliente; el resto va sin marca por política de
 // privacidad. No agregar cifras que no estén en el documento original.
 //
-// `metric` es el dato que se destaca en las tarjetas (home e índice); `results`
-// es la tabla antes/después completa de la página de cada caso. `id` es el slug
-// de la página del caso. Sin guiones largos en el copy
-// visible (misma regla que el blog).
+// `metric` es el dato que se destaca en las tarjetas del índice; `results` es
+// la tabla antes/después completa de la página de cada caso. `id` es el slug
+// de la página del caso. Sin guiones largos en el copy visible (misma regla
+// que el blog).
 
 export const CASE_STUDIES_PATH_ES = "casos-de-exito";
 
 export const CASE_STUDIES_ES = {
   eyebrow: "Casos de éxito",
-  title: "Resultados de clientes",
+  title: "Casos de éxito",
   tagline: "Agencia KLIV · Desde 2014",
-  intro:
-    "Marcas gestionadas por KLIV en distintos países y rubros de Latinoamérica y Europa.",
+  intro: "Resultados que hablan por sí solos.",
   description:
     "Casos de performance marketing: cómo Rolicred pasó de 3x a 15x de retorno, una desarrolladora vendió sus últimas 5 unidades y Saniito abrió venta online y nuevos países.",
   cases: [
@@ -118,7 +117,7 @@ export const CASE_STUDIES_ES = {
       sector: "Educación",
       location: "Latinoamérica",
       profile: "Instituto educativo con propuesta presencial y digital, equipo comercial propio.",
-      metric: { value: "Mes a mes", label: "más alumnos, con rentabilidad medible desde el primer mes" },
+      metric: { value: "Más alumnos", label: "con rentabilidad medible desde el primer mes" },
       summary:
         "De no saber si las campañas eran rentables a medir cada una y a cada vendedor, y escalar alumnos mes a mes.",
       challenge:
@@ -160,43 +159,6 @@ export const CASE_STUDIES_ES = {
         name: "Agencias (servicio white-label)",
         location: "Toda Latinoamérica",
         text: "Durante años, KLIV gestionó de forma tercerizada las campañas publicitarias de múltiples agencias en toda la región, que recurrían a su expertise para atender a sus propios clientes bajo una dinámica white-label: cientos de cuentas gestionadas bajo la misma filosofía de performance marketing.",
-      },
-    ],
-  },
-  history: {
-    title: "Trayectoria",
-    paragraphs: [
-      "Desde 2014, KLIV gestionó campañas para cientos de marcas, en una amplia diversidad de rubros y países, incluyendo cuentas en toda Europa, superando la barrera del idioma. Buena parte de esas marcas llegaron a través de otras agencias que tercerizaban su servicio publicitario con el equipo de KLIV, y tanto a nivel agencia como de cuentas directas, el crecimiento fue sostenido casi en su totalidad por recomendación de boca en boca.",
-      "En los últimos años, KLIV lanzó su propia marca en redes sociales para posicionarse de forma más visible, después de haber trabajado durante gran parte de su trayectoria detrás de escena. Hoy el foco está puesto en marcas de alto calibre, ya posicionadas en su mercado, que encontraron un techo en su facturación, para ayudarlas a romperlo y llevarlas por encima de los USD 50.000 o 100.000 mensuales, o más.",
-      "El equipo se profesionalizó con ese objetivo: máxima eficiencia en calidad y tiempos, para maximizar las ventas y el retorno de la inversión publicitaria lo antes posible, siempre bajo la filosofía del performance marketing, sin sesgarse por métricas de vanidad como los likes o los seguidores, y enfocado en lo que realmente importa para una marca: la venta.",
-    ],
-  },
-  faq: {
-    title: "Preguntas frecuentes",
-    items: [
-      {
-        question: "¿Desde cuándo trabaja KLIV como agencia de performance marketing?",
-        answer: "Desde 2014, gestionando campañas para marcas de distintos rubros en Latinoamérica y Europa.",
-      },
-      {
-        question: "¿KLIV solo trabaja con marcas de forma directa?",
-        answer:
-          "No. Además de cuentas directas, KLIV prestó durante años servicio white-label a otras agencias en toda Latinoamérica, gestionando campañas para sus clientes bajo la misma metodología.",
-      },
-      {
-        question: "¿Qué tipo de marca busca KLIV hoy?",
-        answer:
-          "Marcas ya posicionadas en su mercado que encontraron un techo en su facturación mensual, y buscan romperlo escalando su inversión publicitaria de forma rentable.",
-      },
-      {
-        question: "¿Cuáles son los rubros más efectivos para la metodología de KLIV?",
-        answer:
-          "Cualquier rubro donde el objetivo de venta se pueda medir con claridad: e-commerce de productos, cursos y productos digitales, generación de leads para servicios y productos de ticket alto, o ventas gestionadas por WhatsApp u otros canales de mensajería directa.",
-      },
-      {
-        question: "¿En qué rubros tiene experiencia KLIV?",
-        answer:
-          "E-commerce de indumentaria, tecnología y alimentos; cursos online; turismo; créditos personales; inmobiliarias y constructoras; servicios profesionales B2B (Negocio a Negocio); coaches; campañas políticas; restaurantes; y gestión de marca blanca para otras agencias, entre otros.",
       },
     ],
   },

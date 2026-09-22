@@ -3,8 +3,11 @@ import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTag from "@/components/atoms/SectionTag";
 import SectionTitle from "@/components/atoms/SectionTitle";
-import { useTranslations } from "next-intl";
+import { caseStudiesPath, getCaseStudies } from "@/lib/caseStudies";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next-intl/link";
 import Image from "next/image";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export const MEMBERS = [
   {
@@ -85,6 +88,32 @@ const TeamCard = ({ image, zoomed }) => {
   );
 };
 
+// Acciones de la sección: agendar llamada y, en los idiomas que ya tienen la
+// página, el acceso a los casos de éxito (la home no los despliega).
+const TrajectoryActions = () => {
+  const t_cases = useTranslations("caseStudies");
+  const locale = useLocale();
+  const href = getCaseStudies(locale) ? `/${caseStudiesPath(locale)}/` : null;
+
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-[22px] gap-y-[16px] lg:w-max lg:justify-start">
+      <AgendarLLamadaButton />
+      {href && (
+        <Link
+          href={href}
+          className="group inline-flex items-center gap-[8px] whitespace-nowrap text-kliv-primary text-[15px] font-[700] tracking-[.02em]"
+        >
+          {t_cases("viewAll")}
+          <FiArrowUpRight
+            aria-hidden="true"
+            className="transition-transform duration-150 group-hover:translate-x-[3px] group-hover:-translate-y-[3px] motion-reduce:transition-none motion-reduce:group-hover:transform-none"
+          />
+        </Link>
+      )}
+    </div>
+  );
+};
+
 const TeamMembersSection = () => {
   const t_team = useTranslations("team");
   const t_header = useTranslations("header");
@@ -127,7 +156,7 @@ const TeamMembersSection = () => {
                   />
                   <TeamCard image="/teamPhotos/ailin-rubio_small.webp" />
                 </div>
-                <AgendarLLamadaButton />
+                <TrajectoryActions />
               </div>
               <div />
             </div>

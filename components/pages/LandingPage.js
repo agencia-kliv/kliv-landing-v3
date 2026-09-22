@@ -13,10 +13,6 @@ const PartnersSection = dynamic(
   () => import("../templates/landing/partners/PartnersSection"),
   { ssr: true }
 );
-const CaseStudiesSection = dynamic(
-  () => import("../templates/landing/CaseStudiesSection"),
-  { ssr: true }
-);
 const TestimonialsSection = dynamic(
   () => import("../templates/landing/TestimonialsSection"),
   { ssr: true }
@@ -45,7 +41,6 @@ const LandingPage = () => {
       <ServicesSection />
       <TeamMembersSection />
       <PartnersSection />
-      <CaseStudiesSection />
       <TestimonialsSection />
       <TarifasSection />
       {/* <WhyUsSection /> */}

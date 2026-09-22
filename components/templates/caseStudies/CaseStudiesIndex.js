@@ -1,14 +1,13 @@
 "use client";
 
 import AgendarLLamadaButton from "@/components/atoms/AgendarLLamadaButton";
-import { faqId } from "@/lib/faq";
 import Link from "next-intl/link";
 import { FiArrowLeft } from "react-icons/fi";
 import CaseStudyCard from "./CaseStudyCard";
 import styles from "./caseStudies.module.css";
 
-// Índice de casos de éxito: tarjetas que llevan a la página de cada caso, más
-// otros rubros, trayectoria y preguntas frecuentes (FAQPage en el schema).
+// Índice de casos de éxito: tarjetas que llevan a la página de cada caso y
+// otros rubros. La trayectoria y las preguntas frecuentes viven en la home.
 export default function CaseStudiesIndex({ content, labels, basePath }) {
   return (
     <>
@@ -41,27 +40,6 @@ export default function CaseStudiesIndex({ content, labels, basePath }) {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section className={styles.block} id="trayectoria">
-          <h2>{content.history.title}</h2>
-          <div className={styles.prose}>
-            {content.history.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.block} id="faq">
-          <h2>{content.faq.title}</h2>
-          {content.faq.items.map((item) => (
-            <details key={item.question} className={styles.faqItem} id={faqId(item.question)}>
-              <summary>
-                <h3>{item.question}</h3>
-              </summary>
-              <p>{item.answer}</p>
-            </details>
-          ))}
         </section>
 
         <section className={styles.cta}>

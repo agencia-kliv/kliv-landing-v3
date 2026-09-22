@@ -22,7 +22,6 @@
     "header":{
         "services": "Servicios",
         "trajectory": "Trayectoria",
-        "caseStudies": "Casos de éxito",
         "pricing": "Tarifas",
         "blog": "Blog"
     },
@@ -151,8 +150,7 @@
 
     "caseStudies": {
         "title": "Casos de éxito",
-        "subtitle": "Resultados de marcas que gestionamos en distintos países y rubros.",
-        "viewAll": "Ver todos los casos",
+        "viewAll": "Ver casos de éxito",
         "readCase": "Ver el caso",
         "moreCases": "Otros casos",
         "caseLabel": "Caso",

@@ -163,25 +163,20 @@ for (const locale of ["es", "en"]) {
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
   const graph = structuredTypes(html);
-  assert.deepEqual(graph.map((node) => node["@type"]), ["CollectionPage", "BreadcrumbList", "ItemList", "FAQPage"]);
+  assert.deepEqual(graph.map((node) => node["@type"]), ["CollectionPage", "BreadcrumbList", "ItemList"]);
   assert.equal(graph[0].dateModified, contentDates.pages["casos-de-exito"][locale], `${route} content date`);
   assert.equal(graph[2].itemListElement.length, content.cases.length);
-  const faq = graph[3];
-  assert.equal(faq.mainEntity.length, content.faq.items.length);
-  for (const question of faq.mainEntity) {
-    assert.ok(visibleHtml.includes(`id="${question["@id"].split("#")[1]}"`), `${route} faq anchor`);
-    assert.ok(text(visibleHtml).includes(question.name), `${route} faq question visible`);
-    assert.ok(text(visibleHtml).includes(question.acceptedAnswer.text), `${route} faq answer visible`);
-  }
+  assert.ok(text(visibleHtml).includes(content.title) && text(visibleHtml).includes(content.intro), `${route} heading visible`);
+  assert.ok(!/id="(trayectoria|faq)"/.test(visibleHtml), `${route} without trajectory or faq blocks`);
   assert.ok(!/[—–]/.test(text(visibleHtml)), `${route} no long dashes in visible copy`);
+  // La home no despliega los casos: solo enlaza al índice desde la trayectoria.
   const home = await (await request(`/${locale}/`)).text();
-  assert.ok(home.includes('id="casos-de-exito"'), `/${locale}/ has the case studies section`);
+  assert.ok(!home.includes('id="casos-de-exito"'), `/${locale}/ does not display the case studies section`);
+  assert.ok(home.includes(`href="${route}"`), `/${locale}/ links the case studies index`);
   checks++;
   for (const item of content.cases) {
     const caseRoute = `${route}${item.id}/`;
     assert.ok(visibleHtml.includes(`href="${caseRoute}"`), `${route} links case ${item.id}`);
-    assert.ok(home.includes(`href="${caseRoute}"`), `/${locale}/ links case ${item.id}`);
-    assert.ok(home.includes(item.metric.value), `/${locale}/ shows metric of ${item.id}`);
     const caseResponse = await request(caseRoute);
     assert.equal(caseResponse.status, 200, caseRoute);
     const caseHtml = await caseResponse.text();
@@ -201,7 +196,7 @@ for (const locale of ["es", "en"]) {
   assert.equal((await request(`${route}no-existe/`)).status, 404, `${route}no-existe/ is a real 404`);
 }
 const enHomeForCases = await (await request("/en/")).text();
-if (!caseStudiesContent.en) assert.ok(!enHomeForCases.includes('id="casos-de-exito"'), "/en/ hides the section until the English cases exist");
+if (!caseStudiesContent.en) assert.ok(!enHomeForCases.includes("/en/case-studies/"), "/en/ hides the link until the English cases exist");
 const BLOG_LOCALES = ["es", "en"];
 const hreflangs = (links, path) => {
   const paths = typeof path === "string" ? { es: path, en: path } : path;

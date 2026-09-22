@@ -3,7 +3,6 @@ import ResourceArticle from "@/components/templates/resources/ResourceArticle";
 import { RESOURCE_SLUGS } from "@/data/resources";
 import { caseStudiesAlternates, caseStudiesLocaleFor, caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
 import { pageDate } from "@/lib/contentDates";
-import { faqId } from "@/lib/faq";
 import { getMessages, pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
 import { serializeStructuredData } from "@/lib/structured-data";
@@ -55,8 +54,8 @@ export async function generateMetadata({ params: { locale, resource } }) {
   });
 }
 
-// CollectionPage + breadcrumb + lista de casos + FAQPage con el mismo texto
-// visible; sin ratings ni cifras que no estén en el documento del cliente.
+// CollectionPage + breadcrumb + lista de casos, con el mismo texto visible;
+// sin ratings ni cifras que no estén en el documento del cliente.
 function caseStudiesStructuredData(locale, content, messages) {
   const url = absoluteUrl(localePath(locale, caseStudiesPath(locale)));
   const organization = `${SITE_URL}/#organization`;
@@ -92,17 +91,6 @@ function caseStudiesStructuredData(locale, content, messages) {
           position: index + 1,
           name: item.name,
           url: absoluteUrl(localePath(locale, caseStudyPath(locale, item.id))),
-        })),
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        inLanguage: locale,
-        mainEntity: content.faq.items.map((item) => ({
-          "@type": "Question",
-          "@id": `${url}#${faqId(item.question)}`,
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
         })),
       },
     ],
