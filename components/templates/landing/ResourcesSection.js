@@ -61,7 +61,11 @@ export default function ResourcesSection() {
           {ITEMS.map((item, index) => (
             <Link key={item.slug} href={`/blog/${localizedSlug(item.slug, locale) || item.slug}/`} className={styles.articleCard}>
               {getBlogCover(item.slug) && (
-                <div className={styles.articleCover}>
+                // `relative` va en Tailwind, no solo en el módulo CSS: el módulo
+                // llega en un chunk que carga JS (la sección es un next/dynamic),
+                // y sin contexto de posicionamiento la portada `fill` se estira
+                // contra la ventana y aparece a pantalla completa sobre el hero.
+                <div className={`relative ${styles.articleCover}`}>
                   <Image
                     src={getBlogCover(item.slug)}
                     alt=""
