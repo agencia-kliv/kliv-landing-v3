@@ -41,6 +41,31 @@ const nextConfig = {
   // 307 y no 308 a propósito: si más adelante se agrega detección de idioma
   // por Accept-Language, un permanente ya cacheado en cada navegador sería
   // muy difícil de revertir. El canonical ya consolida las señales.
+  // Todo lo de /public se servía con `max-age=0, must-revalidate`: el video del
+  // hero (613 KB) y los posters se volvían a descargar en cada visita, incluso
+  // desde el mismo teléfono. Los assets de /_next ya vienen con caché propia de
+  // Next y no se tocan acá (los patrones no cruzan barras, salvo el de las
+  // carpetas de /public). Treinta días de frescura y, vencido eso, se sigue
+  // sirviendo el archivo guardado mientras se revalida en segundo plano.
+  // Los archivos de /public no llevan hash en el nombre: si se reemplaza uno y
+  // tiene que verse al instante, hay que renombrarlo.
+  async headers() {
+    const cache = [
+      {
+        key: "Cache-Control",
+        value: "public, max-age=2592000, stale-while-revalidate=31536000",
+      },
+    ];
+
+    return [
+      { source: "/:file([^/]+\\.(?:webm|mp4|jpg|jpeg|png|webp|avif|svg|ico))", headers: cache },
+      {
+        source: "/:dir(blog|icons|illustrations|images|logos|partners|shapes|teamPhotos|testimonials|videos)/:path*",
+        headers: cache,
+      },
+    ];
+  },
+
   async redirects() {
     return [
       { source: "/", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/es/", permanent: true },
