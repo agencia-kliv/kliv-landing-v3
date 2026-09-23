@@ -8,7 +8,7 @@ import styles from "./caseStudies.module.css";
 
 // Página de un caso: resultados antes/después arriba (tabla semántica), luego
 // desafío y solución, y al final los demás casos para seguir leyendo.
-export default function CaseStudyPage({ content, item, labels, basePath }) {
+export default function CaseStudyPage({ content, item, labels, basePath, hrefs }) {
   const others = content.cases.filter((other) => other.id !== item.id);
 
   return (
@@ -113,7 +113,7 @@ export default function CaseStudyPage({ content, item, labels, basePath }) {
           <h2>{labels.moreCases}</h2>
           <div className={`${styles.grid} ${styles.gridThree}`}>
             {others.map((other) => (
-              <CaseStudyCard key={other.id} item={other} href={`${basePath}${other.id}/`} readLabel={labels.readCase} />
+              <CaseStudyCard key={other.id} item={other} href={hrefs[other.id]} readLabel={labels.readCase} />
             ))}
           </div>
         </section>

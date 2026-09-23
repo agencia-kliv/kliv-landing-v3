@@ -3,7 +3,7 @@ import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTag from "@/components/atoms/SectionTag";
 import SectionTitle from "@/components/atoms/SectionTitle";
-import { caseStudiesPath, getCaseStudies } from "@/lib/caseStudies";
+import { CASE_STUDIES_PATHS } from "@/data/caseStudySlugs";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import Image from "next/image";
@@ -89,11 +89,12 @@ const TeamCard = ({ image, zoomed }) => {
 };
 
 // Acciones de la sección: agendar llamada y, en los idiomas que ya tienen la
-// página, el acceso a los casos de éxito (la home no los despliega).
+// página, el acceso a los casos de éxito (la home no los despliega). Lee el
+// mapa de slugs y no lib/caseStudies, que arrastraría los casos al bundle.
 const TrajectoryActions = () => {
   const t_cases = useTranslations("caseStudies");
   const locale = useLocale();
-  const href = getCaseStudies(locale) ? `/${caseStudiesPath(locale)}/` : null;
+  const href = CASE_STUDIES_PATHS[locale] ? `/${CASE_STUDIES_PATHS[locale]}/` : null;
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-[22px] gap-y-[16px] lg:w-max lg:justify-start">

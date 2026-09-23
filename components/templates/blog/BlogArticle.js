@@ -7,7 +7,7 @@ import { FAQ_ITEM_PATTERN } from "@/lib/blogFaq";
 import { faqId } from "@/lib/faq";
 import styles from "./BlogArticle.module.css";
 import { articleDates } from "@/lib/contentDates";
-import { CASE_STUDIES_PATHS } from "@/lib/caseStudies";
+import { CASE_STUDIES_PATHS } from "@/data/caseStudySlugs";
 
 // Cada pregunta lleva un id (mismo criterio que el FAQ de la home) para poder
 // enlazarla por fragmento, y va en <h3> para que conserve jerarquía semántica.

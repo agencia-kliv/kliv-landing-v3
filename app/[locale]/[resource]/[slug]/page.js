@@ -1,17 +1,17 @@
 import CaseStudyPage from "@/components/templates/caseStudies/CaseStudyPage";
-import { CASE_STUDIES_LOCALES, caseStudiesAlternates, caseStudiesPath, caseStudyPath, getCaseStudies, getCaseStudy } from "@/lib/caseStudies";
+import { CASE_STUDIES_LOCALES, caseSlug, caseStudiesAlternates, caseStudiesPath, caseStudyHrefs, caseStudyPath, getCaseStudies, getCaseStudy } from "@/lib/caseStudies";
 import { pageDate } from "@/lib/contentDates";
 import { getMessages } from "@/lib/metadata";
 import { absoluteUrl, localePath, SITE_URL } from "@/lib/seo";
 import { serializeStructuredData } from "@/lib/structured-data";
 import { notFound } from "next/navigation";
 
-// Página de cada caso de éxito: /<locale>/<índice del idioma>/<id>/. Solo se
-// prerenderizan los idiomas con contenido; cualquier otra combinación
-// (otro slug, otro locale, otro `resource`) responde 404 real.
+// Página de cada caso de éxito: /<locale>/<índice del idioma>/<slug del idioma>/.
+// Solo se prerenderizan los idiomas con contenido; cualquier otra combinación
+// (otro slug, el slug de otro idioma, otro `resource`) responde 404 real.
 export function generateStaticParams() {
   return CASE_STUDIES_LOCALES.flatMap((locale) =>
-    getCaseStudies(locale).cases.map((item) => ({ locale, resource: caseStudiesPath(locale), slug: item.id }))
+    getCaseStudies(locale).cases.map((item) => ({ locale, resource: caseStudiesPath(locale), slug: caseSlug(locale, item.id) }))
   );
 }
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params: { locale, resource, slug } }) {
   const messages = await getMessages(locale);
   const siteName = locale === "en" ? "KLIV Agency" : "Agencia KLIV";
   const title = `${item.name} | ${messages.caseStudies.title} KLIV`;
-  const alternates = caseStudiesAlternates(locale, slug);
+  const alternates = caseStudiesAlternates(locale, item.id);
   return {
     metadataBase: new URL(SITE_URL),
     title,
@@ -87,7 +87,13 @@ export default async function CaseStudyRoute({ params: { locale, resource, slug 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(caseStudyStructuredData(locale, item, messages)) }}
       />
-      <CaseStudyPage content={content} item={item} labels={messages.caseStudies} basePath={`/${caseStudiesPath(locale)}/`} />
+      <CaseStudyPage
+        content={content}
+        item={item}
+        labels={messages.caseStudies}
+        basePath={`/${caseStudiesPath(locale)}/`}
+        hrefs={caseStudyHrefs(locale)}
+      />
     </>
   );
 }

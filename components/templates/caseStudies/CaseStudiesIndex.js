@@ -8,7 +8,7 @@ import styles from "./caseStudies.module.css";
 
 // Índice de casos de éxito: tarjetas que llevan a la página de cada caso y
 // otros rubros. La trayectoria y las preguntas frecuentes viven en la home.
-export default function CaseStudiesIndex({ content, labels, basePath }) {
+export default function CaseStudiesIndex({ content, labels, hrefs }) {
   return (
     <>
       <header className={styles.hero}>
@@ -25,7 +25,7 @@ export default function CaseStudiesIndex({ content, labels, basePath }) {
       <main className={`${styles.container} ${styles.main}`}>
         <div className={styles.grid}>
           {content.cases.map((item) => (
-            <CaseStudyCard key={item.id} item={item} href={`${basePath}${item.id}/`} readLabel={labels.readCase} />
+            <CaseStudyCard key={item.id} item={item} href={hrefs[item.id]} readLabel={labels.readCase} />
           ))}
         </div>
 

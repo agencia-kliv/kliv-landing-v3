@@ -5,10 +5,10 @@
 //
 // `metric` es el dato que se destaca en las tarjetas del índice; `results` es
 // la tabla antes/después completa de la página de cada caso. `id` es el slug
-// de la página del caso. Sin guiones largos en el copy visible (misma regla
+// de la página del caso en español y el identificador estable que empareja la
+// traducción (data/caseStudies.en.js); los slugs de cada idioma están en
+// data/caseStudySlugs.js. Sin guiones largos en el copy visible (misma regla
 // que el blog).
-
-export const CASE_STUDIES_PATH_ES = "casos-de-exito";
 
 export const CASE_STUDIES_ES = {
   eyebrow: "Casos de éxito",

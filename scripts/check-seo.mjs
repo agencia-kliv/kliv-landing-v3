@@ -136,10 +136,15 @@ assert.ok(!/noindex/.test(tags(publishedResourceHtml, "meta").find((x) => x.name
 checks++;
 // Casos de éxito: índice con slug propio por idioma y una página por caso debajo;
 // solo los idiomas publicados, el resto responde 404 real.
-const CASE_STUDIES_PATHS = { es: "casos-de-exito", en: "case-studies" };
-const caseStudiesSource = await readFile(new URL("../data/caseStudies.js", import.meta.url), "utf8");
-const { CASE_STUDIES_ES: caseStudiesEs } = await import(`data:text/javascript;base64,${Buffer.from(caseStudiesSource).toString("base64")}`);
-const caseStudiesContent = { es: caseStudiesEs };
+const importData = async (file) =>
+  import(`data:text/javascript;base64,${Buffer.from(await readFile(new URL(`../data/${file}`, import.meta.url), "utf8")).toString("base64")}`);
+const { CASE_STUDIES_PATHS, CASE_STUDY_SLUGS_EN } = await importData("caseStudySlugs.js");
+const { CASE_STUDIES_ES: caseStudiesEs } = await importData("caseStudies.js");
+const { CASE_STUDIES_EN: caseStudiesEn } = await importData("caseStudies.en.js");
+const caseStudiesContent = { es: caseStudiesEs, en: caseStudiesEn };
+// Slug de cada caso por idioma, indexado por su `id` (el slug español).
+const caseSlug = (locale, id) => (locale === "en" && CASE_STUDY_SLUGS_EN[id]) || id;
+const casePath = (locale, id) => `/${locale}/${CASE_STUDIES_PATHS[locale]}/${caseSlug(locale, id)}/`;
 const structuredTypes = (html) =>
   JSON.parse(html.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1])["@graph"];
 const visible = (html) => html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
@@ -175,13 +180,19 @@ for (const locale of ["es", "en"]) {
   assert.ok(home.includes(`href="${route}"`), `/${locale}/ links the case studies index`);
   checks++;
   for (const item of content.cases) {
-    const caseRoute = `${route}${item.id}/`;
+    const caseRoute = casePath(locale, item.id);
     assert.ok(visibleHtml.includes(`href="${caseRoute}"`), `${route} links case ${item.id}`);
     const caseResponse = await request(caseRoute);
     assert.equal(caseResponse.status, 200, caseRoute);
     const caseHtml = await caseResponse.text();
     const caseVisible = text(visible(caseHtml));
+    assert.equal(tags(caseHtml, "html")[0]?.lang, locale, `${caseRoute} language`);
     assert.equal(tags(caseHtml, "link").find((x) => x.rel === "canonical")?.href, origin + caseRoute, `${caseRoute} canonical`);
+    for (const lang of Object.keys(caseStudiesContent)) {
+      assert.equal(tags(caseHtml, "link").find((x) => x.hreflang === lang)?.href, origin + casePath(lang, item.id), `${caseRoute} hreflang ${lang}`);
+    }
+    // El slug de otro idioma no se sirve bajo este índice.
+    if (caseSlug(locale, item.id) !== item.id) assert.equal((await request(`${route}${item.id}/`)).status, 404, `${route}${item.id}/ is a real 404`);
     assert.equal((caseHtml.match(/<h1\b/g) || []).length, 1, `${caseRoute} H1`);
     assert.ok(caseVisible.includes(item.name) && caseVisible.includes(item.challenge), `${caseRoute} content visible`);
     for (const row of item.results) assert.ok(caseVisible.includes(row.after), `${caseRoute} result "${row.after}"`);
@@ -195,8 +206,9 @@ for (const locale of ["es", "en"]) {
   }
   assert.equal((await request(`${route}no-existe/`)).status, 404, `${route}no-existe/ is a real 404`);
 }
-const enHomeForCases = await (await request("/en/")).text();
-if (!caseStudiesContent.en) assert.ok(!enHomeForCases.includes("/en/case-studies/"), "/en/ hides the link until the English cases exist");
+for (const path of ["/es/case-studies/", "/en/casos-de-exito/", "/en/casos-de-exito/rolicred/"]) {
+  assert.equal((await request(path)).status, 404, `${path} cross-language slug is a real 404`);
+}
 const BLOG_LOCALES = ["es", "en"];
 const hreflangs = (links, path) => {
   const paths = typeof path === "string" ? { es: path, en: path } : path;
@@ -318,7 +330,7 @@ const caseStudyUrls = Object.entries(caseStudiesContent).reduce((total, [, conte
 assert.equal(locations.length, 8 + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
 for (const [locale, content] of Object.entries(caseStudiesContent)) {
   assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/`), `sitemap ${locale} case studies`);
-  for (const item of content.cases) assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/${item.id}/`), `sitemap ${locale} case ${item.id}`);
+  for (const item of content.cases) assert.ok(locations.includes(origin + casePath(locale, item.id)), `sitemap ${locale} case ${item.id}`);
 }
 assert.ok(!locations.some((url) => url.includes("/en/casos-de-exito/") || url.includes("/es/case-studies/")), "sitemap has no cross-language case studies slug");
 assert.equal(new Set(locations).size, locations.length);

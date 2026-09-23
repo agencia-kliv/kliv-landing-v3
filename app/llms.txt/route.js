@@ -13,6 +13,13 @@ export const dynamic = "force-static";
 const link = (label, path, description) =>
   `- [${label}](${absoluteUrl(path)})${description ? `: ${description}` : ""}`;
 
+const caseStudyLinks = (locale) => [
+  link(getCaseStudies(locale).title, localePath(locale, caseStudiesPath(locale)), getCaseStudies(locale).description),
+  ...getCaseStudies(locale).cases.map((item) =>
+    link(`${item.name} (${item.sector}, ${item.location})`, localePath(locale, caseStudyPath(locale, item.id)), item.summary)
+  ),
+];
+
 export function GET() {
   const home = localePath("es");
 
@@ -38,10 +45,11 @@ export function GET() {
     "",
     "## Casos de éxito",
     "",
-    link(getCaseStudies("es").title, localePath("es", caseStudiesPath("es")), getCaseStudies("es").description),
-    ...getCaseStudies("es").cases.map((item) =>
-      link(`${item.name} (${item.sector}, ${item.location})`, localePath("es", caseStudyPath("es", item.id)), item.summary)
-    ),
+    ...caseStudyLinks("es"),
+    "",
+    "## Case studies (English)",
+    "",
+    ...caseStudyLinks("en"),
     "",
     `## Blog (${getBlogArticles("es").length} artículos, en español)`,
     "",

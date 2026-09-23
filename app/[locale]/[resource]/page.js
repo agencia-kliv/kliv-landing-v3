@@ -1,7 +1,7 @@
 import CaseStudiesIndex from "@/components/templates/caseStudies/CaseStudiesIndex";
 import ResourceArticle from "@/components/templates/resources/ResourceArticle";
 import { RESOURCE_SLUGS } from "@/data/resources";
-import { caseStudiesAlternates, caseStudiesLocaleFor, caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
+import { caseStudiesAlternates, caseStudiesLocaleFor, caseStudiesPath, caseStudyHrefs, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
 import { pageDate } from "@/lib/contentDates";
 import { getMessages, pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, localePath, NO_INDEX, SITE_URL } from "@/lib/seo";
@@ -107,7 +107,7 @@ export default async function ResourcePage({ params: { locale, resource } }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeStructuredData(caseStudiesStructuredData(locale, content, messages)) }}
         />
-        <CaseStudiesIndex content={content} labels={messages.caseStudies} basePath={`/${caseStudiesPath(locale)}/`} />
+        <CaseStudiesIndex content={content} labels={messages.caseStudies} hrefs={caseStudyHrefs(locale)} />
       </>
     );
   }

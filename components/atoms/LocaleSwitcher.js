@@ -1,6 +1,7 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { BLOG_SLUGS_EN } from "@/data/blogSlugs.en";
+import { CASE_STUDIES_PATHS, CASE_STUDY_SLUGS_EN } from "@/data/caseStudySlugs";
 
 // El blog tiene un slug por idioma: al cambiar de idioma se va al mismo
 // artículo traducido. El mapa es chico, así que no arrastra los artículos.
@@ -14,6 +15,18 @@ function translatedBlogPath(pathname, currentLocale, newLocale) {
   return slug ? `/${newLocale}/blog/${slug}/` : `/${newLocale}/blog/`;
 }
 
+// Los casos de éxito también: el índice y cada caso tienen slug propio por idioma.
+const SPANISH_CASE_SLUGS = Object.fromEntries(Object.entries(CASE_STUDY_SLUGS_EN).map(([es, en]) => [en, es]));
+
+function translatedCaseStudiesPath(pathname, currentLocale, newLocale) {
+  const match = pathname.match(new RegExp(`^/${currentLocale}/${CASE_STUDIES_PATHS[currentLocale]}(?:/([^/]+))?/?$`));
+  if (!match) return null;
+  const index = `/${newLocale}/${CASE_STUDIES_PATHS[newLocale]}/`;
+  if (!match[1]) return index;
+  const slug = newLocale === "en" ? CASE_STUDY_SLUGS_EN[match[1]] : SPANISH_CASE_SLUGS[match[1]];
+  return slug ? `${index}${slug}/` : index;
+}
+
 const LocaleSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -23,9 +36,11 @@ const LocaleSwitcher = () => {
   const changeLanguage = (newLocale) => {
     // change the locale
 
-    const blogPath = translatedBlogPath(pathname, currentLanguage, newLocale);
-    if (blogPath) {
-      router.push(blogPath);
+    const translatedPath =
+      translatedBlogPath(pathname, currentLanguage, newLocale) ||
+      translatedCaseStudiesPath(pathname, currentLanguage, newLocale);
+    if (translatedPath) {
+      router.push(translatedPath);
       return;
     }
 
