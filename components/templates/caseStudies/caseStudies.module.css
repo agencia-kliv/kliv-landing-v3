@@ -32,10 +32,10 @@
 .cardVisualCompact { margin: 0; }
 .cardMeta { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 34px; margin: 0 0 18px; color: #1e7a5e; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .cardLocation { color: #52655f; font-size: 12px; letter-spacing: .02em; text-transform: none; text-align: right; }
-.metric { display: flex; flex-direction: column; gap: 4px; min-height: 92px; margin: 0 0 22px; padding-bottom: 20px; border-bottom: 1px solid #dde8e4; }
+.metric { display: flex; flex-direction: column; gap: 4px; min-height: 72px; margin: 0 0 16px; }
 .metric strong { color: #087a59; font-size: clamp(30px, 2.5vw, 36px); font-weight: 700; line-height: 1; letter-spacing: -.05em; }
 .metric span { color: #52655f; font-size: 13px; line-height: 1.4; }
-.card h3 { margin: 0 0 8px; color: #003629; font-size: 20px; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
+.cardName { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; max-width: 340px; margin: 0; padding: 0 24px; color: #003629; font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; text-align: center; }
 .summary { margin: 0; color: #52655f; font-size: 15px; line-height: 1.55; }
 .read { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 22px; color: #1e7a5e; font-size: 15px; font-weight: 700; }
 .read svg { transition: transform .2s ease; }

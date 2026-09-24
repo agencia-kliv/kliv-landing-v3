@@ -25,12 +25,22 @@ export function CaseStudyVisual({ item, compact = false }) {
   );
 }
 
-// Tarjeta simple de un caso: rubro, métrica destacada, nombre y una línea.
-// La usan la home y el índice, así ambos cuentan lo mismo.
+// Tarjeta simple de un caso: nombre en la cabecera (el logo si lo hay, si no el
+// texto), rubro, métrica destacada y una línea. La usan el índice y las páginas
+// de cada caso, así ambos cuentan lo mismo.
 export default function CaseStudyCard({ item, href, readLabel }) {
   return (
     <Link href={href} className={styles.card}>
-      <CaseStudyVisual item={item} />
+      <div className={styles.cardVisual}>
+        <span className={styles.visualGlow} aria-hidden="true" />
+        <h3 className={styles.cardName}>
+          {item.logo ? (
+            <Image className={styles.caseLogo} src={item.logo} alt={item.name} width={180} height={72} />
+          ) : (
+            item.name
+          )}
+        </h3>
+      </div>
       <p className={styles.cardMeta}>
         <span>{item.sector}</span>
         <span className={styles.cardLocation}>{item.location}</span>
@@ -39,7 +49,6 @@ export default function CaseStudyCard({ item, href, readLabel }) {
         <strong>{item.metric.value}</strong>
         <span>{item.metric.label}</span>
       </p>
-      <h3>{item.name}</h3>
       <p className={styles.summary}>{item.summary}</p>
       <span className={styles.read}>
         {readLabel} <FiArrowUpRight aria-hidden="true" />
