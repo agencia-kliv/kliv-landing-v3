@@ -1,6 +1,7 @@
 import LandingPage from "@/components/pages/LandingPage";
 import HashAnchorScroll from "@/components/organisms/HashAnchorScroll";
 import HomeTracking from "@/components/organisms/HomeTracking";
+import { blogListItems } from "@/lib/blog";
 import { getMessages } from "@/lib/metadata";
 import { homeStructuredData, serializeStructuredData } from "@/lib/structured-data";
 
@@ -20,6 +21,12 @@ const BLOG_FALLBACK_ITEMS = {
 export default async function Home({ params: { locale } }) {
   const messages = await getMessages(locale);
   const fallbackItems = BLOG_FALLBACK_ITEMS[locale] || BLOG_FALLBACK_ITEMS.es;
+  // Slug y minutos de lectura por artículo (clave: slug español). La sección de
+  // artículos es un componente cliente: calcularlo acá evita que los textos
+  // completos del blog viajen en su JS.
+  const blogArticles = Object.fromEntries(
+    blogListItems(locale).map(({ key, slug, minutes }) => [key, { slug, minutes }])
+  );
   return (
     <>
       <script
@@ -29,7 +36,7 @@ export default async function Home({ params: { locale } }) {
           __html: serializeStructuredData(homeStructuredData(locale, messages)),
         }}
       />
-      <LandingPage />
+      <LandingPage blogArticles={blogArticles} />
       <HashAnchorScroll />
       <nav className="sr-only" aria-label={messages.resources.title} data-section="blog-index-fallback">
         <h2>{messages.resources.title}</h2>

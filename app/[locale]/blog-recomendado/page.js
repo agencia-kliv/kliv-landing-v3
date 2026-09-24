@@ -1,5 +1,5 @@
 import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogIndex";
-import { BLOG_LOCALES, getBlogArticles } from "@/lib/blog";
+import { BLOG_LOCALES, blogListItems } from "@/lib/blog";
 import { notFound } from "next/navigation";
 
 // Solo los locales con blog se prerenderizan; cualquier otro responde 404 real
@@ -22,8 +22,8 @@ export function generateMetadata() {
 }
 
 export default function RecommendedBlogPage({ params: { locale } }) {
-  const articles = getBlogArticles(locale);
-  if (!articles) notFound();
+  const articles = blogListItems(locale);
+  if (!articles.length) notFound();
 
   return <RecommendedBlogIndex articles={articles} locale={locale} />;
 }

@@ -3,7 +3,6 @@
 import LogitoSection from "@/components/atoms/LogitoSection";
 import SectionSubtitle from "@/components/atoms/SectionSubtitle";
 import SectionTitle from "@/components/atoms/SectionTitle";
-import { getBlogArticles, localizedSlug } from "@/lib/blog";
 import { getBlogCover } from "@/data/blogCovers";
 import Image from "next/image";
 import Link from "next-intl/link";
@@ -20,23 +19,10 @@ const ITEMS = [
   { key: "services", slug: "performance-marketing-empresas-de-servicios" },
 ];
 
-const WORDS_PER_MINUTE = 220;
-
-function readingTime(key, locale) {
-  const article = getBlogArticles(locale)?.find((item) => (item.sourceSlug || item.slug) === key);
-  if (!article?.content) return null;
-
-  const words = article.content
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&[^;]+;/g, " ")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean).length;
-
-  return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
-}
-
-export default function ResourcesSection() {
+// `articles` llega desde la página (servidor): slug del idioma activo y minutos
+// de lectura por slug español. No importar lib/blog acá: arrastra los textos
+// completos del blog al JS de la home.
+export default function ResourcesSection({ articles = {} }) {
   const t = useTranslations("resources");
   const locale = useLocale();
 
@@ -59,7 +45,7 @@ export default function ResourcesSection() {
 
         <div className={styles.articleGrid}>
           {ITEMS.map((item, index) => (
-            <Link key={item.slug} href={`/blog/${localizedSlug(item.slug, locale) || item.slug}/`} className={styles.articleCard}>
+            <Link key={item.slug} href={`/blog/${articles[item.slug]?.slug || item.slug}/`} className={styles.articleCard}>
               {getBlogCover(item.slug) && (
                 // `relative` va en Tailwind, no solo en el módulo CSS: el módulo
                 // llega en un chunk que carga JS (la sección es un next/dynamic),
@@ -78,9 +64,9 @@ export default function ResourcesSection() {
                 <div className={styles.meta}>
                   <span>{index < 4 ? t("pillar") : t("guide")}</span>
                   <span className={styles.metaRight}>
-                    {readingTime(item.slug, locale) && (
+                    {articles[item.slug]?.minutes && (
                       <span className={styles.readingTime}>
-                        {t("readingTime", { minutes: readingTime(item.slug, locale) })}
+                        {t("readingTime", { minutes: articles[item.slug].minutes })}
                       </span>
                     )}
                     <span className={styles.articleNumber}>{String(index + 1).padStart(2, "0")}</span>

@@ -54,17 +54,8 @@ const COPY = {
   },
 };
 
-function readingTime(content) {
-  const words = content
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&[^;]+;/g, " ")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean).length;
-
-  return Math.max(1, Math.ceil(words / 220));
-}
-
+// `articles` viene de blogListItems(): sin el texto completo, con los minutos
+// de lectura ya calculados en el servidor.
 export default function RecommendedBlogIndex({ articles, locale = "es" }) {
   const copy = COPY[locale] || COPY.es;
   const [activeCollection, setActiveCollection] = useState(ALL);
@@ -119,7 +110,7 @@ export default function RecommendedBlogIndex({ articles, locale = "es" }) {
               <div className={styles.rowBody}>
                 <div className={styles.articleMeta}>
                   <span>{withoutDashes(article.category, locale)}</span>
-                  <span>{copy.readingTime(readingTime(article.content))}</span>
+                  <span>{copy.readingTime(article.minutes)}</span>
                 </div>
                 <h2>{withoutDashes(article.title, locale)}</h2>
                 <p>{withoutDashes(article.description, locale)}</p>

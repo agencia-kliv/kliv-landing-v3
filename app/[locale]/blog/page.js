@@ -1,5 +1,5 @@
 import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogIndex";
-import { BLOG_COPY, BLOG_LOCALES, articleDates, getBlogArticles, pageDate } from "@/lib/blog";
+import { BLOG_COPY, BLOG_LOCALES, articleDates, blogListItems, getBlogArticles, pageDate } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, localePath, SITE_URL } from "@/lib/seo";
 import { serializeStructuredData } from "@/lib/structured-data";
@@ -77,7 +77,7 @@ export default function BlogPage({ params: { locale } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(blogStructuredData(locale, articles)) }}
       />
-      <RecommendedBlogIndex articles={articles} locale={locale} />
+      <RecommendedBlogIndex articles={blogListItems(locale)} locale={locale} />
     </>
   );
 }

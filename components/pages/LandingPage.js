@@ -34,7 +34,7 @@ const ResourcesSection = dynamic(
   { ssr: true }
 );
 
-const LandingPage = () => {
+const LandingPage = ({ blogArticles }) => {
   return (
     <main className=" flex flex-col">
       <HeroSection />
@@ -48,7 +48,7 @@ const LandingPage = () => {
       {/* <HowWeWorkSection /> */}
       <FAQSection />
       <ContactUsSection />
-      <ResourcesSection />
+      <ResourcesSection articles={blogArticles} />
       {/* <CalendlySection /> */}
     </main>
   );
