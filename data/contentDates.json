@@ -7,7 +7,10 @@
     },
     "quiz": "2026-09-07",
     "book-a-call": "2026-09-07",
-    "politicas-de-privacidad": "2026-09-07",
+    "politicas-de-privacidad": {
+      "es": "2026-09-07",
+      "en": "2026-09-24"
+    },
     "claves-alto-performance": "2026-09-15",
     "casos-de-exito": {
       "es": "2026-09-22",

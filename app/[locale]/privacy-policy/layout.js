@@ -2,24 +2,24 @@ import { LEGAL_PATHS } from "@/data/legalSlugs";
 import { getMessages, pageMetadata } from "@/lib/metadata";
 import { localizedAlternates } from "@/lib/seo";
 
-// Cada idioma tiene su propio slug (data/legalSlugs.js): esta ruta solo existe
-// en español y /en/politicas-de-privacidad/ redirige a /en/privacy-policy/.
+// Traducción al inglés de /es/politicas-de-privacidad/. Solo existe en inglés;
+// /es/privacy-policy/ redirige a la versión española.
 export function generateStaticParams() {
-  return [{ locale: "es" }];
+  return [{ locale: "en" }];
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata() {
-  const { footer } = await getMessages("es");
+  const { footer } = await getMessages("en");
   return {
     ...pageMetadata({
-      locale: "es",
-      path: LEGAL_PATHS.es,
+      locale: "en",
+      path: LEGAL_PATHS.en,
       title: footer.termsAndConditions,
-      description: "Términos y condiciones que rigen el uso de los servicios y el sitio web de Agencia KLIV.",
+      description: "Terms and conditions governing the use of KLIV Agency's services and website.",
     }),
-    alternates: localizedAlternates("es", LEGAL_PATHS),
+    alternates: localizedAlternates("en", LEGAL_PATHS),
   };
 }
 

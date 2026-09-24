@@ -1,4 +1,5 @@
 import { BUSINESS } from "@/data/business";
+import { LEGAL_PATHS } from "@/data/legalSlugs";
 import { getBlogArticles, pageDate } from "@/lib/blog";
 import { caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
 import es from "@/messages/es.json";
@@ -41,7 +42,8 @@ export function GET() {
     link("Preguntas frecuentes", `${home}#faq`, "Nueve preguntas sobre campañas, alcance del servicio, garantías, pagos y plazos."),
     link(es.quiz.title, localePath("es", "quiz"), "Formulario de evaluación previo a la auditoría gratuita."),
     link(es.bookACall.title, localePath("es", "book-a-call"), "Reserva de llamada de auditoría."),
-    link("Política de privacidad", localePath("es", "politicas-de-privacidad")),
+    link("Política de privacidad", localePath("es", LEGAL_PATHS.es)),
+    link("Privacy policy (English)", localePath("en", LEGAL_PATHS.en)),
     "",
     "## Casos de éxito",
     "",

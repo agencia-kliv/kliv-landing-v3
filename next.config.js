@@ -73,8 +73,9 @@ const nextConfig = {
       { source: "/:path*", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/:path*/", permanent: true },
       { source: "/", destination: "/es/", permanent: false },
       { source: "/quiz", destination: "/es/quiz/", permanent: false },
-      // El documento legal solo existe en español.
-      { source: "/en/politicas-de-privacidad", destination: "/es/politicas-de-privacidad/", permanent: true },
+      // El documento legal tiene slug propio por idioma (data/legalSlugs.js).
+      { source: "/en/politicas-de-privacidad", destination: "/en/privacy-policy/", permanent: true },
+      { source: "/es/privacy-policy", destination: "/es/politicas-de-privacidad/", permanent: true },
       ...clientPortalRedirects,
     ];
   },

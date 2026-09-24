@@ -138,6 +138,22 @@ checks++;
 // solo los idiomas publicados, el resto responde 404 real.
 const importData = async (file) =>
   import(`data:text/javascript;base64,${Buffer.from(await readFile(new URL(`../data/${file}`, import.meta.url), "utf8")).toString("base64")}`);
+// Documento legal: slug propio por idioma y hreflang cruzado entre los dos.
+const { LEGAL_PATHS } = await importData("legalSlugs.js");
+for (const locale of Object.keys(LEGAL_PATHS)) {
+  const route = `/${locale}/${LEGAL_PATHS[locale]}/`;
+  const response = await request(route);
+  assert.equal(response.status, 200, route);
+  const html = await response.text();
+  assert.equal(tags(html, "html")[0]?.lang, locale, `${route} language`);
+  assert.equal(tags(html, "link").find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
+  for (const lang of Object.keys(LEGAL_PATHS)) {
+    assert.equal(tags(html, "link").find((x) => x.hreflang === lang)?.href, `${origin}/${lang}/${LEGAL_PATHS[lang]}/`, `${route} hreflang ${lang}`);
+  }
+  assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
+  assert.ok(!/noindex/.test(tags(html, "meta").find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
+  checks++;
+}
 const { CASE_STUDIES_PATHS, CASE_STUDY_SLUGS_EN } = await importData("caseStudySlugs.js");
 const { CASE_STUDIES_ES: caseStudiesEs } = await importData("caseStudies.js");
 const { CASE_STUDIES_EN: caseStudiesEn } = await importData("caseStudies.en.js");
@@ -280,8 +296,12 @@ for (const locale of BLOG_LOCALES) {
       assert.equal(entry.name, visibleFaqs[index].question, `${route} FAQ question matches visible text`);
       assert.equal(entry.acceptedAnswer.text, visibleFaqs[index].answer, `${route} FAQ answer matches visible text`);
     });
-    // Los enlaces internos del artículo tienen que quedarse en su idioma.
-    assert.ok(!new RegExp(`href="/${locale === "es" ? "en" : "es"}/`).test(html), `${route} links stay in ${locale}`);
+    // Los enlaces internos del artículo tienen que quedarse en su idioma. El
+    // único cruce permitido es el selector de idioma (lleva hrefLang).
+    const htmlWithoutSwitcher = html.replace(/<a\b[^>]*\bhrefLang="[^"]*"[^>]*>[\s\S]*?<\/a>/g, "");
+    assert.ok(!new RegExp(`href="/${locale === "es" ? "en" : "es"}/`).test(htmlWithoutSwitcher), `${route} links stay in ${locale}`);
+    const switcher = tags(html, "a").find((x) => x.hreflang && x.hreflang !== locale);
+    assert.equal(switcher?.href, `/${switcher?.hreflang}/blog/${articleSlug(key, switcher?.hreflang)}/`, `${route} language switcher points to the translated article`);
     assert.ok(!/noindex/.test(metas.find((x) => x.name === "robots")?.content || ""), `${route} indexable`);
     const coverResponse = await request(coverPath);
     assert.equal(coverResponse.status, 200, `${route} social image`);
@@ -307,7 +327,7 @@ for (const path of ["/es/marcas-con-alma/", "/en/claves-alto-performance/"]) {
   assert.match(tags(await response.text(), "meta").find((x) => x.name === "robots")?.content || "", /noindex/);
   checks++;
 }
-for (const [path, status, destination] of [["/", 307, "/es/"], ["/quiz", 308, "/quiz/"], ["/quiz/", 307, "/es/quiz/"], ["/en/politicas-de-privacidad/", 308, "/es/politicas-de-privacidad/"]]) {
+for (const [path, status, destination] of [["/", 307, "/es/"], ["/quiz", 308, "/quiz/"], ["/quiz/", 307, "/es/quiz/"], ["/en/politicas-de-privacidad/", 308, "/en/privacy-policy/"], ["/es/privacy-policy/", 308, "/es/politicas-de-privacidad/"]]) {
   const response = await request(path);
   assert.equal(response.status, status, path);
   assert.equal(new URL(response.headers.get("location"), base).pathname, destination, path);
@@ -327,7 +347,7 @@ assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 const caseStudyUrls = Object.entries(caseStudiesContent).reduce((total, [, content]) => total + 1 + content.cases.length, 0);
-assert.equal(locations.length, 8 + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
+assert.equal(locations.length, 9 + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
 for (const [locale, content] of Object.entries(caseStudiesContent)) {
   assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/`), `sitemap ${locale} case studies`);
   for (const item of content.cases) assert.ok(locations.includes(origin + casePath(locale, item.id)), `sitemap ${locale} case ${item.id}`);
@@ -342,7 +362,7 @@ for (const locale of BLOG_LOCALES) {
 }
 for (const url of locations) {
   assert.ok(url.startsWith(origin + "/") && url.endsWith("/"));
-  assert.ok(!/panel|thank-you|#|\/en\/politicas/.test(url));
+  assert.ok(!/panel|thank-you|#|\/en\/politicas|\/es\/privacy-policy/.test(url));
   assert.equal((await request(new URL(url).pathname)).status, 200, url);
 }
 assert.equal((await request("/kliv-isotipo-green.png")).status, 200);

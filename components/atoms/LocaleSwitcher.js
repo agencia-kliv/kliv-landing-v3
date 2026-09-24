@@ -1,7 +1,9 @@
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BLOG_SLUGS_EN } from "@/data/blogSlugs.en";
 import { CASE_STUDIES_PATHS, CASE_STUDY_SLUGS_EN } from "@/data/caseStudySlugs";
+import { LEGAL_PATHS } from "@/data/legalSlugs";
 
 // El blog tiene un slug por idioma: al cambiar de idioma se va al mismo
 // artículo traducido. El mapa es chico, así que no arrastra los artículos.
@@ -27,47 +29,51 @@ function translatedCaseStudiesPath(pathname, currentLocale, newLocale) {
   return slug ? `${index}${slug}/` : index;
 }
 
-const LocaleSwitcher = () => {
-  const router = useRouter();
-  const pathname = usePathname();
+// El documento legal tiene un slug por idioma.
+function translatedLegalPath(pathname, currentLocale, newLocale) {
+  return new RegExp(`^/${currentLocale}/${LEGAL_PATHS[currentLocale]}/?$`).test(pathname)
+    ? `/${newLocale}/${LEGAL_PATHS[newLocale]}/`
+    : null;
+}
 
+// Misma página en el otro idioma. El resto de las rutas comparte slug.
+function translatedPath(pathname, currentLocale, newLocale) {
+  return (
+    translatedBlogPath(pathname, currentLocale, newLocale) ||
+    translatedCaseStudiesPath(pathname, currentLocale, newLocale) ||
+    translatedLegalPath(pathname, currentLocale, newLocale) ||
+    pathname.replace(new RegExp(`^/${currentLocale}(?=/|$)`), `/${newLocale}`).replace(/\/?$/, "/")
+  );
+}
+
+// El idioma activo va subrayado y el otro es un enlace real (no un div con
+// onClick): se puede abrir en otra pestaña, alcanzar con el teclado, lo anuncian
+// los lectores de pantalla y los crawlers lo siguen. Sin prefetch: el header
+// está en todas las páginas y precargaría la versión traducida en cada visita.
+const LocaleSwitcher = () => {
+  const pathname = usePathname();
   const currentLanguage = useLocale();
 
-  const changeLanguage = (newLocale) => {
-    // change the locale
-
-    const translatedPath =
-      translatedBlogPath(pathname, currentLanguage, newLocale) ||
-      translatedCaseStudiesPath(pathname, currentLanguage, newLocale);
-    if (translatedPath) {
-      router.push(translatedPath);
-      return;
-    }
-
-    router.push(
-      `/${newLocale}/${pathname.replace(`/${currentLanguage}`, "") || ""}`
+  const item = (locale, label) =>
+    locale === currentLanguage ? (
+      <u aria-current="true" className="px-[4px]">{label}</u>
+    ) : (
+      <Link
+        href={translatedPath(pathname, currentLanguage, locale)}
+        hrefLang={locale}
+        lang={locale}
+        prefetch={false}
+        className="inline-flex items-center min-h-[44px] px-[4px] hover:underline"
+      >
+        {label}
+      </Link>
     );
-  };
 
   return (
-    <div
-      className="flex items-center gap-[0px] text-kliv-secondary underline-offset-[2px] [&_*]:font-[500] cursor-pointer hover:underline"
-      onClick={() => {
-        if (currentLanguage === "en") changeLanguage("es");
-        else changeLanguage("en");
-      }}
-    >
-      {currentLanguage === "en" ? (
-        <span className="w-[60px]">
-          <u>EN</u>
-          {" / ES "}
-        </span>
-      ) : (
-        <span className="w-[60px]">
-          {" EN / "}
-          <u>ES</u>
-        </span>
-      )}
+    <div className="flex items-center text-kliv-secondary underline-offset-[2px] [&_*]:font-[500]">
+      {item("en", "EN")}
+      <span aria-hidden="true">/</span>
+      {item("es", "ES")}
     </div>
   );
 };

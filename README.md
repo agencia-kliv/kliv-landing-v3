@@ -20,9 +20,9 @@ The landing page lives in `app/[locale]/page.js`; its sections are in `component
 
 ## SEO
 
-The canonical domain is configured in `lib/seo.js`. Titles and descriptions use `messages/es.json` and `messages/en.json`. Internal pages have their own metadata and canonical URLs. The legal document is Spanish-only; its English route redirects to Spanish.
+The canonical domain is configured in `lib/seo.js`. Titles and descriptions use `messages/es.json` and `messages/en.json`. Internal pages have their own metadata and canonical URLs. The legal document has its own slug per language (`/es/politicas-de-privacidad/`, `/en/privacy-policy/`, see `data/legalSlugs.js`); the other slug in each language redirects to the right one.
 
-`app/sitemap.js` lists the seven public canonical pages. `app/robots.js` permits crawling so crawlers can read `noindex` on thank-you pages and the 404 response from removed panel routes.
+`app/sitemap.js` lists the public canonical pages. `app/robots.js` permits crawling so crawlers can read `noindex` on thank-you pages and the 404 response from removed panel routes.
 
 After `npm run build` and `npm start`, run `npm run check:seo -- http://127.0.0.1:3000` to check metadata, language alternates, H1 headings, redirects, error statuses, robots.txt and the sitemap against the production server.
 

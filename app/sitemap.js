@@ -1,5 +1,6 @@
 import { absoluteUrl, localePath, LOCALES } from "@/lib/seo";
 import { BLOG_LOCALES, articleDates, getBlogArticles, pageDate } from "@/lib/blog";
+import { LEGAL_PATHS } from "@/data/legalSlugs";
 import { CASE_STUDIES_LOCALES, CASE_STUDIES_PATHS, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
 
 // Rutas públicas, sin el prefijo de locale. Se excluyen panel y thank-you.
@@ -7,7 +8,7 @@ const ROUTES = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "quiz", changeFrequency: "monthly", priority: 0.8 },
   { path: "book-a-call", changeFrequency: "monthly", priority: 0.8 },
-  { path: "politicas-de-privacidad", changeFrequency: "yearly", priority: 0.3, locales: ["es"] },
+  { path: LEGAL_PATHS, dateKey: LEGAL_PATHS.es, changeFrequency: "yearly", priority: 0.3 },
   { path: "claves-alto-performance", changeFrequency: "monthly", priority: 0.7, locales: ["es"] },
   { path: "blog", changeFrequency: "weekly", priority: 0.8, locales: BLOG_LOCALES },
   // Slug propio por idioma; la fecha se guarda bajo el slug español.

@@ -1,3 +1,5 @@
+// La versión en inglés está en app/[locale]/privacy-policy/page.js. Mantener
+// las dos con el mismo contenido: si cambia una, cambiar la otra.
 const page = () => {
   return (
     <div className="flex flex-col gap-[6px] px-[20px]">

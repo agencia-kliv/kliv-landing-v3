@@ -1,9 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next-intl/link";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { BUSINESS } from "@/data/business";
+import { LEGAL_PATHS } from "@/data/legalSlugs";
 
 export const SocialNetworkButton = ({ color, href, ...props }) => {
   return (
@@ -23,6 +24,7 @@ export const SocialNetworkButton = ({ color, href, ...props }) => {
 
 const Footer = () => {
   const t_footer = useTranslations("footer");
+  const locale = useLocale();
 
   return (
     <footer className="mt-auto border-t border-kliv-primary/10 bg-kliv-lightgreen text-kliv-secondary">
@@ -54,7 +56,7 @@ const Footer = () => {
         </div>
         <div className="mt-7 flex flex-col gap-3 border-t border-kliv-primary/10 pt-5 text-[12px] leading-5 text-kliv-secondary/65 sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Agencia KLIV</span>
-          <Link className="transition-colors hover:text-kliv-primary" href={{ pathname: "/politicas-de-privacidad" }}>
+          <Link className="transition-colors hover:text-kliv-primary" href={{ pathname: `/${LEGAL_PATHS[locale] || LEGAL_PATHS.es}` }}>
             {t_footer("privacyPolicy")} · {t_footer("termsAndConditions")}
           </Link>
         </div>
