@@ -8,6 +8,7 @@ import { faqId } from "@/lib/faq";
 import styles from "./BlogArticle.module.css";
 import { articleDates } from "@/lib/contentDates";
 import { CASE_STUDIES_PATHS } from "@/data/caseStudySlugs";
+import BlogQuizPrompt from "./BlogQuizPrompt";
 
 // Cada pregunta lleva un id (mismo criterio que el FAQ de la home) para poder
 // enlazarla por fragmento, y va en <h3> para que conserve jerarquía semántica.
@@ -128,6 +129,7 @@ export default function BlogArticle({ article, locale = "es" }) {
           </section>
         )}
       </article>
+      <BlogQuizPrompt article={article.sourceSlug || article.slug} locale={locale} />
     </main>
   );
 }
