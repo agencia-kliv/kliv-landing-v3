@@ -8,13 +8,18 @@ import { FiArrowUpRight, FiX } from "react-icons/fi";
 // popup a pantalla completa: Google penaliza en móvil los intersticiales que
 // tapan el contenido, y el blog es la entrada orgánica del sitio.
 //
-// Solo cuenta el tiempo con la pestaña visible, así una pestaña olvidada no
-// dispara la tarjeta. Se muestra una vez por sesión y, si la persona la cierra
-// o entra al quiz, no vuelve a aparecer en ese navegador por SNOOZE_DAYS.
+// Cuenta tiempo de reloj desde que se abrió el artículo, aunque la persona
+// cambie de pestaña o de aplicación. Si a los DELAY_MS no está mirando, la
+// tarjeta aparece apenas vuelve (así la vista registrada es real). No depende
+// solo del setTimeout: los navegadores lo demoran o congelan en pestañas en
+// segundo plano. Se muestra una vez por sesión y, si la persona la cierra o
+// entra al quiz, no vuelve a aparecer en ese navegador por SNOOZE_DAYS.
 const DELAY_MS = 3 * 60 * 1000;
 const SNOOZE_DAYS = 7;
 const SNOOZE_KEY = "kliv:blogQuizPrompt:snoozedAt";
 const SESSION_KEY = "kliv:blogQuizPrompt:shown";
+// El quiz lo lee al enviarse para atribuir el envío al artículo de origen.
+export const QUIZ_SOURCE_KEY = "kliv:quizSource";
 
 const COPY = {
   es: {
@@ -65,19 +70,25 @@ export default function BlogQuizPrompt({ article, locale = "es" }) {
   useEffect(() => {
     if (isSnoozed() || readStorage("sessionStorage", SESSION_KEY)) return;
 
-    let elapsed = 0;
-    const timer = setInterval(() => {
-      if (document.visibilityState !== "visible") return;
-      elapsed += 1000;
-      if (elapsed < DELAY_MS) return;
+    const startedAt = Date.now();
 
-      clearInterval(timer);
+    const tryOpen = () => {
+      if (Date.now() - startedAt < DELAY_MS || document.visibilityState !== "visible") return;
+
+      stop();
       writeStorage("sessionStorage", SESSION_KEY, "1");
       setOpen(true);
       track("blog_quiz_prompt_view", article);
-    }, 1000);
+    };
 
-    return () => clearInterval(timer);
+    const timer = setTimeout(tryOpen, DELAY_MS);
+    document.addEventListener("visibilitychange", tryOpen);
+    const stop = () => {
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", tryOpen);
+    };
+
+    return stop;
   }, [article]);
 
   useEffect(() => {
@@ -95,6 +106,7 @@ export default function BlogQuizPrompt({ article, locale = "es" }) {
 
   const accept = () => {
     writeStorage("localStorage", SNOOZE_KEY, String(Date.now()));
+    writeStorage("sessionStorage", QUIZ_SOURCE_KEY, article);
     track("blog_quiz_prompt_click", article);
   };
 

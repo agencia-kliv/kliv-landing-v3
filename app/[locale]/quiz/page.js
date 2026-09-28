@@ -5,6 +5,16 @@ import SectionTitle from "@/components/atoms/SectionTitle";
 import TallyEmbed from "@/components/organisms/TallyEmbed";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { QUIZ_SOURCE_KEY } from "@/components/templates/blog/BlogQuizPrompt";
+
+function quizSource() {
+  try {
+    const article = window.sessionStorage.getItem(QUIZ_SOURCE_KEY);
+    return article ? { source: "blog_prompt", article } : {};
+  } catch {
+    return {};
+  }
+}
 
 const Page = () => {
   const t = useTranslations("quiz");
@@ -12,29 +22,38 @@ const Page = () => {
   const [formCompleted, setFormCompleted] = useState(false);
   const [showButton, setShowButton] = useState(false);
 
-  // Dentro de un componente client o en un useEffect:
   useEffect(() => {
+    let tracked = false;
+
     const handler = (e) => {
-      // Tally.FormSubmitted es la señal de envío
+      // Tally.FormSubmitted es la señal de envío. Solo se acepta desde el
+      // iframe de Tally: cualquier otra ventana podría inventar un envío.
+      if (e.origin !== "https://tally.so") return;
+      if (typeof e?.data !== "string" || !e.data.includes("Tally.FormSubmitted")) return;
 
-      console.log(e);
+      setFormCompleted(true);
 
-      if (typeof e?.data === "string" && e.data.includes("Tally.FormSubmitted")) {
-        setFormCompleted(true);
+      const payload = JSON.parse(e.data).payload;
+      const scoreItem = payload?.fields?.find(
+        (item) => item.type === "CALCULATED_FIELDS"
+      );
+      const score = Number(scoreItem?.answer?.value);
+      const qualified = score >= 7;
 
-        const payload = JSON.parse(e.data).payload;
-        console.log("Formulario enviado:", payload);
-        // aquí tu lógica: cerrar modal, mostrar gracias, etc.
+      if (qualified) {
+        setShowButton(true);
+      }
 
-        const scoreItem = payload?.fields?.find(
-          (item) => item.type === "CALCULATED_FIELDS"
-        );
-
-        console.log(scoreItem?.answer?.value);
-
-        if (scoreItem?.answer?.value >= 7) {
-          setShowButton(true);
-        }
+      // Envío del quiz a GA4. Solo el puntaje, nunca las respuestas: pueden
+      // traer datos personales. Si llegó desde la tarjeta del blog,
+      // BlogQuizPrompt dejó el artículo en la sesión.
+      if (!tracked) {
+        tracked = true;
+        window.gtag?.("event", "quiz_submit", {
+          ...(Number.isFinite(score) && { score }),
+          qualified,
+          ...quizSource(),
+        });
       }
     };
 
