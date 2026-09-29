@@ -13,6 +13,9 @@ const ROUTES = [
   { path: "blog", changeFrequency: "weekly", priority: 0.8, locales: BLOG_LOCALES },
   // Slug propio por idioma; la fecha se guarda bajo el slug español.
   { path: CASE_STUDIES_PATHS, dateKey: CASE_STUDIES_PATHS.es, changeFrequency: "monthly", priority: 0.8, locales: CASE_STUDIES_LOCALES },
+  { path: "cordoba", changeFrequency: "monthly", priority: 0.8 },
+  { path: "metaads", changeFrequency: "monthly", priority: 0.8 },
+  { path: "googleads", changeFrequency: "monthly", priority: 0.8 },
 ];
 
 const routePath = (path, locale) => (typeof path === "string" ? path : path[locale]);

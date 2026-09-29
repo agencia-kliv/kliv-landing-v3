@@ -2,12 +2,18 @@
 import AgendarLLamadaButton, {
   AGENDAR_BUTTON_SIZES,
 } from "@/components/atoms/AgendarLLamadaButton";
+import { ALL_PLATFORMS } from "@/components/atoms/AdPlatformLogos";
 import LogitoSection from "@/components/atoms/LogitoSection";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-const HeroSection = () => {
+const PARTNER_BADGES = [
+  { platform: "meta", src: "/images/meta_partner.png", alt: "meta partner", aspect: "aspect-[2.9]" },
+  { platform: "google", src: "/images/google_partner.png", alt: "google partner", aspect: "aspect-[2.24]" },
+];
+
+const HeroSection = ({ platforms = ALL_PLATFORMS }) => {
   const t_hero = useTranslations("hero");
 
   return (
@@ -36,24 +42,22 @@ const HeroSection = () => {
               </p>
               <div className="flex flex-col gap-[10px] lg:flex-col-reverse items-center lg:items-start">
                 <div className="flex items-center gap-[20px] py-[10px] lg:py-[30px]">
-                  <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.9] relative">
-                    <Image
-                      fill={true}
-                      src={"/images/meta_partner.png"}
-                      alt="meta partner"
-                      priority
-                      sizes="(max-width: 768px) 90px, 100px"
-                    />
-                  </figure>
-                  <figure className="w-[90px] lg:w-[100px] 2xl:w-[120px] aspect-[2.24] relative">
-                    <Image
-                      fill={true}
-                      src={"/images/google_partner.png"}
-                      alt="google partner"
-                      priority
-                      sizes="(max-width: 768px) 90px, 100px"
-                    />
-                  </figure>
+                  {PARTNER_BADGES.filter(({ platform }) => platforms.includes(platform)).map(
+                    ({ platform, src, alt, aspect }) => (
+                      <figure
+                        key={platform}
+                        className={`w-[90px] lg:w-[100px] 2xl:w-[120px] ${aspect} relative`}
+                      >
+                        <Image
+                          fill={true}
+                          src={src}
+                          alt={alt}
+                          priority
+                          sizes="(max-width: 768px) 90px, 100px"
+                        />
+                      </figure>
+                    )
+                  )}
                 </div>
                 <AgendarLLamadaButton size={AGENDAR_BUTTON_SIZES.LARGE} />
               </div>
