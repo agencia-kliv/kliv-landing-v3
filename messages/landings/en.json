@@ -1,0 +1,91 @@
+{
+    "cordoba": {
+        "metadata": {
+            "title": "Performance Marketing Agency in Córdoba",
+            "description": "Performance marketing agency in Córdoba, Argentina. We help companies increase their sales profitably with Meta, Google and TikTok Ads campaigns."
+        },
+        "hero": {
+            "kicker": "PERFORMANCE MARKETING AGENCY IN CÓRDOBA"
+        }
+    },
+
+    "metaads": {
+        "metadata": {
+            "title": "Meta Ads Agency | Facebook & Instagram Advertising",
+            "description": "Meta Ads agency. We scale your sales profitably with conversion-focused campaigns on Facebook, Instagram and WhatsApp."
+        },
+        "hero": {
+            "kicker": "META ADS AGENCY",
+            "subtitle": "Conversion-focused advertising campaigns on Facebook, Instagram and WhatsApp."
+        },
+        "services": {
+            "title": "Meta Ads, sales-driven advertising on Facebook and Instagram",
+            "subtitle": "We provide a personalized Meta Ads service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
+            "perks": "Strategy. Creatives. Pixel and Conversions API. Analytics. Optimization.",
+            "moreROIText": "We maximize the performance of your Meta Ads budget by testing creatives, audiences and offers, with continuous improvement focused on increasing sales.",
+            "moreScalabilityText": "We identify the ads and audiences that generate more sales at a lower cost on Facebook and Instagram and gradually increase their budget.",
+            "moreTransparencyText": "We measure every campaign with the Meta Pixel and Conversions API, using real-time monetizable indicators, no vanity metrics."
+        },
+        "faq": {
+            "questions": {
+                "question1": {
+                    "title": "How is a Meta Ads campaign structured?",
+                    "content": "Meta Ads is structured into three levels: campaigns, ad sets and ads. Each campaign responds to a business objective and sales funnel stage, and may include multiple ad sets (audiences, placements and budget) and ads. Your campaign structure will be tailored based on your business objectives and resources, focusing on maximizing sales and return on investment."
+                },
+                "question2": {
+                    "title": "How many Meta Ads campaigns does my business need?"
+                },
+                "question3": {
+                    "content": "✅ Full management of your Meta Ads campaigns on Facebook, Instagram and WhatsApp: strategy creation, ad design, Pixel and Conversions API setup, execution, monitoring, data analysis, optimization, and real-time reporting platforms.\n\n❌ It does not include: Meta ad spend, fees for influencers/ambassadors, audiovisual productions, website design, mailing platforms, or CRM tools."
+                },
+                "question5": {
+                    "title": "Do you offer services beyond Meta Ads?",
+                    "content": "We specialize exclusively in what we do best: digital advertising under the performance marketing philosophy. Besides Meta Ads, we also manage Google Ads and TikTok Ads campaigns when your strategy calls for it.\n\nIf you need services such as branding, website development, or social media content management, we have a trusted partner agency we’ll be happy to refer you to."
+                }
+            }
+        },
+        "contactUs": {
+            "title": "Ready to scale your sales with Meta Ads?"
+        }
+    },
+
+    "googleads": {
+        "metadata": {
+            "title": "Google Ads Agency | Google Advertising",
+            "description": "Google Ads agency. We scale your sales profitably with conversion-focused Search, Shopping, YouTube and Performance Max campaigns."
+        },
+        "hero": {
+            "kicker": "GOOGLE ADS AGENCY",
+            "subtitle": "Conversion-focused advertising campaigns on Search, Shopping, YouTube and Performance Max."
+        },
+        "services": {
+            "title": "Google Ads, sales-driven advertising on Google",
+            "subtitle": "We provide a personalized Google Ads service focused on generating sales at the lowest possible cost, sustainably and scalably over time.",
+            "perks": "Strategy. Keywords. Ads. Conversion tracking. Optimization.",
+            "moreROIText": "We maximize the performance of your Google Ads budget by testing keywords, ads and bids, with continuous improvement focused on increasing sales.",
+            "moreScalabilityText": "We identify the searches, campaigns and ads that generate more sales at a lower cost and gradually increase their budget.",
+            "moreTransparencyText": "We measure every campaign with Google Ads conversion tracking and GA4, using real-time monetizable indicators, no vanity metrics."
+        },
+        "faq": {
+            "questions": {
+                "question1": {
+                    "title": "How is a Google Ads campaign structured?",
+                    "content": "Google Ads is structured into three levels: campaigns, ad groups and ads. Each campaign responds to a business objective and a campaign type (Search, Shopping, Performance Max, YouTube or Display), and may include multiple ad groups with their keywords or audience signals. Your campaign structure will be tailored based on your business objectives and resources, focusing on maximizing sales and return on investment."
+                },
+                "question2": {
+                    "title": "How many Google Ads campaigns does my business need?"
+                },
+                "question3": {
+                    "content": "✅ Full management of your Google Ads campaigns: keyword research, strategy creation, ad copywriting and design, conversion tracking setup, execution, monitoring, data analysis, optimization, and real-time reporting platforms.\n\n❌ It does not include: Google ad spend, fees for influencers/ambassadors, audiovisual productions, website design, mailing platforms, or CRM tools."
+                },
+                "question5": {
+                    "title": "Do you offer services beyond Google Ads?",
+                    "content": "We specialize exclusively in what we do best: digital advertising under the performance marketing philosophy. Besides Google Ads, we also manage Meta Ads and TikTok Ads campaigns when your strategy calls for it.\n\nIf you need services such as branding, website development, or social media content management, we have a trusted partner agency we’ll be happy to refer you to."
+                }
+            }
+        },
+        "contactUs": {
+            "title": "Ready to scale your sales with Google Ads?"
+        }
+    }
+}

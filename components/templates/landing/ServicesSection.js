@@ -27,7 +27,7 @@ const CardItem = ({ title, description, image, bg, zIndex }) => {
   );
 };
 
-const ServicesSection = () => {
+const ServicesSection = ({ platforms }) => {
   const t_services = useTranslations("services");
   const t_header = useTranslations("header");
 
@@ -48,7 +48,7 @@ const ServicesSection = () => {
               </SectionTitle>
             </div>
             <div className="w-full flex items-center gap-[100px] justify-center lg:py-[40px]">
-              <AdPlatformLogos className="hidden lg:grid" />
+              <AdPlatformLogos className="hidden lg:grid" platforms={platforms} />
               <div className="lg:text-right flex flex-col gap-[30px] text-center items-center max-w-[439px] lg:max-w-[390px] 2xl:max-w-[500px]">
                 <SectionSubtitle>{t_services("subtitle")}</SectionSubtitle>
                 <SectionSubtitle className={"font-[700]"}>
@@ -62,7 +62,7 @@ const ServicesSection = () => {
           </div>
 
           {/* ads logos */}
-          <AdPlatformLogos className="grid lg:hidden" />
+          <AdPlatformLogos className="grid lg:hidden" platforms={platforms} />
         </div>
 
         {/* cards */}

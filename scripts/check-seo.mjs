@@ -337,6 +337,37 @@ for (const path of ["/es/panel/", "/en/panel/", "/fr/", "/fr/quiz/", "/es/missin
   assert.equal((await request(path)).status, 404, path);
   checks++;
 }
+// Landings de servicio: el cuerpo de la home con copy y plataformas propias.
+const LANDING_PLATFORMS = { cordoba: ["Meta Ads", "Google Ads", "TikTok Ads"], metaads: ["Meta Ads"], googleads: ["Google Ads"] };
+for (const [slug, platforms] of Object.entries(LANDING_PLATFORMS)) {
+  const short = await request(`/${slug}/`);
+  assert.equal(short.status, 307, `/${slug}/`);
+  assert.equal(short.headers.get("location"), `/es/${slug}/`, `/${slug}/ goes to Spanish`);
+  for (const locale of ["es", "en"]) {
+    const copy = JSON.parse(await readFile(new URL(`../messages/landings/${locale}.json`, import.meta.url), "utf8"))[slug];
+    const route = `/${locale}/${slug}/`;
+    const response = await request(route);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    const links = tags(html, "link");
+    assert.equal(links.find((x) => x.rel === "canonical")?.href, origin + route, `${route} canonical`);
+    hreflangs(links, `${slug}/`);
+    assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route} H1`);
+    assert.ok(text(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)[1]).includes(copy.hero.kicker), `${route} kicker within H1`);
+    assert.ok(text(html.match(/<title>([^<]*)/)?.[1] || "").startsWith(copy.metadata.title), `${route} title`);
+    const description = text(tags(html, "meta").find((x) => x.name === "description")?.content || "");
+    assert.equal(description, copy.metadata.description, `${route} description`);
+    assert.ok(description.length >= 80 && description.length <= 160, `${route} description (${description.length})`);
+    const graph = structuredTypes(html);
+    assert.equal(graph.find((node) => node["@type"] === "WebPage").url, origin + route, `${route} JSON-LD url`);
+    assert.deepEqual(graph.filter((node) => node["@type"] === "Service" && node.serviceType !== "Performance marketing").map((node) => node.name), platforms, `${route} JSON-LD platforms`);
+    const visibleHtml = visible(html);
+    for (const platform of ["Meta Ads", "Google Ads"]) {
+      assert.equal(visibleHtml.includes(`>${platform}<`), platforms.includes(platform), `${route} ${platform} logo`);
+    }
+    checks++;
+  }
+}
 const robots = await request("/robots.txt");
 assert.equal(robots.status, 200);
 const robotsText = await robots.text();
@@ -347,7 +378,7 @@ assert.equal(sitemap.status, 200);
 const xml = await sitemap.text();
 const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 const caseStudyUrls = Object.entries(caseStudiesContent).reduce((total, [, content]) => total + 1 + content.cases.length, 0);
-assert.equal(locations.length, 9 + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
+assert.equal(locations.length, 9 + 2 * Object.keys(LANDING_PLATFORMS).length + caseStudyUrls + BLOG_LOCALES.length * (1 + blogSlugs.length));
 for (const [locale, content] of Object.entries(caseStudiesContent)) {
   assert.ok(locations.includes(`${origin}/${locale}/${CASE_STUDIES_PATHS[locale]}/`), `sitemap ${locale} case studies`);
   for (const item of content.cases) assert.ok(locations.includes(origin + casePath(locale, item.id)), `sitemap ${locale} case ${item.id}`);

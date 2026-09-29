@@ -1,0 +1,97 @@
+{
+    "cordoba": {
+        "metadata": {
+            "title": "Agencia de Performance Marketing en Córdoba",
+            "description": "Agencia de performance marketing en Córdoba. Ayudamos a empresas a aumentar sus ventas de manera rentable con campañas en Meta, Google y TikTok Ads."
+        },
+        "hero": {
+            "kicker": "AGENCIA DE PERFORMANCE MARKETING EN CÓRDOBA"
+        }
+    },
+
+    "metaads": {
+        "metadata": {
+            "title": "Agencia de Meta Ads | Publicidad en Facebook e Instagram",
+            "description": "Agencia de Meta Ads. Escalamos tus ventas de manera rentable con campañas en Facebook, Instagram y WhatsApp orientadas a conversión."
+        },
+        "hero": {
+            "kicker": "AGENCIA DE META ADS",
+            "subtitle": "Campañas publicitarias orientadas a conversión en Facebook, Instagram y WhatsApp."
+        },
+        "services": {
+            "title": "Meta Ads, publicidad en Facebook e Instagram enfocada en ventas",
+            "subtitle": "Brindamos un servicio personalizado de Meta Ads con foco en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
+            "perks": "Estrategia. Creativos. Píxel y API de Conversiones. Analítica. Optimización.",
+            "moreROIText": "Maximizamos el rendimiento de tu inversión en Meta Ads testeando creativos, públicos y ofertas, con mejora continua en función de las ventas.",
+            "moreScalabilityText": "Identificamos los anuncios y públicos que generan más ventas a un menor costo en Facebook e Instagram y aumentamos su inversión gradualmente.",
+            "moreTransparencyText": "Medimos cada campaña con el Píxel de Meta y la API de Conversiones, con indicadores monetizables en tiempo real y sin métricas de vanidad."
+        },
+        "faq": {
+            "questions": {
+                "question1": {
+                    "title": "¿Cómo se estructura una campaña de Meta Ads?",
+                    "content": "Meta Ads se divide en 3 niveles: campaña, conjuntos de anuncios y anuncios. Cada campaña responde a un objetivo comercial y fase del embudo de ventas, y puede contener varios conjuntos (públicos, ubicaciones y presupuesto) y anuncios. La estructura de campañas se conformará en base a los objetivos y recursos de tu empresa, con foco en maximizar las ventas y el retorno de inversión."
+                },
+                "question2": {
+                    "title": "¿Cuántas campañas de Meta Ads son adecuadas para mi empresa?"
+                },
+                "question3": {
+                    "content": "✅ Incluye la gestión integral de tus campañas de Meta Ads en Facebook, Instagram y WhatsApp: creación de estrategia, diseño de anuncios, configuración del Píxel y la API de Conversiones, ejecución, monitoreo, análisis de datos, optimización y plataformas de reportes en tiempo real.\n\n❌ No incluye la inversión publicitaria en Meta, tarifas de influencers/embajadores contratados, producciones audiovisuales, diseño web, plataforma de mailing ni CRM."
+                },
+                "question4": {
+                    "content": "No ofrecemos garantías porque los resultados no dependen solo de los anuncios de Meta, sino también de variables fuera de nuestro control dentro del ecosistema de tu marca, como los contenidos en redes, la atención al cliente, el propio producto o servicio y las reseñas de clientes pasados, entre otras.\n\n<italic>Si una agencia te promete resultados, desconfiá</italic>.\n\nEn Kliv somos transparentes desde el inicio: auditamos tu empresa, analizamos su potencial y proponemos un plan de campañas que maximicen tus oportunidades, pero sincerando las expectativas. Si determinamos que tu empresa no está en condiciones de generar resultados rentables con Meta Ads, te lo diremos con total honestidad."
+                },
+                "question5": {
+                    "title": "¿Ofrecen otros servicios además de Meta Ads?",
+                    "content": "Nos especializamos exclusivamente en lo que mejor hacemos: publicidad digital bajo la filosofía del performance marketing. Además de Meta Ads, también gestionamos campañas en Google Ads y TikTok Ads cuando la estrategia de tu empresa lo requiere.\n\nSi necesitas servicios como branding, desarrollo web o gestión de contenidos para redes sociales, contamos con una agencia partner de confianza a la que estaremos encantados de referirte."
+                }
+            }
+        },
+        "contactUs": {
+            "title": "¿Estás listo para escalar tus ventas con Meta Ads?"
+        }
+    },
+
+    "googleads": {
+        "metadata": {
+            "title": "Agencia de Google Ads | Publicidad en Google",
+            "description": "Agencia de Google Ads. Escalamos tus ventas de manera rentable con campañas en Búsqueda, Shopping, YouTube y Performance Max orientadas a conversión."
+        },
+        "hero": {
+            "kicker": "AGENCIA DE GOOGLE ADS",
+            "subtitle": "Campañas publicitarias orientadas a conversión en Búsqueda, Shopping, YouTube y Performance Max."
+        },
+        "services": {
+            "title": "Google Ads, publicidad en Google enfocada en ventas",
+            "subtitle": "Brindamos un servicio personalizado de Google Ads con foco en generar ventas al menor costo posible, de manera sostenible y escalable en el tiempo.",
+            "perks": "Estrategia. Palabras clave. Anuncios. Medición de conversiones. Optimización.",
+            "moreROIText": "Maximizamos el rendimiento de tu inversión en Google Ads testeando palabras clave, anuncios y pujas, con mejora continua en función de las ventas.",
+            "moreScalabilityText": "Identificamos las búsquedas, campañas y anuncios que generan más ventas a un menor costo y aumentamos su inversión gradualmente.",
+            "moreTransparencyText": "Medimos cada campaña con seguimiento de conversiones de Google Ads y GA4, con indicadores monetizables en tiempo real y sin métricas de vanidad."
+        },
+        "faq": {
+            "questions": {
+                "question1": {
+                    "title": "¿Cómo se estructura una campaña de Google Ads?",
+                    "content": "Google Ads se divide en 3 niveles: campaña, grupos de anuncios y anuncios. Cada campaña responde a un objetivo comercial y a un tipo de campaña (Búsqueda, Shopping, Performance Max, YouTube o Display), y puede contener varios grupos con sus palabras clave o señales de audiencia. La estructura de campañas se conformará en base a los objetivos y recursos de tu empresa, con foco en maximizar las ventas y el retorno de inversión."
+                },
+                "question2": {
+                    "title": "¿Cuántas campañas de Google Ads son adecuadas para mi empresa?"
+                },
+                "question3": {
+                    "content": "✅ Incluye la gestión integral de tus campañas de Google Ads: investigación de palabras clave, creación de estrategia, redacción y diseño de anuncios, configuración de conversiones, ejecución, monitoreo, análisis de datos, optimización y plataformas de reportes en tiempo real.\n\n❌ No incluye la inversión publicitaria en Google, tarifas de influencers/embajadores contratados, producciones audiovisuales, diseño web, plataforma de mailing ni CRM."
+                },
+                "question4": {
+                    "content": "No ofrecemos garantías porque los resultados no dependen solo de los anuncios de Google, sino también de variables fuera de nuestro control dentro del ecosistema de tu marca, como tu sitio web, la atención al cliente, el propio producto o servicio y las reseñas de clientes pasados, entre otras.\n\n<italic>Si una agencia te promete resultados, desconfiá</italic>.\n\nEn Kliv somos transparentes desde el inicio: auditamos tu empresa, analizamos su potencial y proponemos un plan de campañas que maximicen tus oportunidades, pero sincerando las expectativas. Si determinamos que tu empresa no está en condiciones de generar resultados rentables con Google Ads, te lo diremos con total honestidad."
+                },
+                "question5": {
+                    "title": "¿Ofrecen otros servicios además de Google Ads?",
+                    "content": "Nos especializamos exclusivamente en lo que mejor hacemos: publicidad digital bajo la filosofía del performance marketing. Además de Google Ads, también gestionamos campañas en Meta Ads y TikTok Ads cuando la estrategia de tu empresa lo requiere.\n\nSi necesitas servicios como branding, desarrollo web o gestión de contenidos para redes sociales, contamos con una agencia partner de confianza a la que estaremos encantados de referirte."
+                }
+            }
+        },
+        "contactUs": {
+            "title": "¿Estás listo para escalar tus ventas con Google Ads?"
+        }
+    }
+}

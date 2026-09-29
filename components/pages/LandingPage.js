@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import HeroSection from "../templates/landing/HeroSection";
 import ServicesSection from "../templates/landing/ServicesSection";
+import { ALL_PLATFORMS } from "../atoms/AdPlatformLogos";
 
 // Lazy load components that are below the fold
 const TeamMembersSection = dynamic(
@@ -34,11 +35,11 @@ const ResourcesSection = dynamic(
   { ssr: true }
 );
 
-const LandingPage = ({ blogArticles }) => {
+const LandingPage = ({ blogArticles, platforms = ALL_PLATFORMS }) => {
   return (
     <main className=" flex flex-col">
-      <HeroSection />
-      <ServicesSection />
+      <HeroSection platforms={platforms} />
+      <ServicesSection platforms={platforms} />
       <TeamMembersSection />
       <PartnersSection />
       <TestimonialsSection />

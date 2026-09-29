@@ -73,6 +73,12 @@ const nextConfig = {
       { source: "/:path*", has: [{ type: "host", value: "www.agenciakliv.com" }], destination: "https://agenciakliv.com/:path*/", permanent: true },
       { source: "/", destination: "/es/", permanent: false },
       { source: "/quiz", destination: "/es/quiz/", permanent: false },
+      // Landings de servicio: la URL corta que se comparte en anuncios.
+      ...["cordoba", "metaads", "googleads"].map((slug) => ({
+        source: `/${slug}`,
+        destination: `/es/${slug}/`,
+        permanent: false,
+      })),
       // El documento legal tiene slug propio por idioma (data/legalSlugs.js).
       { source: "/en/politicas-de-privacidad", destination: "/en/privacy-policy/", permanent: true },
       { source: "/es/privacy-policy", destination: "/es/politicas-de-privacidad/", permanent: true },
