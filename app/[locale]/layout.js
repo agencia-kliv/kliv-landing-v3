@@ -52,6 +52,10 @@ export async function generateMetadata({ params: { locale } }) {
     title: metadata.title,
     description: metadata.description,
     alternates,
+    // Verifica la propiedad en Search Console de agenciakliv.ai@gmail.com.
+    verification: {
+      google: "sZEEKWmrcyKkgCpfiIl4eRFqGfJkM__6yBwfEJrFNk0",
+    },
     openGraph: {
       title: og.title,
       description: og.description,
