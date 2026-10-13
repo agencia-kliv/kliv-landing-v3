@@ -1,0 +1,26 @@
+name: IndexNow
+
+# Vercel marca cada deploy como un deployment de GitHub; cuando el de
+# producción termina bien, se avisa a Bing de las páginas que cambiaron.
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Enviar todas las URLs del sitemap"
+        type: boolean
+        default: false
+
+jobs:
+  notify:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment_status.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/indexnow.mjs ${{ inputs.all && '--all' || '' }}
