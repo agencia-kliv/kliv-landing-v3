@@ -36,6 +36,12 @@ The two home pages render an Organization, WebSite, WebPage and Service JSON-LD 
 
 Next content review: verify case-study evidence and publication permission, make testimonials readable in initial HTML, and review existing FAQ clarity. Confirm official business/contact details before adding addresses, founding dates or other claims. No ratings or invented results are included.
 
+## IndexNow
+
+Every successful production deploy runs `.github/workflows/indexnow.yml`, which sends Bing (and the other IndexNow engines) the sitemap URLs whose `lastmod` is from the last three days. Those dates come from `data/contentDates.json`, so update them when a page changes. The key file is `public/b7557598b9f23d266c8a7e8334f9b071.txt`; keep it published.
+
+Run it by hand with `npm run indexnow -- --dry-run` to see the list, `--days 7` for a wider window or `--all` to send every URL. The workflow can also be started from the Actions tab with the "all" option.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
