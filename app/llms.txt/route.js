@@ -5,6 +5,9 @@ import { caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudie
 import es from "@/messages/es.json";
 import { absoluteUrl, localePath } from "@/lib/seo";
 import { withoutDashes } from "@/lib/visibleText";
+import { LANDINGS } from "@/lib/landings";
+import landingsEs from "@/messages/landings/es.json";
+import landingsEn from "@/messages/landings/en.json";
 
 // /llms.txt (llmstxt.org): índice en Markdown pensado para asistentes de IA.
 // Reutiliza el copy publicado y los datos confirmados en data/; no agrega
@@ -13,6 +16,15 @@ export const dynamic = "force-static";
 
 const link = (label, path, description) =>
   `- [${label}](${absoluteUrl(path)})${description ? `: ${description}` : ""}`;
+
+// Landings de servicio: son las páginas que responden "agencia de Meta Ads",
+// "agencia de Google Ads" o "agencia en Córdoba", lo que más preguntan las IA.
+const LANDING_COPY = { es: landingsEs, en: landingsEn };
+const landingLinks = (locale) =>
+  Object.keys(LANDINGS).map((slug) => {
+    const { title, description } = LANDING_COPY[locale][slug].metadata;
+    return link(title, localePath(locale, slug), description);
+  });
 
 const caseStudyLinks = (locale) => [
   link(getCaseStudies(locale).title, localePath(locale, caseStudiesPath(locale)), getCaseStudies(locale).description),
@@ -45,6 +57,14 @@ export function GET() {
     link("Política de privacidad", localePath("es", LEGAL_PATHS.es)),
     link("Privacy policy (English)", localePath("en", LEGAL_PATHS.en)),
     "",
+    "## Servicios",
+    "",
+    ...landingLinks("es"),
+    "",
+    "## Services (English)",
+    "",
+    ...landingLinks("en"),
+    "",
     "## Casos de éxito",
     "",
     ...caseStudyLinks("es"),
@@ -72,8 +92,7 @@ export function GET() {
     `- Dirección: ${BUSINESS.addressText}`,
     `- Teléfono: ${BUSINESS.displayTelephone}`,
     `- Email: ${BUSINESS.email}`,
-    "- Instagram: https://www.instagram.com/agenciakliv/",
-    "- LinkedIn: https://www.linkedin.com/company/agencia-kliv/",
+    ...BUSINESS.profiles.map(({ name, url }) => `- ${name}: ${url}`),
     "",
     "## Optional",
     "",

@@ -1,5 +1,5 @@
 const Slider = (props) => {
-  const { min, max, step, value, onChange } = props;
+  const { min, max, step, value, onChange, label, valueText } = props;
 
   return (
     <>
@@ -13,6 +13,8 @@ const Slider = (props) => {
         step={step}
         value={value}
         onChange={onChange}
+        aria-label={label}
+        aria-valuetext={valueText}
       />
       <style jsx>
         {`

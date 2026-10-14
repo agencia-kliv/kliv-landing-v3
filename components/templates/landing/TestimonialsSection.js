@@ -4,7 +4,7 @@ import SectionTitle from "@/components/atoms/SectionTitle";
 import TestimonialCard from "@/components/atoms/TestimonialCard";
 import { TESTIMONIAL_ITEMS } from "@/data/testimonials";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -38,6 +38,26 @@ const TestimonialsSection = () => {
     setInteractive(true);
   }, []);
 
+  // react-multi-carousel marca con aria-hidden las tarjetas que quedan fuera
+  // de vista, pero sus botones de video siguen siendo enfocables. `inert` las
+  // saca también del foco y del árbol de accesibilidad hasta que vuelven a
+  // verse; el carrusel no muestra tarjetas parciales, así que no cambia nada
+  // de lo que se ve ni de lo que se puede tocar.
+  const carouselRef = useRef(null);
+  useEffect(() => {
+    const root = carouselRef.current;
+    if (!interactive || !root) return;
+    const sync = () => {
+      root.querySelectorAll(".react-multi-carousel-item").forEach((item) => {
+        item.inert = item.getAttribute("aria-hidden") === "true";
+      });
+    };
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(root, { subtree: true, attributes: true, attributeFilter: ["aria-hidden"], childList: true });
+    return () => observer.disconnect();
+  }, [interactive]);
+
   return (
     <section className="landing-section-container" id="testimonios">
       <div className="flex flex-col gap-[60px]">
@@ -56,6 +76,7 @@ const TestimonialsSection = () => {
             ))}
           </ul>
         ) : (
+        <div ref={carouselRef}>
         <Carousel
           responsive={responsive}
           infinite={true}
@@ -79,6 +100,7 @@ const TestimonialsSection = () => {
             />
           ))}
         </Carousel>
+        </div>
         )}
       </div>
     </section>

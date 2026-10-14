@@ -6,10 +6,13 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { BUSINESS } from "@/data/business";
 import { LEGAL_PATHS } from "@/data/legalSlugs";
 
-export const SocialNetworkButton = ({ color, href, ...props }) => {
+export const SocialNetworkButton = ({ color, href, label, ...props }) => {
   return (
     <Link
       href={href}
+      // Solo hay un ícono adentro: sin nombre, lectores de pantalla y agentes
+      // de IA ven un enlace vacío.
+      aria-label={label}
       //open in new tab
       target="_blank"
       passHref={true}

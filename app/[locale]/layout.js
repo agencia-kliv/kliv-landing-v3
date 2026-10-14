@@ -85,6 +85,12 @@ export default async function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <head>
+        {/* Conexiones que piden GTM, GA4 y el píxel de Meta apenas hidrata la
+            página: se abren antes para no sumar DNS + TLS a cada script. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://snap.licdn.com" />
         {/* Fragmento GTM en <head> */}
         <Script
           id="google-tag-manager"
@@ -134,9 +140,11 @@ export default async function RootLayout({ children, params: { locale } }) {
           `}
         </Script>
 
-        {/* Microsoft Clarity */}
+        {/* Microsoft Clarity. Es el script que más CPU usa en celular (~660 ms
+            en PageSpeed): arranca cuando la página ya terminó de cargar, sin
+            competir con el primer render. Las grabaciones siguen completas. */}
         {CLARITY_PROJECT_ID && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
+          <Script id="microsoft-clarity" strategy="lazyOnload">
             {`
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

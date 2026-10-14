@@ -16,6 +16,17 @@ export const BUSINESS = {
     latitude: -31.4165903,
     longitude: -64.167464,
   },
+  // Perfiles oficiales de la marca. Los de Sortlist y Clutch son los que
+  // Bing y ChatGPT citaban al describir a KLIV (verificados el 14/10/2026).
+  // Van en sameAs del schema y en llms.txt para que los buscadores y las IA
+  // los unan a la misma entidad.
+  profiles: [
+    { name: "Instagram", url: "https://www.instagram.com/agenciakliv/" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/agencia-kliv/" },
+    { name: "YouTube", url: "https://www.youtube.com/@agenciakliv" },
+    { name: "Sortlist", url: "https://www.sortlist.com/es/agency/agencia-kliv" },
+    { name: "Clutch", url: "https://clutch.co/profile/agencia-kliv" },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Rosario de Santa Fe 1106, piso 6, oficina E",

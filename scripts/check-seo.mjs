@@ -51,7 +51,13 @@ for (const locale of ["es", "en"]) {
       assert.equal(graph[3].name, messages.services.title);
       assert.equal(graph[3].description, messages.services.subtitle);
       const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
-      assert.equal(graph[0].sameAs.length, 2);
+      assert.deepEqual(graph[0].sameAs, [
+        "https://www.instagram.com/agenciakliv/",
+        "https://www.linkedin.com/company/agencia-kliv/",
+        "https://www.youtube.com/@agenciakliv",
+        "https://www.sortlist.com/es/agency/agencia-kliv",
+        "https://clutch.co/profile/agencia-kliv",
+      ]);
       assert.equal(graph[0].telephone, "+5493515504011");
       assert.ok(visibleHtml.includes("Rosario de Santa Fe 1106"));
       assert.ok(visibleHtml.includes("+54 9 351 550-4011"));

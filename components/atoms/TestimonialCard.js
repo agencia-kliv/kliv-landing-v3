@@ -6,6 +6,7 @@ import { MdPause, MdPlayArrow } from "react-icons/md";
 const TestimonialCard = ({
   id,
   logo,
+  company,
   name,
   video,
   text,
@@ -70,7 +71,9 @@ const TestimonialCard = ({
           <figure className="relative w-[40%] aspect-[1.9] md:w-[130px] md:h-[80px] translate-x-[-10px] translate-y-[-10px]">
             <Image
               src={logo}
-              alt={name}
+              // Es el logo de la empresa: el nombre de la persona ya está en el
+              // título de la tarjeta y la empresa no aparece en ningún texto.
+              alt={company}
               width={280}
               height={80}
               className="-translate-y-1/2 -translate-x-1/2 top-1/2 left-1/2 absolute"
@@ -79,9 +82,10 @@ const TestimonialCard = ({
             />
           </figure>
           <div className="flex flex-col items-start gap-[0px]">
-            <h5 className="text-[22px] lg:text-[18px] font-[700] text-kliv-primary">
+            {/* h3: viene después del h2 de la sección. El tamaño lo dan las clases. */}
+            <h3 className="text-[22px] lg:text-[18px] font-[700] text-kliv-primary">
               {name}
-            </h5>
+            </h3>
             {/* {(company || position) && (
             <div className="flex flex-col items-start">
               <h6 className="text-[18px] font-[400] leading-[25px] text-kliv-primary">

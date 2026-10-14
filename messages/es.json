@@ -358,6 +358,7 @@
 
         "paidMediaTab": {
             "title":"Cotiza tu estrategia publicitaria",
+            "sliderLabel": "Cantidad de campañas por mes",
             "campaignByMonth": "{campaigns} Campañas por mes",
             "notSelectedTitle": "¿No sabes cuántas campañas necesita tu empresa?",
             "notSelectedSubtitle": "Solicita auditoria gratuita con propuesta a medida.",

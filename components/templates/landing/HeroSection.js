@@ -6,7 +6,14 @@ import { ALL_PLATFORMS } from "@/components/atoms/AdPlatformLogos";
 import LogitoSection from "@/components/atoms/LogitoSection";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { preload } from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
+// El poster es lo más grande que se pinta en celular (LCP). Como <video> no
+// acepta fetchpriority, se pide desde el <head> en vez de esperar a que el
+// navegador llegue al video.
+const HERO_POSTER = "/hero-video-poster.jpg";
 
 const PARTNER_BADGES = [
   { platform: "meta", src: "/images/meta_partner.png", alt: "meta partner", aspect: "aspect-[2.9]" },
@@ -15,6 +22,22 @@ const PARTNER_BADGES = [
 
 const HeroSection = ({ platforms = ALL_PLATFORMS }) => {
   const t_hero = useTranslations("hero");
+  preload(HERO_POSTER, { as: "image", fetchPriority: "high" });
+
+  // Con autoPlay el navegador bajaba los 613 KB del video junto con el resto
+  // de la página y en celular retrasaba todo lo demás. Ahora se ve el poster
+  // (lo mismo que ya se veía mientras cargaba) y el video arranca cuando la
+  // página terminó de cargar. El src sigue en el HTML para que Google lo indexe.
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const play = () => videoRef.current?.play().catch(() => {});
+    if (document.readyState === "complete") {
+      play();
+      return;
+    }
+    window.addEventListener("load", play, { once: true });
+    return () => window.removeEventListener("load", play);
+  }, []);
 
   return (
     <div className="relative">
@@ -66,10 +89,14 @@ const HeroSection = ({ platforms = ALL_PLATFORMS }) => {
           <div className="min-w-0 w-full flex flex-col items-center lg:items-start bg-gradient-to-t from-[#FFFFFF] to-[#00000000] lg:flex-1">
             <video
               src="/hero-video.webm"
-              poster="/hero-video-poster.jpg"
-              preload="metadata"
+              poster={HERO_POSTER}
+              // Video y poster son cuadrados. Sin medidas el video ocupaba 0 px
+              // hasta cargar y empujaba la sección de servicios (CLS).
+              width={900}
+              height={900}
+              ref={videoRef}
+              preload="none"
               className="w-full max-w-full h-auto"
-              autoPlay
               loop
               muted
               playsInline /* ↓ habilita “inline” en móviles */

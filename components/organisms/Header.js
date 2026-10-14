@@ -159,17 +159,20 @@ const Header = () => {
           <div className="flex gap-[5px]">
             <SocialNetworkButton
               href="https://www.instagram.com/agenciakliv/"
+              label="Instagram"
               color="text-kliv-primary"
             >
               <FaInstagram />
             </SocialNetworkButton>
             <SocialNetworkButton
               href={"https://www.linkedin.com/company/agencia-kliv/"}
+              label="LinkedIn"
             >
               <FaLinkedinIn />
             </SocialNetworkButton>
             <SocialNetworkButton
               href="https://api.whatsapp.com/send/?phone=5493515504011&text&type=phone_number&app_absent=0"
+              label="WhatsApp"
               color="text-kliv-primary"
             >
               <FaWhatsapp />

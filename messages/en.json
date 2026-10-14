@@ -350,6 +350,7 @@
 
         "paidMediaTab": {
             "title":"Quote your advertising strategy.",
+            "sliderLabel": "Number of campaigns per month",
             "campaignByMonth": "{campaigns} Campaigns per month",
             "notSelectedTitle": "Don't know how many campaigns your company needs?",
             "notSelectedSubtitle": "Request diagnosis and customized proposal.",
