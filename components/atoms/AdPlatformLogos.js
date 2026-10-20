@@ -8,7 +8,8 @@ const IMAGE_PLATFORMS = {
   google: { name: "Google Ads", image: "/images/google_logo.png" },
 };
 
-// Keep platform names in HTML, not only embedded in the image pixels.
+// Keep platform names in HTML text, not only embedded in the image pixels. The
+// alt is for crawlers; aria-hidden keeps screen readers from reading the name twice.
 export default function AdPlatformLogos({ className = "", platforms = ALL_PLATFORMS }) {
   // Las landings de una sola plataforma muestran un logo solo, más grande.
   const single = platforms.length === 1;
@@ -24,7 +25,7 @@ export default function AdPlatformLogos({ className = "", platforms = ALL_PLATFO
           const { name, image } = IMAGE_PLATFORMS[platform];
           return (
             <li key={name} className="relative aspect-[1.14] min-w-0">
-              <Image src={image} alt="" fill sizes="(min-width: 1024px) 200px, 160px" className="object-contain" />
+              <Image src={image} alt={name} aria-hidden="true" fill sizes="(min-width: 1024px) 200px, 160px" className="object-contain" />
               <span className="sr-only">{name}</span>
             </li>
           );

@@ -108,7 +108,7 @@ const HeroSection = ({ platforms = ALL_PLATFORMS }) => {
       <div className="absolute top-0 left-0 w-full aspect-square opacity-[4%] lg:w-[50dvw] max-w-[720px]">
         <Image
           src={"/logito.svg"}
-          alt=""
+          alt="KLIV"
           fill={true}
           loading="lazy"
           aria-hidden="true"

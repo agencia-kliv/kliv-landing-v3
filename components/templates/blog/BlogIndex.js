@@ -93,7 +93,9 @@ export default function BlogIndex({ articles }) {
                 {getBlogCover(article.slug) && (
                   <Image
                     src={getBlogCover(article.slug)}
-                    alt=""
+                    alt={withoutDashes(article.title)}
+                    // Mismo texto que el título de la tarjeta: queda para buscadores, no se lee dos veces.
+                    aria-hidden="true"
                     fill
                     sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                   />

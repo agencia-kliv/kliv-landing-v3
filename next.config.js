@@ -1,4 +1,5 @@
 const clientPortals = require("./data/clientPortals.json");
+const { articles } = require("./data/contentDates.json");
 
 // /cliente/<Nombre>/ lleva al portal de cada cliente. Para sumar uno, basta
 // con agregarlo en data/clientPortals.json. Se acepta el nombre tal cual y
@@ -82,6 +83,14 @@ const nextConfig = {
       // El documento legal tiene slug propio por idioma (data/legalSlugs.js).
       { source: "/en/politicas-de-privacidad", destination: "/en/privacy-policy/", permanent: true },
       { source: "/es/privacy-policy", destination: "/es/politicas-de-privacidad/", permanent: true },
+      // A fines de septiembre el índice del blog enlazó los artículos sin /blog/
+      // y Google guardó 23 de esas URLs como 404. Cada artículo (las claves de
+      // contentDates.json son sus slugs en español) lleva a su URL real.
+      ...Object.keys(articles).map((slug) => ({
+        source: `/es/${slug}`,
+        destination: `/es/blog/${slug}/`,
+        permanent: true,
+      })),
       ...clientPortalRedirects,
     ];
   },

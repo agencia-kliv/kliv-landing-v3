@@ -54,7 +54,9 @@ export default function ResourcesSection({ articles = {} }) {
                 <div className={`relative ${styles.articleCover}`}>
                   <Image
                     src={getBlogCover(item.slug)}
-                    alt=""
+                    alt={withoutDashes(t(`items.${item.key}.title`), locale)}
+                    // Mismo texto que el título de la tarjeta: queda para buscadores, no se lee dos veces.
+                    aria-hidden="true"
                     fill
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 31vw"
                   />
