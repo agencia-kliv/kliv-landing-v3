@@ -91,6 +91,14 @@ const nextConfig = {
         destination: `/es/blog/${slug}/`,
         permanent: true,
       })),
+      // Bing guardó también /blog/<slug>/ sin idioma, que daba 404. Solo los
+      // slugs de artículos: /blog/covers/ sirve las portadas desde /public.
+      { source: "/blog", destination: "/es/blog/", permanent: true },
+      ...Object.keys(articles).map((slug) => ({
+        source: `/blog/${slug}`,
+        destination: `/es/blog/${slug}/`,
+        permanent: true,
+      })),
       ...clientPortalRedirects,
     ];
   },
