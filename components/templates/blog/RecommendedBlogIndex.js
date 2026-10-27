@@ -28,6 +28,10 @@ const COPY = {
     results: "resultados",
     filterLabel: "Filtrar colecciones",
     readingTime: (minutes) => `${minutes} min de lectura`,
+    pressKicker: "Prensa",
+    pressTitle: "KLIV en los medios",
+    pressRead: "Leer más",
+    pressLanguage: {},
     cta: "Encontrá qué está frenando tu crecimiento y qué mover primero.",
     ctaAction: "Agendar una llamada",
   },
@@ -49,14 +53,28 @@ const COPY = {
     results: "results",
     filterLabel: "Filter collections",
     readingTime: (minutes) => `${minutes} min read`,
+    pressKicker: "Press",
+    pressTitle: "KLIV in the media",
+    pressRead: "Read more",
+    pressLanguage: { es: "In Spanish" },
     cta: "Find out what is holding back your growth and what to move first.",
     ctaAction: "Book a call",
   },
 };
 
+// En UTC para que el servidor y el navegador muestren el mismo día.
+const pressDate = (date, locale) =>
+  new Date(`${date}T12:00:00Z`).toLocaleDateString(locale === "en" ? "en-US" : "es-AR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
 // `articles` viene de blogListItems(): sin el texto completo, con los minutos
-// de lectura ya calculados en el servidor.
-export default function RecommendedBlogIndex({ articles, locale = "es" }) {
+// de lectura ya calculados en el servidor. `press` son notas externas
+// (data/press.js): solo título, medio, fecha y enlace a la nota original.
+export default function RecommendedBlogIndex({ articles, press = [], locale = "es" }) {
   const copy = COPY[locale] || COPY.es;
   const [activeCollection, setActiveCollection] = useState(ALL);
 
@@ -101,6 +119,11 @@ export default function RecommendedBlogIndex({ articles, locale = "es" }) {
               {collection.label}
             </button>
           ))}
+          {press.length > 0 && (
+            <a href="#prensa" className={styles.filter}>
+              {copy.pressKicker}
+            </a>
+          )}
         </div>
 
         <div className={styles.articleList}>
@@ -121,6 +144,34 @@ export default function RecommendedBlogIndex({ articles, locale = "es" }) {
             </Link>
           ))}
         </div>
+
+        {press.length > 0 && (
+          <section className={styles.press} id="prensa" aria-labelledby="prensa-title">
+            <p className={styles.sectionKicker}>{copy.pressKicker}</p>
+            <h2 id="prensa-title" className={styles.pressTitle}>{copy.pressTitle}</h2>
+            <div className={styles.articleList}>
+              {press.map((item) => (
+                <a key={item.url} href={item.url} target="_blank" rel="noopener" className={styles.articleRow}>
+                  <span className={styles.rowNumber} aria-hidden="true" />
+                  <div className={styles.rowBody}>
+                    <div className={styles.articleMeta}>
+                      <span>{item.outlet}</span>
+                      <time dateTime={item.datePublished}>{pressDate(item.datePublished, locale)}</time>
+                      {copy.pressLanguage[item.inLanguage] && <span>{copy.pressLanguage[item.inLanguage]}</span>}
+                    </div>
+                    <h3 lang={item.inLanguage}>{item.title}</h3>
+                    <span className={styles.pressRead}>
+                      {copy.pressRead} <FiArrowUpRight aria-hidden="true" />
+                    </span>
+                  </div>
+                  <span className={styles.rowArrow} aria-hidden="true">
+                    <FiArrowUpRight />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className={styles.cta}>
           <div>

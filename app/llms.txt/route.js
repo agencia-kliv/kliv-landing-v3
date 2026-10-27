@@ -1,4 +1,5 @@
 import { BUSINESS } from "@/data/business";
+import { PRESS } from "@/data/press";
 import { LEGAL_PATHS } from "@/data/legalSlugs";
 import { getBlogArticles, pageDate } from "@/lib/blog";
 import { caseStudiesPath, caseStudyPath, getCaseStudies } from "@/lib/caseStudies";
@@ -86,6 +87,10 @@ export function GET() {
     ...getBlogArticles("en").map((article) =>
       link(withoutDashes(article.title, "en"), localePath("en", `blog/${article.slug}`), withoutDashes(article.description, "en"))
     ),
+    "",
+    "## Prensa",
+    "",
+    ...PRESS.map((item) => `- [${item.title}](${item.url}): nota de ${item.outlet} sobre Agencia KLIV, ${item.datePublished}.`),
     "",
     "## Contacto",
     "",

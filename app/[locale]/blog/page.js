@@ -2,7 +2,8 @@ import RecommendedBlogIndex from "@/components/templates/blog/RecommendedBlogInd
 import { BLOG_COPY, BLOG_LOCALES, articleDates, blogListItems, getBlogArticles, pageDate } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl, localePath, SITE_URL } from "@/lib/seo";
-import { serializeStructuredData } from "@/lib/structured-data";
+import { pressArticle, serializeStructuredData } from "@/lib/structured-data";
+import { PRESS } from "@/data/press";
 import { withoutDashes } from "@/lib/visibleText";
 import { notFound } from "next/navigation";
 
@@ -42,6 +43,8 @@ function blogStructuredData(locale, articles) {
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": organization },
         mainEntity: { "@id": `${url}#blog` },
+        // La sección Prensa enlaza notas externas sobre KLIV.
+        mentions: PRESS.map(pressArticle),
       },
       {
         "@type": "Blog",
@@ -77,7 +80,7 @@ export default function BlogPage({ params: { locale } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(blogStructuredData(locale, articles)) }}
       />
-      <RecommendedBlogIndex articles={blogListItems(locale)} locale={locale} />
+      <RecommendedBlogIndex articles={blogListItems(locale)} press={PRESS} locale={locale} />
     </>
   );
 }
