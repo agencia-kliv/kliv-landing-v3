@@ -32,8 +32,8 @@ const COPY = {
     pressTitle: "KLIV en los medios",
     pressRead: "Leer más",
     pressLanguage: {},
-    cta: "Encontrá qué está frenando tu crecimiento y qué mover primero.",
-    ctaAction: "Agendar una llamada",
+    cta: "¿Tu empresa está lista para escalar con Performance Marketing?",
+    ctaAction: "Autoevaluación de 1 min",
   },
   en: {
     collections: [
@@ -57,8 +57,8 @@ const COPY = {
     pressTitle: "KLIV in the media",
     pressRead: "Read more",
     pressLanguage: { es: "In Spanish" },
-    cta: "Find out what is holding back your growth and what to move first.",
-    ctaAction: "Book a call",
+    cta: "Is your business ready to scale with Performance Marketing?",
+    ctaAction: "1-minute self-assessment",
   },
 };
 
